@@ -247,6 +247,49 @@
   .nojs{display:none; background:#1e2a3a; border:1px solid #39506e; color:#a9c6e8;
     border-radius:12px; padding:11px 14px; font-size:12.5px; margin:0 0 14px;}
   .no-js .nojs{display:block; border-color:#39506e;}
+
+  .no-js .js-only{display:none !important;}
+  .setlog{margin-top:12px;border-top:1px solid var(--line);padding-top:11px;}
+  .sl-last{font-size:12px;color:var(--dim);font-weight:700;margin-bottom:9px;display:flex;
+    align-items:center;gap:7px;flex-wrap:wrap;}
+  .sl-last .sl-k{color:var(--dimmer);letter-spacing:.4px;text-transform:uppercase;font-size:10.5px;}
+  .sl-prompt{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.4);color:var(--green);
+    border-radius:9px;padding:4px 9px;font-size:11.5px;font-weight:800;}
+  .sl-grid{display:flex;flex-direction:column;gap:7px;}
+  .sl-set{display:flex;align-items:center;gap:8px;}
+  .sl-n{flex:0 0 auto;width:20px;color:var(--dimmer);font-size:11px;font-weight:800;text-align:center;}
+  .sl-in{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    border-radius:9px;padding:9px 10px;font-size:14px;font-family:inherit;-webkit-appearance:none;text-align:center;}
+  .sl-in::placeholder{color:var(--dimmer);}
+  .sl-x{flex:0 0 auto;color:var(--dimmer);font-weight:800;font-size:12px;}
+  .sl-hit{border-color:var(--green) !important;}
+  .sl-actions{display:flex;gap:8px;margin-top:10px;}
+  .sl-save{flex:1;border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:800;
+    background:var(--accent);color:#0d0f14;cursor:pointer;font-family:inherit;}
+  .sl-toggle{border:1px solid var(--line);background:var(--card2);color:var(--dim);border-radius:10px;
+    padding:11px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .sl-body{display:none;}
+  .sl-body.open{display:block;}
+  .sl-hist{margin-top:9px;font-size:11.5px;color:var(--dimmer);}
+
+  .bodycard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:18px 0 6px;}
+  .bodycard h3{margin:0 0 3px;font-size:17px;}
+  .bodycard .bc-sub{color:var(--dim);font-size:13px;margin-bottom:12px;}
+  .bc-row{display:flex;gap:8px;align-items:flex-end;}
+  .bc-row label{flex:1;min-width:0;font-size:11px;color:var(--dim);font-weight:700;}
+  .bc-row input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    border-radius:10px;padding:10px;font-size:14px;font-family:inherit;margin-top:5px;-webkit-appearance:none;}
+  .bc-add{border:none;background:var(--accent);color:#0d0f14;font-weight:800;border-radius:10px;
+    padding:11px 15px;font-size:13.5px;cursor:pointer;font-family:inherit;flex:0 0 auto;}
+  .bc-spark{margin:14px 0 6px;}
+  .bc-stats{display:flex;gap:10px;margin-top:6px;}
+  .bc-stat{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center;}
+  .bc-stat b{display:block;font-size:18px;font-weight:800;}
+  .bc-stat span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dimmer);font-weight:800;}
+  .bc-empty{color:var(--dimmer);font-size:12.5px;text-align:center;padding:6px 0 2px;}
+  .bc-list{margin-top:12px;font-size:12px;color:var(--dim);}
+  .bc-list div{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line);}
+
 </style>
 </head>
 <body class="no-js">
@@ -295,12 +338,12 @@
 <section class="panel" id="p0" style="--accent:#a78bfa;--accent-soft:#a78bfa26;--accent-line:#a78bfa66;">
 <div class="day-head"><h2 class="day-title">🟣 SUN — Upper Pull</h2><p class="day-sub">Back thickness / width / biceps</p></div>
 <div class="target-box">🎯 <b>Target:</b> most sets 1–3 RIR · final isolation set 0–1 RIR OK</div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Lat Pulldown</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Controlled eccentric, full stretch</div></div><label class="done-toggle" for="c0_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Lat Pulldown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Chest-Supported DB Row</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Drive elbows back; minimize momentum</div></div><label class="done-toggle" for="c0_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Chest-Supported DB Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Single-Arm Cable Row</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → controlled contraction</div></div><label class="done-toggle" for="c0_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Single-Arm Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Rear Delt Fly</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Controlled reps, avoid swinging</div></div><label class="done-toggle" for="c0_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rear Delt Fly"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">EZ-Bar or DB Curl</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Full ROM; controlled eccentric</div></div><label class="done-toggle" for="c0_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="EZ-Bar or DB Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c0_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Incline DB Curl or Preacher Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Deep stretch at bottom</div></div><label class="done-toggle" for="c0_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Incline DB Curl or Preacher Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_0" data-name="Lat Pulldown" data-sets="4" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c0_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Lat Pulldown</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Controlled eccentric, full stretch</div></div><label class="done-toggle" for="c0_0" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Lat Pulldown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_1" data-name="Chest-Supported DB Row" data-sets="3" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c0_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Chest-Supported DB Row</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Drive elbows back; minimize momentum</div></div><label class="done-toggle" for="c0_1" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Chest-Supported DB Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_2" data-name="Single-Arm Cable Row" data-sets="3" data-lo="10" data-hi="15"><input type="checkbox" class="dchk" id="c0_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Single-Arm Cable Row</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → controlled contraction</div></div><label class="done-toggle" for="c0_2" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Single-Arm Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_3" data-name="Rear Delt Fly" data-sets="3" data-lo="15" data-hi="20"><input type="checkbox" class="dchk" id="c0_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Rear Delt Fly</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Controlled reps, avoid swinging</div></div><label class="done-toggle" for="c0_3" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rear Delt Fly"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_4" data-name="EZ-Bar or DB Curl" data-sets="3" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c0_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">EZ-Bar or DB Curl</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Full ROM; controlled eccentric</div></div><label class="done-toggle" for="c0_4" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="EZ-Bar or DB Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sun_5" data-name="Incline DB Curl or Preacher Curl" data-sets="3" data-lo="10" data-hi="15"><input type="checkbox" class="dchk" id="c0_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Incline DB Curl or Preacher Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Deep stretch at bottom</div></div><label class="done-toggle" for="c0_5" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Incline DB Curl or Preacher Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
 </section>
 <section class="panel" id="p1" style="--accent:#9ca3af;--accent-soft:#9ca3af26;--accent-line:#9ca3af66;">
 <div class="day-head"><h2 class="day-title">⚪ MON — Rest / Cardio</h2><p class="day-sub">Optional Zone 2 — 20–30 min</p></div>
@@ -311,12 +354,12 @@
 <section class="panel" id="p2" style="--accent:#4ade80;--accent-soft:#4ade8026;--accent-line:#4ade8066;">
 <div class="day-head"><h2 class="day-title">🟢 TUE — Lower Body</h2><p class="day-sub">Mass-focused / hypertrophy</p></div>
 <div class="target-box">🎯 <b>Target:</b> compounds 1–3 RIR · isolation 0–2 RIR</div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Hack Squat</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Deep, controlled ROM · quads &gt; spinal loading</div><div class="ex-alt">Alt: Goblet Squat if hack squat unavailable</div></div><label class="done-toggle" for="c2_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Hack Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Romanian Deadlift</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Moderate weight · 3-sec eccentric · deep hamstring stretch</div></div><label class="done-toggle" for="c2_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Romanian Deadlift"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Walking Lunges</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Long controlled stride</div></div><label class="done-toggle" for="c2_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Walking Lunges"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated Leg Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → hard contraction</div></div><label class="done-toggle" for="c2_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Leg Extension</div><div class="ex-scheme">3 × 12–20</div><div class="ex-cue">Controlled eccentric · pause/squeeze at top</div></div><label class="done-toggle" for="c2_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Leg Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c2_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Standing Calf Raises</div><div class="ex-scheme">4 × 10–20</div><div class="ex-cue">Deep stretch at bottom · full contraction at top</div></div><label class="done-toggle" for="c2_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Standing Calf Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_0" data-name="Hack Squat" data-sets="4" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c2_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Hack Squat</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Deep, controlled ROM · quads &gt; spinal loading</div><div class="ex-alt">Alt: Goblet Squat if hack squat unavailable</div></div><label class="done-toggle" for="c2_0" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Hack Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_1" data-name="Romanian Deadlift" data-sets="3" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c2_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Romanian Deadlift</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Moderate weight · 3-sec eccentric · deep hamstring stretch</div></div><label class="done-toggle" for="c2_1" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Romanian Deadlift"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_2" data-name="Walking Lunges" data-sets="3" data-lo="10" data-hi="12"><input type="checkbox" class="dchk" id="c2_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Walking Lunges</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Long controlled stride</div></div><label class="done-toggle" for="c2_2" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Walking Lunges"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_3" data-name="Seated Leg Curl" data-sets="3" data-lo="10" data-hi="15"><input type="checkbox" class="dchk" id="c2_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated Leg Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → hard contraction</div></div><label class="done-toggle" for="c2_3" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_4" data-name="Leg Extension" data-sets="3" data-lo="12" data-hi="20"><input type="checkbox" class="dchk" id="c2_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Leg Extension</div><div class="ex-scheme">3 × 12–20</div><div class="ex-cue">Controlled eccentric · pause/squeeze at top</div></div><label class="done-toggle" for="c2_4" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Leg Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="tue_5" data-name="Standing Calf Raises" data-sets="4" data-lo="10" data-hi="20"><input type="checkbox" class="dchk" id="c2_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Standing Calf Raises</div><div class="ex-scheme">4 × 10–20</div><div class="ex-cue">Deep stretch at bottom · full contraction at top</div></div><label class="done-toggle" for="c2_5" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Standing Calf Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
 </section>
 <section class="panel" id="p3" style="--accent:#9ca3af;--accent-soft:#9ca3af26;--accent-line:#9ca3af66;">
 <div class="day-head"><h2 class="day-title">⚪ WED — Rest / Cardio</h2><p class="day-sub">Optional cardio — 20–30 min</p></div>
@@ -327,13 +370,13 @@
 <section class="panel" id="p4" style="--accent:#f87171;--accent-soft:#f8717126;--accent-line:#f8717166;">
 <div class="day-head"><h2 class="day-title">🔴 THU — Upper Push</h2><p class="day-sub">Chest / delts / triceps</p></div>
 <div class="target-box">🎯 <b>Target:</b> pressing 1–3 RIR · isolation 0–2 RIR. Optional: controlled partials on the last set of laterals or triceps.</div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Incline DB Press</div><div class="ex-scheme">3 × 6–10</div><div class="ex-cue">Controlled eccentric (~2–3 s) · deep stretch</div></div><label class="done-toggle" for="c4_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Incline DB Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Machine or Cable Chest Press</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Constant tension · controlled ROM</div></div><label class="done-toggle" for="c4_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Machine or Cable Chest Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Seated DB Shoulder Press</div><div class="ex-scheme">2–3 × 8–12</div><div class="ex-cue">Controlled reps · avoid excessive arching</div></div><label class="done-toggle" for="c4_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Seated DB Shoulder Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Cable Lateral Raises</div><div class="ex-scheme">4 × 12–20</div><div class="ex-cue">Controlled reps · keep tension on lateral delt</div></div><label class="done-toggle" for="c4_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Lateral Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable Fly (low → high)</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Deep stretch · controlled contraction</div></div><label class="done-toggle" for="c4_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Fly (low → high)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Rope Triceps Pushdowns</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full extension · controlled eccentric</div></div><label class="done-toggle" for="c4_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rope Triceps Pushdowns"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c4_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Overhead Triceps Extension</div><div class="ex-scheme">2 × 10–15</div><div class="ex-cue">Deep stretch behind head</div></div><label class="done-toggle" for="c4_6" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Overhead Triceps Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_0" data-name="Incline DB Press" data-sets="3" data-lo="6" data-hi="10"><input type="checkbox" class="dchk" id="c4_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Incline DB Press</div><div class="ex-scheme">3 × 6–10</div><div class="ex-cue">Controlled eccentric (~2–3 s) · deep stretch</div></div><label class="done-toggle" for="c4_0" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Incline DB Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_1" data-name="Machine or Cable Chest Press" data-sets="3" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c4_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Machine or Cable Chest Press</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Constant tension · controlled ROM</div></div><label class="done-toggle" for="c4_1" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Machine or Cable Chest Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_2" data-name="Seated DB Shoulder Press" data-sets="3" data-lo="8" data-hi="12"><input type="checkbox" class="dchk" id="c4_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Seated DB Shoulder Press</div><div class="ex-scheme">2–3 × 8–12</div><div class="ex-cue">Controlled reps · avoid excessive arching</div></div><label class="done-toggle" for="c4_2" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Seated DB Shoulder Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_3" data-name="Cable Lateral Raises" data-sets="4" data-lo="12" data-hi="20"><input type="checkbox" class="dchk" id="c4_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Cable Lateral Raises</div><div class="ex-scheme">4 × 12–20</div><div class="ex-cue">Controlled reps · keep tension on lateral delt</div></div><label class="done-toggle" for="c4_3" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Lateral Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_4" data-name="Cable Fly (low → high)" data-sets="2" data-lo="12" data-hi="15"><input type="checkbox" class="dchk" id="c4_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable Fly (low → high)</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Deep stretch · controlled contraction</div></div><label class="done-toggle" for="c4_4" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Fly (low → high)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_5" data-name="Rope Triceps Pushdowns" data-sets="3" data-lo="10" data-hi="15"><input type="checkbox" class="dchk" id="c4_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Rope Triceps Pushdowns</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full extension · controlled eccentric</div></div><label class="done-toggle" for="c4_5" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rope Triceps Pushdowns"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="thu_6" data-name="Overhead Triceps Extension" data-sets="2" data-lo="10" data-hi="15"><input type="checkbox" class="dchk" id="c4_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Overhead Triceps Extension</div><div class="ex-scheme">2 × 10–15</div><div class="ex-cue">Deep stretch behind head</div></div><label class="done-toggle" for="c4_6" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Overhead Triceps Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
 </section>
 <section class="panel" id="p5" style="--accent:#fbbf24;--accent-soft:#fbbf2426;--accent-line:#fbbf2466;">
 <div class="day-head"><h2 class="day-title">🟡 FRI — Rest</h2><p class="day-sub">Complete rest or light walking</p></div>
@@ -343,15 +386,16 @@
 <section class="panel" id="p6" style="--accent:#fb923c;--accent-soft:#fb923c26;--accent-line:#fb923c66;">
 <div class="day-head"><h2 class="day-title">🟠 SAT — Full Body</h2><p class="day-sub">Hypertrophy + lower-fatigue volume</p></div>
 <div class="target-box">🎯 <b>Target:</b> quality hard sets, 1–3 RIR. Finish with the 10–15 min cardio below.</div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Dumbbell Bench Press</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Controlled eccentric</div></div><label class="done-toggle" for="c6_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Dumbbell Bench Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Cable Row</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Full stretch → contraction</div></div><label class="done-toggle" for="c6_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Bulgarian Split Squat</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Controlled descent · deep ROM</div></div><label class="done-toggle" for="c6_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Bulgarian Split Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated or Lying Leg Curl</div><div class="ex-scheme">3 × 12–15</div><div class="ex-cue">Full stretch</div></div><label class="done-toggle" for="c6_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated or Lying Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable/DB Lateral Raise</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Strict form</div></div><label class="done-toggle" for="c6_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Cable/DB Lateral Raise"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Optional Arms — Cable Curl</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Cable Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
-<div class="ex-card"><input type="checkbox" class="dchk" id="c6_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Optional Arms — Rope Pushdown</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_6" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Rope Pushdown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_0" data-name="Dumbbell Bench Press" data-sets="3" data-lo="10" data-hi="12"><input type="checkbox" class="dchk" id="c6_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Dumbbell Bench Press</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Controlled eccentric</div></div><label class="done-toggle" for="c6_0" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Dumbbell Bench Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_1" data-name="Cable Row" data-sets="3" data-lo="10" data-hi="12"><input type="checkbox" class="dchk" id="c6_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Cable Row</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Full stretch → contraction</div></div><label class="done-toggle" for="c6_1" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_2" data-name="Bulgarian Split Squat" data-sets="3" data-lo="10" data-hi="12"><input type="checkbox" class="dchk" id="c6_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Bulgarian Split Squat</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Controlled descent · deep ROM</div></div><label class="done-toggle" for="c6_2" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Bulgarian Split Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_3" data-name="Seated or Lying Leg Curl" data-sets="3" data-lo="12" data-hi="15"><input type="checkbox" class="dchk" id="c6_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated or Lying Leg Curl</div><div class="ex-scheme">3 × 12–15</div><div class="ex-cue">Full stretch</div></div><label class="done-toggle" for="c6_3" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated or Lying Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_4" data-name="Cable/DB Lateral Raise" data-sets="3" data-lo="15" data-hi="20"><input type="checkbox" class="dchk" id="c6_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable/DB Lateral Raise</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Strict form</div></div><label class="done-toggle" for="c6_4" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Cable/DB Lateral Raise"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_5" data-name="Optional Arms — Cable Curl" data-sets="2" data-lo="12" data-hi="15"><input type="checkbox" class="dchk" id="c6_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Optional Arms — Cable Curl</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_5" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Cable Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card" data-ex="sat_6" data-name="Optional Arms — Rope Pushdown" data-sets="2" data-lo="12" data-hi="15"><input type="checkbox" class="dchk" id="c6_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Optional Arms — Rope Pushdown</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_6" aria-label="Mark done">✓</label></div><div class="setlog js-only"></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Rope Pushdown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
 <div class="rest-day finisher"><h3>🔥 Finisher · 10–15 min</h3><p class="rest-note">Choose ONE: incline treadmill walk, stationary bike, or sled. Example: 40 s moderate → 20 s push, repeat for 10–12 min. Don&#x27;t turn this into an all-out HIIT session every week — the goal is extra cardiovascular work without compromising recovery.</p><div class="btn-wrap"><label class="rest-btn" for="t600a" data-sec="600" data-name="Cardio finisher">▶ Start 10-min finisher</label></div></div>
 </section>
+<div id="bodyMount" class="js-only"></div>
 
   <div class="section-label">Reference</div>
   <details class="guide"><summary>⏱️ Rest period rules</summary><div class="guide-body">
@@ -436,11 +480,15 @@ next time → 70s — 10 / 10 / 9</span>
     <a class="music-link" href="https://open.spotify.com" target="_blank" rel="noopener">
       <span class="ml-ico">🎧</span><span>Open Spotify<small>Resume whatever you were playing</small></span></a>
     <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP" target="_blank" rel="noopener">
-      <span class="ml-ico">🔥</span><span>Beast Mode<small>Spotify's flagship workout playlist</small></span></a>
-    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DXdxcBWuJkbcy" target="_blank" rel="noopener">
-      <span class="ml-ico">⚡</span><span>Motivation Mix<small>High-energy lifting hits</small></span></a>
+      <span class="ml-ico">🔥</span><span>Beast Mode<small>Spotify's flagship workout playlist · 11M saves</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DWUVpAXiEPK8P" target="_blank" rel="noopener">
+      <span class="ml-ico">💥</span><span>Power Workout<small>High-intensity hip-hop &amp; rap</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX9oh43oAzkyx" target="_blank" rel="noopener">
+      <span class="ml-ico">🎤</span><span>Beast Mode Hip-Hop<small>Energy tracks, hip-hop edition</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX70RN3TfWWJh" target="_blank" rel="noopener">
+      <span class="ml-ico">⚡</span><span>Workout<small>Pop hits to keep it fresh</small></span></a>
     <a class="music-link" href="https://open.spotify.com/search/gym%20workout%20playlist" target="_blank" rel="noopener">
-      <span class="ml-ico">🔍</span><span>Browse workout playlists<small>Search "gym workout" in Spotify</small></span></a>
+      <span class="ml-ico">🔍</span><span>Browse more<small>Search "gym workout" in Spotify</small></span></a>
   </div>
   <div class="add-row">
     <input type="url" id="plUrl" placeholder="Paste a Spotify playlist link…" inputmode="url">
@@ -887,6 +935,123 @@ function addPlaylist(){
   document.getElementById('musicLinks').appendChild(a);
   inp.value='';
 }
+</script>
+<script>
+(function(){
+  var LS='workoutLog.v1', BW='workoutBody.v1';
+  function load(k,def){ try{ return JSON.parse(localStorage.getItem(k))||def; }catch(e){ return def; } }
+  function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  var log=load(LS,{}), bodylog=load(BW,[]);
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function today(){ return new Date().toISOString().slice(0,10); }
+
+  // ---------------- per-exercise set logging ----------------
+  Array.prototype.forEach.call(document.querySelectorAll('.ex-card[data-ex]'),function(card){
+    var key=card.getAttribute('data-ex');
+    var nsets=parseInt(card.getAttribute('data-sets'),10)||3;
+    var hi=parseInt(card.getAttribute('data-hi'),10)||0;
+    var mount=card.querySelector('.setlog');
+    render();
+    function last(){ var a=log[key]; return (a&&a.length)?a[a.length-1]:null; }
+    function progressed(sess){ if(!sess||!hi) return false;
+      return sess.sets.length>0 && sess.sets.every(function(s){ return s.r && s.r>=hi; }); }
+    function render(){
+      var l=last();
+      var summary = l
+        ? '<span class="sl-k">Last</span>'+l.sets.map(function(s){ return (s.w||'—')+'×'+(s.r||'—'); }).join('  ·  ')
+        : '<span class="sl-k">No sets logged yet</span>';
+      var prompt = progressed(l) ? '<span class="sl-prompt">⬆ Hit the top — add weight</span>' : '';
+      mount.innerHTML=
+        '<div class="sl-last">'+summary+' '+prompt+'</div>'+
+        '<button class="sl-toggle" type="button">✎ Log today’s sets</button>'+
+        '<div class="sl-body">'+
+          '<div class="sl-grid">'+buildRows(l)+'</div>'+
+          '<div class="sl-actions"><button class="sl-save" type="button">Save session</button></div>'+
+        '</div>';
+      mount.querySelector('.sl-toggle').addEventListener('click',function(){
+        mount.querySelector('.sl-body').classList.toggle('open');
+      });
+      mount.querySelector('.sl-save').addEventListener('click',saveSession);
+    }
+    function buildRows(l){
+      var rows='';
+      for(var i=0;i<nsets;i++){
+        var pw=(l&&l.sets[i]&&l.sets[i].w!=null)?l.sets[i].w:'';
+        rows+='<div class="sl-set"><span class="sl-n">'+(i+1)+'</span>'+
+          '<input class="sl-in sl-w" inputmode="decimal" placeholder="lb" value="'+(pw!==''?pw:'')+'">'+
+          '<span class="sl-x">×</span>'+
+          '<input class="sl-in sl-r" inputmode="numeric" placeholder="reps">'+
+          '<input class="sl-in sl-rir" inputmode="numeric" placeholder="RIR" style="max-width:64px">'+
+          '</div>';
+      }
+      return rows;
+    }
+    function saveSession(){
+      var sets=[];
+      Array.prototype.forEach.call(mount.querySelectorAll('.sl-set'),function(row){
+        var w=parseFloat(row.querySelector('.sl-w').value);
+        var r=parseInt(row.querySelector('.sl-r').value,10);
+        var rir=row.querySelector('.sl-rir').value;
+        if(!isNaN(w)||!isNaN(r)) sets.push({w:isNaN(w)?null:w, r:isNaN(r)?null:r, rir:rir===''?null:parseInt(rir,10)});
+      });
+      if(!sets.length){ return; }
+      (log[key]=log[key]||[]).push({date:today(), sets:sets});
+      save(LS,log); render();
+      // highlight the just-saved rows briefly
+    }
+  });
+
+  // ---------------- bodyweight + measurement log ----------------
+  var mount=document.getElementById('bodyMount');
+  if(mount){ renderBody(); }
+  function renderBody(){
+    var last=bodylog.length?bodylog[bodylog.length-1]:null;
+    var first=bodylog.length?bodylog[0]:null;
+    var wDelta = (last&&first&&last.w!=null&&first.w!=null&&bodylog.length>1)? (last.w-first.w) : null;
+    mount.innerHTML=
+      '<div class="bodycard"><h3>📊 Body & progress</h3>'+
+      '<div class="bc-sub">Log weekly. Trend matters more than any single day.</div>'+
+      '<div class="bc-row">'+
+        '<label>Body weight (lb)<input class="bc-w" inputmode="decimal" placeholder="'+(last&&last.w!=null?last.w:'—')+'"></label>'+
+        '<label>Waist (in)<input class="bc-waist" inputmode="decimal" placeholder="'+(last&&last.waist!=null?last.waist:'—')+'"></label>'+
+        '<button class="bc-add" type="button">Add</button>'+
+      '</div>'+
+      spark()+
+      '<div class="bc-stats">'+
+        '<div class="bc-stat"><b>'+(last&&last.w!=null?last.w:'—')+'</b><span>Latest lb</span></div>'+
+        '<div class="bc-stat"><b>'+(wDelta==null?'—':(wDelta>0?'+':'')+wDelta.toFixed(1))+'</b><span>Change</span></div>'+
+        '<div class="bc-stat"><b>'+bodylog.length+'</b><span>Entries</span></div>'+
+      '</div>'+ historyList()+'</div>';
+    mount.querySelector('.bc-add').addEventListener('click',function(){
+      var w=parseFloat(mount.querySelector('.bc-w').value);
+      var waist=parseFloat(mount.querySelector('.bc-waist').value);
+      if(isNaN(w)&&isNaN(waist)) return;
+      bodylog.push({date:today(), w:isNaN(w)?null:w, waist:isNaN(waist)?null:waist});
+      save(BW,bodylog); renderBody();
+    });
+  }
+  function spark(){
+    var pts=bodylog.filter(function(e){return e.w!=null;});
+    if(pts.length<2) return '<div class="bc-empty">Add two or more weigh-ins to see your trend.</div>';
+    var ws=pts.map(function(e){return e.w;});
+    var mn=Math.min.apply(null,ws), mx=Math.max.apply(null,ws), rng=(mx-mn)||1;
+    var W=300,H=70,pad=6;
+    var d=pts.map(function(e,i){
+      var x=pad+i*(W-2*pad)/(pts.length-1);
+      var y=pad+(1-(e.w-mn)/rng)*(H-2*pad);
+      return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+    }).join(' ');
+    return '<div class="bc-spark"><svg viewBox="0 0 '+W+' '+H+'" width="100%" height="70" preserveAspectRatio="none">'+
+      '<path d="'+d+'" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '</svg></div>';
+  }
+  function historyList(){
+    if(!bodylog.length) return '';
+    return '<div class="bc-list">'+bodylog.slice().reverse().slice(0,8).map(function(e){
+      return '<div><span>'+esc(e.date)+'</span><span>'+(e.w!=null?e.w+' lb':'')+(e.waist!=null?'  ·  '+e.waist+' in':'')+'</span></div>';
+    }).join('')+'</div>';
+  }
+})();
 </script>
 </body>
 </html>

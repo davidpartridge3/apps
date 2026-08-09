@@ -92,6 +92,15 @@ def fmt_rest(r): return f"{r[0]}–{r[1]} s" if r[0] != r[1] else f"{r[0]} s"
 def mmss(t): return f"{t//60}:{t%60:02d}"
 def variants(sec): return ["a","b"] if sec in PAIRED else ["a"]
 
+import re as _re
+def parse_scheme(scheme):
+    """('4 × 8–12') -> (sets, rep_lo, rep_hi). Sets range like '2–3' -> upper."""
+    m = _re.match(r'\s*(\d+)(?:\s*[–-]\s*(\d+))?\s*[×x]\s*(\d+)\s*[–-]\s*(\d+)', scheme)
+    if not m:
+        return (3, 0, 0)
+    smax = int(m.group(2)) if m.group(2) else int(m.group(1))
+    return (smax, int(m.group(3)), int(m.group(4)))
+
 # ---------------- tabs / radios ----------------
 tabs_html = "\n      ".join(
   f'<label class="tab" for="d{i}" style="--tabc:{d["color"]};--tabbg:{d["color"]}2e">'
@@ -189,8 +198,11 @@ for i, d in enumerate(PLAN):
         for j, (name, scheme, cue, alt, r) in enumerate(d["ex"]):
             cid = f"c{i}_{j}"
             altline = f'<div class="ex-alt">{esc(alt)}</div>' if alt else ""
+            nsets, rlo, rhi = parse_scheme(scheme)
+            exkey = f'{d["key"]}_{j}'
             p.append(
-              f'<div class="ex-card">'
+              f'<div class="ex-card" data-ex="{exkey}" data-name="{esc(name)}" '
+              f'data-sets="{nsets}" data-lo="{rlo}" data-hi="{rhi}">'
               f'<input type="checkbox" class="dchk" id="{cid}">'
               f'<div class="ex-body">'
               f'<div class="ex-top"><span class="ex-num">{j+1}</span>'
@@ -198,6 +210,7 @@ for i, d in enumerate(PLAN):
               f'<div class="ex-scheme">{esc(scheme)}</div>'
               f'<div class="ex-cue">{esc(cue)}</div>{altline}</div>'
               f'<label class="done-toggle" for="{cid}" aria-label="Mark done">✓</label></div>'
+              f'<div class="setlog js-only"></div>'
               f'<div class="ex-foot"><span class="rest-label">Rest {fmt_rest(r)}</span>'
               f'{start_btn(r[1], name)}</div></div></div>')
         if d.get("finisher"):
@@ -275,6 +288,171 @@ SPOTIFY_SVG = ('<svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 
  '1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.55-1.79c4.37-1.33 9.8-.68 13.5 '
  '1.6.44.27.58.85.31 1.28zm.13-3.4C15.24 8.33 8.87 8.12 5.17 9.24a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.31-1.04 15.77 '
  '1.6a1.12 1.12 0 0 1-1.19 1.94z"/></svg>')
+
+# ============================================================ B · set logging, progression, body log
+# JS-only enhancement. With JS off the plan renders exactly as before; the
+# logging UI is wrapped in .js-only and never shows.
+WLOG_CSS = """
+  .no-js .js-only{display:none !important;}
+  .setlog{margin-top:12px;border-top:1px solid var(--line);padding-top:11px;}
+  .sl-last{font-size:12px;color:var(--dim);font-weight:700;margin-bottom:9px;display:flex;
+    align-items:center;gap:7px;flex-wrap:wrap;}
+  .sl-last .sl-k{color:var(--dimmer);letter-spacing:.4px;text-transform:uppercase;font-size:10.5px;}
+  .sl-prompt{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.4);color:var(--green);
+    border-radius:9px;padding:4px 9px;font-size:11.5px;font-weight:800;}
+  .sl-grid{display:flex;flex-direction:column;gap:7px;}
+  .sl-set{display:flex;align-items:center;gap:8px;}
+  .sl-n{flex:0 0 auto;width:20px;color:var(--dimmer);font-size:11px;font-weight:800;text-align:center;}
+  .sl-in{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    border-radius:9px;padding:9px 10px;font-size:14px;font-family:inherit;-webkit-appearance:none;text-align:center;}
+  .sl-in::placeholder{color:var(--dimmer);}
+  .sl-x{flex:0 0 auto;color:var(--dimmer);font-weight:800;font-size:12px;}
+  .sl-hit{border-color:var(--green) !important;}
+  .sl-actions{display:flex;gap:8px;margin-top:10px;}
+  .sl-save{flex:1;border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:800;
+    background:var(--accent);color:#0d0f14;cursor:pointer;font-family:inherit;}
+  .sl-toggle{border:1px solid var(--line);background:var(--card2);color:var(--dim);border-radius:10px;
+    padding:11px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .sl-body{display:none;}
+  .sl-body.open{display:block;}
+  .sl-hist{margin-top:9px;font-size:11.5px;color:var(--dimmer);}
+
+  .bodycard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:18px 0 6px;}
+  .bodycard h3{margin:0 0 3px;font-size:17px;}
+  .bodycard .bc-sub{color:var(--dim);font-size:13px;margin-bottom:12px;}
+  .bc-row{display:flex;gap:8px;align-items:flex-end;}
+  .bc-row label{flex:1;min-width:0;font-size:11px;color:var(--dim);font-weight:700;}
+  .bc-row input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    border-radius:10px;padding:10px;font-size:14px;font-family:inherit;margin-top:5px;-webkit-appearance:none;}
+  .bc-add{border:none;background:var(--accent);color:#0d0f14;font-weight:800;border-radius:10px;
+    padding:11px 15px;font-size:13.5px;cursor:pointer;font-family:inherit;flex:0 0 auto;}
+  .bc-spark{margin:14px 0 6px;}
+  .bc-stats{display:flex;gap:10px;margin-top:6px;}
+  .bc-stat{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center;}
+  .bc-stat b{display:block;font-size:18px;font-weight:800;}
+  .bc-stat span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dimmer);font-weight:800;}
+  .bc-empty{color:var(--dimmer);font-size:12.5px;text-align:center;padding:6px 0 2px;}
+  .bc-list{margin-top:12px;font-size:12px;color:var(--dim);}
+  .bc-list div{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line);}
+"""
+
+WLOG_JS = r"""
+(function(){
+  var LS='workoutLog.v1', BW='workoutBody.v1';
+  function load(k,def){ try{ return JSON.parse(localStorage.getItem(k))||def; }catch(e){ return def; } }
+  function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  var log=load(LS,{}), bodylog=load(BW,[]);
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function today(){ return new Date().toISOString().slice(0,10); }
+
+  // ---------------- per-exercise set logging ----------------
+  Array.prototype.forEach.call(document.querySelectorAll('.ex-card[data-ex]'),function(card){
+    var key=card.getAttribute('data-ex');
+    var nsets=parseInt(card.getAttribute('data-sets'),10)||3;
+    var hi=parseInt(card.getAttribute('data-hi'),10)||0;
+    var mount=card.querySelector('.setlog');
+    render();
+    function last(){ var a=log[key]; return (a&&a.length)?a[a.length-1]:null; }
+    function progressed(sess){ if(!sess||!hi) return false;
+      return sess.sets.length>0 && sess.sets.every(function(s){ return s.r && s.r>=hi; }); }
+    function render(){
+      var l=last();
+      var summary = l
+        ? '<span class="sl-k">Last</span>'+l.sets.map(function(s){ return (s.w||'—')+'×'+(s.r||'—'); }).join('  ·  ')
+        : '<span class="sl-k">No sets logged yet</span>';
+      var prompt = progressed(l) ? '<span class="sl-prompt">⬆ Hit the top — add weight</span>' : '';
+      mount.innerHTML=
+        '<div class="sl-last">'+summary+' '+prompt+'</div>'+
+        '<button class="sl-toggle" type="button">✎ Log today’s sets</button>'+
+        '<div class="sl-body">'+
+          '<div class="sl-grid">'+buildRows(l)+'</div>'+
+          '<div class="sl-actions"><button class="sl-save" type="button">Save session</button></div>'+
+        '</div>';
+      mount.querySelector('.sl-toggle').addEventListener('click',function(){
+        mount.querySelector('.sl-body').classList.toggle('open');
+      });
+      mount.querySelector('.sl-save').addEventListener('click',saveSession);
+    }
+    function buildRows(l){
+      var rows='';
+      for(var i=0;i<nsets;i++){
+        var pw=(l&&l.sets[i]&&l.sets[i].w!=null)?l.sets[i].w:'';
+        rows+='<div class="sl-set"><span class="sl-n">'+(i+1)+'</span>'+
+          '<input class="sl-in sl-w" inputmode="decimal" placeholder="lb" value="'+(pw!==''?pw:'')+'">'+
+          '<span class="sl-x">×</span>'+
+          '<input class="sl-in sl-r" inputmode="numeric" placeholder="reps">'+
+          '<input class="sl-in sl-rir" inputmode="numeric" placeholder="RIR" style="max-width:64px">'+
+          '</div>';
+      }
+      return rows;
+    }
+    function saveSession(){
+      var sets=[];
+      Array.prototype.forEach.call(mount.querySelectorAll('.sl-set'),function(row){
+        var w=parseFloat(row.querySelector('.sl-w').value);
+        var r=parseInt(row.querySelector('.sl-r').value,10);
+        var rir=row.querySelector('.sl-rir').value;
+        if(!isNaN(w)||!isNaN(r)) sets.push({w:isNaN(w)?null:w, r:isNaN(r)?null:r, rir:rir===''?null:parseInt(rir,10)});
+      });
+      if(!sets.length){ return; }
+      (log[key]=log[key]||[]).push({date:today(), sets:sets});
+      save(LS,log); render();
+      // highlight the just-saved rows briefly
+    }
+  });
+
+  // ---------------- bodyweight + measurement log ----------------
+  var mount=document.getElementById('bodyMount');
+  if(mount){ renderBody(); }
+  function renderBody(){
+    var last=bodylog.length?bodylog[bodylog.length-1]:null;
+    var first=bodylog.length?bodylog[0]:null;
+    var wDelta = (last&&first&&last.w!=null&&first.w!=null&&bodylog.length>1)? (last.w-first.w) : null;
+    mount.innerHTML=
+      '<div class="bodycard"><h3>📊 Body & progress</h3>'+
+      '<div class="bc-sub">Log weekly. Trend matters more than any single day.</div>'+
+      '<div class="bc-row">'+
+        '<label>Body weight (lb)<input class="bc-w" inputmode="decimal" placeholder="'+(last&&last.w!=null?last.w:'—')+'"></label>'+
+        '<label>Waist (in)<input class="bc-waist" inputmode="decimal" placeholder="'+(last&&last.waist!=null?last.waist:'—')+'"></label>'+
+        '<button class="bc-add" type="button">Add</button>'+
+      '</div>'+
+      spark()+
+      '<div class="bc-stats">'+
+        '<div class="bc-stat"><b>'+(last&&last.w!=null?last.w:'—')+'</b><span>Latest lb</span></div>'+
+        '<div class="bc-stat"><b>'+(wDelta==null?'—':(wDelta>0?'+':'')+wDelta.toFixed(1))+'</b><span>Change</span></div>'+
+        '<div class="bc-stat"><b>'+bodylog.length+'</b><span>Entries</span></div>'+
+      '</div>'+ historyList()+'</div>';
+    mount.querySelector('.bc-add').addEventListener('click',function(){
+      var w=parseFloat(mount.querySelector('.bc-w').value);
+      var waist=parseFloat(mount.querySelector('.bc-waist').value);
+      if(isNaN(w)&&isNaN(waist)) return;
+      bodylog.push({date:today(), w:isNaN(w)?null:w, waist:isNaN(waist)?null:waist});
+      save(BW,bodylog); renderBody();
+    });
+  }
+  function spark(){
+    var pts=bodylog.filter(function(e){return e.w!=null;});
+    if(pts.length<2) return '<div class="bc-empty">Add two or more weigh-ins to see your trend.</div>';
+    var ws=pts.map(function(e){return e.w;});
+    var mn=Math.min.apply(null,ws), mx=Math.max.apply(null,ws), rng=(mx-mn)||1;
+    var W=300,H=70,pad=6;
+    var d=pts.map(function(e,i){
+      var x=pad+i*(W-2*pad)/(pts.length-1);
+      var y=pad+(1-(e.w-mn)/rng)*(H-2*pad);
+      return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+    }).join(' ');
+    return '<div class="bc-spark"><svg viewBox="0 0 '+W+' '+H+'" width="100%" height="70" preserveAspectRatio="none">'+
+      '<path d="'+d+'" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '</svg></div>';
+  }
+  function historyList(){
+    if(!bodylog.length) return '';
+    return '<div class="bc-list">'+bodylog.slice().reverse().slice(0,8).map(function(e){
+      return '<div><span>'+esc(e.date)+'</span><span>'+(e.w!=null?e.w+' lb':'')+(e.waist!=null?'  ·  '+e.waist+' in':'')+'</span></div>';
+    }).join('')+'</div>';
+  }
+})();
+"""
 
 DOC = f"""<!DOCTYPE html>
 <html lang="en">
@@ -490,6 +668,7 @@ DOC = f"""<!DOCTYPE html>
   .nojs{{display:none; background:#1e2a3a; border:1px solid #39506e; color:#a9c6e8;
     border-radius:12px; padding:11px 14px; font-size:12.5px; margin:0 0 14px;}}
   .no-js .nojs{{display:block; border-color:#39506e;}}
+{WLOG_CSS}
 </style>
 </head>
 <body class="no-js">
@@ -511,6 +690,7 @@ DOC = f"""<!DOCTYPE html>
 <main>
   <div class="nojs">ℹ️ Timers work right here — tap any <b>Start rest</b> button. Scripts are off in this view, so there's no beep or buzz at zero; open the file in a browser if you want the sound.</div>
 {panels_html}
+<div id="bodyMount" class="js-only"></div>
 {GUIDE}
 </main>
 
@@ -536,11 +716,15 @@ DOC = f"""<!DOCTYPE html>
     <a class="music-link" href="https://open.spotify.com" target="_blank" rel="noopener">
       <span class="ml-ico">🎧</span><span>Open Spotify<small>Resume whatever you were playing</small></span></a>
     <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP" target="_blank" rel="noopener">
-      <span class="ml-ico">🔥</span><span>Beast Mode<small>Spotify's flagship workout playlist</small></span></a>
-    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DXdxcBWuJkbcy" target="_blank" rel="noopener">
-      <span class="ml-ico">⚡</span><span>Motivation Mix<small>High-energy lifting hits</small></span></a>
+      <span class="ml-ico">🔥</span><span>Beast Mode<small>Spotify's flagship workout playlist · 11M saves</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DWUVpAXiEPK8P" target="_blank" rel="noopener">
+      <span class="ml-ico">💥</span><span>Power Workout<small>High-intensity hip-hop &amp; rap</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX9oh43oAzkyx" target="_blank" rel="noopener">
+      <span class="ml-ico">🎤</span><span>Beast Mode Hip-Hop<small>Energy tracks, hip-hop edition</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX70RN3TfWWJh" target="_blank" rel="noopener">
+      <span class="ml-ico">⚡</span><span>Workout<small>Pop hits to keep it fresh</small></span></a>
     <a class="music-link" href="https://open.spotify.com/search/gym%20workout%20playlist" target="_blank" rel="noopener">
-      <span class="ml-ico">🔍</span><span>Browse workout playlists<small>Search "gym workout" in Spotify</small></span></a>
+      <span class="ml-ico">🔍</span><span>Browse more<small>Search "gym workout" in Spotify</small></span></a>
   </div>
   <div class="add-row">
     <input type="url" id="plUrl" placeholder="Paste a Spotify playlist link…" inputmode="url">
@@ -729,6 +913,7 @@ function addPlaylist(){{
   inp.value='';
 }}
 </script>
+<script>{WLOG_JS}</script>
 </body>
 </html>
 """
