@@ -1,0 +1,1413 @@
+[
+ {
+  "key": "fusia soy sauce",
+  "count": 14,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Fusia soy sauce",
+   "1/3 cup Fusia soy sauce"
+  ]
+ },
+ {
+  "key": "boneless skinless chicken thighs",
+  "count": 12,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb boneless skinless chicken thighs (Kirkwood)",
+   "1 1/4 lb boneless skinless chicken thighs"
+  ]
+ },
+ {
+  "key": "frozen jasmine rice",
+  "count": 9,
+  "store": "TJ",
+  "examples": [
+   "1 bag Frozen Jasmine Rice",
+   "1 bag Frozen Jasmine Rice (2 servings)"
+  ]
+ },
+ {
+  "key": "simply nature organic grass-fed ground beef",
+  "count": 8,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Simply Nature Organic Grass-Fed Ground Beef",
+   "1/2 lb Simply Nature Organic Grass-Fed Ground Beef"
+  ]
+ },
+ {
+  "key": "fusia asian inspirations soy sauce",
+  "count": 6,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Fusia Asian Inspirations soy sauce",
+   "2 tbsp Fusia Asian Inspirations soy sauce"
+  ]
+ },
+ {
+  "key": "naan",
+  "count": 6,
+  "store": "TJ",
+  "examples": [
+   "2 pieces Naan",
+   "2 pieces Naan, torn into rough shards"
+  ]
+ },
+ {
+  "key": "friendly farms heavy cream",
+  "count": 6,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms heavy cream",
+   "1/2 cup Friendly Farms heavy cream"
+  ]
+ },
+ {
+  "key": "crunchy chili onion",
+  "count": 5,
+  "store": "TJ",
+  "examples": [
+   "2 tbsp Crunchy Chili Onion",
+   "3 tbsp Crunchy Chili Onion"
+  ]
+ },
+ {
+  "key": "fire roasted peppers & onions",
+  "count": 5,
+  "store": "TJ",
+  "examples": [
+   "1 bag Fire Roasted Peppers & Onions",
+   "1 bag Fire Roasted Peppers & Onions (frozen)"
+  ]
+ },
+ {
+  "key": "friendly farms sour cream",
+  "count": 5,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms sour cream",
+   "1/2 cup Friendly Farms sour cream"
+  ]
+ },
+ {
+  "key": "harissa",
+  "count": 5,
+  "store": "TJ",
+  "examples": [
+   "2 tbsp Harissa",
+   "2 tsp Harissa"
+  ]
+ },
+ {
+  "key": "friendly farms greek yogurt",
+  "count": 5,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms Greek yogurt",
+   "1 cup Friendly Farms Greek yogurt, for serving"
+  ]
+ },
+ {
+  "key": "simply nature organic chicken breasts",
+  "count": 5,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb Simply Nature Organic Chicken Breasts, cut into 1-inch cubes",
+   "1 1/4 lb Simply Nature Organic Chicken Breasts, sliced into thin cutlets"
+  ]
+ },
+ {
+  "key": "journey to india naan",
+  "count": 5,
+  "store": "Aldi",
+  "examples": [
+   "2 Journey to India naan",
+   "2 pieces Journey to India naan"
+  ]
+ },
+ {
+  "key": "raw argentinian red shrimp, thawed and patted dry",
+  "count": 4,
+  "store": "TJ",
+  "examples": [
+   "1 lb Raw Argentinian Red Shrimp, thawed and patted dry"
+  ]
+ },
+ {
+  "key": "earthly grains jasmine rice",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 pouch Earthly Grains jasmine rice",
+   "2 pouches Earthly Grains jasmine rice"
+  ]
+ },
+ {
+  "key": "earthly grains white rice",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 pouch Earthly Grains white rice",
+   "3 pouches Earthly Grains white rice"
+  ]
+ },
+ {
+  "key": "ground pork",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 lb ground pork",
+   "3/4 lb ground pork"
+  ]
+ },
+ {
+  "key": "kirkwood boneless skinless chicken thighs",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb Kirkwood boneless skinless chicken thighs, cut into chunks",
+   "1 lb Kirkwood boneless skinless chicken thighs"
+  ]
+ },
+ {
+  "key": "friendly farms plain greek yogurt",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms plain Greek yogurt",
+   "1/2 cup Friendly Farms plain Greek yogurt"
+  ]
+ },
+ {
+  "key": "fusia sriracha",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Fusia sriracha",
+   "3 tbsp Fusia sriracha"
+  ]
+ },
+ {
+  "key": "earthly grains basmati rice",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Earthly Grains basmati rice",
+   "1 pouch Earthly Grains basmati rice"
+  ]
+ },
+ {
+  "key": "priano grated parmesan",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1/2 cup Priano grated parmesan",
+   "1/3 cup Priano grated parmesan"
+  ]
+ },
+ {
+  "key": "burman's dijon mustard",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Burman's Dijon mustard",
+   "2 tbsp Burman's Dijon mustard"
+  ]
+ },
+ {
+  "key": "earthly grains long grain rice",
+  "count": 4,
+  "store": "Aldi",
+  "examples": [
+   "1 pouch Earthly Grains long grain rice",
+   "2 pouches Earthly Grains long grain rice"
+  ]
+ },
+ {
+  "key": "chili lime seasoning",
+  "count": 3,
+  "store": "TJ",
+  "examples": [
+   "1 tsp Chili Lime Seasoning",
+   "2 tsp Chili Lime Seasoning"
+  ]
+ },
+ {
+  "key": "sweet chili sauce",
+  "count": 3,
+  "store": "TJ",
+  "examples": [
+   "1/3 cup Sweet Chili Sauce",
+   "1/4 cup Sweet Chili Sauce"
+  ]
+ },
+ {
+  "key": "raw argentinian red shrimp",
+  "count": 3,
+  "store": "TJ",
+  "examples": [
+   "1 lb Raw Argentinian Red Shrimp, peeled",
+   "1 lb Raw Argentinian Red Shrimp, peeled and thawed"
+  ]
+ },
+ {
+  "key": "mushroom & company multipurpose umami seasoning blend",
+  "count": 3,
+  "store": "TJ",
+  "examples": [
+   "1 tsp Mushroom & Company Multipurpose Umami Seasoning Blend"
+  ]
+ },
+ {
+  "key": "packets frozen jasmine rice",
+  "count": 3,
+  "store": "TJ",
+  "examples": [
+   "2 packets Frozen Jasmine Rice"
+  ]
+ },
+ {
+  "key": "bone-in skin-on chicken thighs",
+  "count": 3,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb bone-in skin-on chicken thighs (Kirkwood)",
+   "3 lb bone-in skin-on chicken thighs (Kirkwood)"
+  ]
+ },
+ {
+  "key": "appleton farms bacon",
+  "count": 3,
+  "store": "Aldi",
+  "examples": [
+   "2 slices Appleton Farms bacon, chopped",
+   "4 slices Appleton Farms bacon, chopped"
+  ]
+ },
+ {
+  "key": "bone-in skin-on chicken thighs and drumsticks",
+  "count": 3,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)",
+   "4 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)"
+  ]
+ },
+ {
+  "key": "tomato sauce",
+  "count": 3,
+  "store": "Aldi",
+  "examples": [
+   "1 can (15 oz) tomato sauce"
+  ]
+ },
+ {
+  "key": "carne asada autentica",
+  "count": 2,
+  "store": "TJ",
+  "examples": [
+   "1 lb Carne Asada Autentica",
+   "1 lb Carne Asada Autentica, sliced into strips"
+  ]
+ },
+ {
+  "key": "casa mamita corn tortillas",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "6 Casa Mamita corn tortillas",
+   "8 Casa Mamita corn tortillas"
+  ]
+ },
+ {
+  "key": "casa mamita salsa verde",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 (16 oz) jar Casa Mamita salsa verde",
+   "1/2 cup Casa Mamita salsa verde"
+  ]
+ },
+ {
+  "key": "everything but the bagel sesame seasoning",
+  "count": 2,
+  "store": "TJ",
+  "examples": [
+   "2 tsp Everything But The Bagel Sesame Seasoning"
+  ]
+ },
+ {
+  "key": "fusia asian inspirations sriracha",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Fusia Asian Inspirations sriracha",
+   "2 tsp Fusia Asian Inspirations sriracha"
+  ]
+ },
+ {
+  "key": "earthly grains long grain white rice",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "2 cups Earthly Grains long grain white rice"
+  ]
+ },
+ {
+  "key": "frozen fire roasted peppers & onions",
+  "count": 2,
+  "store": "TJ",
+  "examples": [
+   "1 bag frozen Fire Roasted Peppers & Onions",
+   "2 cups frozen Fire Roasted Peppers & Onions"
+  ]
+ },
+ {
+  "key": "season's choice frozen peas",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 bag Season's Choice frozen peas",
+   "1 cup Season's Choice frozen peas"
+  ]
+ },
+ {
+  "key": "never any! italian sausage, casings removed",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Never Any! Italian sausage, casings removed",
+   "12 oz Never Any! Italian sausage, casings removed"
+  ]
+ },
+ {
+  "key": "raw argentinian red shrimp, thawed and peeled",
+  "count": 2,
+  "store": "TJ",
+  "examples": [
+   "1 lb Raw Argentinian Red Shrimp, thawed and peeled"
+  ]
+ },
+ {
+  "key": "specially selected olive oil, kosher salt, black pepper",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "Specially Selected olive oil, kosher salt, black pepper"
+  ]
+ },
+ {
+  "key": "kirkwood bone-in, skin-on chicken thighs and drumsticks",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "3 lb Kirkwood bone-in, skin-on chicken thighs and drumsticks",
+   "4 lb Kirkwood bone-in, skin-on chicken thighs and drumsticks"
+  ]
+ },
+ {
+  "key": "thin-cut sirloin or top round steaks",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 lb thin-cut sirloin or top round steaks"
+  ]
+ },
+ {
+  "key": "trader joe's quartered marinated artichokes",
+  "count": 2,
+  "store": "TJ",
+  "examples": [
+   "1 jar Trader Joe's Quartered Marinated Artichokes, drained",
+   "1 jar Trader Joe's Quartered Marinated Artichokes, drained well"
+  ]
+ },
+ {
+  "key": "burman's hot sauce",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "2 tbsp Burman's hot sauce"
+  ]
+ },
+ {
+  "key": "southern grove pepitas",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1/3 cup Southern Grove pepitas",
+   "3 tbsp Southern Grove pepitas"
+  ]
+ },
+ {
+  "key": "boneless pork shoulder",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb boneless pork shoulder, cut into 1-inch cubes",
+   "3 lb boneless pork shoulder, cut into 1 1/2-inch cubes"
+  ]
+ },
+ {
+  "key": "kirkwood bone-in chicken thighs and drumsticks",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "3.5 lb Kirkwood bone-in chicken thighs and drumsticks",
+   "4 lb Kirkwood bone-in chicken thighs and drumsticks"
+  ]
+ },
+ {
+  "key": "never any! ground chicken",
+  "count": 2,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Never Any! ground chicken",
+   "1.5 lb Never Any! ground chicken"
+  ]
+ },
+ {
+  "key": "gochujang sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "3 tbsp Gochujang Sauce"
+  ]
+ },
+ {
+  "key": "happy farms crumbled feta or queso fresco",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3/4 cup Happy Farms crumbled feta or queso fresco"
+  ]
+ },
+ {
+  "key": "thai red curry sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 jar Thai Red Curry Sauce"
+  ]
+ },
+ {
+  "key": "garlic shiitake mushroom green beans",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 bag Garlic Shiitake Mushroom Green Beans (frozen)"
+  ]
+ },
+ {
+  "key": "kirkwood bone-in, skin-on chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 lb Kirkwood bone-in, skin-on chicken thighs"
+  ]
+ },
+ {
+  "key": "white miso",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 tbsp white miso"
+  ]
+ },
+ {
+  "key": "soyaki",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 tbsp Soyaki"
+  ]
+ },
+ {
+  "key": "season's choice frozen shelled edamame",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Season's Choice frozen shelled edamame"
+  ]
+ },
+ {
+  "key": "happy farms feta",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "6 oz Happy Farms feta"
+  ]
+ },
+ {
+  "key": "quartered marinated artichokes",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 jar Quartered Marinated Artichokes"
+  ]
+ },
+ {
+  "key": "fusia asian inspirations rice noodles",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 package Fusia Asian Inspirations rice noodles"
+  ]
+ },
+ {
+  "key": "southern grove roasted peanuts",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/4 cup Southern Grove roasted peanuts, crushed"
+  ]
+ },
+ {
+  "key": "never any! andouille or smoked sausage",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "12 oz Never Any! andouille or smoked sausage, sliced into coins"
+  ]
+ },
+ {
+  "key": "journey to india tikka masala simmer sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 jar Journey to India Tikka Masala Simmer Sauce"
+  ]
+ },
+ {
+  "key": "season's choice frozen french fries",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 bag Season's Choice frozen french fries"
+  ]
+ },
+ {
+  "key": "green dragon hot sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 tbsp Green Dragon Hot Sauce"
+  ]
+ },
+ {
+  "key": "kirkwood bone-in skin-on chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1.25 lb Kirkwood bone-in skin-on chicken thighs"
+  ]
+ },
+ {
+  "key": "'oven fresh protein wraps or naan",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 L'Oven Fresh protein wraps or naan"
+  ]
+ },
+ {
+  "key": "burman's habanero hot sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Burman's habanero hot sauce"
+  ]
+ },
+ {
+  "key": "priano ziti or rigatoni",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Priano ziti or rigatoni"
+  ]
+ },
+ {
+  "key": "organic vodka sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 jars Organic Vodka Sauce"
+  ]
+ },
+ {
+  "key": "happy farms mozzarella, shredded",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "8 oz Happy Farms mozzarella, shredded"
+  ]
+ },
+ {
+  "key": "genova pesto",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "3 tbsp Genova Pesto"
+  ]
+ },
+ {
+  "key": "chicken shawarma thighs",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 lb Chicken Shawarma Thighs (already marinated)"
+  ]
+ },
+ {
+  "key": "friendly farms plain whole-milk greek yogurt",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms plain whole-milk Greek yogurt"
+  ]
+ },
+ {
+  "key": "zhoug sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1/4 cup Zhoug Sauce"
+  ]
+ },
+ {
+  "key": "park street deli hummus",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Park Street Deli hummus"
+  ]
+ },
+ {
+  "key": "sumac or chili lime seasoning",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 tsp sumac or Chili Lime Seasoning"
+  ]
+ },
+ {
+  "key": "servings frozen jasmine rice or earthly grains rice pouches",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 servings Frozen Jasmine Rice or Earthly Grains rice pouches"
+  ]
+ },
+ {
+  "key": "fusia rice noodles or thick egg noodles",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "8 oz Fusia rice noodles or thick egg noodles"
+  ]
+ },
+ {
+  "key": "bone-in skinless chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 lb bone-in skinless chicken thighs (Kirkwood)"
+  ]
+ },
+ {
+  "key": "skirt or flank steak",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 lb skirt or flank steak"
+  ]
+ },
+ {
+  "key": "burman's chimichurri hot sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 tbsp Burman's chimichurri hot sauce"
+  ]
+ },
+ {
+  "key": "simply nature organic chicken breasts, cut in 1-inch cubes",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Simply Nature Organic Chicken Breasts, cut in 1-inch cubes"
+  ]
+ },
+ {
+  "key": "fusia general tso's sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 cup Fusia General Tso's sauce"
+  ]
+ },
+ {
+  "key": "servings frozen jasmine rice",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 servings Frozen Jasmine Rice"
+  ]
+ },
+ {
+  "key": "casa mamita salsa",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 jar (16 oz) Casa Mamita salsa"
+  ]
+ },
+ {
+  "key": "unexpected cheddar, coarsely grated",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "6 oz Unexpected Cheddar, coarsely grated"
+  ]
+ },
+ {
+  "key": "friendly farms buttermilk",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 cup Friendly Farms buttermilk"
+  ]
+ },
+ {
+  "key": "trader joe's hot honey",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1/4 cup Trader Joe's Hot Honey"
+  ]
+ },
+ {
+  "key": "l'oven fresh white sandwich bread",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 slices L'Oven Fresh white sandwich bread"
+  ]
+ },
+ {
+  "key": "never any! smoked sausage, cut in coins",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "6 oz Never Any! smoked sausage, cut in coins"
+  ]
+ },
+ {
+  "key": "loaf specially selected ciabatta",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 loaf Specially Selected ciabatta"
+  ]
+ },
+ {
+  "key": "simply nature creamy peanut butter",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3/4 cup Simply Nature creamy peanut butter"
+  ]
+ },
+ {
+  "key": "boneless skinless chicken thighs, cut in 1-inch strips",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb boneless skinless chicken thighs (Kirkwood), cut in 1-inch strips"
+  ]
+ },
+ {
+  "key": "ahi tuna steaks, thawed and very cold",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "12 oz ahi tuna steaks, thawed and very cold"
+  ]
+ },
+ {
+  "key": "island soyaki",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "3 tbsp Island Soyaki"
+  ]
+ },
+ {
+  "key": "burman's mayonnaise",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 tbsp Burman's mayonnaise"
+  ]
+ },
+ {
+  "key": "never any! smoked polish sausage, cut in 1/2-inch coins",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "14 oz Never Any! smoked Polish sausage, cut in 1/2-inch coins"
+  ]
+ },
+ {
+  "key": "burman's stone ground mustard",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 tbsp Burman's stone ground mustard"
+  ]
+ },
+ {
+  "key": "boneless skinless chicken thighs, cut in 1-inch pieces",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 1/2 lb boneless skinless chicken thighs (Kirkwood), cut in 1-inch pieces"
+  ]
+ },
+ {
+  "key": "fusia rice noodles",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "14 oz Fusia rice noodles"
+  ]
+ },
+ {
+  "key": "friendly farms whole milk",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 cup Friendly Farms whole milk"
+  ]
+ },
+ {
+  "key": "trader joe's naan",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 Trader Joe's Naan"
+  ]
+ },
+ {
+  "key": "beef sirloin or flank steak",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb beef sirloin or flank steak"
+  ]
+ },
+ {
+  "key": "southern grove roasted unsalted peanuts",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 cup Southern Grove roasted unsalted peanuts"
+  ]
+ },
+ {
+  "key": "specially selected extra virgin olive oil",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3/4 cup Specially Selected extra virgin olive oil"
+  ]
+ },
+ {
+  "key": "beef chuck roast, cut in 1 1/2-inch cubes",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 lb beef chuck roast, cut in 1 1/2-inch cubes"
+  ]
+ },
+ {
+  "key": "casa mamita corn tortillas, cut in thin strips",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "6 Casa Mamita corn tortillas, cut in thin strips"
+  ]
+ },
+ {
+  "key": "pork belly or thick-cut appleton farms bacon, cut in 1-inch strips",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "12 oz pork belly or thick-cut Appleton Farms bacon, cut in 1-inch strips"
+  ]
+ },
+ {
+  "key": "trader joe's mushroom & company multipurpose umami seasoning blend",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 tsp Trader Joe's Mushroom & Company Multipurpose Umami Seasoning Blend"
+  ]
+ },
+ {
+  "key": "trader joe's frozen jasmine rice",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 packages Trader Joe's Frozen Jasmine Rice"
+  ]
+ },
+ {
+  "key": "appleton farms bacon, cut in lardons",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 slices Appleton Farms bacon, cut in lardons"
+  ]
+ },
+ {
+  "key": "priano malloreddus, gnocchetti sardi, or small shells",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "8 oz Priano malloreddus, gnocchetti sardi, or small shells"
+  ]
+ },
+ {
+  "key": "finely grated pecorino romano",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 cup finely grated Pecorino Romano"
+  ]
+ },
+ {
+  "key": "earthly grains basmati or long-grain rice",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 cups Earthly Grains basmati or long-grain rice"
+  ]
+ },
+ {
+  "key": "boneless pork loin chops",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 boneless pork loin chops (about 1 lb total)"
+  ]
+ },
+ {
+  "key": "earthly grains white rice pouches",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 Earthly Grains white rice pouches"
+  ]
+ },
+ {
+  "key": "earthly grains basmati rice, cooked",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 cups Earthly Grains basmati rice, cooked"
+  ]
+ },
+ {
+  "key": "boneless skinless chicken thighs, cut in 1 1/2-inch chunks",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb boneless skinless chicken thighs, cut in 1 1/2-inch chunks (Kirkwood)"
+  ]
+ },
+ {
+  "key": "bowls trader joe's frozen jasmine rice",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 bowls Trader Joe's Frozen Jasmine Rice"
+  ]
+ },
+ {
+  "key": "trader joe's raw argentinian red shrimp, thawed and peeled",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 lb Trader Joe's Raw Argentinian Red Shrimp, thawed and peeled"
+  ]
+ },
+ {
+  "key": "happy farms shredded mozzarella",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 oz Happy Farms shredded mozzarella"
+  ]
+ },
+ {
+  "key": "trader joe's raw argentinian red shrimp",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 lb Trader Joe's Raw Argentinian Red Shrimp, peeled"
+  ]
+ },
+ {
+  "key": "never any! smoked sausage",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "12 oz Never Any! smoked sausage, sliced into coins"
+  ]
+ },
+ {
+  "key": "trader joe's unexpected cheddar",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "5 oz Trader Joe's Unexpected Cheddar, grated"
+  ]
+ },
+ {
+  "key": "priano bucatini or spaghetti",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "8 oz Priano bucatini or spaghetti"
+  ]
+ },
+ {
+  "key": "southern grove pine nuts or slivered almonds",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/4 cup Southern Grove pine nuts or slivered almonds"
+  ]
+ },
+ {
+  "key": "friendly farms whole-milk greek yogurt, whisked smooth",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 cups Friendly Farms whole-milk Greek yogurt, whisked smooth"
+  ]
+ },
+ {
+  "key": "journey to india basmati rice",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 pouches Journey to India basmati rice"
+  ]
+ },
+ {
+  "key": "naan, for dipping",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 pieces Naan, for dipping"
+  ]
+ },
+ {
+  "key": "burman's whole grain mustard",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Burman's whole grain mustard"
+  ]
+ },
+ {
+  "key": "specially selected brioche buns",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 Specially Selected brioche buns"
+  ]
+ },
+ {
+  "key": "plain breadcrumbs or panko",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 cups plain breadcrumbs or panko"
+  ]
+ },
+ {
+  "key": "never any! boneless skinless chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 lb Never Any! boneless skinless chicken thighs"
+  ]
+ },
+ {
+  "key": "bone-in pork chops, about 1 inch thick",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 bone-in pork chops, about 1 inch thick"
+  ]
+ },
+ {
+  "key": "cannellini beans",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 can cannellini beans, drained"
+  ]
+ },
+ {
+  "key": "balsamic glaze",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "2 tbsp Balsamic Glaze"
+  ]
+ },
+ {
+  "key": "specially selected olive oil",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 tbsp Specially Selected olive oil"
+  ]
+ },
+ {
+  "key": "beef chuck",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 1/2 lb beef chuck, cut into 3/4-inch cubes"
+  ]
+ },
+ {
+  "key": "earthly grains rice",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 pouches Earthly Grains rice"
+  ]
+ },
+ {
+  "key": "burman's yellow mustard",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 tbsp Burman's yellow mustard"
+  ]
+ },
+ {
+  "key": "burman's stone-ground or dijon mustard",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 tbsp Burman's stone-ground or Dijon mustard"
+  ]
+ },
+ {
+  "key": "fire roasted peppers & onions, thawed and drained",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 bag Fire Roasted Peppers & Onions, thawed and drained"
+  ]
+ },
+ {
+  "key": "southern grove roasted almonds",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/2 cup Southern Grove roasted almonds"
+  ]
+ },
+ {
+  "key": "frozen sweet plantains",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 bag frozen sweet plantains"
+  ]
+ },
+ {
+  "key": "happy farms queso fresco or feta, crumbled",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 oz Happy Farms queso fresco or feta, crumbled"
+  ]
+ },
+ {
+  "key": "uncooked jasmine or basmati rice",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 tbsp uncooked jasmine or basmati rice"
+  ]
+ },
+ {
+  "key": "bone-in skin-on kirkwood chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 lb bone-in skin-on Kirkwood chicken thighs"
+  ]
+ },
+ {
+  "key": "kirkwood boneless chicken thighs",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb Kirkwood boneless chicken thighs, cut into large bite-size pieces"
+  ]
+ },
+ {
+  "key": "season's choice diced potatoes",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 lb Season's Choice diced potatoes"
+  ]
+ },
+ {
+  "key": "spanish-style chorizo or never any! smoked sausage",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 oz Spanish-style chorizo or Never Any! smoked sausage, sliced thick"
+  ]
+ },
+ {
+  "key": "appleton farms thick-cut bacon",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "6 oz Appleton Farms thick-cut bacon, diced"
+  ]
+ },
+ {
+  "key": "hoisin sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1/3 cup hoisin sauce (Fusia)"
+  ]
+ },
+ {
+  "key": "trader joe's crunchy chili onion",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 tbsp Trader Joe's Crunchy Chili Onion"
+  ]
+ },
+ {
+  "key": "fresh or dried wheat noodles",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "10 oz fresh or dried wheat noodles (Fusia)"
+  ]
+ },
+ {
+  "key": "friendly farms plain whole-milk yogurt",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/2 cups Friendly Farms plain whole-milk yogurt"
+  ]
+ },
+ {
+  "key": "earthly grains basmati rice and 1/2 cup chopped cilantro",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 pouch Earthly Grains basmati rice and 1/2 cup chopped cilantro"
+  ]
+ },
+ {
+  "key": "thin slices prosciutto",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "8 thin slices prosciutto (Specially Selected)"
+  ]
+ },
+ {
+  "key": "sirloin or flat iron steak",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "1 1/4 lb sirloin or flat iron steak, cut into 1-inch cubes"
+  ]
+ },
+ {
+  "key": "oyster sauce",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 tbsp oyster sauce (Fusia)"
+  ]
+ },
+ {
+  "key": "thick bone-in pork chops, about 1 1/2 lb total",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "2 thick bone-in pork chops, about 1 1/2 lb total"
+  ]
+ },
+ {
+  "key": "baharat or trader joe's 21 seasoning salute",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 tbsp baharat or Trader Joe's 21 Seasoning Salute"
+  ]
+ },
+ {
+  "key": "trader joe's zhoug sauce",
+  "count": 1,
+  "store": "TJ",
+  "examples": [
+   "1 jar Trader Joe's Zhoug Sauce"
+  ]
+ },
+ {
+  "key": "season's choice frozen diced breakfast potatoes",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 cups Season's Choice frozen diced breakfast potatoes"
+  ]
+ },
+ {
+  "key": "southern grove pine nuts",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 tbsp Southern Grove pine nuts"
+  ]
+ },
+ {
+  "key": "thin-cut boneless pork loin chops",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "4 thin-cut boneless pork loin chops"
+  ]
+ },
+ {
+  "key": "earthly grains rice pouches",
+  "count": 1,
+  "store": "Aldi",
+  "examples": [
+   "3 Earthly Grains rice pouches"
+  ]
+ }
+]

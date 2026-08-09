@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#141210">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dave's Apps">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>Dave's Apps</title>
+<style>
+  :root{--bg:#141210;--card:#1e1b18;--line:#332e2a;--txt:#f2ede7;--dim:#a49b91;--dimmer:#6f665e;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.5;}
+  .wrap{max-width:560px;margin:0 auto;padding:38px 20px calc(40px + env(safe-area-inset-bottom,0px));}
+  h1{font-size:27px;margin:0 0 4px;font-weight:800;}
+  .sub{color:var(--dimmer);font-size:14px;margin-bottom:26px;}
+  a.app{display:flex;gap:16px;align-items:center;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:14px 0;}
+  a.app:active{transform:scale(.99);}
+  .ico{width:62px;height:62px;border-radius:17px;flex:0 0 auto;display:flex;align-items:center;
+    justify-content:center;font-size:31px;font-weight:800;}
+  .ico.w{background:linear-gradient(160deg,#2d204e,#a78bfa);color:#fff;}
+  .ico.k{background:linear-gradient(160deg,#301e0e,#f0a04b);color:#1a1005;}
+  .app h2{margin:0 0 3px;font-size:19px;font-weight:800;}
+  .app p{margin:0;color:var(--dim);font-size:13.5px;}
+  .howto{background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:18px 20px;margin-top:30px;}
+  .howto h3{margin:0 0 10px;font-size:15px;}
+  .howto ol{margin:0;padding-left:20px;color:var(--dim);font-size:14px;}
+  .howto li{margin:7px 0;}
+  .howto b{color:var(--txt);}
+  .foot{color:var(--dimmer);font-size:12px;margin-top:24px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Dave's Apps</h1>
+  <div class="sub">Add each one to your Home Screen — they work offline after the first visit.</div>
+
+  <a class="app" href="workout/">
+    <span class="ico w">💪</span>
+    <span><h2>Hypertrophy Hub</h2>
+    <p>Your 4-day split with between-set rest timers and Spotify links.</p></span>
+  </a>
+
+  <a class="app" href="kitchen/">
+    <span class="ico k">🍳</span>
+    <span><h2>Weekly Kitchen</h2>
+    <p>Six months of Trader Joe's + Aldi dinners, step-by-step cook mode and shopping lists.</p></span>
+  </a>
+
+  <div class="howto">
+    <h3>📲 Put them on your Home Screen (iPhone)</h3>
+    <ol>
+      <li>Open this page in <b>Safari</b> — this does not work in Chrome or Edge.</li>
+      <li>Tap into one of the two apps above.</li>
+      <li>Tap the <b>Share</b> button (square with an arrow, bottom centre).</li>
+      <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+      <li>Go back and repeat for the other app.</li>
+    </ol>
+  </div>
+
+  <div class="foot">Built for Dave · works offline · no accounts, no tracking</div>
+</div>
+</body>
+</html>

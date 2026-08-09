@@ -1,0 +1,835 @@
+[
+ {
+  "week": 13,
+  "slot": "dinner",
+  "title": "Three-Cup Chicken with Charred Ginger and Thai Basil",
+  "cuisine": "Taiwanese",
+  "blurb": "Chicken chunks lacquered in a sticky sesame-soy-rice wine glaze with whole blistered garlic cloves and a whole bushel of Thai basil thrown in at the last second.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "🍗",
+  "ingredients": [
+   {
+    "item": "1 1/4 lb boneless skinless chicken thighs, cut in 1 1/2-inch chunks (Kirkwood)",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp toasted sesame oil",
+    "store": "Either"
+   },
+   {
+    "item": "3 tbsp Fusia soy sauce",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp Shaoxing wine or dry sherry",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp dark brown sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 (2-inch) knob ginger, sliced into thin coins",
+    "store": "Either"
+   },
+   {
+    "item": "10 garlic cloves, peeled and left whole",
+    "store": "Either"
+   },
+   {
+    "item": "4 dried red chiles, snapped in half",
+    "store": "Either"
+   },
+   {
+    "item": "2 packed cups Thai basil leaves, stems removed",
+    "store": "Either"
+   },
+   {
+    "item": "4 scallions, cut into 2-inch batons",
+    "store": "Either"
+   },
+   {
+    "item": "2 bowls Trader Joe's Frozen Jasmine Rice",
+    "store": "TJ"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Pat the chicken chunks very dry and season them with black pepper only, since the soy sauce brings all the salt this dish needs. Stir the soy sauce, wine, and brown sugar together in a small bowl so the sauce is ready to hit a hot pan.",
+    "timer": null,
+    "tip": "Season with pepper now, salt at the very end if at all."
+   },
+   {
+    "text": "Pour the sesame oil into a wok or heavy 12-inch skillet and set it over medium-low, then add the ginger coins in a single layer. Fry them gently until the edges curl, turn pale gold, and go slightly papery.",
+    "timer": 240,
+    "tip": "Low and slow here; scorched sesame oil turns bitter."
+   },
+   {
+    "text": "Add the whole garlic cloves and dried chiles and keep the heat at medium-low, rolling them through the oil until the garlic is blistered and golden on two sides and the chiles darken. Fish the garlic and ginger onto a plate if they are browning faster than that.",
+    "timer": 120,
+    "tip": "Whole cloves go sweet and creamy inside."
+   },
+   {
+    "text": "Crank the heat to medium-high, add the chicken in one layer, and leave it completely alone until the undersides are browned and release from the pan. Toss once and let the second side color.",
+    "timer": 300,
+    "tip": "Resist stirring or you get gray meat, not brown."
+   },
+   {
+    "text": "Pour in the soy mixture, let it come to a hard bubble, then drop the heat to medium and simmer, tossing every minute or so, until the liquid reduces to a syrup that coats every chunk and pools thickly at the bottom. Heat the jasmine rice while this reduces.",
+    "timer": 600,
+    "tip": "Pull it when the glaze streaks the pan and closes slowly."
+   },
+   {
+    "text": "Kill the heat, pile in the scallion batons and all the basil at once, and toss hard for a minute until the leaves collapse into the glaze and go glossy dark green. Taste and add a splash more soy if it needs it.",
+    "timer": 60,
+    "tip": "Off-heat keeps the basil perfumed instead of stewed."
+   },
+   {
+    "text": "Spoon the chicken over bowls of hot jasmine rice, scraping every bit of glaze and the sweet garlic cloves out of the pan. Eat immediately while the basil is still fragrant.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "Out of Thai basil? Use regular basil plus an extra scallion, and add it strictly off the heat.",
+  "leftovers": "Keeps 3 days refrigerated; the glaze sets solid when cold, so reheat in a skillet with a tablespoon of water to loosen it."
+ },
+ {
+  "week": 13,
+  "slot": "dinner",
+  "title": "Poulet Provencal with Olives, Fennel and Orange",
+  "cuisine": "Provençal French",
+  "blurb": "Crackling bone-in thighs roasted over burst cherry tomatoes, caramelized fennel, and briny olives, with wide strips of orange zest perfuming the whole pan.",
+  "time": "40 min",
+  "servings": 2,
+  "hero": "🫒",
+  "ingredients": [
+   {
+    "item": "4 bone-in skin-on chicken thighs (Kirkwood)",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 large fennel bulb, cut into 1/2-inch wedges",
+    "store": "Either"
+   },
+   {
+    "item": "1 pint cherry tomatoes",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 cup pitted Kalamata or black olives",
+    "store": "Either"
+   },
+   {
+    "item": "1 orange, zest peeled in wide strips plus the juice",
+    "store": "Either"
+   },
+   {
+    "item": "5 garlic cloves, smashed",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 cup dry white wine",
+    "store": "Either"
+   },
+   {
+    "item": "2 tsp herbes de Provence (or Trader Joe's 21 Seasoning Salute)",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 tsp fennel seeds, crushed",
+    "store": "Pantry"
+   },
+   {
+    "item": "3 anchovy fillets, minced",
+    "store": "Either"
+   },
+   {
+    "item": "1 jar Trader Joe's Quartered Marinated Artichokes, drained",
+    "store": "TJ"
+   },
+   {
+    "item": "1/2 crusty baguette",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Heat the oven to 425F. Pat the thighs bone-dry, season both sides hard with salt and pepper, and set them skin side up on the counter while the oven comes up.",
+    "timer": null,
+    "tip": "Wet skin steams; dry skin shatters."
+   },
+   {
+    "text": "Film an oven-safe 10-inch skillet with olive oil over medium-high and lay the thighs in skin side down. Leave them completely untouched until the skin is deep golden and lifts cleanly from the pan when you nudge it.",
+    "timer": 600,
+    "tip": "If it sticks, it isn't ready to turn."
+   },
+   {
+    "text": "Flip the thighs for one minute, then move them to a plate skin side up and pour off all but about 1 tbsp of the fat. Drop the heat to medium and lay the fennel wedges in cut side down.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Cook the fennel over medium without moving it until the flat faces are deeply caramelized and the wedges are just starting to bend. Smash the garlic and strip the orange zest while it colors.",
+    "timer": 300,
+    "tip": "Fennel goes sweet and almost meaty when browned this hard."
+   },
+   {
+    "text": "Add the garlic, anchovies, crushed fennel seeds, and herbes de Provence and stir over medium until the anchovies dissolve into the fat and the pan smells like a pine forest. Pour in the wine and scrape the bottom clean.",
+    "timer": 180,
+    "tip": "The anchovy melts away completely; nobody will find it."
+   },
+   {
+    "text": "Once the wine has reduced by half and lost its raw smell, stir in the tomatoes, olives, artichokes, orange zest strips, and orange juice. Nestle the thighs back in skin side up so the skin sits proud of the liquid.",
+    "timer": null,
+    "tip": "Keep the skin above the sauce line to stay crisp."
+   },
+   {
+    "text": "Slide the skillet into the oven and roast until the tomatoes burst and slump, the sauce is glossy, and the thickest thigh reads 175F. Slice and toast the baguette while it roasts.",
+    "timer": 1200,
+    "tip": null
+   },
+   {
+    "text": "Let the pan rest so the juices settle, then taste the sauce and adjust the salt, remembering the olives and anchovy already brought plenty. Serve straight from the skillet with bread for the sauce.",
+    "timer": 300,
+    "tip": "The orange peel is for perfume, not eating."
+   }
+  ],
+  "swap": "No fennel bulb? Use two thick-sliced onions and bump the crushed fennel seeds to a full teaspoon.",
+  "leftovers": "Refrigerate up to 3 days and pull the meat off the bone into the sauce; it turns into a superb pasta topper the next night."
+ },
+ {
+  "week": 13,
+  "slot": "dinner",
+  "title": "Chupe de Camarones, Chilean Shrimp and Bread Chowder",
+  "cuisine": "Chilean",
+  "blurb": "A Chilean coastal classic: milk-soaked bread cooked down into a velvety smoky-red chowder, studded with sweet red shrimp and blistered under a blanket of melted cheese.",
+  "time": "35 min",
+  "servings": 2,
+  "hero": "🍤",
+  "ingredients": [
+   {
+    "item": "1 lb Trader Joe's Raw Argentinian Red Shrimp, thawed and peeled",
+    "store": "TJ"
+   },
+   {
+    "item": "3 thick slices country bread, crusts torn off",
+    "store": "Either"
+   },
+   {
+    "item": "1 1/2 cups whole milk",
+    "store": "Either"
+   },
+   {
+    "item": "1/3 cup Friendly Farms heavy cream",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 yellow onion, finely diced",
+    "store": "Either"
+   },
+   {
+    "item": "4 garlic cloves, minced",
+    "store": "Either"
+   },
+   {
+    "item": "2 tsp merken (or 1 1/2 tsp smoked paprika plus a pinch of cayenne)",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tsp sweet paprika",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tbsp butter",
+    "store": "Either"
+   },
+   {
+    "item": "1 cup chicken or seafood broth",
+    "store": "Either"
+   },
+   {
+    "item": "4 oz Happy Farms shredded mozzarella",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp chopped cilantro",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Tear the bread into rough pieces, drop them into a bowl with the milk, and press them under so they soak through. Meanwhile pat the shrimp dry and season them with salt and 1/2 tsp of the merken.",
+    "timer": null,
+    "tip": "The bread is the thickener; no flour anywhere in this."
+   },
+   {
+    "text": "Melt the butter in an oven-safe skillet or small Dutch oven over medium and add the onion with a big pinch of salt. Cook it slowly, stirring now and then, until it is fully soft and translucent with no browning at all.",
+    "timer": 480,
+    "tip": "Color here would muddy the clean red of the finished chowder."
+   },
+   {
+    "text": "Stir in the garlic, the remaining merken, and the sweet paprika and cook over medium until the fat stains brick red and smells toasted. Do not let the paprika catch on the bottom.",
+    "timer": 60,
+    "tip": "Blooming the chiles in fat is what makes it taste Chilean."
+   },
+   {
+    "text": "Scrape in the soaked bread with all its milk plus the broth, then mash and stir with a wooden spoon over medium until the bread disappears into a thick, spoon-coating porridge. Add a splash more milk if it gets stiffer than loose oatmeal.",
+    "timer": 300,
+    "tip": "Keep it moving; the bottom scorches fast."
+   },
+   {
+    "text": "Stir in the cream, taste, and season aggressively with salt and pepper since the base is starchy and needs it. Turn on the broiler to high.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Drop the heat to low, nestle the shrimp into the surface of the chowder, and let them poach gently until they turn opaque and curl into loose C shapes. Do not stir them around.",
+    "timer": 180,
+    "tip": "Tight O-shaped shrimp are already overcooked."
+   },
+   {
+    "text": "Scatter the mozzarella over the top and slide the pan 6 inches under the broiler until the cheese is molten with blistered brown spots.",
+    "timer": 180,
+    "tip": "Watch it the whole time; it goes from gold to black in seconds."
+   },
+   {
+    "text": "Let the chowder settle so it stops volcano-bubbling, then shower it with cilantro and serve it straight from the pan with spoons.",
+    "timer": 120,
+    "tip": null
+   }
+  ],
+  "swap": "No merken anywhere? Smoked paprika plus a pinch of cayenne and a pinch of dried oregano gets you close.",
+  "leftovers": "Best the day it is made, but keeps 2 days refrigerated; reheat gently with a splash of milk since the bread base tightens up cold."
+ },
+ {
+  "week": 13,
+  "slot": "batch",
+  "title": "Low-Country Shrimp and Sausage over Unexpected Cheddar Grits",
+  "cuisine": "Low-Country Carolina",
+  "blurb": "A big Charleston-style skillet of shrimp, smoked sausage, and bacon in a peppery pan gravy, spooned over stone-ground grits made outrageous with Unexpected Cheddar.",
+  "time": "70 min",
+  "servings": 6,
+  "hero": "🦐",
+  "ingredients": [
+   {
+    "item": "2 lb Trader Joe's Raw Argentinian Red Shrimp, peeled",
+    "store": "TJ"
+   },
+   {
+    "item": "12 oz Never Any! smoked sausage, sliced into coins",
+    "store": "Aldi"
+   },
+   {
+    "item": "8 oz Appleton Farms bacon, chopped",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 1/2 cups stone-ground grits",
+    "store": "Either"
+   },
+   {
+    "item": "6 cups chicken broth",
+    "store": "Either"
+   },
+   {
+    "item": "5 oz Trader Joe's Unexpected Cheddar, grated",
+    "store": "TJ"
+   },
+   {
+    "item": "4 tbsp butter",
+    "store": "Either"
+   },
+   {
+    "item": "1 bunch scallions, whites and greens sliced separately",
+    "store": "Either"
+   },
+   {
+    "item": "1 red bell pepper, diced",
+    "store": "Either"
+   },
+   {
+    "item": "5 garlic cloves, minced",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp Burman's hot sauce",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 lemon",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Bring 5 cups of the broth plus 2 cups water and 1 1/2 tsp salt to a rolling boil in a heavy pot over high heat. Rain the grits in slowly with one hand while whisking constantly with the other.",
+    "timer": 60,
+    "tip": "Whisking during the pour is the only way to avoid lumps."
+   },
+   {
+    "text": "Drop the heat to the lowest simmer you can hold, cover, and cook the grits until they are creamy and no longer feel sandy on your tongue, whisking every 10 minutes and scraping the corners. Prep everything else while they cook.",
+    "timer": 1800,
+    "tip": "Taste, do not time; sandy grits are undercooked grits."
+   },
+   {
+    "text": "Put the bacon in a large cold skillet and set it over medium so the fat renders out slowly. Cook until the pieces are crisp and the pan holds a generous slick of fat, then lift the bacon out to a paper towel and leave the fat behind.",
+    "timer": 600,
+    "tip": "Starting cold renders more fat and burns less."
+   },
+   {
+    "text": "Raise the heat to medium-high and lay the sausage coins in the bacon fat in one layer. Sear without stirring until the cut faces are caramelized and the edges cup upward, then push them to one side.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Add the bell pepper and scallion whites and cook over medium-high until softened with charred edges, stirring in the garlic for the last minute so it perfumes without burning. Season the shrimp with salt and pepper while this happens.",
+    "timer": 240,
+    "tip": "Garlic goes in last; it burns in half the time peppers need."
+   },
+   {
+    "text": "Add the shrimp in a single layer and leave them undisturbed until the undersides turn pink, then toss and cook just until opaque through and curled. Pull the pan off the heat immediately.",
+    "timer": 180,
+    "tip": "They will keep cooking in the hot gravy, so undershoot."
+   },
+   {
+    "text": "Stir the hot sauce, the juice of the whole lemon, the remaining 1 cup broth, and half the bacon into the skillet, scraping the browned bits loose into what is now a loose, peppery pan gravy. Taste for salt.",
+    "timer": null,
+    "tip": "The broth plus fond is the gravy; nothing else needed."
+   },
+   {
+    "text": "Kill the heat under the grits and beat in the butter and Unexpected Cheddar until glossy and pourable, adding a splash of water if they have gone stiff. Season with salt and plenty of black pepper.",
+    "timer": null,
+    "tip": "Off the heat so the cheese emulsifies instead of breaking."
+   },
+   {
+    "text": "Ladle the grits into wide bowls, spoon the shrimp and sausage with all their gravy over the top, and finish with the remaining bacon and the scallion greens.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "Can't find stone-ground grits? Use coarse yellow polenta and cut the covered cooking time to 20 minutes.",
+  "leftovers": "Store the grits and the shrimp mixture in separate containers for up to 3 days; loosen the grits with milk over low heat and warm the shrimp only briefly so they don't turn rubbery."
+ },
+ {
+  "week": 14,
+  "slot": "dinner",
+  "title": "Nepali Chicken Chhoila with Mustard Oil and Timur",
+  "cuisine": "Nepali",
+  "blurb": "Blackened chicken hacked into chunks and doused in smoking mustard oil bloomed with red chile, fenugreek, and tongue-tingling timur pepper.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "🌶️",
+  "ingredients": [
+   {
+    "item": "1 1/4 lb boneless skinless chicken thighs (Simply Nature Organic)",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp mustard oil",
+    "store": "Either"
+   },
+   {
+    "item": "1 tsp timur or Sichuan peppercorns",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tsp fenugreek seeds",
+    "store": "Pantry"
+   },
+   {
+    "item": "4 dried red chiles",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp ground red chili",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tsp ground turmeric",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 (2-inch) knob ginger and 4 garlic cloves, grated to a paste",
+    "store": "Either"
+   },
+   {
+    "item": "1 small red onion, slivered",
+    "store": "Either"
+   },
+   {
+    "item": "1 lemon",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 cup cilantro, roughly chopped",
+    "store": "Either"
+   },
+   {
+    "item": "4 Journey to India naan",
+    "store": "Aldi"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Toast the timur and fenugreek seeds in a dry skillet over medium, shaking constantly, until they smell nutty and the fenugreek darkens one shade. Crush them coarsely in a mortar or under a heavy pan and set aside.",
+    "timer": 120,
+    "tip": "Fenugreek turns bitter the second it goes past golden brown."
+   },
+   {
+    "text": "Pat the thighs completely dry and rub them with the ginger-garlic paste, the turmeric, half the ground chili, and a heavy pinch of salt. Set a cast iron skillet over medium-high until it smokes faintly.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Lay the thighs down with just a slick of oil and leave them absolutely still until the undersides are blackened in patches and the meat releases from the pan on its own.",
+    "timer": 300,
+    "tip": "You want real char, not color; this is a grill dish indoors."
+   },
+   {
+    "text": "Flip and cook the second side until the thickest part reads 175F and the juices run clear. Sliver the onion and chop the cilantro while it finishes.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Rest the chicken on a board, then hack it into rough 3/4-inch cubes, blackened edges and all, and pile it into a large bowl with the onion and cilantro.",
+    "timer": 300,
+    "tip": "Resting first keeps the juices in the bowl, not on the board."
+   },
+   {
+    "text": "Heat the mustard oil in a small pan over medium-high until it shimmers and smells sharp and pungent, then add the dried chiles, the remaining ground chili, and the crushed timur-fenugreek. Swirl until it foams and turns dark red.",
+    "timer": 60,
+    "tip": "Mustard oil must be heated to smoking to lose its raw bite."
+   },
+   {
+    "text": "Pour the sizzling oil straight over the chicken so it crackles, add the juice of the whole lemon and a good pinch of salt, and toss hard until every cube is stained red and slick. Taste and push the salt and lemon further than feels polite.",
+    "timer": null,
+    "tip": "Chhoila should be loud, sour, and salty."
+   },
+   {
+    "text": "Warm the naan directly in the hot dry skillet over medium-high until puffed and spotted on both sides, then serve alongside the chicken.",
+    "timer": 120,
+    "tip": null
+   }
+  ],
+  "swap": "No mustard oil? Use neutral oil with 1 tsp dry mustard powder whisked in, and heat it the same way.",
+  "leftovers": "Keeps 3 days refrigerated and is meant to be eaten cold or at room temperature, so pack it straight into lunch containers."
+ },
+ {
+  "week": 14,
+  "slot": "dinner",
+  "title": "Pasta con le Sarde, Sicilian Sardines with Fennel and Saffron",
+  "cuisine": "Sicilian",
+  "blurb": "The great Palermo street dish: sardines melted into a saffron-stained fennel sauce with plumped raisins, toasted pine nuts, and a snowdrift of crunchy breadcrumbs instead of cheese.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "🍝",
+  "ingredients": [
+   {
+    "item": "3 tins sardines packed in olive oil, drained",
+    "store": "Either"
+   },
+   {
+    "item": "8 oz Priano bucatini or spaghetti",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 large fennel bulb with fronds, bulb diced and fronds chopped",
+    "store": "Either"
+   },
+   {
+    "item": "1 small yellow onion, finely diced",
+    "store": "Either"
+   },
+   {
+    "item": "1/3 cup golden raisins",
+    "store": "Either"
+   },
+   {
+    "item": "1/4 cup Southern Grove pine nuts or slivered almonds",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 big pinch saffron threads",
+    "store": "Either"
+   },
+   {
+    "item": "3 anchovy fillets",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 cup plain breadcrumbs",
+    "store": "Pantry"
+   },
+   {
+    "item": "1/4 tsp red pepper flakes",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tbsp tomato paste",
+    "store": "Either"
+   },
+   {
+    "item": "1 lemon",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Bring a large pot of aggressively salted water to a boil over high heat. Crumble the saffron into 1/3 cup of very hot water in a mug and drop the raisins in to steep and plump.",
+    "timer": null,
+    "tip": "Blooming saffron in hot water pulls out far more color."
+   },
+   {
+    "text": "Toast the breadcrumbs with 1 tbsp olive oil in a dry skillet over medium, stirring nonstop, until they are sandy gold and audibly crisp. Scrape them onto a plate.",
+    "timer": 240,
+    "tip": "These are the Sicilian answer to parmesan; do not skip them."
+   },
+   {
+    "text": "Add the pine nuts to the same pan over medium and toast until freckled brown, then tip them out with the breadcrumbs.",
+    "timer": 120,
+    "tip": "Pull them early; they scorch off residual heat."
+   },
+   {
+    "text": "Add a generous glug of olive oil to the pan, raise to medium-high, and cook the diced fennel and onion with a pinch of salt until softened and browning at the edges. Drop the pasta into the boiling water as soon as they go in.",
+    "timer": 480,
+    "tip": "Slightly browned fennel is sweeter than pale fennel."
+   },
+   {
+    "text": "Stir in the anchovies, tomato paste, and red pepper flakes and mash them into the vegetables over medium until the anchovies dissolve and the paste darkens from red to brick.",
+    "timer": 120,
+    "tip": null
+   },
+   {
+    "text": "Pour in the saffron water with the raisins plus a ladle of pasta water and simmer over medium until it looks like a loose, golden-orange sauce. Break two tins of sardines into big flakes and fold them in gently so some pieces stay whole.",
+    "timer": 180,
+    "tip": "Fold, don't stir, or the sardines turn to paste."
+   },
+   {
+    "text": "Drain the pasta one minute shy of al dente and drop it straight into the pan with another splash of pasta water. Toss over medium-high until the sauce clings to every strand and the pasta is just al dente.",
+    "timer": 120,
+    "tip": "Starchy pasta water is what makes it cling."
+   },
+   {
+    "text": "Off the heat, squeeze in half the lemon, taste for salt, and pile it into bowls. Top with the reserved tin of sardines, the fennel fronds, and a heavy shower of breadcrumbs and pine nuts.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "No sardines on the shelf? Two tins of Northern Catch tuna in oil work, folded in at the very end so they stay chunky.",
+  "leftovers": "Keeps 2 days refrigerated; store the breadcrumbs separately at room temperature and re-toast them briefly so the topping stays crunchy."
+ },
+ {
+  "week": 14,
+  "slot": "dinner",
+  "title": "Trinidadian Brown Stew Chicken with Burnt Sugar",
+  "cuisine": "Trinidadian",
+  "blurb": "Chicken caramelized in a pot of scorched brown sugar until it turns mahogany, then simmered down with green seasoning and a whole scotch bonnet into a glossy, slightly bitter-sweet gravy.",
+  "time": "40 min",
+  "servings": 2,
+  "hero": "🥘",
+  "ingredients": [
+   {
+    "item": "1 1/2 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp dark brown sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 bunch cilantro and 4 scallions, roughly chopped together",
+    "store": "Either"
+   },
+   {
+    "item": "6 garlic cloves",
+    "store": "Either"
+   },
+   {
+    "item": "2 tsp fresh thyme leaves",
+    "store": "Either"
+   },
+   {
+    "item": "1 scotch bonnet or habanero chile",
+    "store": "Either"
+   },
+   {
+    "item": "1 yellow onion, sliced",
+    "store": "Either"
+   },
+   {
+    "item": "1 red bell pepper, sliced",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp Fusia soy sauce",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 tbsp ketchup",
+    "store": "Either"
+   },
+   {
+    "item": "1 cup chicken broth",
+    "store": "Either"
+   },
+   {
+    "item": "2 pouches Earthly Grains jasmine rice",
+    "store": "Aldi"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Chop the cilantro, scallions, garlic, thyme, and half the scotch bonnet together into a rough wet paste with 2 tbsp water, or pulse it in a small food processor. Rub two-thirds of this green seasoning and 1 tsp salt all over the chicken and leave it to sit while you prep the rest.",
+    "timer": 600,
+    "tip": "Green seasoning is the backbone of every Trini pot."
+   },
+   {
+    "text": "Heat 2 tbsp oil in a heavy pot over medium, add the brown sugar, and let it melt mostly undisturbed until it darkens to the color of dark molasses, foams, and starts to smoke faintly. Pull it one shade before you think you should.",
+    "timer": 180,
+    "tip": "This burnt sugar is the whole dish; black and acrid means start over."
+   },
+   {
+    "text": "Scrape the marinade off the chicken and reserve it, then lower the pieces into the bubbling caramel skin side down; they will hiss and seize. Turn them with tongs over medium heat until every side is coated deep mahogany.",
+    "timer": 300,
+    "tip": "Wet marinade in hot caramel will spatter, so use tongs and stand back."
+   },
+   {
+    "text": "Add the onion and bell pepper and cook over medium until they slump and pick up the dark color from the pot, scraping the bottom as they release moisture.",
+    "timer": 240,
+    "tip": null
+   },
+   {
+    "text": "Stir in the reserved green seasoning, soy sauce, ketchup, broth, and the remaining scotch bonnet half left whole. Scrape the bottom of the pot completely clean and bring it to a simmer.",
+    "timer": null,
+    "tip": "Whole chile in the pot gives fruity perfume without much burn."
+   },
+   {
+    "text": "Cover, drop to low, and simmer until the chicken pulls easily from the bone with a fork. Heat the rice pouches during the last few minutes.",
+    "timer": 1200,
+    "tip": "A bare blip, not a boil, or the meat tightens up."
+   },
+   {
+    "text": "Uncover, fish out the chile, raise the heat to medium-high, and reduce the gravy until it turns glossy and coats the back of a spoon. Spoon it over the chicken as it thickens.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Taste for salt, remembering the soy sauce, and serve the chicken over jasmine rice with the gravy poured generously over everything.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "No scotch bonnet? Use a habanero, or 1 tbsp Burman's hot sauce stirred in with the broth.",
+  "leftovers": "Keeps 4 days refrigerated and the gravy deepens overnight; reheat covered over low with a splash of broth."
+ },
+ {
+  "week": 14,
+  "slot": "batch",
+  "title": "Kashmiri Rogan Josh with Fennel and Black Cardamom",
+  "cuisine": "Kashmiri",
+  "blurb": "Lamb braised low in a yogurt gravy stained brilliant red with Kashmiri chile and scented with ground fennel, dry ginger, and smoky black cardamom, finished when a slick of spiced oil rises to the top.",
+  "time": "75 min",
+  "servings": 6,
+  "hero": "🍛",
+  "ingredients": [
+   {
+    "item": "3 lb boneless lamb shoulder, cut into 1 1/2-inch cubes",
+    "store": "Either"
+   },
+   {
+    "item": "1 1/2 cups Friendly Farms whole-milk Greek yogurt, whisked smooth",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp Kashmiri red chili powder",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp ground fennel",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tbsp ground dry ginger",
+    "store": "Pantry"
+   },
+   {
+    "item": "4 black cardamom pods, 6 green cardamom pods, 1 cinnamon stick and 6 cloves",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 tsp asafoetida",
+    "store": "Either"
+   },
+   {
+    "item": "4 tbsp ghee or butter",
+    "store": "Either"
+   },
+   {
+    "item": "2 bay leaves",
+    "store": "Pantry"
+   },
+   {
+    "item": "1/2 tsp garam masala",
+    "store": "Pantry"
+   },
+   {
+    "item": "3 pouches Journey to India basmati rice",
+    "store": "Aldi"
+   },
+   {
+    "item": "4 Journey to India naan",
+    "store": "Aldi"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Pat the lamb cubes very dry and season them with salt. Melt the ghee in a large Dutch oven over medium-high until it shimmers, then add the whole spices and bay leaves and fry until the cardamom pods puff and the kitchen smells like a spice shop.",
+    "timer": 60,
+    "tip": "Whole spices go in first so the fat carries their perfume everywhere."
+   },
+   {
+    "text": "Add half the lamb in a single uncrowded layer and sear over medium-high, undisturbed, until the underside is deep brown and lifts cleanly, then turn to brown a second face. Transfer to a bowl and repeat with the rest.",
+    "timer": 480,
+    "tip": "Two batches; crowded lamb steams gray and never browns."
+   },
+   {
+    "text": "Drop the heat to medium-low and sprinkle the asafoetida into the fat for a few seconds, then whisk in the Kashmiri chili powder along with 1/4 cup water so it turns into a glossy red paste instead of scorching.",
+    "timer": 60,
+    "tip": "The splash of water is what keeps the chile from burning bitter."
+   },
+   {
+    "text": "Pull the pot off the burner for a moment, then stir in the whisked yogurt a few spoonfuls at a time, stirring constantly between additions, until the sauce is smooth and uniformly brick red.",
+    "timer": null,
+    "tip": "Adding it cold or all at once will split the yogurt into curds."
+   },
+   {
+    "text": "Return the lamb and every drop of its juices to the pot, then stir in the ground fennel, dry ginger, 2 tsp salt, and 2 cups water. Bring it back to a lazy simmer over medium.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Cover and hold it at the barest simmer, stirring and scraping the bottom every 10 minutes so the yogurt doesn't catch. The surface should blip occasionally, never roll.",
+    "timer": 1800,
+    "tip": "If it is bubbling hard, your low is too high."
+   },
+   {
+    "text": "Uncover, raise to medium-low, and simmer until the lamb is fork-tender and the gravy has reduced to a thick rust-red sauce with a distinct slick of red oil pooling on the surface. That rising oil is the classic sign it is done.",
+    "timer": 1200,
+    "tip": "Skim the oil or stir it back in, cook's choice."
+   },
+   {
+    "text": "Stir in the garam masala off the heat, taste for salt, and let the pot rest while you heat the rice pouches and warm the naan in a dry skillet over medium-high.",
+    "timer": 300,
+    "tip": "Garam masala goes in at the end so it stays fragrant."
+   },
+   {
+    "text": "Fish out the cinnamon stick and the black cardamom pods, then ladle the lamb over basmati in wide bowls with naan on the side.",
+    "timer": null,
+    "tip": "Black cardamom pods are not for eating whole."
+   }
+  ],
+  "swap": "No lamb shoulder? Use 3 lb bone-in chicken thighs and cut the covered simmer to 20 minutes.",
+  "leftovers": "Keeps 4 days refrigerated and freezes for 3 months; the flavor deepens noticeably by day two."
+ }
+]

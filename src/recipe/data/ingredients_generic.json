@@ -1,0 +1,2866 @@
+[
+ {
+  "key": "garlic",
+  "count": 56,
+  "store": "Either",
+  "examples": [
+   "10 cloves garlic",
+   "10 garlic cloves, peeled and left whole"
+  ]
+ },
+ {
+  "key": "lemon",
+  "count": 23,
+  "store": "Either",
+  "examples": [
+   "1 lemon",
+   "1 lemon, cut into wedges"
+  ]
+ },
+ {
+  "key": "lime",
+  "count": 20,
+  "store": "Either",
+  "examples": [
+   "1 lime",
+   "1 lime, cut into wedges"
+  ]
+ },
+ {
+  "key": "ground cumin",
+  "count": 18,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp ground cumin",
+   "1 tsp ground cumin"
+  ]
+ },
+ {
+  "key": "yellow onion",
+  "count": 18,
+  "store": "Either",
+  "examples": [
+   "1 large yellow onion, diced",
+   "1 large yellow onion, quartered"
+  ]
+ },
+ {
+  "key": "scallions",
+  "count": 17,
+  "store": "Either",
+  "examples": [
+   "2 bunches scallions, trimmed",
+   "3 scallions, sliced on the bias"
+  ]
+ },
+ {
+  "key": "chicken broth",
+  "count": 16,
+  "store": "Either",
+  "examples": [
+   "1 1/2 cups chicken broth",
+   "1 cup chicken broth"
+  ]
+ },
+ {
+  "key": "egg",
+  "count": 15,
+  "store": "Either",
+  "examples": [
+   "1 egg",
+   "1 large egg"
+  ]
+ },
+ {
+  "key": "ground turmeric",
+  "count": 14,
+  "store": "Pantry",
+  "examples": [
+   "1 1/2 tsp ground turmeric",
+   "1 tbsp ground turmeric"
+  ]
+ },
+ {
+  "key": "butter",
+  "count": 13,
+  "store": "Either",
+  "examples": [
+   "2 tbsp butter",
+   "3 tbsp butter"
+  ]
+ },
+ {
+  "key": "sugar",
+  "count": 11,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp sugar",
+   "1 tsp sugar"
+  ]
+ },
+ {
+  "key": "tomato paste",
+  "count": 10,
+  "store": "Either",
+  "examples": [
+   "2 tbsp tomato paste",
+   "3 tbsp tomato paste"
+  ]
+ },
+ {
+  "key": "all-purpose flour",
+  "count": 10,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp all-purpose flour",
+   "1/2 cup all-purpose flour"
+  ]
+ },
+ {
+  "key": "onion",
+  "count": 9,
+  "store": "Either",
+  "examples": [
+   "1 large onion, cut into thick wedges and separated",
+   "1 large onion, diced"
+  ]
+ },
+ {
+  "key": "dried oregano",
+  "count": 8,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp dried oregano",
+   "1 tsp dried oregano"
+  ]
+ },
+ {
+  "key": "bay leaves",
+  "count": 8,
+  "store": "Pantry",
+  "examples": [
+   "2 bay leaves",
+   "4 bay leaves"
+  ]
+ },
+ {
+  "key": "baby potatoes",
+  "count": 8,
+  "store": "Either",
+  "examples": [
+   "1 1/2 lb baby potatoes",
+   "1 1/2 lb baby potatoes, halved"
+  ]
+ },
+ {
+  "key": "dark brown sugar",
+  "count": 8,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp dark brown sugar",
+   "1 tsp dark brown sugar"
+  ]
+ },
+ {
+  "key": "toasted sesame oil",
+  "count": 7,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp toasted sesame oil",
+   "1 tsp toasted sesame oil"
+  ]
+ },
+ {
+  "key": "sweet paprika",
+  "count": 7,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp sweet paprika",
+   "1 tsp sweet paprika"
+  ]
+ },
+ {
+  "key": "ground coriander",
+  "count": 7,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp ground coriander",
+   "2 tsp ground coriander"
+  ]
+ },
+ {
+  "key": "red onion",
+  "count": 7,
+  "store": "Either",
+  "examples": [
+   "1 large red onion, sliced paper thin",
+   "1 large red onion, sliced thin"
+  ]
+ },
+ {
+  "key": "fish sauce",
+  "count": 6,
+  "store": "Either",
+  "examples": [
+   "1 tbsp fish sauce",
+   "3 tbsp fish sauce"
+  ]
+ },
+ {
+  "key": "red pepper flakes",
+  "count": 6,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp red pepper flakes",
+   "1/2 tsp red pepper flakes"
+  ]
+ },
+ {
+  "key": "bunch cilantro",
+  "count": 6,
+  "store": "Either",
+  "examples": [
+   "1 large bunch cilantro",
+   "1 large bunch cilantro, chopped"
+  ]
+ },
+ {
+  "key": "cilantro",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro, roughly chopped",
+   "1 cup cilantro, roughly chopped"
+  ]
+ },
+ {
+  "key": "full-fat coconut milk",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 can (13.5 oz) full-fat coconut milk",
+   "1/2 cup full-fat coconut milk"
+  ]
+ },
+ {
+  "key": "brown sugar",
+  "count": 5,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp brown sugar",
+   "1 tsp brown sugar"
+  ]
+ },
+ {
+  "key": "diced tomatoes",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 (14.5 oz) can diced tomatoes",
+   "1 (15 oz) can diced tomatoes"
+  ]
+ },
+ {
+  "key": "green bell pepper",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 green bell pepper, cut into wide strips",
+   "1 green bell pepper, diced"
+  ]
+ },
+ {
+  "key": "garam masala",
+  "count": 5,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp garam masala",
+   "1 tsp garam masala"
+  ]
+ },
+ {
+  "key": "roma tomatoes",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "2 roma tomatoes, chopped",
+   "2 roma tomatoes, cut into wedges"
+  ]
+ },
+ {
+  "key": "smoked paprika",
+  "count": 5,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp smoked paprika",
+   "1 tsp smoked paprika"
+  ]
+ },
+ {
+  "key": "handful flat-leaf parsley",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 small handful flat-leaf parsley, chopped",
+   "handful flat-leaf parsley, chopped"
+  ]
+ },
+ {
+  "key": "english cucumber",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 English cucumber",
+   "1 English cucumber, cut into long matchsticks"
+  ]
+ },
+ {
+  "key": "olive oil, kosher salt, black pepper",
+  "count": 5,
+  "store": "Pantry",
+  "examples": [
+   "Olive oil, kosher salt, black pepper"
+  ]
+ },
+ {
+  "key": "beef broth",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 cup beef broth",
+   "2 cups beef broth"
+  ]
+ },
+ {
+  "key": "yellow onion, finely diced",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 large yellow onion, finely diced",
+   "1 small yellow onion, finely diced"
+  ]
+ },
+ {
+  "key": "red bell pepper",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 red bell pepper, diced",
+   "1 red bell pepper, sliced"
+  ]
+ },
+ {
+  "key": "shallot",
+  "count": 5,
+  "store": "Either",
+  "examples": [
+   "1 large shallot, sliced paper-thin",
+   "1 shallot"
+  ]
+ },
+ {
+  "key": "fresh ginger",
+  "count": 4,
+  "store": "Either",
+  "examples": [
+   "1 tbsp fresh ginger, grated"
+  ]
+ },
+ {
+  "key": "red wine vinegar",
+  "count": 4,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp red wine vinegar",
+   "1/4 cup red wine vinegar"
+  ]
+ },
+ {
+  "key": "cornstarch",
+  "count": 4,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp cornstarch",
+   "1 tsp cornstarch"
+  ]
+ },
+ {
+  "key": "ground allspice",
+  "count": 4,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp ground allspice",
+   "1 tsp ground allspice"
+  ]
+ },
+ {
+  "key": "unsalted butter",
+  "count": 4,
+  "store": "Either",
+  "examples": [
+   "2 tbsp unsalted butter",
+   "3 tbsp unsalted butter"
+  ]
+ },
+ {
+  "key": "shaoxing wine or dry sherry",
+  "count": 4,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp Shaoxing wine or dry sherry",
+   "3 tbsp Shaoxing wine or dry sherry"
+  ]
+ },
+ {
+  "key": "ghee or butter",
+  "count": 4,
+  "store": "Either",
+  "examples": [
+   "2 tbsp ghee or butter",
+   "3 tbsp ghee or butter"
+  ]
+ },
+ {
+  "key": "persian cucumber",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 Persian cucumber, sliced into coins",
+   "1 Persian cucumber, sliced into ribbons"
+  ]
+ },
+ {
+  "key": "rice vinegar",
+  "count": 3,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp rice vinegar",
+   "2 tsp rice vinegar"
+  ]
+ },
+ {
+  "key": "chickpeas",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 can chickpeas, drained and rinsed",
+   "2 cans chickpeas, drained and rinsed"
+  ]
+ },
+ {
+  "key": "crushed tomatoes",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 (28 oz) can crushed tomatoes",
+   "1 can (28 oz) crushed tomatoes"
+  ]
+ },
+ {
+  "key": "baby bok choy",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "2 heads baby bok choy, halved lengthwise",
+   "3 heads baby bok choy, halved lengthwise"
+  ]
+ },
+ {
+  "key": "cherry tomatoes",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 cup cherry tomatoes, halved",
+   "1 pint cherry tomatoes"
+  ]
+ },
+ {
+  "key": "ketchup",
+  "count": 3,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp ketchup",
+   "2 tbsp ketchup"
+  ]
+ },
+ {
+  "key": "chopped flat-leaf parsley",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1/4 cup chopped flat-leaf parsley",
+   "2 tbsp chopped flat-leaf parsley"
+  ]
+ },
+ {
+  "key": "chopped cilantro",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1/3 cup chopped cilantro",
+   "1/4 cup chopped cilantro"
+  ]
+ },
+ {
+  "key": "neutral oil",
+  "count": 3,
+  "store": "Pantry",
+  "examples": [
+   "1/4 cup neutral oil",
+   "2 tbsp neutral oil"
+  ]
+ },
+ {
+  "key": "plum tomatoes",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "2 plum tomatoes",
+   "2 plum tomatoes, diced"
+  ]
+ },
+ {
+  "key": "onion, finely diced",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 large onion, finely diced",
+   "1 small onion, finely diced"
+  ]
+ },
+ {
+  "key": "fennel seeds",
+  "count": 3,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp fennel seeds",
+   "1 tsp fennel seeds"
+  ]
+ },
+ {
+  "key": "dry white wine",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1/2 cup dry white wine",
+   "2/3 cup dry white wine"
+  ]
+ },
+ {
+  "key": "white wine vinegar",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1/3 cup white wine vinegar",
+   "2 tbsp white wine vinegar"
+  ]
+ },
+ {
+  "key": "bunch fresh dill",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "1 large bunch fresh dill",
+   "1 small bunch fresh dill"
+  ]
+ },
+ {
+  "key": "worcestershire sauce",
+  "count": 3,
+  "store": "Either",
+  "examples": [
+   "2 tbsp Worcestershire sauce",
+   "3 tbsp Worcestershire sauce"
+  ]
+ },
+ {
+  "key": "ground cinnamon",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp ground cinnamon"
+  ]
+ },
+ {
+  "key": "skin-on salmon fillets",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "2 skin-on salmon fillets (about 1 lb total)"
+  ]
+ },
+ {
+  "key": "dried thyme",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp dried thyme",
+   "1 tsp dried thyme"
+  ]
+ },
+ {
+  "key": "coconut milk",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 can coconut milk",
+   "1/4 cup coconut milk"
+  ]
+ },
+ {
+  "key": "shredded green cabbage",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "2 cups shredded green cabbage",
+   "4 cups shredded green cabbage"
+  ]
+ },
+ {
+  "key": "bunch flat-leaf parsley",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 large bunch flat-leaf parsley",
+   "1 large bunch flat-leaf parsley, chopped"
+  ]
+ },
+ {
+  "key": "ground cardamom",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1/2 tsp ground cardamom"
+  ]
+ },
+ {
+  "key": "ground ginger",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 tbsp ground ginger",
+   "1/2 tsp ground ginger"
+  ]
+ },
+ {
+  "key": "cayenne pepper",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp cayenne pepper",
+   "2 tsp cayenne pepper"
+  ]
+ },
+ {
+  "key": "garlic powder",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "2 tsp garlic powder"
+  ]
+ },
+ {
+  "key": "crushed red pepper flakes",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp crushed red pepper flakes"
+  ]
+ },
+ {
+  "key": "curry powder",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp curry powder",
+   "2 tsp curry powder"
+  ]
+ },
+ {
+  "key": "caraway seeds",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp caraway seeds, crushed",
+   "2 tsp caraway seeds"
+  ]
+ },
+ {
+  "key": "apple cider vinegar",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp apple cider vinegar",
+   "1/3 cup apple cider vinegar"
+  ]
+ },
+ {
+  "key": "cayenne",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1/2 tsp cayenne",
+   "2 tsp cayenne"
+  ]
+ },
+ {
+  "key": "sweet hungarian paprika",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1/3 cup sweet Hungarian paprika",
+   "3 tbsp sweet Hungarian paprika"
+  ]
+ },
+ {
+  "key": "yukon gold potatoes, cut in large chunks",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 1/2 lb Yukon gold potatoes, cut in large chunks"
+  ]
+ },
+ {
+  "key": "fresh thyme leaves",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 tsp fresh thyme leaves",
+   "2 tsp fresh thyme leaves"
+  ]
+ },
+ {
+  "key": "green plantains",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "2 green plantains, peeled and cut in thick chunks",
+   "2 green plantains, peeled and cut into thick coins"
+  ]
+ },
+ {
+  "key": "kashmiri chili powder or sweet paprika",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp Kashmiri chili powder or sweet paprika",
+   "2 tsp Kashmiri chili powder or sweet paprika"
+  ]
+ },
+ {
+  "key": "generous pinch saffron threads",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 generous pinch saffron threads",
+   "generous pinch saffron threads"
+  ]
+ },
+ {
+  "key": "green bell pepper, finely diced",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 green bell pepper, finely diced"
+  ]
+ },
+ {
+  "key": "black beans, undrained",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 can black beans, undrained",
+   "2 (15 oz) cans black beans, undrained"
+  ]
+ },
+ {
+  "key": "anchovy fillets",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "3 anchovy fillets",
+   "3 anchovy fillets, minced"
+  ]
+ },
+ {
+  "key": "crusty baguette",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 crusty baguette",
+   "1/2 crusty baguette"
+  ]
+ },
+ {
+  "key": "golden raisins",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1/3 cup golden raisins",
+   "1/4 cup golden raisins"
+  ]
+ },
+ {
+  "key": "plain breadcrumbs",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 cup plain breadcrumbs",
+   "1/2 cup plain breadcrumbs"
+  ]
+ },
+ {
+  "key": "asafoetida",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1/2 tsp asafoetida",
+   "1/4 tsp asafoetida (hing)"
+  ]
+ },
+ {
+  "key": "inch piece fresh ginger",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "2-inch piece fresh ginger, grated"
+  ]
+ },
+ {
+  "key": "capers",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 tbsp capers, drained",
+   "2 tbsp capers, drained"
+  ]
+ },
+ {
+  "key": "sesame seeds",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp sesame seeds",
+   "2 tbsp sesame seeds"
+  ]
+ },
+ {
+  "key": "dry sherry",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 cup dry sherry",
+   "3 tbsp dry sherry"
+  ]
+ },
+ {
+  "key": "sherry vinegar",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "2 tbsp sherry vinegar"
+  ]
+ },
+ {
+  "key": "fresh curry leaves",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "15 fresh curry leaves",
+   "2 sprigs fresh curry leaves"
+  ]
+ },
+ {
+  "key": "yukon gold potatoes",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "1 1/2 lb Yukon gold potatoes, cut into big chunks",
+   "1 1/2 lb Yukon gold potatoes, cut into rough chunks"
+  ]
+ },
+ {
+  "key": "cumin seeds",
+  "count": 2,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp cumin seeds"
+  ]
+ },
+ {
+  "key": "achiote powder or smoked paprika",
+  "count": 2,
+  "store": "Either",
+  "examples": [
+   "2 tsp achiote (annatto) powder or smoked paprika"
+  ]
+ },
+ {
+  "key": "red onion, finely diced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 red onion, finely diced"
+  ]
+ },
+ {
+  "key": "handful thai basil or cilantro",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large handful Thai basil or cilantro"
+  ]
+ },
+ {
+  "key": "dried apricots",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3/4 cup dried apricots, halved"
+  ]
+ },
+ {
+  "key": "cilantro or mint",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 bunch cilantro or mint, chopped"
+  ]
+ },
+ {
+  "key": "grated fresh ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tbsp grated fresh ginger"
+  ]
+ },
+ {
+  "key": "pitted kalamata olives",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup pitted kalamata olives, halved"
+  ]
+ },
+ {
+  "key": "lemon, zested and halved",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lemon, zested and halved"
+  ]
+ },
+ {
+  "key": "handful fresh dill",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 small handful fresh dill, chopped"
+  ]
+ },
+ {
+  "key": "minced lemongrass or lemongrass paste",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp minced lemongrass or lemongrass paste"
+  ]
+ },
+ {
+  "key": "carrot",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large carrot, julienned"
+  ]
+ },
+ {
+  "key": "handful mint and cilantro leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large handful mint and cilantro leaves"
+  ]
+ },
+ {
+  "key": "celery stalks",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 celery stalks, diced"
+  ]
+ },
+ {
+  "key": "cajun or creole seasoning",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp Cajun or Creole seasoning"
+  ]
+ },
+ {
+  "key": "handful fresh cilantro",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 small handful fresh cilantro, chopped"
+  ]
+ },
+ {
+  "key": "handful cilantro, roughly torn",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 small handful cilantro, roughly torn"
+  ]
+ },
+ {
+  "key": "block firm tofu, cut in 3/4-inch cubes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "14 oz block firm tofu, cut in 3/4-inch cubes"
+  ]
+ },
+ {
+  "key": "spanish-style cured chorizo",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 oz Spanish-style cured chorizo, sliced into coins"
+  ]
+ },
+ {
+  "key": "turmeric",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1/2 tsp turmeric"
+  ]
+ },
+ {
+  "key": "lemon, cut in wedges",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lemon, cut in wedges"
+  ]
+ },
+ {
+  "key": "white or cane vinegar",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1/4 cup white or cane vinegar"
+  ]
+ },
+ {
+  "key": "whole black peppercorns, cracked",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp whole black peppercorns, cracked"
+  ]
+ },
+ {
+  "key": "mini cucumber",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 mini cucumber, diced"
+  ]
+ },
+ {
+  "key": "red kidney beans",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 can red kidney beans, drained and rinsed"
+  ]
+ },
+ {
+  "key": "whole milk ricotta",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "15 oz whole milk ricotta"
+  ]
+ },
+ {
+  "key": "fresh basil leaves, for finishing",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "fresh basil leaves, for finishing"
+  ]
+ },
+ {
+  "key": "roma tomatoes, seeded and diced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 Roma tomatoes, seeded and diced"
+  ]
+ },
+ {
+  "key": "flat-leaf parsley leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup flat-leaf parsley leaves, roughly chopped"
+  ]
+ },
+ {
+  "key": "naan or pocketless pita",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 pieces naan or pocketless pita"
+  ]
+ },
+ {
+  "key": "raw shrimp",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 oz raw shrimp, peeled and deveined"
+  ]
+ },
+ {
+  "key": "dried cranberries",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup dried cranberries"
+  ]
+ },
+ {
+  "key": "arugula",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 cups arugula"
+  ]
+ },
+ {
+  "key": "egg white",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 egg white"
+  ]
+ },
+ {
+  "key": "head broccoli",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large head broccoli, cut into small florets"
+  ]
+ },
+ {
+  "key": "dried red chiles or 1 tsp red pepper flakes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 dried red chiles or 1 tsp red pepper flakes"
+  ]
+ },
+ {
+  "key": "toasted sesame seeds",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tbsp toasted sesame seeds"
+  ]
+ },
+ {
+  "key": "red onions, finely diced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 large red onions, finely diced"
+  ]
+ },
+ {
+  "key": "chili powder",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp chili powder"
+  ]
+ },
+ {
+  "key": "black beans",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 cans black beans, drained and rinsed"
+  ]
+ },
+ {
+  "key": "neutral frying oil",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "3/4 cup neutral frying oil"
+  ]
+ },
+ {
+  "key": "dill pickle chips",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup dill pickle chips"
+  ]
+ },
+ {
+  "key": "canned full-fat coconut milk",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup canned full-fat coconut milk"
+  ]
+ },
+ {
+  "key": "red bell pepper, cut in thin strips",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 red bell pepper, cut in thin strips"
+  ]
+ },
+ {
+  "key": "handful cilantro",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 small handful cilantro"
+  ]
+ },
+ {
+  "key": "garlic and a 2-inch knob of ginger, both grated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 garlic cloves and a 2-inch knob of ginger, both grated"
+  ]
+ },
+ {
+  "key": "habanero chile",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 habanero chile, halved (seeds removed for less heat)"
+  ]
+ },
+ {
+  "key": "sweet potatoes, cut in 1-inch cubes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb sweet potatoes, cut in 1-inch cubes"
+  ]
+ },
+ {
+  "key": "baby spinach",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "5 oz baby spinach"
+  ]
+ },
+ {
+  "key": "red onion, cut in thick wedges and separated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large red onion, cut in thick wedges and separated"
+  ]
+ },
+ {
+  "key": "green bell pepper, cut in 1-inch squares",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 green bell pepper, cut in 1-inch squares"
+  ]
+ },
+ {
+  "key": "garlic and 1 tbsp grated ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 garlic cloves and 1 tbsp grated ginger"
+  ]
+ },
+ {
+  "key": "cinnamon stick",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 (3-inch) cinnamon stick"
+  ]
+ },
+ {
+  "key": "sweet onion, shaved paper thin",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 sweet onion, shaved paper thin"
+  ]
+ },
+ {
+  "key": "avocado",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 avocado"
+  ]
+ },
+ {
+  "key": "roasted seaweed snack, crumbled",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 sheet roasted seaweed snack, crumbled"
+  ]
+ },
+ {
+  "key": "green cabbage, cored and shredded",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 head green cabbage, cored and shredded"
+  ]
+ },
+ {
+  "key": "chopped fresh dill",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp chopped fresh dill"
+  ]
+ },
+ {
+  "key": "garlic and a 2-inch knob of ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 garlic cloves and a 2-inch knob of ginger"
+  ]
+ },
+ {
+  "key": "crispy fried onions",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup crispy fried onions"
+  ]
+ },
+ {
+  "key": "garlic, finely grated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 garlic cloves, finely grated"
+  ]
+ },
+ {
+  "key": "ground fenugreek",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp ground fenugreek"
+  ]
+ },
+ {
+  "key": "onion powder",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tsp onion powder"
+  ]
+ },
+ {
+  "key": "chicken bouillon cube",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 chicken bouillon cube, crushed"
+  ]
+ },
+ {
+  "key": "lime, cut in wedges",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lime, cut in wedges"
+  ]
+ },
+ {
+  "key": "thick-cut cod loin pieces",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 thick-cut cod loin pieces (about 1 lb total)"
+  ]
+ },
+ {
+  "key": "dried arbol or guindilla chiles",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 dried arbol or guindilla chiles, sliced into rings"
+  ]
+ },
+ {
+  "key": "jarred piquillo or roasted red peppers",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup jarred piquillo or roasted red peppers, torn"
+  ]
+ },
+ {
+  "key": "baguette or rustic loaf",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 baguette or rustic loaf"
+  ]
+ },
+ {
+  "key": "hot paprika or cayenne",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp hot paprika or cayenne"
+  ]
+ },
+ {
+  "key": "caraway seeds, lightly crushed",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp caraway seeds, lightly crushed"
+  ]
+ },
+ {
+  "key": "white onion",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 white onion, diced"
+  ]
+ },
+ {
+  "key": "habanero",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 habanero, halved (or 1 jalapeno, sliced)"
+  ]
+ },
+ {
+  "key": "mexican oregano",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 1/2 tsp Mexican oregano"
+  ]
+ },
+ {
+  "key": "extra-firm tofu",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 block (14 oz) extra-firm tofu"
+  ]
+ },
+ {
+  "key": "green cabbage, cut in rough 2-inch squares",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 head green cabbage, cut in rough 2-inch squares"
+  ]
+ },
+ {
+  "key": "scallions, cut in 2-inch lengths",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 scallions, cut in 2-inch lengths"
+  ]
+ },
+ {
+  "key": "mirin or 2 tsp sugar",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tbsp mirin or 2 tsp sugar"
+  ]
+ },
+ {
+  "key": "bonito flakes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup bonito flakes (katsuobushi)"
+  ]
+ },
+ {
+  "key": "cremini mushrooms",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 oz cremini mushrooms, quartered"
+  ]
+ },
+ {
+  "key": "dry riesling",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 1/2 cups dry Riesling"
+  ]
+ },
+ {
+  "key": "wide egg noodles or spaetzle",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 oz wide egg noodles or spaetzle"
+  ]
+ },
+ {
+  "key": "chopped parsley",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp chopped parsley"
+  ]
+ },
+ {
+  "key": "jalapenos",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 jalapenos, divided"
+  ]
+ },
+ {
+  "key": "ears corn, cut in 2-inch rounds",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 ears corn, cut in 2-inch rounds (or 6 Season's Choice frozen cobbettes)"
+  ]
+ },
+ {
+  "key": "bunch cilantro, stems and leaves separated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large bunch cilantro, stems and leaves separated"
+  ]
+ },
+ {
+  "key": "thick cod or haddock fillets",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 thick cod or haddock fillets (about 6 oz each)"
+  ]
+ },
+ {
+  "key": "knob fresh ginger, half smashed and half julienned",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large knob fresh ginger (about 3 inches), half smashed and half julienned"
+  ]
+ },
+ {
+  "key": "scallions, whites smashed and greens finely julienned",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 scallions, whites smashed and greens finely julienned"
+  ]
+ },
+ {
+  "key": "peanut or other neutral high-heat oil",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "3 tbsp peanut or other neutral high-heat oil"
+  ]
+ },
+ {
+  "key": "small handful cilantro sprigs",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "small handful cilantro sprigs"
+  ]
+ },
+ {
+  "key": "knob fresh ginger, half grated and half julienned",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large knob fresh ginger, half grated and half julienned"
+  ]
+ },
+ {
+  "key": "to 3 green serrano chiles, slit lengthwise",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 to 3 green serrano chiles, slit lengthwise"
+  ]
+ },
+ {
+  "key": "coriander seeds, coarsely crushed",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp coriander seeds, coarsely crushed"
+  ]
+ },
+ {
+  "key": "cilantro, leaves and tender stems chopped",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro, leaves and tender stems chopped"
+  ]
+ },
+ {
+  "key": "whole peeled tomatoes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 can (14.5 oz) whole peeled tomatoes"
+  ]
+ },
+ {
+  "key": "handful fresh basil leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "handful fresh basil leaves"
+  ]
+ },
+ {
+  "key": "garlic, half smashed and half finely minced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "10 cloves garlic, half smashed and half finely minced"
+  ]
+ },
+ {
+  "key": "cinnamon stick, 4 green cardamom pods, and 2 bay leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cinnamon stick, 4 green cardamom pods, and 2 bay leaves"
+  ]
+ },
+ {
+  "key": "white or red wine vinegar",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1/4 cup white or red wine vinegar"
+  ]
+ },
+ {
+  "key": "flat-leaf parsley",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 bunch flat-leaf parsley, chopped"
+  ]
+ },
+ {
+  "key": "plain fine breadcrumbs",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup plain fine breadcrumbs"
+  ]
+ },
+ {
+  "key": "cremini mushrooms, thickly sliced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 oz cremini mushrooms, thickly sliced"
+  ]
+ },
+ {
+  "key": "boneless lamb shoulder or leg",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb boneless lamb shoulder or leg, sliced thin against the grain"
+  ]
+ },
+ {
+  "key": "whole cumin seeds",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tbsp whole cumin seeds"
+  ]
+ },
+ {
+  "key": "coarse red chili flakes",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp coarse red chili flakes"
+  ]
+ },
+ {
+  "key": "neutral high-heat oil",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tbsp neutral high-heat oil"
+  ]
+ },
+ {
+  "key": "garlic, mashed to a paste",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 cloves garlic, mashed to a paste"
+  ]
+ },
+ {
+  "key": "orange",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 orange"
+  ]
+ },
+ {
+  "key": "bay leaf",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 bay leaf"
+  ]
+ },
+ {
+  "key": "small handful cilantro or parsley",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "small handful cilantro or parsley, chopped"
+  ]
+ },
+ {
+  "key": "knob fresh ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large knob fresh ginger, peeled"
+  ]
+ },
+ {
+  "key": "fresno or serrano chiles, stemmed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 Fresno or serrano chiles, stemmed"
+  ]
+ },
+ {
+  "key": "cilantro, stems and leaves separated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro, stems and leaves separated"
+  ]
+ },
+ {
+  "key": "knob ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 (2-inch) knob ginger, sliced into thin coins"
+  ]
+ },
+ {
+  "key": "dried red chiles, snapped in half",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 dried red chiles, snapped in half"
+  ]
+ },
+ {
+  "key": "packed cups thai basil leaves, stems removed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 packed cups Thai basil leaves, stems removed"
+  ]
+ },
+ {
+  "key": "fennel bulb",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large fennel bulb, cut into 1/2-inch wedges"
+  ]
+ },
+ {
+  "key": "pitted kalamata or black olives",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup pitted Kalamata or black olives"
+  ]
+ },
+ {
+  "key": "orange, zest peeled in wide strips plus the juice",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 orange, zest peeled in wide strips plus the juice"
+  ]
+ },
+ {
+  "key": "herbes de provence",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tsp herbes de Provence (or Trader Joe's 21 Seasoning Salute)"
+  ]
+ },
+ {
+  "key": "thick slices country bread, crusts torn off",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 thick slices country bread, crusts torn off"
+  ]
+ },
+ {
+  "key": "whole milk",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 1/2 cups whole milk"
+  ]
+ },
+ {
+  "key": "merken",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tsp merken (or 1 1/2 tsp smoked paprika plus a pinch of cayenne)"
+  ]
+ },
+ {
+  "key": "chicken or seafood broth",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup chicken or seafood broth"
+  ]
+ },
+ {
+  "key": "stone-ground grits",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 1/2 cups stone-ground grits"
+  ]
+ },
+ {
+  "key": "scallions, whites and greens sliced separately",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch scallions, whites and greens sliced separately"
+  ]
+ },
+ {
+  "key": "mustard oil",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp mustard oil"
+  ]
+ },
+ {
+  "key": "timur or sichuan peppercorns",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp timur or Sichuan peppercorns"
+  ]
+ },
+ {
+  "key": "fenugreek seeds",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp fenugreek seeds"
+  ]
+ },
+ {
+  "key": "dried red chiles",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 dried red chiles"
+  ]
+ },
+ {
+  "key": "ground red chili",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp ground red chili"
+  ]
+ },
+ {
+  "key": "knob ginger and 4 garlic",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 (2-inch) knob ginger and 4 garlic cloves, grated to a paste"
+  ]
+ },
+ {
+  "key": "red onion, slivered",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 small red onion, slivered"
+  ]
+ },
+ {
+  "key": "tins sardines packed in olive oil",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tins sardines packed in olive oil, drained"
+  ]
+ },
+ {
+  "key": "fennel bulb with fronds, bulb diced and fronds chopped",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large fennel bulb with fronds, bulb diced and fronds chopped"
+  ]
+ },
+ {
+  "key": "big pinch saffron threads",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 big pinch saffron threads"
+  ]
+ },
+ {
+  "key": "cilantro and 4 scallions",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro and 4 scallions, roughly chopped together"
+  ]
+ },
+ {
+  "key": "scotch bonnet or habanero chile",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 scotch bonnet or habanero chile"
+  ]
+ },
+ {
+  "key": "boneless lamb shoulder",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 lb boneless lamb shoulder, cut into 1 1/2-inch cubes"
+  ]
+ },
+ {
+  "key": "kashmiri red chili powder",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp Kashmiri red chili powder"
+  ]
+ },
+ {
+  "key": "ground fennel",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tbsp ground fennel"
+  ]
+ },
+ {
+  "key": "ground dry ginger",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp ground dry ginger"
+  ]
+ },
+ {
+  "key": "black cardamom pods, 6 green cardamom pods, 1 cinnamon stick and 6 cloves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 black cardamom pods, 6 green cardamom pods, 1 cinnamon stick and 6 cloves"
+  ]
+ },
+ {
+  "key": "cornstarch stirred into 2 tbsp cold water",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tsp cornstarch stirred into 2 tbsp cold water"
+  ]
+ },
+ {
+  "key": "honey",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 tbsp honey"
+  ]
+ },
+ {
+  "key": "persian cucumber, shaved into thin coins",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 Persian cucumber, shaved into thin coins"
+  ]
+ },
+ {
+  "key": "radishes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 radishes, sliced paper-thin"
+  ]
+ },
+ {
+  "key": "mayonnaise",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "3 tbsp mayonnaise"
+  ]
+ },
+ {
+  "key": "neutral oil, for shallow frying",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 cup neutral oil, for shallow frying"
+  ]
+ },
+ {
+  "key": "jalapeños or serranos, stemmed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 jalapeños or serranos, stemmed"
+  ]
+ },
+ {
+  "key": "fresh rosemary",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 sprigs fresh rosemary"
+  ]
+ },
+ {
+  "key": "sage leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 sage leaves"
+  ]
+ },
+ {
+  "key": "lacinato kale, stripped and torn",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch lacinato kale, stripped and torn"
+  ]
+ },
+ {
+  "key": "green bell pepper, seeded and torn",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 green bell pepper, seeded and torn"
+  ]
+ },
+ {
+  "key": "pimiento-stuffed green olives",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup pimiento-stuffed green olives"
+  ]
+ },
+ {
+  "key": "whole star anise pods",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "2 whole star anise pods"
+  ]
+ },
+ {
+  "key": "ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 (2-inch) piece ginger, sliced into coins"
+  ]
+ },
+ {
+  "key": "salmon fillets",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 (6 oz) salmon fillets"
+  ]
+ },
+ {
+  "key": "nigella seeds",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp nigella seeds (kalonji)"
+  ]
+ },
+ {
+  "key": "green serrano chiles, slit lengthwise",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 green serrano chiles, slit lengthwise"
+  ]
+ },
+ {
+  "key": "mustard oil or other neutral oil",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "3 tbsp mustard oil or other neutral oil"
+  ]
+ },
+ {
+  "key": "small handful cilantro",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "small handful cilantro, torn"
+  ]
+ },
+ {
+  "key": "thick slices crusty bread",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 thick slices crusty bread"
+  ]
+ },
+ {
+  "key": "crushed red pepper",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1/4 tsp crushed red pepper"
+  ]
+ },
+ {
+  "key": "limes, juiced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 limes, juiced"
+  ]
+ },
+ {
+  "key": "thai chili flakes or crushed red pepper",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp Thai chili flakes or crushed red pepper"
+  ]
+ },
+ {
+  "key": "mint leaves, loosely packed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup mint leaves, loosely packed"
+  ]
+ },
+ {
+  "key": "green cabbage, leaves separated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 head green cabbage, leaves separated"
+  ]
+ },
+ {
+  "key": "white vinegar",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1/4 cup white vinegar"
+  ]
+ },
+ {
+  "key": "fresh dill",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/4 cup fresh dill, chopped"
+  ]
+ },
+ {
+  "key": "cilantro, leaves and tender stems",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro, leaves and tender stems"
+  ]
+ },
+ {
+  "key": "scallions, cut in half",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "4 scallions, cut in half"
+  ]
+ },
+ {
+  "key": "garlic, cloves peeled and smashed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 heads garlic, cloves peeled and smashed"
+  ]
+ },
+ {
+  "key": "pitted green olives",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup pitted green olives"
+  ]
+ },
+ {
+  "key": "pork shoulder or thick-cut boneless pork chops",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb pork shoulder or thick-cut boneless pork chops"
+  ]
+ },
+ {
+  "key": "long green anaheim or hatch chilies, seeded and cut on a sharp bias",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 long green Anaheim or Hatch chilies, seeded and cut on a sharp bias"
+  ]
+ },
+ {
+  "key": "salted fermented black beans",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp salted fermented black beans, rinsed and roughly chopped (or black bean garlic sauce)"
+  ]
+ },
+ {
+  "key": "inch piece ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2-inch piece ginger, cut into matchsticks"
+  ]
+ },
+ {
+  "key": "chinese black vinegar or rice vinegar",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tbsp Chinese black vinegar or rice vinegar"
+  ]
+ },
+ {
+  "key": "neutral oil, kosher salt, black pepper",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "Neutral oil, kosher salt, black pepper"
+  ]
+ },
+ {
+  "key": "whole black peppercorns",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp whole black peppercorns"
+  ]
+ },
+ {
+  "key": "coriander seeds",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tsp coriander seeds"
+  ]
+ },
+ {
+  "key": "ginger-garlic paste",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tbsp ginger-garlic paste (or 4 cloves garlic and a thumb of ginger, grated)"
+  ]
+ },
+ {
+  "key": "tomato",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tomato, chopped"
+  ]
+ },
+ {
+  "key": "coconut or olive oil, kosher salt",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "Coconut or olive oil, kosher salt"
+  ]
+ },
+ {
+  "key": "whole peeled san marzano-style tomatoes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 can (28 oz) whole peeled San Marzano-style tomatoes"
+  ]
+ },
+ {
+  "key": "green or black olives",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup green or black olives, torn open and pitted"
+  ]
+ },
+ {
+  "key": "fresh mozzarella",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 oz fresh mozzarella"
+  ]
+ },
+ {
+  "key": "handful fresh basil",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large handful fresh basil"
+  ]
+ },
+ {
+  "key": "loaf crusty ciabatta",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 loaf crusty ciabatta"
+  ]
+ },
+ {
+  "key": "adobo-style all-purpose seasoning",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp adobo-style all-purpose seasoning (or 21 Seasoning Salute plus garlic powder)"
+  ]
+ },
+ {
+  "key": "granulated sugar",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp granulated sugar"
+  ]
+ },
+ {
+  "key": "cilantro, stems minced and leaves reserved",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 bunch cilantro, stems minced and leaves reserved"
+  ]
+ },
+ {
+  "key": "pimiento-stuffed green olives, plus 2 tbsp of their brine",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup pimiento-stuffed green olives, plus 2 tbsp of their brine"
+  ]
+ },
+ {
+  "key": "olive oil, kosher salt, black pepper, water",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "Olive oil, kosher salt, black pepper, water"
+  ]
+ },
+ {
+  "key": "uncooked jasmine or sticky rice",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp uncooked jasmine or sticky rice"
+  ]
+ },
+ {
+  "key": "to 2 tsp toasted thai chili flakes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 to 2 tsp toasted Thai chili flakes"
+  ]
+ },
+ {
+  "key": "shallots or 1/2 red onion",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 shallots or 1/2 red onion, sliced paper thin"
+  ]
+ },
+ {
+  "key": "mint leaves, picked",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup mint leaves, picked"
+  ]
+ },
+ {
+  "key": "butter or romaine lettuce, leaves separated",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 head butter or romaine lettuce, leaves separated"
+  ]
+ },
+ {
+  "key": "kosher salt, water",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "Kosher salt, water"
+  ]
+ },
+ {
+  "key": "panko breadcrumbs",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup panko breadcrumbs"
+  ]
+ },
+ {
+  "key": "ground allspice plus several scrapes of nutmeg",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 tsp ground allspice plus several scrapes of nutmeg"
+  ]
+ },
+ {
+  "key": "white vinegar and 1 tbsp sugar",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/4 cup white vinegar and 1 tbsp sugar"
+  ]
+ },
+ {
+  "key": "lingonberry or red currant jam",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/3 cup lingonberry or red currant jam"
+  ]
+ },
+ {
+  "key": "fine dry breadcrumbs",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 cup fine dry breadcrumbs"
+  ]
+ },
+ {
+  "key": "to 2 serrano or jalapeno chiles",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 to 2 serrano or jalapeno chiles"
+  ]
+ },
+ {
+  "key": "sweet smoked paprika",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 tbsp sweet smoked paprika (pimenton)"
+  ]
+ },
+ {
+  "key": "cannellini or great northern beans",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 cans (15 oz) cannellini or great northern beans, drained and rinsed"
+  ]
+ },
+ {
+  "key": "collard greens, turnip greens, or kale, stemmed and torn",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb collard greens, turnip greens, or kale, stemmed and torn"
+  ]
+ },
+ {
+  "key": "white or yellow miso",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp white or yellow miso"
+  ]
+ },
+ {
+  "key": "scallions, whites and greens sliced and kept separate",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 scallions, whites and greens sliced and kept separate"
+  ]
+ },
+ {
+  "key": "paneer",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 oz paneer, cut into 3/4-inch cubes"
+  ]
+ },
+ {
+  "key": "chickpea flour",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp chickpea flour (besan)"
+  ]
+ },
+ {
+  "key": "jaggery or dark brown sugar",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp jaggery or dark brown sugar"
+  ]
+ },
+ {
+  "key": "brown mustard seeds",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp brown mustard seeds"
+  ]
+ },
+ {
+  "key": "dried red chiles and 1 tsp grated ginger",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 dried red chiles and 1 tsp grated ginger"
+  ]
+ },
+ {
+  "key": "fresh sage leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "16 fresh sage leaves"
+  ]
+ },
+ {
+  "key": "bottle lager beer",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 (12 oz) bottle lager beer"
+  ]
+ },
+ {
+  "key": "bunches cilantro, stems and all",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 large bunches cilantro, stems and all"
+  ]
+ },
+ {
+  "key": "dark brown sugar or grated panela",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tbsp dark brown sugar or grated panela"
+  ]
+ },
+ {
+  "key": "coarsely cracked black peppercorns",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 1/2 tbsp coarsely cracked black peppercorns"
+  ]
+ },
+ {
+  "key": "green leaf lettuce, 1 tomato sliced, and 1/2 red onion sliced paper-thin",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 head green leaf lettuce, 1 tomato sliced, and 1/2 red onion sliced paper-thin"
+  ]
+ },
+ {
+  "key": "hot paprika or 1/2 tsp cayenne",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp hot paprika or 1/2 tsp cayenne"
+  ]
+ },
+ {
+  "key": "caraway seeds and 1 tsp dried marjoram",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp caraway seeds and 1 tsp dried marjoram"
+  ]
+ },
+ {
+  "key": "wide egg noodles",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 oz wide egg noodles"
+  ]
+ },
+ {
+  "key": "black beans, liquid and all",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 (15 oz) can black beans, liquid and all"
+  ]
+ },
+ {
+  "key": "red bell pepper, finely diced",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 red bell pepper, finely diced"
+  ]
+ },
+ {
+  "key": "very ripe black-skinned plantains and 1 lime",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 very ripe black-skinned plantains and 1 lime"
+  ]
+ },
+ {
+  "key": "chicken livers",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb chicken livers, trimmed and cut into bite-size pieces"
+  ]
+ },
+ {
+  "key": "unsalted butter or schmaltz",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp unsalted butter or schmaltz"
+  ]
+ },
+ {
+  "key": "tahini",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 cup tahini"
+  ]
+ },
+ {
+  "key": "pita breads and 1 cup sliced dill pickles",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "6 pita breads and 1 cup sliced dill pickles"
+  ]
+ },
+ {
+  "key": "bunch cilantro, tender stems and leaves",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 large bunch cilantro, tender stems and leaves, roughly chopped"
+  ]
+ },
+ {
+  "key": "garlic, half minced and half smashed",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "8 cloves garlic, half minced and half smashed"
+  ]
+ },
+ {
+  "key": "green chilies, split lengthwise",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "2 green chilies, split lengthwise"
+  ]
+ },
+ {
+  "key": "red chili powder",
+  "count": 1,
+  "store": "Pantry",
+  "examples": [
+   "1 tsp red chili powder"
+  ]
+ },
+ {
+  "key": "instant polenta",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3/4 cup instant polenta"
+  ]
+ },
+ {
+  "key": "unsweetened shredded coconut",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3/4 cup unsweetened shredded coconut"
+  ]
+ },
+ {
+  "key": "lemongrass paste",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp lemongrass paste"
+  ]
+ },
+ {
+  "key": "red fresno chilies",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 red Fresno chilies, sliced thin"
+  ]
+ },
+ {
+  "key": "coconut oil",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 tbsp coconut oil"
+  ]
+ },
+ {
+  "key": "baby yellow potatoes",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1 lb baby yellow potatoes"
+  ]
+ },
+ {
+  "key": "red onion, shaved paper thin",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "1/2 small red onion, shaved paper thin"
+  ]
+ },
+ {
+  "key": "handful chives, snipped",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "handful chives, snipped"
+  ]
+ },
+ {
+  "key": "merguez sausage",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "12 oz merguez sausage, cut into thick coins"
+  ]
+ },
+ {
+  "key": "celery",
+  "count": 1,
+  "store": "Either",
+  "examples": [
+   "3 stalks celery, sliced"
+  ]
+ }
+]

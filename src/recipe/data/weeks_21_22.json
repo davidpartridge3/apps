@@ -1,0 +1,810 @@
+[
+ {
+  "week": 21,
+  "slot": "dinner",
+  "title": "Beijing Zhajiangmian: Fried Bean Sauce Pork Noodles",
+  "cuisine": "Northern Chinese / Beijing",
+  "blurb": "A dark, glossy heap of slow-fried pork and fermented bean paste dropped onto springy wheat noodles with a cold thicket of raw cucumber, tossed at the table until every strand turns mahogany.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "\ud83c\udf5c",
+  "ingredients": [
+   {
+    "item": "1 lb ground pork",
+    "store": "Aldi"
+   },
+   {
+    "item": "1/3 cup hoisin sauce (Fusia)",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp white or yellow miso",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp Fusia soy sauce",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 tbsp Trader Joe's Crunchy Chili Onion",
+    "store": "TJ"
+   },
+   {
+    "item": "6 scallions, whites and greens sliced and kept separate",
+    "store": "Either"
+   },
+   {
+    "item": "4 garlic cloves, minced, plus a 1-inch knob of ginger, grated",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp Shaoxing wine or dry sherry",
+    "store": "Either"
+   },
+   {
+    "item": "1 tsp sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tsp toasted sesame oil",
+    "store": "Either"
+   },
+   {
+    "item": "10 oz fresh or dried wheat noodles (Fusia)",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 English cucumber, cut into long matchsticks",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Whisk the hoisin, miso, soy sauce, Shaoxing wine, sugar, and 1/3 cup water in a bowl until completely smooth, then park it next to the stove. Bring a large pot of salted water to a boil for the noodles.",
+    "timer": null,
+    "tip": "Pre-mixing keeps the paste from scorching when it hits the pan."
+   },
+   {
+    "text": "Heat 1 tbsp oil in a wok or heavy skillet over medium-high until it shimmers, add the pork, and press it into one flat slab. Leave it completely alone until the underside is deep golden and crusted, then break it into rough crumbles.",
+    "timer": 300,
+    "tip": "Resist stirring, the crust is where the flavor comes from."
+   },
+   {
+    "text": "Push the pork to one side, drop the scallion whites, garlic, and ginger into the rendered fat, and stir until fragrant and just softened. Fold everything together.",
+    "timer": 60,
+    "tip": null
+   },
+   {
+    "text": "Pour in the sauce, lower the heat to medium-low, and let it bubble lazily, stirring every couple of minutes, until it darkens to glossy mahogany and a slick of red oil separates around the edge. Cut the cucumber into matchsticks while it cooks.",
+    "timer": 720,
+    "tip": "Long and slow is what makes it taste roasted instead of raw."
+   },
+   {
+    "text": "Boil the noodles until just chewy at the center, then scoop out 1/2 cup of the cooking water before draining. Rinse the noodles briefly under cold water so they stay bouncy.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Stir the sesame oil and Crunchy Chili Onion into the sauce, then loosen it with splashes of noodle water until it slides off the spoon in a thick ribbon. Taste and add a pinch of salt only if it needs it, the miso is already salty.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Divide the noodles between two deep bowls, spoon a generous mound of sauce into the center of each, and pile the cucumber and scallion greens around the rim. Bring them to the table unmixed and toss hard right before eating.",
+    "timer": null,
+    "tip": "Mixing at the table is the tradition, not a shortcut."
+   }
+  ],
+  "swap": "No miso? Use an extra 3 tbsp hoisin plus 1 tsp Fusia soy sauce and skip the sugar entirely.",
+  "leftovers": "The sauce keeps 5 days refrigerated and thickens into a paste, so loosen it with hot water in the pan and boil fresh noodles."
+ },
+ {
+  "week": 21,
+  "slot": "dinner",
+  "title": "Gujarati Kadhi with Crisped Paneer",
+  "cuisine": "Gujarati",
+  "blurb": "A silky sweet-sour yogurt curry that hits sugar first, tang second, and a slow chile hum last, finished with a spitting ghee tempering poured over crisp-edged cubes of paneer.",
+  "time": "35 min",
+  "servings": 2,
+  "hero": "\ud83e\udd63",
+  "ingredients": [
+   {
+    "item": "12 oz paneer, cut into 3/4-inch cubes",
+    "store": "Either"
+   },
+   {
+    "item": "1 1/2 cups Friendly Farms plain whole-milk yogurt",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp chickpea flour (besan)",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp jaggery or dark brown sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tbsp ghee or butter",
+    "store": "Either"
+   },
+   {
+    "item": "1 tsp brown mustard seeds",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tsp cumin seeds",
+    "store": "Pantry"
+   },
+   {
+    "item": "15 fresh curry leaves",
+    "store": "Either"
+   },
+   {
+    "item": "2 dried red chiles and 1 tsp grated ginger",
+    "store": "Either"
+   },
+   {
+    "item": "1/4 tsp asafoetida (hing)",
+    "store": "Pantry"
+   },
+   {
+    "item": "1/2 tsp ground turmeric",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 pouch Earthly Grains basmati rice and 1/2 cup chopped cilantro",
+    "store": "Aldi"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Whisk the yogurt, chickpea flour, turmeric, jaggery, 1 tsp salt, and 2 cups water in a bowl until it is absolutely lump-free and thin as heavy cream. Run your finger along the bottom of the bowl to check for hidden pockets of flour.",
+    "timer": null,
+    "tip": "Any lump of besan will taste raw and chalky later."
+   },
+   {
+    "text": "Pat the paneer dry and sear it in 1 tbsp of the ghee in a nonstick skillet over medium-high, turning once, until two sides are deep golden and the edges look crisp. Slide it onto a plate and salt it lightly.",
+    "timer": 300,
+    "tip": "Wet paneer will stick and tear instead of browning."
+   },
+   {
+    "text": "Pour the yogurt mixture into a saucepan and bring it to a bare simmer over medium, whisking constantly in one direction until it thickens slightly and loses its raw, chalky smell.",
+    "timer": 300,
+    "tip": "Constant motion is what keeps the yogurt from splitting."
+   },
+   {
+    "text": "Drop the heat to low and let it simmer uncovered, stirring every couple of minutes, until it coats the back of a spoon and tastes silky rather than floury. It should look like thin cream, not gravy.",
+    "timer": 900,
+    "tip": null
+   },
+   {
+    "text": "Make the vaghar: melt the remaining ghee in a small skillet over medium-high, add the mustard seeds, and hold a lid partly over the pan until they pop like rain against it.",
+    "timer": 60,
+    "tip": "Wait for the popping to slow, that is your cue."
+   },
+   {
+    "text": "Add the cumin seeds, dried chiles, curry leaves, ginger, and asafoetida and stand back, the leaves will crackle violently. Swirl for about twenty seconds until everything smells nutty, then pour the whole spitting mixture straight into the kadhi.",
+    "timer": null,
+    "tip": "Pour it in while it is still sizzling audibly."
+   },
+   {
+    "text": "Taste for the Gujarati balance, sweet arriving first and sour right behind it, adjusting with a pinch more jaggery or salt. Heat the rice pouch, ladle the kadhi over it, add the paneer, and shower with cilantro.",
+    "timer": 120,
+    "tip": null
+   }
+  ],
+  "swap": "No curry leaves? Skip them and add an extra 1/2 tsp cumin seeds plus a wide strip of lime zest to the tempering.",
+  "leftovers": "Keeps 3 days refrigerated and sets thick when cold, so reheat gently over low heat with a splash of water and never let it boil."
+ },
+ {
+  "week": 21,
+  "slot": "dinner",
+  "title": "Saltimbocca alla Romana with Skillet Artichokes",
+  "cuisine": "Roman",
+  "blurb": "Pounded cutlets pinned with sage and prosciutto that crisps into salty lace, deglazed with white wine and butter, alongside artichokes browned hard in the second pan.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "\ud83c\udf3f",
+  "ingredients": [
+   {
+    "item": "2 large Simply Nature organic chicken breasts, halved horizontally into 4 cutlets",
+    "store": "Aldi"
+   },
+   {
+    "item": "8 thin slices prosciutto (Specially Selected)",
+    "store": "Aldi"
+   },
+   {
+    "item": "16 fresh sage leaves",
+    "store": "Either"
+   },
+   {
+    "item": "1/3 cup all-purpose flour",
+    "store": "Pantry"
+   },
+   {
+    "item": "4 tbsp unsalted butter",
+    "store": "Either"
+   },
+   {
+    "item": "2/3 cup dry white wine",
+    "store": "Either"
+   },
+   {
+    "item": "1 jar Trader Joe's Quartered Marinated Artichokes, drained well",
+    "store": "TJ"
+   },
+   {
+    "item": "2 garlic cloves, smashed",
+    "store": "Either"
+   },
+   {
+    "item": "1 lemon",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp chopped flat-leaf parsley",
+    "store": "Either"
+   },
+   {
+    "item": "1/4 cup Priano grated parmesan",
+    "store": "Aldi"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Pound the cutlets between two sheets of plastic to an even 1/4 inch and season them with black pepper only, since the prosciutto brings plenty of salt. Lay two sage leaves on each, drape a slice of prosciutto over the top, and press it down firmly with your palm.",
+    "timer": null,
+    "tip": "Even thickness means every cutlet finishes at the same moment."
+   },
+   {
+    "text": "Dust only the bare chicken side in flour and shake off every bit of excess, leaving the prosciutto naked. Drain the artichokes and blot them dry on a towel while you work.",
+    "timer": null,
+    "tip": "Flour on the ham would stop it from crisping."
+   },
+   {
+    "text": "Heat 1 tbsp oil with 1 tbsp of the butter in a large skillet over medium-high until the foam subsides, then lay the cutlets in prosciutto side down. Cook without moving them until the ham is bronzed, crisp, and welded to the meat.",
+    "timer": 180,
+    "tip": "Press each cutlet gently for full contact."
+   },
+   {
+    "text": "Flip and cook until the chicken is opaque and springs back when pressed, then move them to warm plates. Meanwhile set a second skillet over medium-high with 1 tbsp oil and the smashed garlic.",
+    "timer": 120,
+    "tip": null
+   },
+   {
+    "text": "Lay the artichokes cut side down in the second pan and leave them completely still until the flat faces are browned and blistered, then toss once and kill the heat.",
+    "timer": 300,
+    "tip": "They will spit, so keep a lid handy."
+   },
+   {
+    "text": "Pour the wine into the empty chicken pan over medium-high and scrape up every brown fleck as it bubbles, reducing until it turns syrupy and just coats the back of a spoon.",
+    "timer": 180,
+    "tip": null
+   },
+   {
+    "text": "Pull the pan off the heat, swirl in the remaining butter and a squeeze of lemon until the sauce turns glossy, and spoon it over the cutlets. Toss the artichokes with the parsley, parmesan, and another squeeze of lemon and pile them alongside.",
+    "timer": null,
+    "tip": "Off-heat butter is what makes the sauce shine instead of break."
+   }
+  ],
+  "swap": "No marinated artichokes? Blister a bag of Season's Choice green beans in the same pan with the garlic instead.",
+  "leftovers": "Best straight from the pan, but leftover cutlets are excellent cold the next day, sliced over greens with lemon and olive oil."
+ },
+ {
+  "week": 21,
+  "slot": "batch",
+  "title": "Seco de Pollo: Ecuadorian Beer-Braised Chicken",
+  "cuisine": "Ecuadorian",
+  "blurb": "Chicken braised until it slides off the bone in a blended cilantro-and-beer sauce that cooks down from shocking green to deep olive, brightened with lime-pickled red onion.",
+  "time": "75 min",
+  "servings": 6,
+  "hero": "\ud83c\udf57",
+  "ingredients": [
+   {
+    "item": "4 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 (12 oz) bottle lager beer",
+    "store": "Either"
+   },
+   {
+    "item": "2 large bunches cilantro, stems and all",
+    "store": "Either"
+   },
+   {
+    "item": "6 garlic cloves",
+    "store": "Either"
+   },
+   {
+    "item": "2 yellow onions, diced",
+    "store": "Either"
+   },
+   {
+    "item": "1 red bell pepper, diced",
+    "store": "Either"
+   },
+   {
+    "item": "1 (14.5 oz) can diced tomatoes",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp ground cumin",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tsp achiote (annatto) powder or smoked paprika",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp dark brown sugar or grated panela",
+    "store": "Pantry"
+   },
+   {
+    "item": "3 pouches Earthly Grains long grain rice",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 red onion, thinly sliced, and 3 limes",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Blend the cilantro, garlic, beer, cumin, achiote, and 1 tsp salt until you have a smooth, violently green liquid. Pat the chicken bone dry and season it all over with salt and pepper.",
+    "timer": null,
+    "tip": "Use the cilantro stems, they carry most of the flavor."
+   },
+   {
+    "text": "Heat 1 tbsp oil in a large Dutch oven over medium-high until it shimmers, then brown the chicken skin side down in two batches without crowding, until the skin is deep gold and releases from the pot on its own. Move it to a plate.",
+    "timer": 480,
+    "tip": "If it sticks, it is not ready to turn."
+   },
+   {
+    "text": "Pour off all but 2 tbsp of the fat, drop the heat to medium, and cook the yellow onions and bell pepper with a pinch of salt, scraping up the fond, until they are limp and edged with gold.",
+    "timer": 600,
+    "tip": "This refrito is the backbone of the whole pot."
+   },
+   {
+    "text": "Add the tomatoes and brown sugar and cook, stirring often, until the tomatoes collapse and the mixture darkens and turns jammy enough to leave a trail behind the spoon.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Pour in the green blend and bring it to a simmer, then nestle the chicken back in skin side up along with any juices from the plate. It will look alarmingly bright, but it dulls to olive as it cooks.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Cover partially and simmer over low, adjusting the flame so the surface only blips, until the meat pulls away from the bone with a fork. While it braises, toss the sliced red onion with the juice of 2 limes and a big pinch of salt so it softens and turns pink.",
+    "timer": 1800,
+    "tip": "A hard boil will toughen the chicken and dull the herbs."
+   },
+   {
+    "text": "Uncover, raise the heat to medium, and reduce until the sauce is glossy and thick enough to cling to the pieces rather than pool around them. Taste and correct with salt and a squeeze of lime.",
+    "timer": 900,
+    "tip": null
+   },
+   {
+    "text": "Heat the rice pouches and serve the chicken over rice with plenty of sauce spooned across, topped with the pickled onions and the remaining lime cut into wedges.",
+    "timer": 120,
+    "tip": "The acid on top is what keeps the rich sauce moving."
+   }
+  ],
+  "swap": "No lager? Use 1 1/2 cups chicken broth plus 1 tbsp Fusia rice vinegar for a similar bright tang.",
+  "leftovers": "Refrigerates 4 days and freezes 3 months; the sauce tightens when cold, so reheat covered with a splash of water."
+ },
+ {
+  "week": 22,
+  "slot": "dinner",
+  "title": "Beef Lok Lak with Tuk Meric",
+  "cuisine": "Cambodian",
+  "blurb": "Cubes of steak seared black in spots and glazed sticky, piled on a cold tomato salad under a runny fried egg, with a fiercely sour lime-and-black-pepper dip for every bite.",
+  "time": "30 min",
+  "servings": 2,
+  "hero": "\ud83e\udd69",
+  "ingredients": [
+   {
+    "item": "1 1/4 lb sirloin or flat iron steak, cut into 1-inch cubes",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp oyster sauce (Fusia)",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 tbsp Fusia soy sauce",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 tbsp fish sauce",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 1/2 tbsp coarsely cracked black peppercorns",
+    "store": "Pantry"
+   },
+   {
+    "item": "4 garlic cloves, minced",
+    "store": "Either"
+   },
+   {
+    "item": "3 limes",
+    "store": "Either"
+   },
+   {
+    "item": "2 eggs",
+    "store": "Either"
+   },
+   {
+    "item": "1 head green leaf lettuce, 1 tomato sliced, and 1/2 red onion sliced paper-thin",
+    "store": "Either"
+   },
+   {
+    "item": "1 pouch Earthly Grains jasmine rice",
+    "store": "Aldi"
+   },
+   {
+    "item": "2 tbsp neutral oil",
+    "store": "Pantry"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Toss the beef with the oyster sauce, soy sauce, fish sauce, sugar, half the garlic, and 1 tbsp of the cracked pepper until every cube is slick. Let it sit at room temperature while you build the rest.",
+    "timer": 900,
+    "tip": "Cracked, not ground, so you get gritty pops of pepper."
+   },
+   {
+    "text": "Make the tuk meric by stirring the juice of 2 limes with the remaining cracked pepper, remaining garlic, and 1 tsp salt in a small bowl. Taste it, it should be aggressively sour, salty, and hot enough to make you blink.",
+    "timer": null,
+    "tip": "This dip is the dish, do not tone it down."
+   },
+   {
+    "text": "Line two plates with the lettuce, sliced tomato, and red onion and squeeze half a lime over the top. Heat the rice pouch and keep it covered.",
+    "timer": null,
+    "tip": null
+   },
+   {
+    "text": "Heat 1 tbsp of the oil in a cast iron skillet over high until it is faintly smoking, then add half the beef in a single layer. Leave it untouched until a dark crust forms on the underside, toss for thirty seconds, and move it to a plate.",
+    "timer": 180,
+    "tip": "Two batches, or the beef steams and goes gray."
+   },
+   {
+    "text": "Repeat with the second half of the beef, then return the first batch and all its juices and toss over high heat until the marinade reduces to a sticky glaze clinging to every cube.",
+    "timer": 180,
+    "tip": null
+   },
+   {
+    "text": "Wipe the skillet, add the remaining oil over medium-high, and fry the eggs until the whites are set with brown lacy edges but the yolks still wobble.",
+    "timer": 120,
+    "tip": "The running yolk becomes part of the sauce."
+   },
+   {
+    "text": "Pile the beef over the salad, slide an egg onto each plate, and serve with rice and the tuk meric alongside for dipping bite by bite.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "No steak? Cube 1 1/4 lb Aldi pork loin and sear it exactly the same way, just a minute longer per batch.",
+  "leftovers": "The beef keeps 3 days; reheat it fast in a screaming skillet and build the salad and dip fresh, since the lime dulls overnight."
+ },
+ {
+  "week": 22,
+  "slot": "dinner",
+  "title": "Kure na Paprice: Czech Paprika Cream Chicken",
+  "cuisine": "Czech",
+  "blurb": "Thighs braised in a brick-red sauce built on a shameless amount of sweet paprika, caraway, and marjoram, then finished with cream and tempered sour cream over buttered noodles.",
+  "time": "40 min",
+  "servings": 2,
+  "hero": "\ud83e\udd58",
+  "ingredients": [
+   {
+    "item": "1 1/2 lb boneless skinless chicken thighs (Kirkwood)",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp sweet Hungarian paprika",
+    "store": "Either"
+   },
+   {
+    "item": "1 tsp hot paprika or 1/2 tsp cayenne",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 large yellow onion, finely diced",
+    "store": "Either"
+   },
+   {
+    "item": "3 tbsp unsalted butter",
+    "store": "Either"
+   },
+   {
+    "item": "2 tbsp all-purpose flour",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 1/2 cups chicken broth",
+    "store": "Either"
+   },
+   {
+    "item": "3/4 cup Friendly Farms heavy cream",
+    "store": "Aldi"
+   },
+   {
+    "item": "1/3 cup Friendly Farms sour cream",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 tsp caraway seeds and 1 tsp dried marjoram",
+    "store": "Pantry"
+   },
+   {
+    "item": "8 oz wide egg noodles",
+    "store": "Either"
+   },
+   {
+    "item": "1 lemon",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Season the thighs hard with salt and pepper. Melt 2 tbsp of the butter in a Dutch oven over medium-high until it foams, then brown the chicken in a single layer on one side only until deeply golden, and move it to a plate.",
+    "timer": 300,
+    "tip": "One good side of color is all you need before braising."
+   },
+   {
+    "text": "Lower the heat to medium, add the onion, the remaining butter, and the caraway seeds, and cook, scraping up the browned bits, until the onion is completely soft and translucent with no crunch left. Put a pot of salted water on to boil while you wait.",
+    "timer": 600,
+    "tip": null
+   },
+   {
+    "text": "Pull the pot entirely off the burner and stir in both paprikas and the marjoram, which should smell sweet and toasty within seconds of hitting the hot fat.",
+    "timer": null,
+    "tip": "Paprika scorches into bitterness in a hot pan, so work off the heat."
+   },
+   {
+    "text": "Return the pot to medium-low, sprinkle in the flour, and stir until it coats the onions and looks pasty. Whisk in the broth in a steady stream until the sauce is smooth and glossy with no lumps.",
+    "timer": 60,
+    "tip": null
+   },
+   {
+    "text": "Nestle the chicken and its juices back in, cover, and simmer over low until the thighs are fork-tender and the sauce is brick red. Boil the noodles until just tender, drain, and toss them with a pat of butter.",
+    "timer": 900,
+    "tip": "Keep it at a lazy bubble, not a rolling boil."
+   },
+   {
+    "text": "Uncover, pour in the heavy cream, and simmer until the sauce thickens enough that a finger drawn across the back of a spoon leaves a clean line.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Whisk a ladle of the hot sauce into the sour cream in a small bowl until loose, then stir that back into the pot off the heat. Finish with a squeeze of lemon and salt to taste.",
+    "timer": null,
+    "tip": "Tempering is what keeps the sour cream from curdling into grit."
+   },
+   {
+    "text": "Pile the buttered noodles into shallow bowls, lay the chicken on top, ladle the sauce generously over everything, and grind more black pepper across.",
+    "timer": null,
+    "tip": null
+   }
+  ],
+  "swap": "No heavy cream? Use 1 cup Friendly Farms whole milk and add an extra tablespoon of flour at the roux step.",
+  "leftovers": "Keeps 3 days; reheat over low heat without boiling so the sour cream stays smooth, and cook the noodles fresh."
+ },
+ {
+  "week": 22,
+  "slot": "dinner",
+  "title": "Tico Casado: Pork Chops with Gallo Pinto",
+  "cuisine": "Costa Rican",
+  "blurb": "Thick chops lacquered in a tangy, cumin-heavy Lizano-style sauce, plated the Costa Rican way with purple-stained gallo pinto and sticky caramelized plantains.",
+  "time": "40 min",
+  "servings": 2,
+  "hero": "\ud83c\udf5b",
+  "ingredients": [
+   {
+    "item": "2 thick bone-in pork chops, about 1 1/2 lb total",
+    "store": "Aldi"
+   },
+   {
+    "item": "3 tbsp Worcestershire sauce",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp ground cumin",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tsp achiote (annatto) powder or smoked paprika",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp dark brown sugar",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 (15 oz) can black beans, liquid and all",
+    "store": "Either"
+   },
+   {
+    "item": "1 pouch Earthly Grains long grain rice",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 red bell pepper, finely diced",
+    "store": "Either"
+   },
+   {
+    "item": "1 yellow onion, finely diced",
+    "store": "Either"
+   },
+   {
+    "item": "4 garlic cloves, minced",
+    "store": "Either"
+   },
+   {
+    "item": "1 large bunch cilantro, chopped",
+    "store": "Either"
+   },
+   {
+    "item": "2 very ripe black-skinned plantains and 1 lime",
+    "store": "Either"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Whisk the Worcestershire, cumin, achiote, brown sugar, half the garlic, and 1/2 tsp black pepper into a thin brown Lizano-style sauce. Rub a third of it over the chops and leave them on the counter while you start the beans.",
+    "timer": 600,
+    "tip": "Room-temperature chops sear far more evenly."
+   },
+   {
+    "text": "Heat 1 tbsp oil in a skillet over medium and cook the onion, bell pepper, and remaining garlic with a pinch of salt until soft, sweet, and browning at the edges.",
+    "timer": 600,
+    "tip": null
+   },
+   {
+    "text": "Add the black beans with all of their canning liquid plus 2 tbsp of the reserved sauce and simmer until the liquid reduces to a dark, syrupy glaze coating the beans. Heat the rice pouch while it bubbles.",
+    "timer": 480,
+    "tip": "That bean liquid is what dyes the rice, do not drain it."
+   },
+   {
+    "text": "Fold the hot rice into the beans until every grain is stained purple-brown, then stir in half the cilantro and pull the pan off the heat. Cover to keep it warm.",
+    "timer": null,
+    "tip": "Stained and glossy, never soupy, is the mark of good gallo pinto."
+   },
+   {
+    "text": "Slice the plantains on a sharp diagonal about 1/2 inch thick. Heat 2 tbsp oil in a second skillet over medium and fry them until deep caramel and sticky on both cut faces, then drain on a towel and salt immediately.",
+    "timer": 300,
+    "tip": "Black skins only, yellow plantains will taste starchy."
+   },
+   {
+    "text": "Wipe out the first skillet, raise it to medium-high with 1 tsp oil, and sear the chops undisturbed until a dark crust forms and they lift cleanly from the pan.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Flip, brush with the remaining sauce, and cook until the glaze goes tacky and the meat reaches 140F next to the bone.",
+    "timer": 240,
+    "tip": "Pull them early, they climb several degrees while resting."
+   },
+   {
+    "text": "Rest the chops while you plate the gallo pinto, plantains, and a lime wedge on each plate. Slice the chops thick, lay them alongside, and scrape the pan glaze over the top with the rest of the cilantro.",
+    "timer": 300,
+    "tip": null
+   }
+  ],
+  "swap": "No ripe plantains? Fry thick rounds of sweet potato in the same oil until the edges caramelize.",
+  "leftovers": "Gallo pinto is better on day two; reheat it in a skillet with a splash of water and crown it with a fried egg."
+ },
+ {
+  "week": 22,
+  "slot": "batch",
+  "title": "Me'orav Yerushalmi: Jerusalem Mixed Grill",
+  "cuisine": "Israeli",
+  "blurb": "Griddle-charred chicken and livers tumbled with frizzled onions and a fistful of cumin, turmeric, and baharat, stuffed into pita with runny tahini and a green streak of zhoug.",
+  "time": "50 min",
+  "servings": 6,
+  "hero": "\ud83e\udd59",
+  "ingredients": [
+   {
+    "item": "2 1/2 lb boneless skinless chicken thighs (Kirkwood), sliced into strips",
+    "store": "Aldi"
+   },
+   {
+    "item": "1 lb chicken livers, trimmed and cut into bite-size pieces",
+    "store": "Either"
+   },
+   {
+    "item": "2 large onions, halved and thinly sliced",
+    "store": "Either"
+   },
+   {
+    "item": "1 tbsp ground cumin",
+    "store": "Pantry"
+   },
+   {
+    "item": "2 tsp ground turmeric",
+    "store": "Pantry"
+   },
+   {
+    "item": "1 tbsp baharat or Trader Joe's 21 Seasoning Salute",
+    "store": "TJ"
+   },
+   {
+    "item": "2 tsp ground coriander",
+    "store": "Pantry"
+   },
+   {
+    "item": "3 tbsp unsalted butter or schmaltz",
+    "store": "Either"
+   },
+   {
+    "item": "1/2 cup tahini",
+    "store": "Either"
+   },
+   {
+    "item": "2 lemons",
+    "store": "Either"
+   },
+   {
+    "item": "6 pita breads and 1 cup sliced dill pickles",
+    "store": "Either"
+   },
+   {
+    "item": "1 jar Trader Joe's Zhoug Sauce",
+    "store": "TJ"
+   }
+  ],
+  "steps": [
+   {
+    "text": "Slice the thighs into 1/2-inch strips, cut the livers into bite-size pieces, and pat everything very dry. Toss it all with the cumin, turmeric, baharat, coriander, 2 tsp salt, and 1 tsp black pepper until uniformly gold.",
+    "timer": null,
+    "tip": "Dry meat plus a hot pan gives char instead of steam."
+   },
+   {
+    "text": "Heat 1 tbsp oil in your largest skillet over medium-high until it just begins to smoke, spread half the chicken in a single layer, and leave it alone until the underside is browned and the spices smell toasted. Toss for a minute, then transfer to a bowl.",
+    "timer": 300,
+    "tip": "Crowding the pan is the one mistake that ruins this."
+   },
+   {
+    "text": "Sear the second batch of chicken the same way while you slice the onions, then add it to the bowl.",
+    "timer": 300,
+    "tip": null
+   },
+   {
+    "text": "Add another tablespoon of oil and all the onions with a pinch of salt to the empty skillet over medium-high, scraping up the spiced fond as they release moisture. Cook until they collapse and take on frizzled brown edges.",
+    "timer": 900,
+    "tip": "Those stuck-on spices are the whole point of the pan."
+   },
+   {
+    "text": "Push the onions to the side, drop in the butter, and sear the livers hard until browned outside and barely pink at the center.",
+    "timer": 300,
+    "tip": "Overcooked livers turn chalky, so pull them early."
+   },
+   {
+    "text": "Return all the chicken and its collected juices, add the juice of one lemon and 1/4 cup water, and toss over high heat until the liquid cooks away and everything is glossy and coated.",
+    "timer": 240,
+    "tip": null
+   },
+   {
+    "text": "Whisk the tahini with the juice of the second lemon, a pinch of salt, and cold water added a splash at a time. It will seize into a stiff pale paste first, then loosen into a pourable ivory sauce.",
+    "timer": null,
+    "tip": "It always seizes, keep adding water and keep whisking."
+   },
+   {
+    "text": "Warm the pitas directly over a burner or in a dry pan until they puff and blister, then stuff them with the grill, drizzle heavily with tahini and zhoug, and tuck pickles down the side.",
+    "timer": 120,
+    "tip": null
+   }
+  ],
+  "swap": "Squeamish about livers? Use another pound of chicken thighs and add an extra teaspoon of baharat for depth.",
+  "leftovers": "The meat keeps 4 days and freezes 2 months; reheat it in a dry, ripping-hot skillet to bring the crisp edges back rather than microwaving."
+ }
+]

@@ -1,0 +1,802 @@
+[
+  {
+    "week": 1,
+    "slot": "dinner",
+    "title": "Gochujang Bulgogi Beef Bowls with Chili Onion Crunch",
+    "cuisine": "Korean",
+    "blurb": "Sticky-sweet, deeply browned beef over hot jasmine rice, finished with a runny fried egg and a spoonful of crackling chili onion crunch.",
+    "time": "25 min",
+    "servings": 2,
+    "hero": "🍚",
+    "ingredients": [
+      {
+        "item": "1 lb Simply Nature Organic Grass-Fed Ground Beef",
+        "store": "Aldi"
+      },
+      {
+        "item": "3 tbsp Gochujang Sauce",
+        "store": "TJ"
+      },
+      {
+        "item": "2 tbsp Fusia Asian Inspirations soy sauce",
+        "store": "Aldi"
+      },
+      {
+        "item": "2 tbsp Crunchy Chili Onion",
+        "store": "TJ"
+      },
+      {
+        "item": "2 large eggs",
+        "store": "Either"
+      },
+      {
+        "item": "4 scallions, whites and greens separated",
+        "store": "Either"
+      },
+      {
+        "item": "3 cloves garlic, grated",
+        "store": "Either"
+      },
+      {
+        "item": "1 bag Frozen Jasmine Rice (2 servings)",
+        "store": "TJ"
+      },
+      {
+        "item": "1 Persian cucumber, sliced into coins",
+        "store": "Either"
+      },
+      {
+        "item": "2 tsp rice vinegar",
+        "store": "Pantry"
+      },
+      {
+        "item": "1 tsp toasted sesame oil",
+        "store": "Pantry"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Heat a large skillet over medium-high until a flicked drop of water skitters and evaporates. Add the ground beef, press it into one flat slab, and leave it completely alone so it can brown.",
+        "timer": 300,
+        "tip": "Do not stir yet"
+      },
+      {
+        "text": "While the beef browns, toss the cucumber coins with the rice vinegar and a pinch of salt, and set them aside to quick-pickle.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Break the beef into craggy bite-size pieces, then add the garlic and scallion whites. Stir constantly until the garlic smells sweet rather than raw.",
+        "timer": 60,
+        "tip": null
+      },
+      {
+        "text": "Pour in the Gochujang Sauce and soy sauce and drop the heat to medium. Simmer, stirring occasionally, until the sauce turns glossy and clings to the meat instead of pooling.",
+        "timer": 180,
+        "tip": "Glossy, not soupy"
+      },
+      {
+        "text": "Microwave the frozen jasmine rice according to the bag while the beef glazes, then fluff it with a fork.",
+        "timer": 240,
+        "tip": null
+      },
+      {
+        "text": "In a small nonstick pan over medium heat, fry the eggs in a slick of olive oil until the whites are fully set and the edges go lacy and brown but the yolks still jiggle.",
+        "timer": 180,
+        "tip": null
+      },
+      {
+        "text": "Build each bowl with rice, the glazed beef, a fried egg, and the pickled cucumber. Finish with the chili onion crunch, a drizzle of sesame oil, and the sliced scallion greens.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "No Crunchy Chili Onion on the shelf? A spoon of Fusia sriracha plus a scatter of fried onions gets you the same heat-and-crunch effect.",
+    "leftovers": "Keep the beef separate from the rice in the fridge for up to three days and reheat it in a hot skillet so the glaze re-caramelizes."
+  },
+  {
+    "week": 1,
+    "slot": "dinner",
+    "title": "Carne Asada Tacos with Charred Peppers and Chili Lime Crema",
+    "cuisine": "Mexican",
+    "blurb": "Hard-seared marinated steak sliced thin and piled into blistered tortillas with smoky peppers, salsa verde, and a tangy chili lime crema.",
+    "time": "30 min",
+    "servings": 2,
+    "hero": "🌮",
+    "ingredients": [
+      {
+        "item": "1 lb Carne Asada Autentica",
+        "store": "TJ"
+      },
+      {
+        "item": "1 bag Fire Roasted Peppers & Onions (frozen)",
+        "store": "TJ"
+      },
+      {
+        "item": "8 Casa Mamita corn tortillas",
+        "store": "Aldi"
+      },
+      {
+        "item": "1/2 cup Friendly Farms sour cream",
+        "store": "Aldi"
+      },
+      {
+        "item": "2 tsp Chili Lime Seasoning",
+        "store": "TJ"
+      },
+      {
+        "item": "1 lime, halved",
+        "store": "Either"
+      },
+      {
+        "item": "3/4 cup Happy Farms crumbled feta or queso fresco",
+        "store": "Aldi"
+      },
+      {
+        "item": "1/2 cup Casa Mamita salsa verde",
+        "store": "Aldi"
+      },
+      {
+        "item": "1/2 red onion, finely diced",
+        "store": "Either"
+      },
+      {
+        "item": "1/2 bunch cilantro, roughly chopped",
+        "store": "Either"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Pull the carne asada out of the fridge, blot it very dry with paper towels, and let it sit on the counter while you prep everything else.",
+        "timer": 600,
+        "tip": "Dry, room-temp meat sears instead of steams"
+      },
+      {
+        "text": "Stir the sour cream with the Chili Lime Seasoning and a squeeze of lime, thinning with a splash of water until it drizzles off the spoon. Chop the onion and cilantro while you are at it.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Set a cast iron skillet over high heat until it just begins to wisp smoke. Lay the steak in a single uncrowded layer and do not move it until a dark brown crust forms.",
+        "timer": 180,
+        "tip": "Work in two batches if needed"
+      },
+      {
+        "text": "Flip the steak and cook the second side until browned and the thin edges look crisp and lacquered. Move it to a cutting board to rest.",
+        "timer": 120,
+        "tip": null
+      },
+      {
+        "text": "Dump the frozen peppers and onions straight into the same screaming-hot pan and spread them out. Leave them undisturbed so the liquid cooks off and the edges char in the beef fat.",
+        "timer": 300,
+        "tip": null
+      },
+      {
+        "text": "Warm the tortillas in a second dry skillet over medium-high, or directly over a gas flame, until they are pliable and freckled with black spots.",
+        "timer": 60,
+        "tip": null
+      },
+      {
+        "text": "Slice the rested steak against the grain into thin strips; the juices should stay on the board, not run out.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Stack two tortillas per taco and load with steak, charred peppers, salsa verde, cheese, onion, and cilantro, then drizzle the chili lime crema over the top.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "If the Carne Asada Autentica is sold out, Aldi flank steak rubbed with Chili Lime Seasoning and lime juice works just as hard.",
+    "leftovers": "Chop leftover steak and peppers together and fold them into scrambled eggs or a protein wrap for a fast next-day breakfast burrito."
+  },
+  {
+    "week": 1,
+    "slot": "dinner",
+    "title": "Thai Red Curry Shrimp with Blistered Green Beans",
+    "cuisine": "Thai",
+    "blurb": "Plump red shrimp poached in a coconut-rich red curry that is sweet, salty, and lime-sharp all at once, spooned over jasmine rice.",
+    "time": "25 min",
+    "servings": 2,
+    "hero": "🍤",
+    "ingredients": [
+      {
+        "item": "1 lb Raw Argentinian Red Shrimp, thawed and patted dry",
+        "store": "TJ"
+      },
+      {
+        "item": "1 jar Thai Red Curry Sauce",
+        "store": "TJ"
+      },
+      {
+        "item": "1/2 cup full-fat coconut milk",
+        "store": "Either"
+      },
+      {
+        "item": "1 bag Garlic Shiitake Mushroom Green Beans (frozen)",
+        "store": "TJ"
+      },
+      {
+        "item": "1 red bell pepper, sliced thin",
+        "store": "Either"
+      },
+      {
+        "item": "1 tbsp fish sauce",
+        "store": "Either"
+      },
+      {
+        "item": "1 tsp brown sugar",
+        "store": "Pantry"
+      },
+      {
+        "item": "1 lime, halved",
+        "store": "Either"
+      },
+      {
+        "item": "1 large handful Thai basil or cilantro",
+        "store": "Either"
+      },
+      {
+        "item": "2 pouches Earthly Grains jasmine rice",
+        "store": "Aldi"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Spread the thawed shrimp on paper towels and press them dry, then season lightly with salt. Wet shrimp will never take on color.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Heat a wide skillet over high with a slick of olive oil until it shimmers. Add the green beans straight from the freezer and let them sit until the undersides are blistered and browned in spots.",
+        "timer": 300,
+        "tip": null
+      },
+      {
+        "text": "Push the beans to one side, add the bell pepper, and stir just until the slices soften at the edges but still snap. Scrape everything onto a plate.",
+        "timer": 120,
+        "tip": null
+      },
+      {
+        "text": "Lower the heat to medium and pour in the Thai Red Curry Sauce and coconut milk. Simmer until the surface shines with a thin ring of orange oil.",
+        "timer": 180,
+        "tip": "That oil ring means the curry has bloomed"
+      },
+      {
+        "text": "Slide the shrimp into the curry in one layer and poach gently, turning once, until they curl into loose C shapes and turn opaque. Heat the rice pouches while they cook.",
+        "timer": 180,
+        "tip": "Tight O shapes mean overcooked"
+      },
+      {
+        "text": "Return the vegetables to the pan and stir in the fish sauce, brown sugar, and a big squeeze of lime. Taste and add more lime until it tastes bright rather than flat.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Spoon over the jasmine rice and shower with torn Thai basil, with the second lime half on the side.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "Yellow Curry Sauce makes a milder, more golden version, and Season's Choice frozen green beans stand in for the shiitake ones.",
+    "leftovers": "The curry thickens overnight, so reheat it gently with a splash of water and add the shrimp back only at the very end."
+  },
+  {
+    "week": 1,
+    "slot": "batch",
+    "title": "Harissa Chicken and Chickpea Tagine with Apricots",
+    "cuisine": "Moroccan",
+    "blurb": "Fall-apart chicken thighs braised with harissa, warm cinnamon, and sweet dried apricots until the whole pot tastes like a spice market.",
+    "time": "70 min",
+    "servings": 6,
+    "hero": "🍲",
+    "ingredients": [
+      {
+        "item": "3 lb Kirkwood bone-in, skin-on chicken thighs",
+        "store": "Aldi"
+      },
+      {
+        "item": "3 tbsp Harissa",
+        "store": "TJ"
+      },
+      {
+        "item": "2 cans chickpeas, drained and rinsed",
+        "store": "Either"
+      },
+      {
+        "item": "1 can (28 oz) crushed tomatoes",
+        "store": "Either"
+      },
+      {
+        "item": "2 cups chicken broth",
+        "store": "Either"
+      },
+      {
+        "item": "1 large onion, sliced",
+        "store": "Either"
+      },
+      {
+        "item": "5 cloves garlic, sliced",
+        "store": "Either"
+      },
+      {
+        "item": "3/4 cup dried apricots, halved",
+        "store": "Either"
+      },
+      {
+        "item": "2 tsp ground cumin",
+        "store": "Pantry"
+      },
+      {
+        "item": "1 tsp ground cinnamon",
+        "store": "Pantry"
+      },
+      {
+        "item": "1 cup Friendly Farms Greek yogurt",
+        "store": "Aldi"
+      },
+      {
+        "item": "1/2 bunch cilantro or mint, chopped",
+        "store": "Either"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Pat the chicken thighs bone dry and season all over with salt and pepper. Heat a heavy Dutch oven over medium-high with a thin film of olive oil until it shimmers.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Lay the thighs in skin side down without crowding and leave them untouched until the skin is deep golden and releases from the pot on its own.",
+        "timer": 480,
+        "tip": "If it sticks, it is not ready to flip"
+      },
+      {
+        "text": "Flip and brown the second side briefly, then move the thighs to a plate. Pour off all but a couple of tablespoons of the rendered fat.",
+        "timer": 180,
+        "tip": null
+      },
+      {
+        "text": "Add the onion to the pot with a pinch of salt and cook over medium, scraping up the browned bits, until softened and translucent at the edges.",
+        "timer": 420,
+        "tip": null
+      },
+      {
+        "text": "Stir in the garlic, cumin, cinnamon, and Harissa and cook until the paste darkens a shade and smells toasty rather than raw.",
+        "timer": 120,
+        "tip": "Blooming the spices in fat is what makes this taste layered"
+      },
+      {
+        "text": "Pour in the crushed tomatoes and broth, then add the chickpeas and apricots. Nestle the chicken back in skin side up so the tops stay above the liquid.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Bring to a bare simmer, cover partially, and cook over low until the chicken is falling off the bone and the sauce has reduced and darkened. Stir once halfway through to keep the bottom from catching.",
+        "timer": 1800,
+        "tip": null
+      },
+      {
+        "text": "Uncover and simmer hard for the last stretch to concentrate the sauce, then taste for salt. It should be sweet, smoky, and a little fiery.",
+        "timer": 600,
+        "tip": null
+      },
+      {
+        "text": "Serve in bowls with a big spoonful of Greek yogurt swirled in and a handful of chopped herbs over the top.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "Zhoug Sauce stirred in at the end brings a green, herby heat if Harissa is out of stock.",
+    "leftovers": "This gets better on day two; portion it into containers with Earthly Grains couscous or quinoa, or shred the meat off the bones for wraps."
+  },
+  {
+    "week": 2,
+    "slot": "dinner",
+    "title": "Miso Butter Salmon with Ginger Bok Choy and Edamame",
+    "cuisine": "Japanese",
+    "blurb": "Crisp-skinned salmon lacquered in salty-sweet miso butter, with blistered bok choy and buttery edamame soaking up the pan glaze.",
+    "time": "30 min",
+    "servings": 2,
+    "hero": "🐟",
+    "ingredients": [
+      {
+        "item": "2 skin-on salmon fillets (about 1 lb total)",
+        "store": "Either"
+      },
+      {
+        "item": "2 tbsp white miso",
+        "store": "TJ"
+      },
+      {
+        "item": "2 tbsp Soyaki",
+        "store": "TJ"
+      },
+      {
+        "item": "1 cup Season's Choice frozen shelled edamame",
+        "store": "Aldi"
+      },
+      {
+        "item": "3 heads baby bok choy, halved lengthwise",
+        "store": "Either"
+      },
+      {
+        "item": "1 tbsp grated fresh ginger",
+        "store": "Either"
+      },
+      {
+        "item": "2 tsp Everything But The Bagel Sesame Seasoning",
+        "store": "TJ"
+      },
+      {
+        "item": "1 pouch Earthly Grains white rice",
+        "store": "Aldi"
+      },
+      {
+        "item": "2 tbsp butter",
+        "store": "Pantry"
+      },
+      {
+        "item": "1 tbsp rice vinegar",
+        "store": "Pantry"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Whisk the miso, Soyaki, and rice vinegar into a smooth glaze. Pat the salmon completely dry and season the flesh side lightly with salt.",
+        "timer": null,
+        "tip": "Miso burns fast, so it goes on late"
+      },
+      {
+        "text": "Heat a nonstick or cast iron skillet over medium with a little olive oil. Lay the salmon in skin side down and press each fillet flat with a spatula for the first few seconds so the skin makes full contact.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Cook without moving the fillets until the skin is crisp and the flesh has turned opaque and pale most of the way up the sides.",
+        "timer": 420,
+        "tip": "Watch the color creep up the side of the fillet"
+      },
+      {
+        "text": "Flip the salmon, brush the glaze generously over the crisp skin and sides, and cook just until the center is barely translucent when you peek with a fork.",
+        "timer": 120,
+        "tip": null
+      },
+      {
+        "text": "Move the salmon to plates and let it rest while you cook the vegetables; carryover heat finishes the middle.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Raise the heat to medium-high, add the butter and ginger to the same pan, and lay the bok choy in cut side down. Sear until the cut faces are browned and the stems are crisp-tender.",
+        "timer": 240,
+        "tip": null
+      },
+      {
+        "text": "Toss in the frozen edamame and any leftover glaze, and stir until the beans are hot and coated in the ginger butter. Heat the rice pouch while this finishes.",
+        "timer": 180,
+        "tip": null
+      },
+      {
+        "text": "Plate the salmon over rice with the bok choy and edamame alongside, and shower everything with Everything But The Bagel seasoning.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "No white miso? Use an extra splash of Soyaki plus a spoon of Friendly Farms Greek yogurt for a similar savory-tangy glaze.",
+    "leftovers": "Flake cold salmon over rice with the edamame and a drizzle of Soyaki for a next-day rice bowl; do not microwave it hard or it dries out."
+  },
+  {
+    "week": 2,
+    "slot": "dinner",
+    "title": "Lemon Oregano Chicken Souvlaki with Whipped Feta",
+    "cuisine": "Greek",
+    "blurb": "Charred lemony chicken piled onto warm naan with cloud-like whipped feta, blistered tomatoes, and briny artichokes.",
+    "time": "35 min",
+    "servings": 2,
+    "hero": "🍋",
+    "ingredients": [
+      {
+        "item": "1 1/4 lb Simply Nature Organic Chicken Breasts, cut into 1-inch cubes",
+        "store": "Aldi"
+      },
+      {
+        "item": "6 oz Happy Farms feta",
+        "store": "Aldi"
+      },
+      {
+        "item": "3/4 cup Friendly Farms Greek yogurt",
+        "store": "Aldi"
+      },
+      {
+        "item": "1 jar Quartered Marinated Artichokes",
+        "store": "TJ"
+      },
+      {
+        "item": "1 pint cherry tomatoes",
+        "store": "Either"
+      },
+      {
+        "item": "1/2 cup pitted kalamata olives, halved",
+        "store": "Either"
+      },
+      {
+        "item": "1 lemon, zested and halved",
+        "store": "Either"
+      },
+      {
+        "item": "4 cloves garlic, minced",
+        "store": "Either"
+      },
+      {
+        "item": "2 tsp dried oregano",
+        "store": "Pantry"
+      },
+      {
+        "item": "2 pieces naan",
+        "store": "Either"
+      },
+      {
+        "item": "1 small handful fresh dill, chopped",
+        "store": "Either"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Toss the chicken cubes with the lemon zest, half the garlic, the oregano, olive oil, salt, and pepper. Let it sit on the counter while you make the whipped feta.",
+        "timer": 600,
+        "tip": null
+      },
+      {
+        "text": "Blitz the feta, Greek yogurt, remaining garlic, and a squeeze of lemon in a food processor until it is completely smooth and spreadable, scraping the sides once.",
+        "timer": 120,
+        "tip": "Add a splash of the artichoke oil if it stalls"
+      },
+      {
+        "text": "Heat a cast iron skillet over medium-high until a drop of water dances. Add the chicken in a single layer with space between the pieces and leave it undisturbed to build a crust.",
+        "timer": 300,
+        "tip": "Crowding the pan gives you gray chicken"
+      },
+      {
+        "text": "Toss the chicken and continue cooking until the cubes are browned on multiple sides and firm to the touch with no pink at the center.",
+        "timer": 240,
+        "tip": null
+      },
+      {
+        "text": "Move the chicken to a plate, add the cherry tomatoes to the hot pan, and let them sit until the skins blister and a few burst. Squeeze in the rest of the lemon and scrape up the browned bits.",
+        "timer": 300,
+        "tip": null
+      },
+      {
+        "text": "Warm the naan directly in a dry skillet or over a gas flame until it puffs slightly and picks up a few dark spots.",
+        "timer": 120,
+        "tip": null
+      },
+      {
+        "text": "Smear a thick layer of whipped feta across each naan, then pile on the chicken, blistered tomatoes, drained artichokes, and olives.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Finish with chopped dill, a crack of black pepper, and a drizzle of olive oil.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "Chicken Shawarma Thighs skip the marinating step entirely and bring their own spice; just add the lemon and oregano at the end.",
+    "leftovers": "Whipped feta keeps for days and doubles as a dip for veg or a spread for L'Oven Fresh Protein Wraps stuffed with the leftover chicken."
+  },
+  {
+    "week": 2,
+    "slot": "dinner",
+    "title": "Caramelized Lemongrass Pork Noodle Bowls",
+    "cuisine": "Vietnamese",
+    "blurb": "Crispy-edged lemongrass pork over cool rice noodles with pickled carrot, mountains of herbs, and a sweet-salty lime dressing.",
+    "time": "30 min",
+    "servings": 2,
+    "hero": "🍜",
+    "ingredients": [
+      {
+        "item": "1 lb ground pork",
+        "store": "Aldi"
+      },
+      {
+        "item": "2 tbsp minced lemongrass or lemongrass paste",
+        "store": "Either"
+      },
+      {
+        "item": "3 tbsp fish sauce",
+        "store": "Either"
+      },
+      {
+        "item": "1/4 cup Sweet Chili Sauce",
+        "store": "TJ"
+      },
+      {
+        "item": "1 package Fusia Asian Inspirations rice noodles",
+        "store": "Aldi"
+      },
+      {
+        "item": "2 tsp Fusia Asian Inspirations sriracha",
+        "store": "Aldi"
+      },
+      {
+        "item": "1/4 cup Southern Grove roasted peanuts, crushed",
+        "store": "Aldi"
+      },
+      {
+        "item": "1 large carrot, julienned",
+        "store": "Either"
+      },
+      {
+        "item": "1 Persian cucumber, sliced into ribbons",
+        "store": "Either"
+      },
+      {
+        "item": "1 large handful mint and cilantro leaves",
+        "store": "Either"
+      },
+      {
+        "item": "2 limes, halved",
+        "store": "Either"
+      },
+      {
+        "item": "2 tbsp brown sugar",
+        "store": "Pantry"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Bring a pot of water to a boil for the noodles. While it heats, toss the carrot with the juice of half a lime and a pinch of salt to quick-pickle.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Whisk the Sweet Chili Sauce, sriracha, 1 tbsp of the fish sauce, and the juice of one lime into a pourable dressing. Taste and adjust until it is equal parts sweet, salty, and sour.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Cook the rice noodles just until tender, then drain and rinse under cold water until they are completely cool and no longer sticky.",
+        "timer": 300,
+        "tip": "Cold rinsing stops the noodles from clumping"
+      },
+      {
+        "text": "Heat a skillet over medium-high until very hot. Add the pork in one flat layer and leave it alone until the underside is browned and crusty.",
+        "timer": 300,
+        "tip": null
+      },
+      {
+        "text": "Break the pork into pieces, add the lemongrass, and stir until it smells sharply citrusy.",
+        "timer": 60,
+        "tip": null
+      },
+      {
+        "text": "Sprinkle in the brown sugar and the remaining 2 tbsp fish sauce and cook, stirring often, until the liquid reduces to a dark syrup that lacquers the meat and the edges go crisp.",
+        "timer": 240,
+        "tip": "Watch closely, the sugar goes from caramel to burnt quickly"
+      },
+      {
+        "text": "Divide the noodles between two deep bowls and top with the caramelized pork, pickled carrot, cucumber ribbons, and a generous handful of mint and cilantro.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Pour the dressing over each bowl, scatter the crushed peanuts, and toss everything together at the table with the last lime half on the side.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "Ground chicken or turkey caramelizes the same way; a splash of Green Dragon Hot Sauce can stand in for the sriracha.",
+    "leftovers": "Store the pork, noodles, and herbs separately so nothing goes soggy, then rebuild the bowls cold straight from the fridge."
+  },
+  {
+    "week": 2,
+    "slot": "batch",
+    "title": "Andouille, Chicken and Shrimp Jambalaya",
+    "cuisine": "Cajun/Creole",
+    "blurb": "A smoky one-pot jambalaya where every grain of rice is stained red with sausage fat, trinity, and Creole spice.",
+    "time": "65 min",
+    "servings": 6,
+    "hero": "🥘",
+    "ingredients": [
+      {
+        "item": "12 oz Never Any! andouille or smoked sausage, sliced into coins",
+        "store": "Aldi"
+      },
+      {
+        "item": "1 1/2 lb Kirkwood boneless skinless chicken thighs, cut into chunks",
+        "store": "Aldi"
+      },
+      {
+        "item": "1 lb Raw Argentinian Red Shrimp, peeled and thawed",
+        "store": "TJ"
+      },
+      {
+        "item": "2 cups Earthly Grains long grain white rice",
+        "store": "Aldi"
+      },
+      {
+        "item": "3 cups chicken broth",
+        "store": "Either"
+      },
+      {
+        "item": "1 can (14.5 oz) diced tomatoes",
+        "store": "Either"
+      },
+      {
+        "item": "1 large onion, diced",
+        "store": "Either"
+      },
+      {
+        "item": "1 green bell pepper, diced",
+        "store": "Either"
+      },
+      {
+        "item": "3 celery stalks, diced",
+        "store": "Either"
+      },
+      {
+        "item": "5 cloves garlic, minced",
+        "store": "Either"
+      },
+      {
+        "item": "2 tbsp Cajun or Creole seasoning",
+        "store": "Either"
+      },
+      {
+        "item": "5 scallions, thinly sliced",
+        "store": "Either"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Heat a wide heavy pot or Dutch oven over medium with a little olive oil. Add the sausage coins in one layer and cook until the edges curl and brown and orange fat pools in the pot.",
+        "timer": 480,
+        "tip": "That rendered fat is the flavor base"
+      },
+      {
+        "text": "Scoop the sausage out with a slotted spoon. Season the chicken chunks with half the Cajun seasoning, then brown them in the sausage fat over medium-high without stirring for the first few minutes.",
+        "timer": 480,
+        "tip": null
+      },
+      {
+        "text": "Remove the chicken and add the onion, bell pepper, and celery with a pinch of salt. Cook over medium, scraping the browned crust off the bottom, until the vegetables slump and the onion turns translucent.",
+        "timer": 600,
+        "tip": null
+      },
+      {
+        "text": "Stir in the garlic and remaining Cajun seasoning and cook until the pot smells intensely spiced and the paste darkens slightly.",
+        "timer": 120,
+        "tip": null
+      },
+      {
+        "text": "Add the rice and stir constantly so every grain gets coated in the seasoned fat and turns slightly translucent at the edges.",
+        "timer": 180,
+        "tip": "Toasting the rice keeps the grains separate"
+      },
+      {
+        "text": "Pour in the broth and diced tomatoes with their juice, return the sausage and chicken along with any collected juices, and bring to a full boil.",
+        "timer": null,
+        "tip": null
+      },
+      {
+        "text": "Drop the heat to the lowest setting, cover tightly, and cook without lifting the lid or stirring until the liquid is absorbed and the rice is tender.",
+        "timer": 1500,
+        "tip": "Peeking lets out the steam the rice needs"
+      },
+      {
+        "text": "Scatter the shrimp over the surface, replace the lid, and let them steam off the heat until they are pink, opaque, and curled.",
+        "timer": 420,
+        "tip": null
+      },
+      {
+        "text": "Fluff everything together with a fork, taste for salt, and finish with a thick layer of sliced scallions.",
+        "timer": null,
+        "tip": null
+      }
+    ],
+    "swap": "Burman's hot sauce at the table covers you if your Cajun seasoning is on the mild side, and any smoked sausage works in place of andouille.",
+    "leftovers": "Pack it into containers for up to four days, and revive each portion in a skillet with a splash of broth so the bottom crisps like the good part of the pot."
+  }
+]
