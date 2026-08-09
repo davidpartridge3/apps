@@ -1959,6 +1959,117 @@
   #t1200:checked ~ .tmr-wrap #tc1200{display:flex;}
   #t1500:checked ~ .tmr-wrap #tc1500{display:flex;}
   #t1800:checked ~ .tmr-wrap #tc1800{display:flex;}
+
+  /* ---------- A1 planner ---------- */
+  .no-js .js-only{display:none !important;}
+  .plan-btn{display:block;text-align:center;border:1px solid var(--accent);color:var(--accent);
+    background:var(--accent-soft);border-radius:14px;padding:14px;font-weight:800;font-size:14px;
+    margin:14px 0 6px;cursor:pointer;user-select:none;}
+  .plan-btn:active{transform:scale(.995);}
+
+  .pl-overlay{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;
+    flex-direction:column;overflow:hidden;}
+  body.pl-open .pl-overlay{display:flex;}
+  .pl-head{position:sticky;top:0;z-index:2;background:rgba(18,16,14,.96);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+    padding:14px 16px;display:flex;align-items:center;gap:12px;}
+  .pl-head .pl-title{font-weight:800;font-size:16px;flex:1;min-width:0;}
+  .pl-x{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:11px;
+    padding:8px 13px;font-weight:800;font-size:13px;cursor:pointer;flex:0 0 auto;}
+  .pl-steps{display:flex;gap:6px;padding:12px 16px 0;}
+  .pl-step{flex:1;text-align:center;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+    font-weight:800;color:var(--dimmer);padding-bottom:9px;border-bottom:2px solid var(--line);}
+  .pl-step.on{color:var(--accent);border-bottom-color:var(--accent);}
+  .pl-step.done{color:var(--green);border-bottom-color:var(--green);}
+  .pl-body{flex:1;overflow-y:auto;padding:14px 16px calc(120px + var(--safe-b));
+    max-width:680px;margin:0 auto;width:100%;}
+  .pl-bar{position:fixed;left:0;right:0;bottom:0;z-index:3;background:rgba(18,16,14,.97);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + var(--safe-b));}
+  .pl-bar-inner{max-width:680px;margin:0 auto;display:flex;gap:10px;align-items:center;}
+  .pl-count{flex:1;font-size:13px;font-weight:700;color:var(--dim);min-width:0;}
+  .pl-count b{color:var(--txt);}
+  .pl-go{border:none;border-radius:12px;padding:13px 20px;font-weight:800;font-size:14.5px;
+    background:var(--accent);color:#1a1005;cursor:pointer;font-family:inherit;flex:0 0 auto;}
+  .pl-go:disabled{opacity:.4;}
+  .pl-go.ghost{background:var(--card2);color:var(--txt);border:1px solid var(--line);}
+
+  .pl-filters{display:flex;flex-direction:column;gap:9px;margin-bottom:6px;}
+  .pl-search{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+    border-radius:12px;padding:11px 13px;font-size:14.5px;font-family:inherit;}
+  .pl-chiprow{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+  .pl-chiprow::-webkit-scrollbar{display:none;}
+  .pl-chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--dim);
+    border-radius:20px;padding:7px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
+    user-select:none;white-space:nowrap;}
+  .pl-chip.on{background:var(--accent);color:#1a1005;border-color:var(--accent);}
+  .pl-cui{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+    border-radius:12px;padding:11px 13px;font-size:14px;font-family:inherit;-webkit-appearance:none;}
+
+  .pl-rc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:11px 13px;margin:9px 0;cursor:pointer;user-select:none;position:relative;}
+  .pl-rc.sel{border-color:var(--accent);background:var(--accent-soft);}
+  .pl-rc .hero{width:46px;height:46px;font-size:26px;border-radius:12px;}
+  .pl-rc-main{flex:1;min-width:0;}
+  .pl-rc-slot{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;font-weight:800;color:var(--accent);}
+  .pl-rc-slot.batch{color:var(--green);}
+  .pl-rc-name{font-weight:800;font-size:15px;line-height:1.2;margin:1px 0;}
+  .pl-rc-meta{color:var(--dimmer);font-size:12px;font-weight:700;}
+  .pl-rc-tick{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;font-size:14px;}
+  .pl-rc.sel .pl-rc-tick{background:var(--accent);border-color:var(--accent);color:#1a1005;}
+  .pl-empty{color:var(--dim);text-align:center;padding:40px 20px;font-size:14px;}
+
+  .pl-assign{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:11px 13px;margin:9px 0;}
+  .pl-assign .hero{width:44px;height:44px;font-size:24px;border-radius:12px;}
+  .pl-assign-main{flex:1;min-width:0;}
+  .pl-assign-name{font-weight:800;font-size:14.5px;line-height:1.2;}
+  .pl-assign-meta{color:var(--dimmer);font-size:11.5px;font-weight:700;}
+  .pl-day{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:10px;
+    padding:9px 8px;font-size:13.5px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;}
+  .pl-share-txt{width:100%;min-height:150px;background:var(--card);border:1px solid var(--line);
+    color:var(--txt);border-radius:12px;padding:13px;font-size:14px;font-family:inherit;line-height:1.5;
+    resize:vertical;margin:6px 0;}
+  .pl-share-btns{display:flex;flex-direction:column;gap:9px;margin-top:6px;}
+  .pl-share-btns button{border:none;border-radius:12px;padding:14px;font-weight:800;font-size:15px;
+    cursor:pointer;font-family:inherit;}
+  .pl-primary{background:var(--accent);color:#1a1005;}
+  .pl-secondary{background:var(--card2);color:var(--txt);border:1px solid var(--line) !important;}
+  .pl-toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--green);
+    color:#0d2716;font-weight:800;font-size:13.5px;padding:11px 18px;border-radius:22px;z-index:90;
+    opacity:0;pointer-events:none;transition:opacity .2s;}
+  .pl-toast.show{opacity:1;}
+  .pl-hint{color:var(--dim);font-size:13px;margin:2px 0 14px;}
+
+  /* ---------- active plan panel (rendered in main) ---------- */
+  body.pl-active .wkpanel{display:none !important;}
+  #planPanel{display:none;}
+  body.pl-active #planPanel{display:block;}
+  .pp-banner{background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;
+    padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .pp-banner .pp-b-txt{flex:1;min-width:140px;font-size:13px;color:var(--txt);font-weight:700;}
+  .pp-banner .pp-b-txt small{display:block;color:var(--dim);font-weight:600;font-size:11.5px;margin-top:1px;}
+  .pp-b-btn{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:10px;
+    padding:8px 12px;font-weight:800;font-size:12.5px;cursor:pointer;flex:0 0 auto;}
+  .pp-card{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:13px;margin:11px 0;cursor:pointer;user-select:none;position:relative;}
+  .pp-day{flex:0 0 auto;width:52px;text-align:center;}
+  .pp-day b{display:block;font-size:15px;font-weight:800;color:var(--accent);}
+  .pp-day span{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--dimmer);font-weight:800;}
+  .pp-card.batch .pp-day b{color:var(--green);}
+  .pp-card .hero{width:48px;height:48px;font-size:26px;border-radius:12px;}
+  .pp-main{flex:1;min-width:0;}
+  .pp-name{font-weight:800;font-size:15.5px;line-height:1.2;}
+  .pp-meta{color:var(--dimmer);font-size:12px;font-weight:700;margin-top:2px;}
+  .pp-vote{display:flex;gap:7px;margin-top:8px;}
+  .pp-vb{border:1px solid var(--line);background:var(--card2);border-radius:20px;padding:5px 12px;
+    font-size:14px;cursor:pointer;user-select:none;line-height:1;}
+  .pp-vb.up.on{background:rgba(111,207,143,.2);border-color:var(--green);}
+  .pp-vb.down.on{background:rgba(228,87,46,.2);border-color:var(--tj);}
+  .pp-badge{position:absolute;top:10px;right:12px;font-size:18px;}
+  .sheet.pl-show{display:flex;}
+  .pp-combined{margin:18px 0 6px;}
 </style>
 </head>
 <body class="no-js">
@@ -2945,7 +3056,7 @@
   </div>
   <div class="blurb">Fall-apart chicken thighs braised with harissa, warm cinnamon, and sweet dried apricots until the whole pot tastes like a spice market.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist1">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist1">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp1"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 2</h2><p class="wk-sub">Japanese · Greek · Vietnamese · Cajun/Creole</p></div><label class="card" for="vw2r0">
   <div class="card-top">
     <div class="hero">🐟</div>
@@ -2993,7 +3104,7 @@
   </div>
   <div class="blurb">A smoky one-pot jambalaya where every grain of rice is stained red with sausage fat, trinity, and Creole spice.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist2">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist2">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp2"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 3</h2><p class="wk-sub">Indian · Peruvian · Sichuan/Chinese · Spanish</p></div><label class="card" for="vw3r0">
   <div class="card-top">
     <div class="hero">🍛</div>
@@ -3041,7 +3152,7 @@
   </div>
   <div class="blurb">One pot of smoky paprika rice stained orange by rendered chorizo, with tender thighs and chickpeas buried throughout.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist3">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist3">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp3"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 4</h2><p class="wk-sub">Filipino · Turkish · Caribbean/Jamaican · Italian</p></div><label class="card" for="vw4r0">
   <div class="card-top">
     <div class="hero">🍗</div>
@@ -3089,7 +3200,7 @@
   </div>
   <div class="blurb">Crusty browned Italian sausage folded into creamy vodka sauce, layered with pesto-streaked ricotta and baked until the edges blister.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist4">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist4">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp4"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 1</h2><p class="wk-sub">Lebanese/Levantine · Brazilian · Malaysian · Persian</p></div><label class="card" for="vw5r0">
   <div class="card-top">
     <div class="hero">🥙</div>
@@ -3137,7 +3248,7 @@
   </div>
   <div class="blurb">A golden, sour-savory stew of fall-apart chicken, chickpeas, and jammy caramelized onion, flooded with lemon at the end.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist5">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist5">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp5"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 2</h2><p class="wk-sub">Argentinian · Chinese-American · Ethiopian-inspired · Tex-Mex</p></div><label class="card" for="vw6r0">
   <div class="card-top">
     <div class="hero">🥩</div>
@@ -3185,7 +3296,7 @@
   </div>
   <div class="blurb">A thick, cumin-heavy chili built on hard-browned grass-fed beef and fire-roasted salsa, buried under sharp crumbly cheddar.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist6">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist6">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp6"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 3</h2><p class="wk-sub">Southern/Nashville Hot · Indonesian · Portuguese · West African</p></div><label class="card" for="vw7r0">
   <div class="card-top">
     <div class="hero">🔥</div>
@@ -3233,7 +3344,7 @@
   </div>
   <div class="blurb">Bone-in thighs braised until falling apart in a burnished peanut-tomato gravy with sweet potato and a hum of habanero heat that builds with every spoonful.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist7">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist7">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp7"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 4</h2><p class="wk-sub">Sri Lankan · Hawaiian · Polish · Burmese</p></div><label class="card" for="vw8r0">
   <div class="card-top">
     <div class="hero">🌶️</div>
@@ -3281,7 +3392,7 @@
   </div>
   <div class="blurb">A golden turmeric-coconut chicken broth thickened to a velvet gravy, ladled over rice noodles and loaded with hard-boiled egg, crispy onions, and lime.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist8">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist8">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp8"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 1</h2><p class="wk-sub">Georgian · Nigerian · Basque · Hungarian</p></div><label class="card" for="vw9r0">
   <div class="card-top">
     <div class="hero">🧄</div>
@@ -3329,7 +3440,7 @@
   </div>
   <div class="blurb">A deep brick-red pot of beef gone spoon-tender in a paprika-saturated onion gravy, sharpened with caraway and finished with a cool swirl of sour cream.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist9">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist9">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp9"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 2</h2><p class="wk-sub">Yucatecan Mexican · Okinawan Japanese · Alsatian French · Colombian</p></div><label class="card" for="vw10r0">
   <div class="card-top">
     <div class="hero">🥣</div>
@@ -3377,7 +3488,7 @@
   </div>
   <div class="blurb">A golden, cumin-scented pot of fall-apart chicken, corn rounds, green plantain, and potatoes that thicken the broth themselves, served with a fierce green aji on the side.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist10">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist10">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp10"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 3</h2><p class="wk-sub">Cantonese · Punjabi · Sardinian · Egyptian</p></div><label class="card" for="vw11r0">
   <div class="card-top">
     <div class="hero">🥢</div>
@@ -3425,7 +3536,7 @@
   </div>
   <div class="blurb">Layers of shattered crisp bread, buttery broth-cooked rice, and burnished chicken, all doused in a sharp garlic-vinegar tomato sauce that cuts straight through the richness.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist11">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist11">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp11"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 4</h2><p class="wk-sub">Bavarian German · Uyghur · Cuban · Swahili-coast East African</p></div><label class="card" for="vw12r0">
   <div class="card-top">
     <div class="hero">🍺</div>
@@ -3473,7 +3584,7 @@
   </div>
   <div class="blurb">Chicken blistered under the broiler and then simmered into a golden coconut sauce loaded with ginger, green chile, and lime until the whole pot tastes like the Mombasa waterfront.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist12">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist12">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp12"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 1</h2><p class="wk-sub">Taiwanese · Provençal French · Chilean · Low-Country Carolina</p></div><label class="card" for="vw13r0">
   <div class="card-top">
     <div class="hero">🍗</div>
@@ -3521,7 +3632,7 @@
   </div>
   <div class="blurb">A big Charleston-style skillet of shrimp, smoked sausage, and bacon in a peppery pan gravy, spooned over stone-ground grits made outrageous with Unexpected Cheddar.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist13">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist13">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp13"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 2</h2><p class="wk-sub">Nepali · Sicilian · Trinidadian · Kashmiri</p></div><label class="card" for="vw14r0">
   <div class="card-top">
     <div class="hero">🌶️</div>
@@ -3569,7 +3680,7 @@
   </div>
   <div class="blurb">Lamb braised low in a yogurt gravy stained brilliant red with Kashmiri chile and scented with ground fennel, dry ginger, and smoky black cardamom, finished when a slick of spiced oil rises to the top.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist14">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist14">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp14"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 3</h2><p class="wk-sub">Singaporean · Norwegian Nordic · Salvadoran · Goan</p></div><label class="card" for="vw15r0">
   <div class="card-top">
     <div class="hero">🦐</div>
@@ -3617,7 +3728,7 @@
   </div>
   <div class="blurb">Pork shoulder braised in a vinegar-and-chili paste until the sauce turns dark, glossy and fierce, with just enough sweetness to keep the heat honest.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist15">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist15">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp15"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 4</h2><p class="wk-sub">Ukrainian · Yemeni · Tuscan · Puerto Rican</p></div><label class="card" for="vw16r0">
   <div class="card-top">
     <div class="hero">🧈</div>
@@ -3665,7 +3776,7 @@
   </div>
   <div class="blurb">Beef stewed down into a deep sofrito-and-tomato gravy studded with briny olives and potatoes that drink up every bit of it.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist16">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist16">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp16"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 1</h2><p class="wk-sub">Shanghainese · Bengali · Catalan · Venezuelan</p></div><label class="card" for="vw17r0">
   <div class="card-top">
     <div class="hero">🥢</div>
@@ -3713,7 +3824,7 @@
   </div>
   <div class="blurb">Cumin-scented beef guiso, brothy black beans and caramelized sweet plantains piled over rice with a snowfall of salty white cheese.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist17">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist17">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp17"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 2</h2><p class="wk-sub">Isan Thai · Danish · Guatemalan · Andalusian</p></div><label class="card" for="vw18r0">
   <div class="card-top">
     <div class="hero">🌶️</div>
@@ -3761,7 +3872,7 @@
   </div>
   <div class="blurb">Two whole heads of garlic melt into a golden sherry and saffron braise with green olives, cumin and lemon — Seville tavern food, scaled up.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist18">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist18">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp18"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 3</h2><p class="wk-sub">Hunan · Tamil South Indian · Neapolitan · Dominican</p></div><label class="card" for="vw19r0">
   <div class="card-top">
     <div class="hero">🔥</div>
@@ -3809,7 +3920,7 @@
   </div>
   <div class="blurb">Chicken lacquered in burnt-sugar caramel and braised down with sofrito, oregano, and briny olives into a sauce you&#x27;ll want on everything.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist19">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist19">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp19"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 4</h2><p class="wk-sub">Laotian · Swedish · Bolivian · Galician</p></div><label class="card" for="vw20r0">
   <div class="card-top">
     <div class="hero">🥬</div>
@@ -3857,7 +3968,7 @@
   </div>
   <div class="blurb">A smoky Galician pot of pork, chorizo, and white beans simmered until the broth turns orange with pimenton and the greens go silky.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist20">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist20">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp20"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 1</h2><p class="wk-sub">Northern Chinese / Beijing · Gujarati · Roman · Ecuadorian</p></div><label class="card" for="vw21r0">
   <div class="card-top">
     <div class="hero">🍜</div>
@@ -3905,7 +4016,7 @@
   </div>
   <div class="blurb">Chicken braised until it slides off the bone in a blended cilantro-and-beer sauce that cooks down from shocking green to deep olive, brightened with lime-pickled red onion.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist21">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist21">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp21"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 2</h2><p class="wk-sub">Cambodian · Czech · Costa Rican · Israeli</p></div><label class="card" for="vw22r0">
   <div class="card-top">
     <div class="hero">🥩</div>
@@ -3953,7 +4064,7 @@
   </div>
   <div class="blurb">Griddle-charred chicken and livers tumbled with frizzled onions and a fistful of cumin, turmeric, and baharat, stuffed into pita with runny tahini and a green streak of zhoug.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist22">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist22">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp22"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 3</h2><p class="wk-sub">Macanese · Pakistani Sindhi · Venetian · Honduran</p></div><label class="card" for="vw23r0">
   <div class="card-top">
     <div class="hero">🍳</div>
@@ -4001,7 +4112,7 @@
   </div>
   <div class="blurb">A Caribbean-coast pot from Honduras where coconut milk simmers gold with cumin and lime until chicken, plantain, and sweet red shrimp fall together.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist23">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist23">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp23"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 4</h2><p class="wk-sub">Balinese · Austrian · Tunisian · Bahamian</p></div><label class="card" for="vw24r0">
   <div class="card-top">
     <div class="hero">🔥</div>
@@ -4049,7 +4160,7 @@
   </div>
   <div class="blurb">Nassau-style stew chicken, where sugar burnt almost to bitterness lacquers the meat mahogany before it simmers soft with thyme, allspice, and hot sauce.</div>
   <span class="cta">▶ Open recipe</span>
-</label><label class="list-btn" for="vlist24">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist24">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 </main>
 
 <div class="view-wrap">
@@ -16833,6 +16944,22 @@
   </div>
 </div>
 
+<div class="pl-overlay" id="planner" aria-hidden="true">
+  <div class="pl-head">
+    <div class="pl-title" id="plTitle">🗓️ Plan this week</div>
+    <button class="pl-x" id="plClose" type="button">Close ✕</button>
+  </div>
+  <div class="pl-steps" id="plSteps">
+    <div class="pl-step on" data-step="1">1 · Pick meals</div>
+    <div class="pl-step" data-step="2">2 · Assign days</div>
+    <div class="pl-step" data-step="3">3 · Send</div>
+  </div>
+  <div class="pl-body" id="plBody"></div>
+  <div class="pl-bar"><div class="pl-bar-inner" id="plBar"></div></div>
+</div>
+<div class="pl-toast" id="plToast"></div>
+
+<script id="rdata" type="application/json">[{"id": "w1r0", "t": "Gochujang Bulgogi Beef Bowls with Chili Onion Crunch", "c": "Korean", "tm": "25 min", "s": "dinner", "h": "🍚", "sv": 2, "wk": 1, "ing": [{"i": "1 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "3 tbsp Gochujang Sauce", "st": "TJ"}, {"i": "2 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "2 tbsp Crunchy Chili Onion", "st": "TJ"}, {"i": "2 large eggs", "st": "Either"}, {"i": "4 scallions, whites and greens separated", "st": "Either"}, {"i": "3 cloves garlic, grated", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice (2 servings)", "st": "TJ"}, {"i": "1 Persian cucumber, sliced into coins", "st": "Either"}, {"i": "2 tsp rice vinegar", "st": "Pantry"}, {"i": "1 tsp toasted sesame oil", "st": "Pantry"}]}, {"id": "w1r1", "t": "Carne Asada Tacos with Charred Peppers and Chili Lime Crema", "c": "Mexican", "tm": "30 min", "s": "dinner", "h": "🌮", "sv": 2, "wk": 1, "ing": [{"i": "1 lb Carne Asada Autentica", "st": "TJ"}, {"i": "1 bag Fire Roasted Peppers & Onions (frozen)", "st": "TJ"}, {"i": "8 Casa Mamita corn tortillas", "st": "Aldi"}, {"i": "1/2 cup Friendly Farms sour cream", "st": "Aldi"}, {"i": "2 tsp Chili Lime Seasoning", "st": "TJ"}, {"i": "1 lime, halved", "st": "Either"}, {"i": "3/4 cup Happy Farms crumbled feta or queso fresco", "st": "Aldi"}, {"i": "1/2 cup Casa Mamita salsa verde", "st": "Aldi"}, {"i": "1/2 red onion, finely diced", "st": "Either"}, {"i": "1/2 bunch cilantro, roughly chopped", "st": "Either"}]}, {"id": "w1r2", "t": "Thai Red Curry Shrimp with Blistered Green Beans", "c": "Thai", "tm": "25 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 1, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and patted dry", "st": "TJ"}, {"i": "1 jar Thai Red Curry Sauce", "st": "TJ"}, {"i": "1/2 cup full-fat coconut milk", "st": "Either"}, {"i": "1 bag Garlic Shiitake Mushroom Green Beans (frozen)", "st": "TJ"}, {"i": "1 red bell pepper, sliced thin", "st": "Either"}, {"i": "1 tbsp fish sauce", "st": "Either"}, {"i": "1 tsp brown sugar", "st": "Pantry"}, {"i": "1 lime, halved", "st": "Either"}, {"i": "1 large handful Thai basil or cilantro", "st": "Either"}, {"i": "2 pouches Earthly Grains jasmine rice", "st": "Aldi"}]}, {"id": "w1r3", "t": "Harissa Chicken and Chickpea Tagine with Apricots", "c": "Moroccan", "tm": "70 min", "s": "batch", "h": "🍲", "sv": 6, "wk": 1, "ing": [{"i": "3 lb Kirkwood bone-in, skin-on chicken thighs", "st": "Aldi"}, {"i": "3 tbsp Harissa", "st": "TJ"}, {"i": "2 cans chickpeas, drained and rinsed", "st": "Either"}, {"i": "1 can (28 oz) crushed tomatoes", "st": "Either"}, {"i": "2 cups chicken broth", "st": "Either"}, {"i": "1 large onion, sliced", "st": "Either"}, {"i": "5 cloves garlic, sliced", "st": "Either"}, {"i": "3/4 cup dried apricots, halved", "st": "Either"}, {"i": "2 tsp ground cumin", "st": "Pantry"}, {"i": "1 tsp ground cinnamon", "st": "Pantry"}, {"i": "1 cup Friendly Farms Greek yogurt", "st": "Aldi"}, {"i": "1/2 bunch cilantro or mint, chopped", "st": "Either"}]}, {"id": "w2r0", "t": "Miso Butter Salmon with Ginger Bok Choy and Edamame", "c": "Japanese", "tm": "30 min", "s": "dinner", "h": "🐟", "sv": 2, "wk": 2, "ing": [{"i": "2 skin-on salmon fillets (about 1 lb total)", "st": "Either"}, {"i": "2 tbsp white miso", "st": "TJ"}, {"i": "2 tbsp Soyaki", "st": "TJ"}, {"i": "1 cup Season's Choice frozen shelled edamame", "st": "Aldi"}, {"i": "3 heads baby bok choy, halved lengthwise", "st": "Either"}, {"i": "1 tbsp grated fresh ginger", "st": "Either"}, {"i": "2 tsp Everything But The Bagel Sesame Seasoning", "st": "TJ"}, {"i": "1 pouch Earthly Grains white rice", "st": "Aldi"}, {"i": "2 tbsp butter", "st": "Pantry"}, {"i": "1 tbsp rice vinegar", "st": "Pantry"}]}, {"id": "w2r1", "t": "Lemon Oregano Chicken Souvlaki with Whipped Feta", "c": "Greek", "tm": "35 min", "s": "dinner", "h": "🍋", "sv": 2, "wk": 2, "ing": [{"i": "1 1/4 lb Simply Nature Organic Chicken Breasts, cut into 1-inch cubes", "st": "Aldi"}, {"i": "6 oz Happy Farms feta", "st": "Aldi"}, {"i": "3/4 cup Friendly Farms Greek yogurt", "st": "Aldi"}, {"i": "1 jar Quartered Marinated Artichokes", "st": "TJ"}, {"i": "1 pint cherry tomatoes", "st": "Either"}, {"i": "1/2 cup pitted kalamata olives, halved", "st": "Either"}, {"i": "1 lemon, zested and halved", "st": "Either"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "2 tsp dried oregano", "st": "Pantry"}, {"i": "2 pieces naan", "st": "Either"}, {"i": "1 small handful fresh dill, chopped", "st": "Either"}]}, {"id": "w2r2", "t": "Caramelized Lemongrass Pork Noodle Bowls", "c": "Vietnamese", "tm": "30 min", "s": "dinner", "h": "🍜", "sv": 2, "wk": 2, "ing": [{"i": "1 lb ground pork", "st": "Aldi"}, {"i": "2 tbsp minced lemongrass or lemongrass paste", "st": "Either"}, {"i": "3 tbsp fish sauce", "st": "Either"}, {"i": "1/4 cup Sweet Chili Sauce", "st": "TJ"}, {"i": "1 package Fusia Asian Inspirations rice noodles", "st": "Aldi"}, {"i": "2 tsp Fusia Asian Inspirations sriracha", "st": "Aldi"}, {"i": "1/4 cup Southern Grove roasted peanuts, crushed", "st": "Aldi"}, {"i": "1 large carrot, julienned", "st": "Either"}, {"i": "1 Persian cucumber, sliced into ribbons", "st": "Either"}, {"i": "1 large handful mint and cilantro leaves", "st": "Either"}, {"i": "2 limes, halved", "st": "Either"}, {"i": "2 tbsp brown sugar", "st": "Pantry"}]}, {"id": "w2r3", "t": "Andouille, Chicken and Shrimp Jambalaya", "c": "Cajun/Creole", "tm": "65 min", "s": "batch", "h": "🥘", "sv": 6, "wk": 2, "ing": [{"i": "12 oz Never Any! andouille or smoked sausage, sliced into coins", "st": "Aldi"}, {"i": "1 1/2 lb Kirkwood boneless skinless chicken thighs, cut into chunks", "st": "Aldi"}, {"i": "1 lb Raw Argentinian Red Shrimp, peeled and thawed", "st": "TJ"}, {"i": "2 cups Earthly Grains long grain white rice", "st": "Aldi"}, {"i": "3 cups chicken broth", "st": "Either"}, {"i": "1 can (14.5 oz) diced tomatoes", "st": "Either"}, {"i": "1 large onion, diced", "st": "Either"}, {"i": "1 green bell pepper, diced", "st": "Either"}, {"i": "3 celery stalks, diced", "st": "Either"}, {"i": "5 cloves garlic, minced", "st": "Either"}, {"i": "2 tbsp Cajun or Creole seasoning", "st": "Either"}, {"i": "5 scallions, thinly sliced", "st": "Either"}]}, {"id": "w3r0", "t": "Broiler-Charred Tikka Masala Thighs", "c": "Indian", "tm": "35 min", "s": "dinner", "h": "🍛", "sv": 2, "wk": 3, "ing": [{"i": "1 lb boneless skinless chicken thighs", "st": "Aldi"}, {"i": "1 jar Journey to India Tikka Masala Simmer Sauce", "st": "Aldi"}, {"i": "1/2 cup Friendly Farms plain Greek yogurt", "st": "Aldi"}, {"i": "1 tbsp garam masala", "st": "Pantry"}, {"i": "4 cloves garlic, grated", "st": "Either"}, {"i": "1 tbsp fresh ginger, grated", "st": "Either"}, {"i": "2 tbsp butter", "st": "Either"}, {"i": "1/2 lemon", "st": "Either"}, {"i": "1 small handful fresh cilantro, chopped", "st": "Either"}, {"i": "2 pieces Journey to India naan", "st": "Aldi"}]}, {"id": "w3r1", "t": "Lomo Saltado with Crispy Fries", "c": "Peruvian", "tm": "35 min", "s": "dinner", "h": "🥩", "sv": 2, "wk": 3, "ing": [{"i": "1 lb Carne Asada Autentica, sliced into strips", "st": "TJ"}, {"i": "1/2 bag Season's Choice frozen french fries", "st": "Aldi"}, {"i": "1 red onion, cut into thick wedges", "st": "Either"}, {"i": "2 roma tomatoes, cut into wedges", "st": "Either"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "2 tbsp red wine vinegar", "st": "Pantry"}, {"i": "1 tsp ground cumin", "st": "Pantry"}, {"i": "3 cloves garlic, sliced", "st": "Either"}, {"i": "1 tbsp Green Dragon Hot Sauce", "st": "TJ"}, {"i": "1 small handful cilantro, roughly torn", "st": "Either"}, {"i": "1 pouch Earthly Grains white rice", "st": "Aldi"}]}, {"id": "w3r2", "t": "Chili Crunch Mapo Beef and Tofu", "c": "Sichuan/Chinese", "tm": "30 min", "s": "dinner", "h": "🌶️", "sv": 2, "wk": 3, "ing": [{"i": "1/2 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "14 oz block firm tofu, cut in 3/4-inch cubes", "st": "Either"}, {"i": "3 tbsp Crunchy Chili Onion", "st": "TJ"}, {"i": "2 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp Fusia sriracha", "st": "Aldi"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "1 tbsp fresh ginger, grated", "st": "Either"}, {"i": "1 tsp Mushroom & Company Multipurpose Umami Seasoning Blend", "st": "TJ"}, {"i": "1 tbsp cornstarch", "st": "Pantry"}, {"i": "3 scallions, thinly sliced", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w3r3", "t": "Big-Batch Spanish Chorizo and Chicken Rice", "c": "Spanish", "tm": "70 min", "s": "batch", "h": "🥘", "sv": 6, "wk": 3, "ing": [{"i": "2 lb boneless skinless chicken thighs", "st": "Aldi"}, {"i": "12 oz Spanish-style cured chorizo, sliced into coins", "st": "Either"}, {"i": "2 cups Earthly Grains long grain white rice", "st": "Aldi"}, {"i": "1 bag frozen Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "1 can (14.5 oz) diced tomatoes", "st": "Either"}, {"i": "1 can chickpeas, drained and rinsed", "st": "Either"}, {"i": "1 tbsp smoked paprika", "st": "Pantry"}, {"i": "1/2 tsp turmeric", "st": "Pantry"}, {"i": "5 cloves garlic, minced", "st": "Either"}, {"i": "4 cups chicken broth", "st": "Either"}, {"i": "1 cup Season's Choice frozen peas", "st": "Aldi"}, {"i": "1 lemon, cut in wedges", "st": "Either"}]}, {"id": "w4r0", "t": "Sticky Filipino Chicken Adobo", "c": "Filipino", "tm": "40 min", "s": "dinner", "h": "🍗", "sv": 2, "wk": 4, "ing": [{"i": "1.25 lb Kirkwood bone-in skin-on chicken thighs", "st": "Aldi"}, {"i": "1/3 cup Fusia soy sauce", "st": "Aldi"}, {"i": "1/4 cup white or cane vinegar", "st": "Pantry"}, {"i": "8 cloves garlic, smashed", "st": "Either"}, {"i": "4 bay leaves", "st": "Pantry"}, {"i": "1 tsp whole black peppercorns, cracked", "st": "Pantry"}, {"i": "1 tbsp brown sugar", "st": "Pantry"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "3 scallions, sliced on the bias", "st": "Either"}]}, {"id": "w4r1", "t": "Turkish Kofte with Harissa Butter and Garlic Yogurt", "c": "Turkish", "tm": "35 min", "s": "dinner", "h": "🧆", "sv": 2, "wk": 4, "ing": [{"i": "1 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "1/2 yellow onion, grated", "st": "Either"}, {"i": "2 tsp ground cumin", "st": "Pantry"}, {"i": "4 cloves garlic, grated", "st": "Either"}, {"i": "1 cup Friendly Farms plain Greek yogurt", "st": "Aldi"}, {"i": "2 tbsp butter", "st": "Either"}, {"i": "2 tsp Harissa", "st": "TJ"}, {"i": "1 lemon", "st": "Either"}, {"i": "1 cup cherry tomatoes, halved", "st": "Either"}, {"i": "1 mini cucumber, diced", "st": "Either"}, {"i": "1 small handful flat-leaf parsley, chopped", "st": "Either"}, {"i": "2 L'Oven Fresh protein wraps or naan", "st": "Aldi"}]}, {"id": "w4r2", "t": "Jerk Shrimp with Coconut Rice and Beans", "c": "Caribbean/Jamaican", "tm": "35 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 4, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and patted dry", "st": "TJ"}, {"i": "1 tbsp ground allspice", "st": "Pantry"}, {"i": "1 tsp dried thyme", "st": "Pantry"}, {"i": "2 tbsp brown sugar", "st": "Pantry"}, {"i": "2 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp Burman's habanero hot sauce", "st": "Aldi"}, {"i": "4 scallions, whites and greens separated", "st": "Either"}, {"i": "3 cloves garlic", "st": "Either"}, {"i": "2 limes", "st": "Either"}, {"i": "1 can coconut milk", "st": "Either"}, {"i": "1 cup Earthly Grains basmati rice", "st": "Aldi"}, {"i": "1 can red kidney beans, drained and rinsed", "st": "Either"}]}, {"id": "w4r3", "t": "Big-Batch Vodka Sauce Baked Ziti with Sausage", "c": "Italian", "tm": "60 min", "s": "batch", "h": "🍝", "sv": 6, "wk": 4, "ing": [{"i": "1 lb Never Any! Italian sausage, casings removed", "st": "Aldi"}, {"i": "1 lb Priano ziti or rigatoni", "st": "Aldi"}, {"i": "2 jars Organic Vodka Sauce", "st": "TJ"}, {"i": "15 oz whole milk ricotta", "st": "Either"}, {"i": "8 oz Happy Farms mozzarella, shredded", "st": "Aldi"}, {"i": "1/2 cup Priano grated parmesan", "st": "Aldi"}, {"i": "3 tbsp Genova Pesto", "st": "TJ"}, {"i": "1 tsp red pepper flakes", "st": "Pantry"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "1 egg", "st": "Either"}, {"i": "fresh basil leaves, for finishing", "st": "Either"}]}, {"id": "w5r0", "t": "Zhoug Chicken Shawarma Bowls", "c": "Lebanese/Levantine", "tm": "30 min", "s": "dinner", "h": "🥙", "sv": 2, "wk": 5, "ing": [{"i": "1 lb Chicken Shawarma Thighs (already marinated)", "st": "TJ"}, {"i": "1 cup Friendly Farms plain whole-milk Greek yogurt", "st": "Aldi"}, {"i": "1/4 cup Zhoug Sauce", "st": "TJ"}, {"i": "1 cup Park Street Deli hummus", "st": "Aldi"}, {"i": "1 English cucumber, cut into small dice", "st": "Either"}, {"i": "2 Roma tomatoes, seeded and diced", "st": "Either"}, {"i": "1/2 small red onion, sliced paper thin", "st": "Either"}, {"i": "1 cup flat-leaf parsley leaves, roughly chopped", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "2 pieces naan or pocketless pita", "st": "Either"}, {"i": "1 tsp sumac or Chili Lime Seasoning", "st": "TJ"}, {"i": "Olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w5r1", "t": "Bahian Shrimp Moqueca", "c": "Brazilian", "tm": "30 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 5, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and peeled", "st": "TJ"}, {"i": "1 can (13.5 oz) full-fat coconut milk", "st": "Either"}, {"i": "2 cups frozen Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "1 yellow onion, sliced thin", "st": "Either"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "1 tbsp sweet paprika", "st": "Either"}, {"i": "1 tsp Chili Lime Seasoning", "st": "TJ"}, {"i": "2 limes", "st": "Either"}, {"i": "1 large bunch cilantro, chopped", "st": "Either"}, {"i": "2 servings Frozen Jasmine Rice or Earthly Grains rice pouches", "st": "Either"}, {"i": "Olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w5r2", "t": "Mamak-Style Mee Goreng with Shrimp and Egg", "c": "Malaysian", "tm": "30 min", "s": "dinner", "h": "🍜", "sv": 2, "wk": 5, "ing": [{"i": "8 oz Fusia rice noodles or thick egg noodles", "st": "Aldi"}, {"i": "12 oz raw shrimp, peeled and deveined", "st": "Either"}, {"i": "4 eggs, beaten with a pinch of salt", "st": "Either"}, {"i": "1/3 cup Sweet Chili Sauce", "st": "TJ"}, {"i": "2 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "2 tbsp ketchup", "st": "Pantry"}, {"i": "1 tbsp Fusia sriracha", "st": "Aldi"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "4 cups shredded green cabbage", "st": "Either"}, {"i": "4 scallions, cut into 2-inch lengths", "st": "Either"}, {"i": "1 lime", "st": "Either"}, {"i": "2 tbsp Crunchy Chili Onion", "st": "TJ"}]}, {"id": "w5r3", "t": "Persian Lemon-Turmeric Chicken and Chickpea Khoresh", "c": "Persian", "tm": "70 min", "s": "batch", "h": "🥘", "sv": 6, "wk": 5, "ing": [{"i": "3 lb bone-in skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "3 large yellow onions, sliced thin", "st": "Either"}, {"i": "2 tbsp ground turmeric", "st": "Either"}, {"i": "1 tsp ground cinnamon", "st": "Either"}, {"i": "2 cans chickpeas, drained and rinsed", "st": "Either"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "3 lemons", "st": "Either"}, {"i": "1/2 cup dried cranberries", "st": "Either"}, {"i": "1 large bunch flat-leaf parsley, chopped", "st": "Either"}, {"i": "4 cups chicken broth", "st": "Either"}, {"i": "3 pouches Earthly Grains basmati rice", "st": "Aldi"}, {"i": "1 cup Friendly Farms Greek yogurt, for serving", "st": "Aldi"}]}, {"id": "w6r0", "t": "Skirt Steak with Hand-Chopped Chimichurri", "c": "Argentinian", "tm": "40 min", "s": "dinner", "h": "🥩", "sv": 2, "wk": 6, "ing": [{"i": "1 lb skirt or flank steak", "st": "Aldi"}, {"i": "1 lb baby potatoes, halved", "st": "Either"}, {"i": "1 large bunch flat-leaf parsley", "st": "Either"}, {"i": "4 cloves garlic", "st": "Either"}, {"i": "1 shallot", "st": "Either"}, {"i": "1/4 cup red wine vinegar", "st": "Either"}, {"i": "1 tbsp dried oregano", "st": "Either"}, {"i": "1/2 tsp red pepper flakes", "st": "Either"}, {"i": "2 tbsp Burman's chimichurri hot sauce", "st": "Aldi"}, {"i": "4 cups arugula", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "Specially Selected olive oil, kosher salt, black pepper", "st": "Aldi"}]}, {"id": "w6r1", "t": "Crispy General Tso's Chicken and Broccoli", "c": "Chinese-American", "tm": "30 min", "s": "dinner", "h": "🥡", "sv": 2, "wk": 6, "ing": [{"i": "1 lb Simply Nature Organic Chicken Breasts, cut in 1-inch cubes", "st": "Aldi"}, {"i": "1/2 cup cornstarch", "st": "Pantry"}, {"i": "1 egg white", "st": "Either"}, {"i": "1/2 cup Fusia General Tso's sauce", "st": "Aldi"}, {"i": "1 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 large head broccoli, cut into small florets", "st": "Either"}, {"i": "3 cloves garlic, minced", "st": "Either"}, {"i": "1 tbsp fresh ginger, grated", "st": "Either"}, {"i": "6 dried red chiles or 1 tsp red pepper flakes", "st": "Either"}, {"i": "3 scallions, sliced on the bias", "st": "Either"}, {"i": "1 tbsp toasted sesame seeds", "st": "Either"}, {"i": "2 servings Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w6r2", "t": "Doro Wat-Style Chicken with Jammy Eggs", "c": "Ethiopian-inspired", "tm": "40 min", "s": "dinner", "h": "🍗", "sv": 2, "wk": 6, "ing": [{"i": "1 lb boneless skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "2 large red onions, finely diced", "st": "Either"}, {"i": "4 tbsp butter", "st": "Either"}, {"i": "3 tbsp Harissa", "st": "TJ"}, {"i": "1 tbsp sweet paprika", "st": "Either"}, {"i": "1/2 tsp ground cardamom", "st": "Either"}, {"i": "1/2 tsp ground ginger", "st": "Either"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "4 eggs", "st": "Either"}, {"i": "1 cup chicken broth", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "2 pieces naan", "st": "Either"}]}, {"id": "w6r3", "t": "Tex-Mex Beef and Black Bean Chili with Unexpected Cheddar", "c": "Tex-Mex", "tm": "70 min", "s": "batch", "h": "🌶️", "sv": 6, "wk": 6, "ing": [{"i": "2 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "2 yellow onions, diced", "st": "Either"}, {"i": "1 green bell pepper, diced", "st": "Either"}, {"i": "6 cloves garlic, minced", "st": "Either"}, {"i": "3 tbsp chili powder", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Either"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "1 jar (16 oz) Casa Mamita salsa", "st": "Aldi"}, {"i": "2 cans black beans, drained and rinsed", "st": "Either"}, {"i": "1 can (28 oz) crushed tomatoes", "st": "Either"}, {"i": "2 cups beef broth", "st": "Either"}, {"i": "6 oz Unexpected Cheddar, coarsely grated", "st": "TJ"}]}, {"id": "w7r0", "t": "Nashville Hot Honey Chicken Thighs", "c": "Southern/Nashville Hot", "tm": "35 min", "s": "dinner", "h": "🔥", "sv": 2, "wk": 7, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "1/2 cup Friendly Farms buttermilk", "st": "Aldi"}, {"i": "3/4 cup all-purpose flour", "st": "Pantry"}, {"i": "1 tbsp cayenne pepper", "st": "Pantry"}, {"i": "2 tsp smoked paprika", "st": "Pantry"}, {"i": "2 tsp garlic powder", "st": "Pantry"}, {"i": "1 tbsp dark brown sugar", "st": "Pantry"}, {"i": "1/4 cup Trader Joe's Hot Honey", "st": "TJ"}, {"i": "3/4 cup neutral frying oil", "st": "Pantry"}, {"i": "2 slices L'Oven Fresh white sandwich bread", "st": "Aldi"}, {"i": "1/2 cup dill pickle chips", "st": "Either"}]}, {"id": "w7r1", "t": "Sambal Balado Shrimp with Coconut Jasmine Rice", "c": "Indonesian", "tm": "25 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 7, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and patted dry", "st": "TJ"}, {"i": "2 packets Frozen Jasmine Rice", "st": "TJ"}, {"i": "1/2 cup canned full-fat coconut milk", "st": "Either"}, {"i": "3 tbsp Crunchy Chili Onion", "st": "TJ"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "2 tbsp dark brown sugar", "st": "Pantry"}, {"i": "4 garlic cloves, thinly sliced", "st": "Either"}, {"i": "2 shallots, thinly sliced", "st": "Either"}, {"i": "1 red bell pepper, cut in thin strips", "st": "Either"}, {"i": "1 lime", "st": "Either"}, {"i": "1 small handful cilantro", "st": "Either"}]}, {"id": "w7r2", "t": "Piri-Piri Chicken with Smoky Sausage and Peppers", "c": "Portuguese", "tm": "35 min", "s": "dinner", "h": "🍗", "sv": 2, "wk": 7, "ing": [{"i": "1 1/4 lb Simply Nature Organic Chicken Breasts, sliced into thin cutlets", "st": "Aldi"}, {"i": "6 oz Never Any! smoked sausage, cut in coins", "st": "Aldi"}, {"i": "2 tbsp Harissa", "st": "TJ"}, {"i": "2 tsp smoked paprika", "st": "Pantry"}, {"i": "1 tsp crushed red pepper flakes", "st": "Pantry"}, {"i": "4 garlic cloves, grated", "st": "Either"}, {"i": "1/4 cup red wine vinegar", "st": "Pantry"}, {"i": "1 bag Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "1 lemon", "st": "Either"}, {"i": "1/4 cup chopped flat-leaf parsley", "st": "Either"}, {"i": "1/2 loaf Specially Selected ciabatta", "st": "Aldi"}]}, {"id": "w7r3", "t": "West African Chicken and Peanut Stew", "c": "West African", "tm": "70 min", "s": "batch", "h": "🥜", "sv": 6, "wk": 7, "ing": [{"i": "3 lb bone-in skin-on chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "3/4 cup Simply Nature creamy peanut butter", "st": "Aldi"}, {"i": "1 (28 oz) can crushed tomatoes", "st": "Either"}, {"i": "3 tbsp tomato paste", "st": "Either"}, {"i": "2 large yellow onions, diced", "st": "Either"}, {"i": "6 garlic cloves and a 2-inch knob of ginger, both grated", "st": "Either"}, {"i": "1 habanero chile, halved (seeds removed for less heat)", "st": "Either"}, {"i": "2 tsp curry powder", "st": "Pantry"}, {"i": "4 cups chicken broth", "st": "Either"}, {"i": "1 lb sweet potatoes, cut in 1-inch cubes", "st": "Either"}, {"i": "5 oz baby spinach", "st": "Either"}, {"i": "3 pouches Earthly Grains jasmine rice", "st": "Aldi"}]}, {"id": "w8r0", "t": "Sri Lankan Devilled Chicken", "c": "Sri Lankan", "tm": "30 min", "s": "dinner", "h": "🌶️", "sv": 2, "wk": 8, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs (Kirkwood), cut in 1-inch strips", "st": "Aldi"}, {"i": "1 tbsp curry powder", "st": "Pantry"}, {"i": "1 tsp crushed red pepper flakes", "st": "Pantry"}, {"i": "3 tbsp Fusia sriracha", "st": "Aldi"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp sugar", "st": "Pantry"}, {"i": "1 large red onion, cut in thick wedges and separated", "st": "Either"}, {"i": "1 green bell pepper, cut in 1-inch squares", "st": "Either"}, {"i": "4 garlic cloves and 1 tbsp grated ginger", "st": "Either"}, {"i": "1 (3-inch) cinnamon stick", "st": "Pantry"}, {"i": "2 packets Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w8r1", "t": "Shoyu Ahi Poke Bowls", "c": "Hawaiian", "tm": "20 min", "s": "dinner", "h": "🐟", "sv": 2, "wk": 8, "ing": [{"i": "12 oz ahi tuna steaks, thawed and very cold", "st": "TJ"}, {"i": "3 tbsp Island Soyaki", "st": "TJ"}, {"i": "1 tbsp toasted sesame oil", "st": "Pantry"}, {"i": "2 packets Frozen Jasmine Rice", "st": "TJ"}, {"i": "1/2 sweet onion, shaved paper thin", "st": "Either"}, {"i": "3 scallions, thinly sliced", "st": "Either"}, {"i": "1 avocado", "st": "Either"}, {"i": "1 Persian cucumber, sliced into thin coins", "st": "Either"}, {"i": "2 tsp Everything But The Bagel Sesame Seasoning", "st": "TJ"}, {"i": "2 tbsp Burman's mayonnaise", "st": "Aldi"}, {"i": "1 tbsp Fusia sriracha", "st": "Aldi"}, {"i": "1 sheet roasted seaweed snack, crumbled", "st": "Either"}]}, {"id": "w8r2", "t": "Kielbasa and Caraway Cabbage with Mustard Cream", "c": "Polish", "tm": "35 min", "s": "dinner", "h": "🥓", "sv": 2, "wk": 8, "ing": [{"i": "14 oz Never Any! smoked Polish sausage, cut in 1/2-inch coins", "st": "Aldi"}, {"i": "2 slices Appleton Farms bacon, chopped", "st": "Aldi"}, {"i": "10 oz baby potatoes, halved", "st": "Either"}, {"i": "1/2 head green cabbage, cored and shredded", "st": "Either"}, {"i": "1 yellow onion, sliced", "st": "Either"}, {"i": "2 tsp caraway seeds", "st": "Pantry"}, {"i": "1 tsp sweet paprika", "st": "Pantry"}, {"i": "1 tbsp apple cider vinegar", "st": "Pantry"}, {"i": "1 tsp sugar", "st": "Pantry"}, {"i": "2 tbsp Burman's stone ground mustard", "st": "Aldi"}, {"i": "1/3 cup Friendly Farms sour cream", "st": "Aldi"}, {"i": "2 tbsp chopped fresh dill", "st": "Either"}]}, {"id": "w8r3", "t": "Burmese Coconut Chicken Noodle Bowls", "c": "Burmese", "tm": "70 min", "s": "batch", "h": "🍜", "sv": 6, "wk": 8, "ing": [{"i": "2 1/2 lb boneless skinless chicken thighs (Kirkwood), cut in 1-inch pieces", "st": "Aldi"}, {"i": "2 (13.5 oz) cans full-fat coconut milk", "st": "Either"}, {"i": "2 large yellow onions, roughly chopped", "st": "Either"}, {"i": "8 garlic cloves and a 2-inch knob of ginger", "st": "Either"}, {"i": "1 tbsp ground turmeric", "st": "Pantry"}, {"i": "3 tbsp fish sauce", "st": "Either"}, {"i": "6 cups chicken broth", "st": "Either"}, {"i": "3 tbsp cornstarch", "st": "Pantry"}, {"i": "14 oz Fusia rice noodles", "st": "Aldi"}, {"i": "6 large eggs", "st": "Either"}, {"i": "1 cup crispy fried onions", "st": "Either"}, {"i": "3 limes", "st": "Either"}]}, {"id": "w9r0", "t": "Shkmeruli: Georgian Skillet Chicken in Garlic Milk", "c": "Georgian", "tm": "40 min", "s": "dinner", "h": "🧄", "sv": 2, "wk": 9, "ing": [{"i": "1 1/2 lb bone-in skin-on chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "12 garlic cloves, finely grated", "st": "Either"}, {"i": "1 cup Friendly Farms whole milk", "st": "Aldi"}, {"i": "1/2 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "2 tbsp unsalted butter", "st": "Either"}, {"i": "2 tsp ground coriander", "st": "Pantry"}, {"i": "1 tsp ground fenugreek", "st": "Pantry"}, {"i": "1 tsp sweet paprika", "st": "Pantry"}, {"i": "1/2 tsp cayenne", "st": "Pantry"}, {"i": "1/4 cup chopped cilantro", "st": "Either"}, {"i": "2 Trader Joe's Naan", "st": "TJ"}]}, {"id": "w9r1", "t": "Nigerian Suya Steak with Yaji and Raw Onion", "c": "Nigerian", "tm": "30 min", "s": "dinner", "h": "🍢", "sv": 2, "wk": 9, "ing": [{"i": "1 1/4 lb beef sirloin or flank steak", "st": "Aldi"}, {"i": "1/2 cup Southern Grove roasted unsalted peanuts", "st": "Aldi"}, {"i": "1 tbsp smoked paprika", "st": "Pantry"}, {"i": "2 tsp cayenne", "st": "Pantry"}, {"i": "1 tbsp ground ginger", "st": "Pantry"}, {"i": "2 tsp onion powder", "st": "Pantry"}, {"i": "2 tsp garlic powder", "st": "Pantry"}, {"i": "1 chicken bouillon cube, crushed", "st": "Either"}, {"i": "2 tbsp neutral oil", "st": "Pantry"}, {"i": "1 large red onion, sliced paper thin", "st": "Either"}, {"i": "2 plum tomatoes, sliced", "st": "Either"}, {"i": "1 lime, cut in wedges", "st": "Either"}]}, {"id": "w9r2", "t": "Basque Cod al Pil-Pil with Guindilla Chiles", "c": "Basque", "tm": "35 min", "s": "dinner", "h": "🐟", "sv": 2, "wk": 9, "ing": [{"i": "2 thick-cut cod loin pieces (about 1 lb total)", "st": "Either"}, {"i": "8 garlic cloves, sliced thin", "st": "Either"}, {"i": "2 dried arbol or guindilla chiles, sliced into rings", "st": "Either"}, {"i": "3/4 cup Specially Selected extra virgin olive oil", "st": "Aldi"}, {"i": "1 cup jarred piquillo or roasted red peppers, torn", "st": "Either"}, {"i": "2 tbsp chopped flat-leaf parsley", "st": "Either"}, {"i": "1/2 baguette or rustic loaf", "st": "Either"}, {"i": "1 lemon", "st": "Either"}]}, {"id": "w9r3", "t": "Hungarian Beef Goulash with Caraway and Sweet Paprika", "c": "Hungarian", "tm": "72 min", "s": "batch", "h": "🫑", "sv": 6, "wk": 9, "ing": [{"i": "3 lb beef chuck roast, cut in 1 1/2-inch cubes", "st": "Aldi"}, {"i": "3 large yellow onions, sliced thin", "st": "Either"}, {"i": "1/3 cup sweet Hungarian paprika", "st": "Pantry"}, {"i": "1 tsp hot paprika or cayenne", "st": "Pantry"}, {"i": "1 tbsp caraway seeds, lightly crushed", "st": "Pantry"}, {"i": "3 tbsp tomato paste", "st": "Either"}, {"i": "2 red bell peppers, sliced in wide strips", "st": "Either"}, {"i": "4 cups beef broth", "st": "Either"}, {"i": "1 1/2 lb Yukon gold potatoes, cut in large chunks", "st": "Either"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "1 tbsp red wine vinegar", "st": "Pantry"}, {"i": "1 cup Friendly Farms sour cream", "st": "Aldi"}]}, {"id": "w10r0", "t": "Yucatecan Sopa de Lima with Crisp Tortilla Strips", "c": "Yucatecan Mexican", "tm": "35 min", "s": "dinner", "h": "🥣", "sv": 2, "wk": 10, "ing": [{"i": "1 lb boneless skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "4 cups chicken broth", "st": "Either"}, {"i": "1 white onion, diced", "st": "Either"}, {"i": "1 habanero, halved (or 1 jalapeno, sliced)", "st": "Either"}, {"i": "2 plum tomatoes, diced", "st": "Either"}, {"i": "1 1/2 tsp Mexican oregano", "st": "Pantry"}, {"i": "1/2 tsp ground allspice", "st": "Pantry"}, {"i": "1/2 tsp ground cumin", "st": "Pantry"}, {"i": "4 limes", "st": "Either"}, {"i": "6 Casa Mamita corn tortillas, cut in thin strips", "st": "Aldi"}, {"i": "1/4 cup neutral oil", "st": "Pantry"}, {"i": "1/3 cup chopped cilantro", "st": "Either"}]}, {"id": "w10r1", "t": "Okinawan Pork and Tofu Champuru", "c": "Okinawan Japanese", "tm": "30 min", "s": "dinner", "h": "🍳", "sv": 2, "wk": 10, "ing": [{"i": "12 oz pork belly or thick-cut Appleton Farms bacon, cut in 1-inch strips", "st": "Aldi"}, {"i": "1 block (14 oz) extra-firm tofu", "st": "Either"}, {"i": "3 eggs", "st": "Either"}, {"i": "1/2 head green cabbage, cut in rough 2-inch squares", "st": "Either"}, {"i": "4 scallions, cut in 2-inch lengths", "st": "Either"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp mirin or 2 tsp sugar", "st": "Either"}, {"i": "1 tbsp toasted sesame oil", "st": "Either"}, {"i": "1 tsp Trader Joe's Mushroom & Company Multipurpose Umami Seasoning Blend", "st": "TJ"}, {"i": "1 cup bonito flakes (katsuobushi)", "st": "Either"}, {"i": "2 packages Trader Joe's Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w10r2", "t": "Alsatian Coq au Riesling with Bacon and Mushrooms", "c": "Alsatian French", "tm": "40 min", "s": "dinner", "h": "🍷", "sv": 2, "wk": 10, "ing": [{"i": "1 1/2 lb boneless skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "4 slices Appleton Farms bacon, cut in lardons", "st": "Aldi"}, {"i": "8 oz cremini mushrooms, quartered", "st": "Either"}, {"i": "2 shallots, sliced thin", "st": "Either"}, {"i": "1 1/2 cups dry Riesling", "st": "Either"}, {"i": "1/2 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "1 tbsp Burman's Dijon mustard", "st": "Aldi"}, {"i": "2 tbsp unsalted butter", "st": "Either"}, {"i": "1 tbsp all-purpose flour", "st": "Pantry"}, {"i": "1 tsp fresh thyme leaves", "st": "Either"}, {"i": "6 oz wide egg noodles or spaetzle", "st": "Either"}, {"i": "2 tbsp chopped parsley", "st": "Either"}]}, {"id": "w10r3", "t": "Colombian Chicken Sancocho with Aji Picante", "c": "Colombian", "tm": "75 min", "s": "batch", "h": "🌽", "sv": 6, "wk": 10, "ing": [{"i": "4 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)", "st": "Aldi"}, {"i": "1 large yellow onion, diced", "st": "Either"}, {"i": "6 scallions, chopped and divided", "st": "Either"}, {"i": "8 garlic cloves, smashed", "st": "Either"}, {"i": "2 jalapenos, divided", "st": "Either"}, {"i": "2 tsp ground cumin", "st": "Pantry"}, {"i": "1 1/2 tsp ground turmeric", "st": "Pantry"}, {"i": "2 green plantains, peeled and cut in thick chunks", "st": "Either"}, {"i": "3 ears corn, cut in 2-inch rounds (or 6 Season's Choice frozen cobbettes)", "st": "Either"}, {"i": "1 1/2 lb Yukon gold potatoes, cut in large chunks", "st": "Either"}, {"i": "1 large bunch cilantro, stems and leaves separated", "st": "Either"}, {"i": "3 limes", "st": "Either"}]}, {"id": "w11r0", "t": "Cantonese Steamed Cod with Sizzling Ginger-Scallion Oil", "c": "Cantonese", "tm": "30 min", "s": "dinner", "h": "🥢", "sv": 2, "wk": 11, "ing": [{"i": "2 thick cod or haddock fillets (about 6 oz each)", "st": "Either"}, {"i": "1 large knob fresh ginger (about 3 inches), half smashed and half julienned", "st": "Either"}, {"i": "6 scallions, whites smashed and greens finely julienned", "st": "Either"}, {"i": "3 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "1 tbsp sugar", "st": "Pantry"}, {"i": "1 tbsp Shaoxing wine or dry sherry", "st": "Pantry"}, {"i": "3 tbsp peanut or other neutral high-heat oil", "st": "Pantry"}, {"i": "1 tsp toasted sesame oil", "st": "Pantry"}, {"i": "4 heads baby bok choy, halved lengthwise", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "small handful cilantro sprigs", "st": "Either"}]}, {"id": "w11r1", "t": "Dhaba-Style Chicken Karahi with Crushed Coriander", "c": "Punjabi", "tm": "35 min", "s": "dinner", "h": "🫚", "sv": 2, "wk": 11, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs, cut into big chunks", "st": "Aldi"}, {"i": "4 Roma tomatoes, roughly chopped", "st": "Either"}, {"i": "1 large knob fresh ginger, half grated and half julienned", "st": "Either"}, {"i": "6 cloves garlic, crushed", "st": "Either"}, {"i": "2 to 3 green serrano chiles, slit lengthwise", "st": "Either"}, {"i": "1 tbsp coriander seeds, coarsely crushed", "st": "Pantry"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "1 tsp Kashmiri chili powder or sweet paprika", "st": "Pantry"}, {"i": "1 tsp garam masala", "st": "Pantry"}, {"i": "3 tbsp ghee or butter", "st": "Either"}, {"i": "1 bunch cilantro, leaves and tender stems chopped", "st": "Either"}, {"i": "2 pieces Naan", "st": "TJ"}]}, {"id": "w11r2", "t": "Sardinian Saffron Sausage Malloreddus with Pecorino", "c": "Sardinian", "tm": "35 min", "s": "dinner", "h": "🧀", "sv": 2, "wk": 11, "ing": [{"i": "12 oz Never Any! Italian sausage, casings removed", "st": "Aldi"}, {"i": "8 oz Priano malloreddus, gnocchetti sardi, or small shells", "st": "Aldi"}, {"i": "1 can (14.5 oz) whole peeled tomatoes", "st": "Either"}, {"i": "1 small onion, finely diced", "st": "Either"}, {"i": "3 cloves garlic, thinly sliced", "st": "Either"}, {"i": "1 generous pinch saffron threads", "st": "Either"}, {"i": "1 tsp fennel seeds", "st": "Pantry"}, {"i": "1/4 tsp red pepper flakes", "st": "Pantry"}, {"i": "1/2 cup dry white wine", "st": "Either"}, {"i": "1 cup finely grated Pecorino Romano", "st": "Aldi"}, {"i": "handful fresh basil leaves", "st": "Either"}]}, {"id": "w11r3", "t": "Egyptian Chicken Fattah with Garlic-Vinegar Tomato Sauce", "c": "Egyptian", "tm": "70 min", "s": "batch", "h": "🫓", "sv": 6, "wk": 11, "ing": [{"i": "3 lb Kirkwood bone-in, skin-on chicken thighs and drumsticks", "st": "Aldi"}, {"i": "1 large onion, quartered", "st": "Either"}, {"i": "10 cloves garlic, half smashed and half finely minced", "st": "Either"}, {"i": "1 cinnamon stick, 4 green cardamom pods, and 2 bay leaves", "st": "Either"}, {"i": "2 cups Earthly Grains basmati or long-grain rice", "st": "Aldi"}, {"i": "1 can (15 oz) tomato sauce", "st": "Either"}, {"i": "1/4 cup white or red wine vinegar", "st": "Pantry"}, {"i": "2 tsp ground coriander", "st": "Pantry"}, {"i": "1 tsp ground cumin", "st": "Pantry"}, {"i": "2 pieces Naan, torn into rough shards", "st": "TJ"}, {"i": "4 tbsp ghee or butter", "st": "Either"}, {"i": "1/2 bunch flat-leaf parsley, chopped", "st": "Either"}]}, {"id": "w12r0", "t": "Bavarian Jagerschnitzel with Bacon-Mushroom Gravy", "c": "Bavarian German", "tm": "40 min", "s": "dinner", "h": "🍺", "sv": 2, "wk": 12, "ing": [{"i": "2 boneless pork loin chops (about 1 lb total)", "st": "Aldi"}, {"i": "1/2 cup all-purpose flour", "st": "Pantry"}, {"i": "2 large eggs, beaten", "st": "Either"}, {"i": "1 cup plain fine breadcrumbs", "st": "Either"}, {"i": "4 slices Appleton Farms bacon, chopped", "st": "Aldi"}, {"i": "8 oz cremini mushrooms, thickly sliced", "st": "Either"}, {"i": "1 small onion, finely diced", "st": "Either"}, {"i": "1 cup beef broth", "st": "Either"}, {"i": "1/2 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "1 tsp Mushroom & Company Multipurpose Umami Seasoning Blend", "st": "TJ"}, {"i": "4 tbsp butter", "st": "Either"}, {"i": "1 lemon, cut into wedges", "st": "Either"}]}, {"id": "w12r1", "t": "Uyghur Cumin Lamb with Blistered Onions", "c": "Uyghur", "tm": "30 min", "s": "dinner", "h": "🐑", "sv": 2, "wk": 12, "ing": [{"i": "1 lb boneless lamb shoulder or leg, sliced thin against the grain", "st": "Either"}, {"i": "2 tbsp whole cumin seeds", "st": "Pantry"}, {"i": "1 tbsp coarse red chili flakes", "st": "Pantry"}, {"i": "1 large onion, cut into thick wedges and separated", "st": "Either"}, {"i": "1 green bell pepper, cut into wide strips", "st": "Either"}, {"i": "5 cloves garlic, thinly sliced", "st": "Either"}, {"i": "2 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "1 tbsp Shaoxing wine or dry sherry", "st": "Pantry"}, {"i": "1 tsp cornstarch", "st": "Pantry"}, {"i": "2 tbsp neutral high-heat oil", "st": "Pantry"}, {"i": "1 bunch cilantro, roughly chopped", "st": "Either"}, {"i": "2 pieces Naan", "st": "TJ"}]}, {"id": "w12r2", "t": "Cuban Bistec Encebollado with Black Beans and Rice", "c": "Cuban", "tm": "35 min", "s": "dinner", "h": "🧅", "sv": 2, "wk": 12, "ing": [{"i": "1 lb thin-cut sirloin or top round steaks", "st": "Aldi"}, {"i": "1 large onion, sliced into rings", "st": "Either"}, {"i": "6 cloves garlic, mashed to a paste", "st": "Either"}, {"i": "3 limes", "st": "Either"}, {"i": "1 orange", "st": "Either"}, {"i": "1 tsp ground cumin", "st": "Pantry"}, {"i": "1 tsp dried oregano", "st": "Pantry"}, {"i": "1 green bell pepper, finely diced", "st": "Either"}, {"i": "1 can black beans, undrained", "st": "Either"}, {"i": "1 bay leaf", "st": "Pantry"}, {"i": "2 Earthly Grains white rice pouches", "st": "Aldi"}, {"i": "small handful cilantro or parsley, chopped", "st": "Either"}]}, {"id": "w12r3", "t": "Kuku Paka: Swahili Coast Charred Chicken in Coconut Curry", "c": "Swahili-coast East African", "tm": "70 min", "s": "batch", "h": "🥥", "sv": 6, "wk": 12, "ing": [{"i": "4 lb Kirkwood bone-in, skin-on chicken thighs and drumsticks", "st": "Aldi"}, {"i": "2 cans full-fat coconut milk", "st": "Either"}, {"i": "1 large onion, finely chopped", "st": "Either"}, {"i": "10 cloves garlic", "st": "Either"}, {"i": "1 large knob fresh ginger, peeled", "st": "Either"}, {"i": "3 Fresno or serrano chiles, stemmed", "st": "Either"}, {"i": "1 bunch cilantro, stems and leaves separated", "st": "Either"}, {"i": "3 limes", "st": "Either"}, {"i": "2 tsp ground turmeric", "st": "Pantry"}, {"i": "2 tsp ground coriander", "st": "Pantry"}, {"i": "3 Roma tomatoes, grated or finely chopped", "st": "Either"}, {"i": "3 cups Earthly Grains basmati rice, cooked", "st": "Aldi"}]}, {"id": "w13r0", "t": "Three-Cup Chicken with Charred Ginger and Thai Basil", "c": "Taiwanese", "tm": "30 min", "s": "dinner", "h": "🍗", "sv": 2, "wk": 13, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs, cut in 1 1/2-inch chunks (Kirkwood)", "st": "Aldi"}, {"i": "3 tbsp toasted sesame oil", "st": "Either"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "3 tbsp Shaoxing wine or dry sherry", "st": "Either"}, {"i": "2 tbsp dark brown sugar", "st": "Pantry"}, {"i": "1 (2-inch) knob ginger, sliced into thin coins", "st": "Either"}, {"i": "10 garlic cloves, peeled and left whole", "st": "Either"}, {"i": "4 dried red chiles, snapped in half", "st": "Either"}, {"i": "2 packed cups Thai basil leaves, stems removed", "st": "Either"}, {"i": "4 scallions, cut into 2-inch batons", "st": "Either"}, {"i": "2 bowls Trader Joe's Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w13r1", "t": "Poulet Provencal with Olives, Fennel and Orange", "c": "Provençal French", "tm": "40 min", "s": "dinner", "h": "🫒", "sv": 2, "wk": 13, "ing": [{"i": "4 bone-in skin-on chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "1 large fennel bulb, cut into 1/2-inch wedges", "st": "Either"}, {"i": "1 pint cherry tomatoes", "st": "Either"}, {"i": "1/2 cup pitted Kalamata or black olives", "st": "Either"}, {"i": "1 orange, zest peeled in wide strips plus the juice", "st": "Either"}, {"i": "5 garlic cloves, smashed", "st": "Either"}, {"i": "1/2 cup dry white wine", "st": "Either"}, {"i": "2 tsp herbes de Provence (or Trader Joe's 21 Seasoning Salute)", "st": "Either"}, {"i": "1/2 tsp fennel seeds, crushed", "st": "Pantry"}, {"i": "3 anchovy fillets, minced", "st": "Either"}, {"i": "1 jar Trader Joe's Quartered Marinated Artichokes, drained", "st": "TJ"}, {"i": "1/2 crusty baguette", "st": "Either"}]}, {"id": "w13r2", "t": "Chupe de Camarones, Chilean Shrimp and Bread Chowder", "c": "Chilean", "tm": "35 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 13, "ing": [{"i": "1 lb Trader Joe's Raw Argentinian Red Shrimp, thawed and peeled", "st": "TJ"}, {"i": "3 thick slices country bread, crusts torn off", "st": "Either"}, {"i": "1 1/2 cups whole milk", "st": "Either"}, {"i": "1/3 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "1 yellow onion, finely diced", "st": "Either"}, {"i": "4 garlic cloves, minced", "st": "Either"}, {"i": "2 tsp merken (or 1 1/2 tsp smoked paprika plus a pinch of cayenne)", "st": "Pantry"}, {"i": "1 tsp sweet paprika", "st": "Pantry"}, {"i": "2 tbsp butter", "st": "Either"}, {"i": "1 cup chicken or seafood broth", "st": "Either"}, {"i": "4 oz Happy Farms shredded mozzarella", "st": "Aldi"}, {"i": "3 tbsp chopped cilantro", "st": "Either"}]}, {"id": "w13r3", "t": "Low-Country Shrimp and Sausage over Unexpected Cheddar Grits", "c": "Low-Country Carolina", "tm": "70 min", "s": "batch", "h": "🦐", "sv": 6, "wk": 13, "ing": [{"i": "2 lb Trader Joe's Raw Argentinian Red Shrimp, peeled", "st": "TJ"}, {"i": "12 oz Never Any! smoked sausage, sliced into coins", "st": "Aldi"}, {"i": "8 oz Appleton Farms bacon, chopped", "st": "Aldi"}, {"i": "1 1/2 cups stone-ground grits", "st": "Either"}, {"i": "6 cups chicken broth", "st": "Either"}, {"i": "5 oz Trader Joe's Unexpected Cheddar, grated", "st": "TJ"}, {"i": "4 tbsp butter", "st": "Either"}, {"i": "1 bunch scallions, whites and greens sliced separately", "st": "Either"}, {"i": "1 red bell pepper, diced", "st": "Either"}, {"i": "5 garlic cloves, minced", "st": "Either"}, {"i": "2 tbsp Burman's hot sauce", "st": "Aldi"}, {"i": "1 lemon", "st": "Either"}]}, {"id": "w14r0", "t": "Nepali Chicken Chhoila with Mustard Oil and Timur", "c": "Nepali", "tm": "30 min", "s": "dinner", "h": "🌶️", "sv": 2, "wk": 14, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs (Simply Nature Organic)", "st": "Aldi"}, {"i": "3 tbsp mustard oil", "st": "Either"}, {"i": "1 tsp timur or Sichuan peppercorns", "st": "Pantry"}, {"i": "1 tsp fenugreek seeds", "st": "Pantry"}, {"i": "4 dried red chiles", "st": "Either"}, {"i": "1 tbsp ground red chili", "st": "Pantry"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "1 (2-inch) knob ginger and 4 garlic cloves, grated to a paste", "st": "Either"}, {"i": "1 small red onion, slivered", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "1/2 cup cilantro, roughly chopped", "st": "Either"}, {"i": "4 Journey to India naan", "st": "Aldi"}]}, {"id": "w14r1", "t": "Pasta con le Sarde, Sicilian Sardines with Fennel and Saffron", "c": "Sicilian", "tm": "30 min", "s": "dinner", "h": "🍝", "sv": 2, "wk": 14, "ing": [{"i": "3 tins sardines packed in olive oil, drained", "st": "Either"}, {"i": "8 oz Priano bucatini or spaghetti", "st": "Aldi"}, {"i": "1 large fennel bulb with fronds, bulb diced and fronds chopped", "st": "Either"}, {"i": "1 small yellow onion, finely diced", "st": "Either"}, {"i": "1/3 cup golden raisins", "st": "Either"}, {"i": "1/4 cup Southern Grove pine nuts or slivered almonds", "st": "Aldi"}, {"i": "1 big pinch saffron threads", "st": "Either"}, {"i": "3 anchovy fillets", "st": "Either"}, {"i": "1/2 cup plain breadcrumbs", "st": "Pantry"}, {"i": "1/4 tsp red pepper flakes", "st": "Pantry"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "1 lemon", "st": "Either"}]}, {"id": "w14r2", "t": "Trinidadian Brown Stew Chicken with Burnt Sugar", "c": "Trinidadian", "tm": "40 min", "s": "dinner", "h": "🥘", "sv": 2, "wk": 14, "ing": [{"i": "1 1/2 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)", "st": "Aldi"}, {"i": "3 tbsp dark brown sugar", "st": "Pantry"}, {"i": "1 bunch cilantro and 4 scallions, roughly chopped together", "st": "Either"}, {"i": "6 garlic cloves", "st": "Either"}, {"i": "2 tsp fresh thyme leaves", "st": "Either"}, {"i": "1 scotch bonnet or habanero chile", "st": "Either"}, {"i": "1 yellow onion, sliced", "st": "Either"}, {"i": "1 red bell pepper, sliced", "st": "Either"}, {"i": "2 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp ketchup", "st": "Either"}, {"i": "1 cup chicken broth", "st": "Either"}, {"i": "2 pouches Earthly Grains jasmine rice", "st": "Aldi"}]}, {"id": "w14r3", "t": "Kashmiri Rogan Josh with Fennel and Black Cardamom", "c": "Kashmiri", "tm": "75 min", "s": "batch", "h": "🍛", "sv": 6, "wk": 14, "ing": [{"i": "3 lb boneless lamb shoulder, cut into 1 1/2-inch cubes", "st": "Either"}, {"i": "1 1/2 cups Friendly Farms whole-milk Greek yogurt, whisked smooth", "st": "Aldi"}, {"i": "3 tbsp Kashmiri red chili powder", "st": "Either"}, {"i": "2 tbsp ground fennel", "st": "Pantry"}, {"i": "1 tbsp ground dry ginger", "st": "Pantry"}, {"i": "4 black cardamom pods, 6 green cardamom pods, 1 cinnamon stick and 6 cloves", "st": "Either"}, {"i": "1/2 tsp asafoetida", "st": "Either"}, {"i": "4 tbsp ghee or butter", "st": "Either"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "1/2 tsp garam masala", "st": "Pantry"}, {"i": "3 pouches Journey to India basmati rice", "st": "Aldi"}, {"i": "4 Journey to India naan", "st": "Aldi"}]}, {"id": "w15r0", "t": "Singapore Chili Shrimp with Egg Ribbon Gravy", "c": "Singaporean", "tm": "30 min", "s": "dinner", "h": "🦐", "sv": 2, "wk": 15, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, peeled and thawed", "st": "TJ"}, {"i": "1/3 cup Sweet Chili Sauce", "st": "TJ"}, {"i": "3 tbsp ketchup", "st": "Pantry"}, {"i": "1 tbsp Fusia Asian Inspirations sriracha", "st": "Aldi"}, {"i": "1 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "5 cloves garlic, minced", "st": "Either"}, {"i": "2-inch piece fresh ginger, grated", "st": "Either"}, {"i": "1 large egg, beaten", "st": "Either"}, {"i": "4 scallions, thinly sliced on an angle", "st": "Either"}, {"i": "2 tsp cornstarch stirred into 2 tbsp cold water", "st": "Pantry"}, {"i": "2 pieces Naan, for dipping", "st": "TJ"}, {"i": "1 lime, cut into wedges", "st": "Either"}]}, {"id": "w15r1", "t": "Mustard-Dill Salmon with Smashed Dill Potatoes", "c": "Norwegian Nordic", "tm": "35 min", "s": "dinner", "h": "🐟", "sv": 2, "wk": 15, "ing": [{"i": "2 skin-on salmon fillets (about 1 lb total)", "st": "Either"}, {"i": "1 lb baby potatoes", "st": "Aldi"}, {"i": "3 tbsp Burman's Dijon mustard", "st": "Aldi"}, {"i": "1 tbsp Burman's whole grain mustard", "st": "Aldi"}, {"i": "2 tbsp honey", "st": "Pantry"}, {"i": "2 tbsp white wine vinegar", "st": "Pantry"}, {"i": "1 large bunch fresh dill", "st": "Either"}, {"i": "1/3 cup Friendly Farms Greek yogurt", "st": "Aldi"}, {"i": "2 tbsp butter", "st": "Either"}, {"i": "1 Persian cucumber, shaved into thin coins", "st": "Either"}, {"i": "1 tbsp capers, drained", "st": "Either"}, {"i": "1 lemon, cut into wedges", "st": "Either"}]}, {"id": "w15r2", "t": "Salvadoran Panes con Pollo", "c": "Salvadoran", "tm": "40 min", "s": "dinner", "h": "🥪", "sv": 2, "wk": 15, "ing": [{"i": "1 lb Kirkwood boneless skinless chicken thighs", "st": "Aldi"}, {"i": "1 can (15 oz) tomato sauce", "st": "Aldi"}, {"i": "3 tbsp Southern Grove pepitas", "st": "Aldi"}, {"i": "1 tbsp sesame seeds", "st": "Pantry"}, {"i": "2 tsp dried oregano", "st": "Pantry"}, {"i": "1 tsp ground cumin", "st": "Pantry"}, {"i": "1 yellow onion, thinly sliced", "st": "Either"}, {"i": "4 cloves garlic, sliced", "st": "Either"}, {"i": "4 Specially Selected brioche buns", "st": "Aldi"}, {"i": "2 cups shredded green cabbage", "st": "Either"}, {"i": "4 radishes, sliced paper-thin", "st": "Either"}, {"i": "3 tbsp mayonnaise", "st": "Pantry"}]}, {"id": "w15r3", "t": "Goan Pork Vindaloo", "c": "Goan", "tm": "70 min", "s": "batch", "h": "🐖", "sv": 6, "wk": 15, "ing": [{"i": "3 lb boneless pork shoulder, cut into 1 1/2-inch cubes", "st": "Aldi"}, {"i": "1/3 cup apple cider vinegar", "st": "Pantry"}, {"i": "8 cloves garlic, grated", "st": "Either"}, {"i": "2-inch piece fresh ginger, grated", "st": "Either"}, {"i": "2 tbsp sweet paprika", "st": "Pantry"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "2 tsp garam masala", "st": "Either"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "2 tsp cayenne pepper", "st": "Pantry"}, {"i": "1 large yellow onion, diced", "st": "Either"}, {"i": "1 tbsp brown sugar", "st": "Pantry"}, {"i": "3 pouches Earthly Grains basmati rice", "st": "Aldi"}]}, {"id": "w16r0", "t": "Chicken Kyiv Cutlets with Garlic-Dill Butter", "c": "Ukrainian", "tm": "40 min", "s": "dinner", "h": "🧈", "sv": 2, "wk": 16, "ing": [{"i": "2 Simply Nature Organic Chicken Breasts", "st": "Aldi"}, {"i": "5 tbsp butter, softened", "st": "Either"}, {"i": "4 cloves garlic, grated", "st": "Either"}, {"i": "1 large bunch fresh dill", "st": "Either"}, {"i": "1 1/2 cups plain breadcrumbs or panko", "st": "Aldi"}, {"i": "2 large eggs, beaten", "st": "Either"}, {"i": "1/2 cup all-purpose flour", "st": "Pantry"}, {"i": "1 bag Season's Choice frozen peas", "st": "Aldi"}, {"i": "1/3 cup Friendly Farms sour cream", "st": "Aldi"}, {"i": "2 tbsp Burman's Dijon mustard", "st": "Aldi"}, {"i": "1 lemon", "st": "Either"}, {"i": "1 cup neutral oil, for shallow frying", "st": "Pantry"}]}, {"id": "w16r1", "t": "Hawaij Chicken with Sahawiq and Charred Naan", "c": "Yemeni", "tm": "35 min", "s": "dinner", "h": "🫓", "sv": 2, "wk": 16, "ing": [{"i": "1 1/2 lb Never Any! boneless skinless chicken thighs", "st": "Aldi"}, {"i": "2 tsp ground cumin", "st": "Pantry"}, {"i": "2 tsp ground coriander", "st": "Pantry"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "1/2 tsp ground cardamom", "st": "Either"}, {"i": "1 large bunch cilantro", "st": "Either"}, {"i": "2 jalapeños or serranos, stemmed", "st": "Either"}, {"i": "5 cloves garlic", "st": "Either"}, {"i": "2 plum tomatoes", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "2 pieces Naan", "st": "TJ"}, {"i": "1/2 cup Friendly Farms Greek yogurt", "st": "Aldi"}]}, {"id": "w16r2", "t": "Tuscan Rosemary Pork Chops with Cannellini and Kale", "c": "Tuscan", "tm": "35 min", "s": "dinner", "h": "🫘", "sv": 2, "wk": 16, "ing": [{"i": "2 bone-in pork chops, about 1 inch thick", "st": "Aldi"}, {"i": "2 sprigs fresh rosemary", "st": "Either"}, {"i": "6 sage leaves", "st": "Either"}, {"i": "6 cloves garlic, smashed", "st": "Either"}, {"i": "1 can cannellini beans, drained", "st": "Aldi"}, {"i": "1 bunch lacinato kale, stripped and torn", "st": "Either"}, {"i": "1/2 tsp red pepper flakes", "st": "Pantry"}, {"i": "1/2 cup chicken broth", "st": "Pantry"}, {"i": "1 lemon", "st": "Either"}, {"i": "2 tbsp Balsamic Glaze", "st": "TJ"}, {"i": "1/4 cup Priano grated parmesan", "st": "Aldi"}, {"i": "3 tbsp Specially Selected olive oil", "st": "Aldi"}]}, {"id": "w16r3", "t": "Puerto Rican Carne Guisada with Olives and Potatoes", "c": "Puerto Rican", "tm": "75 min", "s": "batch", "h": "🫒", "sv": 6, "wk": 16, "ing": [{"i": "2 1/2 lb beef chuck, cut into 3/4-inch cubes", "st": "Aldi"}, {"i": "1 large yellow onion, quartered", "st": "Either"}, {"i": "1 green bell pepper, seeded and torn", "st": "Either"}, {"i": "1 large bunch cilantro", "st": "Either"}, {"i": "8 cloves garlic", "st": "Either"}, {"i": "1 can (15 oz) tomato sauce", "st": "Aldi"}, {"i": "1 tbsp dried oregano", "st": "Pantry"}, {"i": "1 tbsp sweet paprika", "st": "Pantry"}, {"i": "1/2 cup pimiento-stuffed green olives", "st": "Either"}, {"i": "1 1/2 lb baby potatoes, halved", "st": "Aldi"}, {"i": "2 cups beef broth", "st": "Pantry"}, {"i": "3 pouches Earthly Grains rice", "st": "Aldi"}]}, {"id": "w17r0", "t": "Shanghai Red-Braised Chicken with Star Anise and Scallions", "c": "Shanghainese", "tm": "35 min", "s": "dinner", "h": "🥢", "sv": 2, "wk": 17, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs, halved", "st": "Aldi"}, {"i": "3 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "2 tbsp dark brown sugar", "st": "Pantry"}, {"i": "3 tbsp dry sherry", "st": "Either"}, {"i": "2 whole star anise pods", "st": "Pantry"}, {"i": "1 (2-inch) piece ginger, sliced into coins", "st": "Either"}, {"i": "5 cloves garlic, smashed", "st": "Either"}, {"i": "6 scallions, cut into 2-inch lengths, whites and greens separated", "st": "Either"}, {"i": "1 tbsp rice vinegar", "st": "Pantry"}, {"i": "2 heads baby bok choy, halved lengthwise", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "1 tsp toasted sesame oil", "st": "Pantry"}]}, {"id": "w17r1", "t": "Bengali Shorshe Salmon in Mustard-Turmeric Sauce", "c": "Bengali", "tm": "25 min", "s": "dinner", "h": "🐟", "sv": 2, "wk": 17, "ing": [{"i": "2 (6 oz) salmon fillets", "st": "Either"}, {"i": "3 tbsp Burman's yellow mustard", "st": "Aldi"}, {"i": "1 tbsp Burman's stone-ground or Dijon mustard", "st": "Aldi"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "1 tsp nigella seeds (kalonji)", "st": "Pantry"}, {"i": "2 green serrano chiles, slit lengthwise", "st": "Either"}, {"i": "3 tbsp mustard oil or other neutral oil", "st": "Pantry"}, {"i": "1/2 tsp sugar", "st": "Pantry"}, {"i": "1 lime, halved", "st": "Either"}, {"i": "small handful cilantro, torn", "st": "Either"}, {"i": "1 pouch Earthly Grains basmati rice", "st": "Aldi"}]}, {"id": "w17r2", "t": "Catalan Romesco Shrimp with Blistered Scallions", "c": "Catalan", "tm": "30 min", "s": "dinner", "h": "🍤", "sv": 2, "wk": 17, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and patted dry", "st": "TJ"}, {"i": "1 bag Fire Roasted Peppers & Onions, thawed and drained", "st": "TJ"}, {"i": "1/2 cup Southern Grove roasted almonds", "st": "Aldi"}, {"i": "3 cloves garlic, peeled", "st": "Either"}, {"i": "2 thick slices crusty bread", "st": "Either"}, {"i": "2 tbsp sherry vinegar", "st": "Pantry"}, {"i": "1 tsp smoked paprika", "st": "Pantry"}, {"i": "1/4 tsp crushed red pepper", "st": "Pantry"}, {"i": "2 bunches scallions, trimmed", "st": "Either"}, {"i": "handful flat-leaf parsley, chopped", "st": "Either"}, {"i": "1 lemon, halved", "st": "Either"}]}, {"id": "w17r3", "t": "Venezuelan Pabellon Bowls with Sweet Plantains", "c": "Venezuelan", "tm": "60 min", "s": "batch", "h": "🍛", "sv": 6, "wk": 17, "ing": [{"i": "2 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "1 large onion, finely diced", "st": "Either"}, {"i": "1 green bell pepper, finely diced", "st": "Either"}, {"i": "5 cloves garlic, minced", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "2 tsp dried oregano", "st": "Pantry"}, {"i": "1 (15 oz) can diced tomatoes", "st": "Aldi"}, {"i": "2 tbsp Worcestershire sauce", "st": "Either"}, {"i": "2 (15 oz) cans black beans, undrained", "st": "Aldi"}, {"i": "1 bag frozen sweet plantains", "st": "TJ"}, {"i": "3 pouches Earthly Grains white rice", "st": "Aldi"}, {"i": "4 oz Happy Farms queso fresco or feta, crumbled", "st": "Aldi"}]}, {"id": "w18r0", "t": "Isan Pork Larb with Toasted Rice Powder", "c": "Isan Thai", "tm": "25 min", "s": "dinner", "h": "🌶️", "sv": 2, "wk": 18, "ing": [{"i": "1 lb ground pork", "st": "Aldi"}, {"i": "3 tbsp fish sauce", "st": "Either"}, {"i": "3 limes, juiced", "st": "Either"}, {"i": "2 tbsp uncooked jasmine or basmati rice", "st": "Aldi"}, {"i": "1 tbsp Thai chili flakes or crushed red pepper", "st": "Pantry"}, {"i": "1 tsp sugar", "st": "Pantry"}, {"i": "1 large shallot, sliced paper-thin", "st": "Either"}, {"i": "4 scallions, thinly sliced", "st": "Either"}, {"i": "1 cup mint leaves, loosely packed", "st": "Either"}, {"i": "1 cup cilantro, roughly chopped", "st": "Either"}, {"i": "1 head green cabbage, leaves separated", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}]}, {"id": "w18r1", "t": "Danish Frikadeller with Dill Potatoes and Agurkesalat", "c": "Danish", "tm": "40 min", "s": "dinner", "h": "🥔", "sv": 2, "wk": 18, "ing": [{"i": "3/4 lb ground pork", "st": "Aldi"}, {"i": "1/2 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "1 small onion, grated on a box grater", "st": "Either"}, {"i": "1 large egg", "st": "Either"}, {"i": "1/3 cup all-purpose flour", "st": "Pantry"}, {"i": "1/2 tsp ground allspice", "st": "Pantry"}, {"i": "4 tbsp butter", "st": "Aldi"}, {"i": "1 1/2 lb baby potatoes", "st": "Either"}, {"i": "1 English cucumber, sliced paper-thin", "st": "Either"}, {"i": "1/4 cup white vinegar", "st": "Pantry"}, {"i": "2 tbsp sugar", "st": "Pantry"}, {"i": "1/4 cup fresh dill, chopped", "st": "Either"}]}, {"id": "w18r2", "t": "Guatemalan Pollo en Jocon", "c": "Guatemalan", "tm": "40 min", "s": "dinner", "h": "🥬", "sv": 2, "wk": 18, "ing": [{"i": "1 1/4 lb boneless skinless chicken thighs", "st": "Aldi"}, {"i": "1/3 cup Southern Grove pepitas", "st": "Aldi"}, {"i": "2 tbsp sesame seeds", "st": "Pantry"}, {"i": "1 (16 oz) jar Casa Mamita salsa verde", "st": "Aldi"}, {"i": "1 bunch cilantro, leaves and tender stems", "st": "Either"}, {"i": "4 scallions, cut in half", "st": "Either"}, {"i": "1 green bell pepper, roughly chopped", "st": "Either"}, {"i": "4 cloves garlic", "st": "Either"}, {"i": "1 tsp ground coriander", "st": "Pantry"}, {"i": "1 cup chicken broth", "st": "Either"}, {"i": "6 Casa Mamita corn tortillas", "st": "Aldi"}, {"i": "1 pouch Earthly Grains white rice", "st": "Aldi"}]}, {"id": "w18r3", "t": "Big-Batch Andalusian Sherry-Garlic Chicken with Saffron Potatoes", "c": "Andalusian", "tm": "70 min", "s": "batch", "h": "🍗", "sv": 6, "wk": 18, "ing": [{"i": "4 lb bone-in skin-on Kirkwood chicken thighs", "st": "Aldi"}, {"i": "2 heads garlic, cloves peeled and smashed", "st": "Either"}, {"i": "1 cup dry sherry", "st": "Either"}, {"i": "generous pinch saffron threads", "st": "Either"}, {"i": "2 tsp ground cumin", "st": "Pantry"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "2 lb baby potatoes, halved", "st": "Either"}, {"i": "1 large onion, sliced", "st": "Either"}, {"i": "1 cup pitted green olives", "st": "Either"}, {"i": "2 tbsp sherry vinegar", "st": "Pantry"}, {"i": "1 lemon, zested and juiced", "st": "Either"}, {"i": "handful flat-leaf parsley, chopped", "st": "Either"}]}, {"id": "w19r0", "t": "Hunan Farmhouse Pork with Blistered Green Chilies", "c": "Hunan", "tm": "30 min", "s": "dinner", "h": "🔥", "sv": 2, "wk": 19, "ing": [{"i": "1 lb pork shoulder or thick-cut boneless pork chops", "st": "Either"}, {"i": "6 long green Anaheim or Hatch chilies, seeded and cut on a sharp bias", "st": "Either"}, {"i": "3 tbsp Crunchy Chili Onion", "st": "TJ"}, {"i": "2 tbsp salted fermented black beans, rinsed and roughly chopped (or black bean garlic sauce)", "st": "Either"}, {"i": "8 cloves garlic, sliced thin", "st": "Either"}, {"i": "2-inch piece ginger, cut into matchsticks", "st": "Either"}, {"i": "3 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp Chinese black vinegar or rice vinegar", "st": "Either"}, {"i": "1 tsp sugar", "st": "Either"}, {"i": "5 scallions, cut into 2-inch batons", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "Neutral oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w19r1", "t": "Chettinad Pepper Chicken with Curry Leaves", "c": "Tamil South Indian", "tm": "35 min", "s": "dinner", "h": "🍛", "sv": 2, "wk": 19, "ing": [{"i": "1 1/4 lb Kirkwood boneless chicken thighs, cut into large bite-size pieces", "st": "Aldi"}, {"i": "2 tbsp whole black peppercorns", "st": "Either"}, {"i": "1 tbsp fennel seeds", "st": "Either"}, {"i": "2 tsp coriander seeds", "st": "Either"}, {"i": "2 sprigs fresh curry leaves", "st": "Either"}, {"i": "1 large red onion, sliced thin", "st": "Either"}, {"i": "1 tbsp ginger-garlic paste (or 4 cloves garlic and a thumb of ginger, grated)", "st": "Either"}, {"i": "2 tsp Kashmiri chili powder or sweet paprika", "st": "Either"}, {"i": "1/2 tsp ground turmeric", "st": "Either"}, {"i": "1 tomato, chopped", "st": "Either"}, {"i": "3 tbsp Friendly Farms plain Greek yogurt", "st": "Aldi"}, {"i": "2 pieces Journey to India naan", "st": "Aldi"}, {"i": "Coconut or olive oil, kosher salt", "st": "Pantry"}]}, {"id": "w19r2", "t": "Neapolitan Chicken Pizzaiola with Olives and Torn Mozzarella", "c": "Neapolitan", "tm": "35 min", "s": "dinner", "h": "🍅", "sv": 2, "wk": 19, "ing": [{"i": "2 large Simply Nature Organic Chicken Breasts, halved horizontally into 4 thin cutlets", "st": "Aldi"}, {"i": "1 can (28 oz) whole peeled San Marzano-style tomatoes", "st": "Either"}, {"i": "6 cloves garlic, sliced thin", "st": "Either"}, {"i": "2 tsp dried oregano", "st": "Either"}, {"i": "1/4 tsp red pepper flakes", "st": "Either"}, {"i": "2 tbsp capers, drained", "st": "Either"}, {"i": "1/2 cup green or black olives, torn open and pitted", "st": "Either"}, {"i": "8 oz fresh mozzarella", "st": "Either"}, {"i": "1 large handful fresh basil", "st": "Either"}, {"i": "1 loaf crusty ciabatta", "st": "Either"}, {"i": "Specially Selected olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w19r3", "t": "Dominican Pollo Guisado with Green Olives", "c": "Dominican", "tm": "70 min", "s": "batch", "h": "🍗", "sv": 6, "wk": 19, "ing": [{"i": "4 lb Kirkwood bone-in chicken thighs and drumsticks", "st": "Aldi"}, {"i": "2 tbsp adobo-style all-purpose seasoning (or 21 Seasoning Salute plus garlic powder)", "st": "Either"}, {"i": "2 tbsp granulated sugar", "st": "Either"}, {"i": "1 bag Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "8 cloves garlic, minced", "st": "Either"}, {"i": "1 bunch cilantro, stems minced and leaves reserved", "st": "Either"}, {"i": "3 tbsp tomato paste", "st": "Either"}, {"i": "1 tbsp dried oregano", "st": "Either"}, {"i": "1 cup pimiento-stuffed green olives, plus 2 tbsp of their brine", "st": "Either"}, {"i": "1 1/2 lb Yukon gold potatoes, cut into big chunks", "st": "Either"}, {"i": "2 limes", "st": "Either"}, {"i": "3 pouches Earthly Grains long grain rice", "st": "Aldi"}, {"i": "Olive oil, kosher salt, black pepper, water", "st": "Pantry"}]}, {"id": "w20r0", "t": "Laotian Larb Gai with Toasted Rice Powder", "c": "Laotian", "tm": "30 min", "s": "dinner", "h": "🥬", "sv": 2, "wk": 20, "ing": [{"i": "1 lb Never Any! ground chicken", "st": "Aldi"}, {"i": "3 tbsp uncooked jasmine or sticky rice", "st": "Either"}, {"i": "3 tbsp fish sauce", "st": "Either"}, {"i": "3 limes", "st": "Either"}, {"i": "1 to 2 tsp toasted Thai chili flakes", "st": "Either"}, {"i": "1 tsp sugar", "st": "Either"}, {"i": "4 scallions, sliced thin", "st": "Either"}, {"i": "3 shallots or 1/2 red onion, sliced paper thin", "st": "Either"}, {"i": "1 cup mint leaves, picked", "st": "Either"}, {"i": "1 cup cilantro, roughly chopped", "st": "Either"}, {"i": "1 head butter or romaine lettuce, leaves separated", "st": "Either"}, {"i": "1 English cucumber, cut into spears", "st": "Either"}, {"i": "Kosher salt, water", "st": "Pantry"}]}, {"id": "w20r1", "t": "Swedish Meatballs in Allspice Cream with Pickled Cucumber", "c": "Swedish", "tm": "40 min", "s": "dinner", "h": "🧆", "sv": 2, "wk": 20, "ing": [{"i": "1 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "1/2 cup panko breadcrumbs", "st": "Either"}, {"i": "1 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "1 small yellow onion, grated on a box grater", "st": "Either"}, {"i": "1 tsp ground allspice plus several scrapes of nutmeg", "st": "Either"}, {"i": "3 tbsp butter", "st": "Either"}, {"i": "3 tbsp all-purpose flour", "st": "Either"}, {"i": "2 cups beef broth", "st": "Either"}, {"i": "1 English cucumber", "st": "Either"}, {"i": "1/4 cup white vinegar and 1 tbsp sugar", "st": "Either"}, {"i": "1/3 cup lingonberry or red currant jam", "st": "Either"}, {"i": "1 small bunch fresh dill", "st": "Either"}, {"i": "Olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w20r2", "t": "Bolivian Silpancho with Fried Eggs and Llajua", "c": "Bolivian", "tm": "40 min", "s": "dinner", "h": "🍳", "sv": 2, "wk": 20, "ing": [{"i": "1 lb thin-cut sirloin or top round steaks", "st": "Either"}, {"i": "1 cup fine dry breadcrumbs", "st": "Either"}, {"i": "2 pouches Earthly Grains long grain rice", "st": "Aldi"}, {"i": "1 lb Season's Choice diced potatoes", "st": "Aldi"}, {"i": "4 eggs", "st": "Either"}, {"i": "3 Roma tomatoes", "st": "Either"}, {"i": "1/2 red onion", "st": "Either"}, {"i": "1 to 2 serrano or jalapeno chiles", "st": "Either"}, {"i": "1 small bunch cilantro", "st": "Either"}, {"i": "2 cloves garlic", "st": "Either"}, {"i": "1 lime", "st": "Either"}, {"i": "1 tsp ground cumin", "st": "Either"}, {"i": "Olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w20r3", "t": "Caldo Gallego with Chorizo, White Beans, and Greens", "c": "Galician", "tm": "75 min", "s": "batch", "h": "🥣", "sv": 6, "wk": 20, "ing": [{"i": "1 1/2 lb boneless pork shoulder, cut into 1-inch cubes", "st": "Either"}, {"i": "12 oz Spanish-style chorizo or Never Any! smoked sausage, sliced thick", "st": "Either"}, {"i": "6 oz Appleton Farms thick-cut bacon, diced", "st": "Aldi"}, {"i": "2 yellow onions, diced", "st": "Either"}, {"i": "6 cloves garlic, sliced", "st": "Either"}, {"i": "2 tbsp sweet smoked paprika (pimenton)", "st": "Either"}, {"i": "3 cans (15 oz) cannellini or great northern beans, drained and rinsed", "st": "Either"}, {"i": "1 1/2 lb Yukon gold potatoes, cut into rough chunks", "st": "Either"}, {"i": "1 lb collard greens, turnip greens, or kale, stemmed and torn", "st": "Either"}, {"i": "2 bay leaves", "st": "Either"}, {"i": "8 cups chicken broth", "st": "Either"}, {"i": "Olive oil, kosher salt, black pepper", "st": "Pantry"}]}, {"id": "w21r0", "t": "Beijing Zhajiangmian: Fried Bean Sauce Pork Noodles", "c": "Northern Chinese / Beijing", "tm": "30 min", "s": "dinner", "h": "🍜", "sv": 2, "wk": 21, "ing": [{"i": "1 lb ground pork", "st": "Aldi"}, {"i": "1/3 cup hoisin sauce (Fusia)", "st": "Aldi"}, {"i": "3 tbsp white or yellow miso", "st": "Either"}, {"i": "1 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp Trader Joe's Crunchy Chili Onion", "st": "TJ"}, {"i": "6 scallions, whites and greens sliced and kept separate", "st": "Either"}, {"i": "4 garlic cloves, minced, plus a 1-inch knob of ginger, grated", "st": "Either"}, {"i": "1 tbsp Shaoxing wine or dry sherry", "st": "Either"}, {"i": "1 tsp sugar", "st": "Pantry"}, {"i": "2 tsp toasted sesame oil", "st": "Either"}, {"i": "10 oz fresh or dried wheat noodles (Fusia)", "st": "Aldi"}, {"i": "1 English cucumber, cut into long matchsticks", "st": "Either"}]}, {"id": "w21r1", "t": "Gujarati Kadhi with Crisped Paneer", "c": "Gujarati", "tm": "35 min", "s": "dinner", "h": "🥣", "sv": 2, "wk": 21, "ing": [{"i": "12 oz paneer, cut into 3/4-inch cubes", "st": "Either"}, {"i": "1 1/2 cups Friendly Farms plain whole-milk yogurt", "st": "Aldi"}, {"i": "3 tbsp chickpea flour (besan)", "st": "Either"}, {"i": "1 tbsp jaggery or dark brown sugar", "st": "Pantry"}, {"i": "2 tbsp ghee or butter", "st": "Either"}, {"i": "1 tsp brown mustard seeds", "st": "Pantry"}, {"i": "1 tsp cumin seeds", "st": "Pantry"}, {"i": "15 fresh curry leaves", "st": "Either"}, {"i": "2 dried red chiles and 1 tsp grated ginger", "st": "Either"}, {"i": "1/4 tsp asafoetida (hing)", "st": "Pantry"}, {"i": "1/2 tsp ground turmeric", "st": "Pantry"}, {"i": "1 pouch Earthly Grains basmati rice and 1/2 cup chopped cilantro", "st": "Aldi"}]}, {"id": "w21r2", "t": "Saltimbocca alla Romana with Skillet Artichokes", "c": "Roman", "tm": "30 min", "s": "dinner", "h": "🌿", "sv": 2, "wk": 21, "ing": [{"i": "2 large Simply Nature organic chicken breasts, halved horizontally into 4 cutlets", "st": "Aldi"}, {"i": "8 thin slices prosciutto (Specially Selected)", "st": "Aldi"}, {"i": "16 fresh sage leaves", "st": "Either"}, {"i": "1/3 cup all-purpose flour", "st": "Pantry"}, {"i": "4 tbsp unsalted butter", "st": "Either"}, {"i": "2/3 cup dry white wine", "st": "Either"}, {"i": "1 jar Trader Joe's Quartered Marinated Artichokes, drained well", "st": "TJ"}, {"i": "2 garlic cloves, smashed", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "2 tbsp chopped flat-leaf parsley", "st": "Either"}, {"i": "1/4 cup Priano grated parmesan", "st": "Aldi"}]}, {"id": "w21r3", "t": "Seco de Pollo: Ecuadorian Beer-Braised Chicken", "c": "Ecuadorian", "tm": "75 min", "s": "batch", "h": "🍗", "sv": 6, "wk": 21, "ing": [{"i": "4 lb bone-in skin-on chicken thighs and drumsticks (Kirkwood)", "st": "Aldi"}, {"i": "1 (12 oz) bottle lager beer", "st": "Either"}, {"i": "2 large bunches cilantro, stems and all", "st": "Either"}, {"i": "6 garlic cloves", "st": "Either"}, {"i": "2 yellow onions, diced", "st": "Either"}, {"i": "1 red bell pepper, diced", "st": "Either"}, {"i": "1 (14.5 oz) can diced tomatoes", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "2 tsp achiote (annatto) powder or smoked paprika", "st": "Either"}, {"i": "1 tbsp dark brown sugar or grated panela", "st": "Pantry"}, {"i": "3 pouches Earthly Grains long grain rice", "st": "Aldi"}, {"i": "1 red onion, thinly sliced, and 3 limes", "st": "Either"}]}, {"id": "w22r0", "t": "Beef Lok Lak with Tuk Meric", "c": "Cambodian", "tm": "30 min", "s": "dinner", "h": "🥩", "sv": 2, "wk": 22, "ing": [{"i": "1 1/4 lb sirloin or flat iron steak, cut into 1-inch cubes", "st": "Aldi"}, {"i": "3 tbsp oyster sauce (Fusia)", "st": "Aldi"}, {"i": "1 tbsp Fusia soy sauce", "st": "Aldi"}, {"i": "1 tbsp fish sauce", "st": "Either"}, {"i": "1 tbsp sugar", "st": "Pantry"}, {"i": "1 1/2 tbsp coarsely cracked black peppercorns", "st": "Pantry"}, {"i": "4 garlic cloves, minced", "st": "Either"}, {"i": "3 limes", "st": "Either"}, {"i": "2 eggs", "st": "Either"}, {"i": "1 head green leaf lettuce, 1 tomato sliced, and 1/2 red onion sliced paper-thin", "st": "Either"}, {"i": "1 pouch Earthly Grains jasmine rice", "st": "Aldi"}, {"i": "2 tbsp neutral oil", "st": "Pantry"}]}, {"id": "w22r1", "t": "Kure na Paprice: Czech Paprika Cream Chicken", "c": "Czech", "tm": "40 min", "s": "dinner", "h": "🥘", "sv": 2, "wk": 22, "ing": [{"i": "1 1/2 lb boneless skinless chicken thighs (Kirkwood)", "st": "Aldi"}, {"i": "3 tbsp sweet Hungarian paprika", "st": "Either"}, {"i": "1 tsp hot paprika or 1/2 tsp cayenne", "st": "Pantry"}, {"i": "1 large yellow onion, finely diced", "st": "Either"}, {"i": "3 tbsp unsalted butter", "st": "Either"}, {"i": "2 tbsp all-purpose flour", "st": "Pantry"}, {"i": "1 1/2 cups chicken broth", "st": "Either"}, {"i": "3/4 cup Friendly Farms heavy cream", "st": "Aldi"}, {"i": "1/3 cup Friendly Farms sour cream", "st": "Aldi"}, {"i": "1 tsp caraway seeds and 1 tsp dried marjoram", "st": "Pantry"}, {"i": "8 oz wide egg noodles", "st": "Either"}, {"i": "1 lemon", "st": "Either"}]}, {"id": "w22r2", "t": "Tico Casado: Pork Chops with Gallo Pinto", "c": "Costa Rican", "tm": "40 min", "s": "dinner", "h": "🍛", "sv": 2, "wk": 22, "ing": [{"i": "2 thick bone-in pork chops, about 1 1/2 lb total", "st": "Aldi"}, {"i": "3 tbsp Worcestershire sauce", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "2 tsp achiote (annatto) powder or smoked paprika", "st": "Either"}, {"i": "1 tbsp dark brown sugar", "st": "Pantry"}, {"i": "1 (15 oz) can black beans, liquid and all", "st": "Either"}, {"i": "1 pouch Earthly Grains long grain rice", "st": "Aldi"}, {"i": "1 red bell pepper, finely diced", "st": "Either"}, {"i": "1 yellow onion, finely diced", "st": "Either"}, {"i": "4 garlic cloves, minced", "st": "Either"}, {"i": "1 large bunch cilantro, chopped", "st": "Either"}, {"i": "2 very ripe black-skinned plantains and 1 lime", "st": "Either"}]}, {"id": "w22r3", "t": "Me'orav Yerushalmi: Jerusalem Mixed Grill", "c": "Israeli", "tm": "50 min", "s": "batch", "h": "🥙", "sv": 6, "wk": 22, "ing": [{"i": "2 1/2 lb boneless skinless chicken thighs (Kirkwood), sliced into strips", "st": "Aldi"}, {"i": "1 lb chicken livers, trimmed and cut into bite-size pieces", "st": "Either"}, {"i": "2 large onions, halved and thinly sliced", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "2 tsp ground turmeric", "st": "Pantry"}, {"i": "1 tbsp baharat or Trader Joe's 21 Seasoning Salute", "st": "TJ"}, {"i": "2 tsp ground coriander", "st": "Pantry"}, {"i": "3 tbsp unsalted butter or schmaltz", "st": "Either"}, {"i": "1/2 cup tahini", "st": "Either"}, {"i": "2 lemons", "st": "Either"}, {"i": "6 pita breads and 1 cup sliced dill pickles", "st": "Either"}, {"i": "1 jar Trader Joe's Zhoug Sauce", "st": "TJ"}]}, {"id": "w23r0", "t": "Macanese Minchi with Crispy Potatoes and Fried Eggs", "c": "Macanese", "tm": "35 min", "s": "dinner", "h": "🍳", "sv": 2, "wk": 23, "ing": [{"i": "1 lb Simply Nature Organic Grass-Fed Ground Beef", "st": "Aldi"}, {"i": "3 cups Season's Choice frozen diced breakfast potatoes", "st": "Aldi"}, {"i": "3 tbsp Fusia Asian Inspirations soy sauce", "st": "Aldi"}, {"i": "2 tbsp Worcestershire sauce", "st": "Either"}, {"i": "1 tsp dark brown sugar", "st": "Pantry"}, {"i": "1 yellow onion, finely diced", "st": "Either"}, {"i": "4 cloves garlic, minced", "st": "Either"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "1 tsp Mushroom & Company Multipurpose Umami Seasoning Blend", "st": "TJ"}, {"i": "2 large eggs", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "3 scallions, thinly sliced", "st": "Either"}]}, {"id": "w23r1", "t": "Sindhi Seyal Murgh, Smothered in Garlic and Cilantro", "c": "Pakistani Sindhi", "tm": "40 min", "s": "dinner", "h": "🌿", "sv": 2, "wk": 23, "ing": [{"i": "1.5 lb Kirkwood boneless skinless chicken thighs, halved", "st": "Aldi"}, {"i": "1 large bunch cilantro, tender stems and leaves, roughly chopped", "st": "Either"}, {"i": "8 cloves garlic, half minced and half smashed", "st": "Either"}, {"i": "2 green chilies, split lengthwise", "st": "Either"}, {"i": "1 tbsp fresh ginger, grated", "st": "Either"}, {"i": "2 roma tomatoes, chopped", "st": "Either"}, {"i": "1/2 cup Friendly Farms plain Greek yogurt", "st": "Aldi"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "1 tsp red chili powder", "st": "Pantry"}, {"i": "1 tsp cumin seeds", "st": "Pantry"}, {"i": "1 tsp garam masala", "st": "Either"}, {"i": "2 Journey to India naan", "st": "Aldi"}]}, {"id": "w23r2", "t": "Venetian Shrimp in Saor over Soft Parmesan Polenta", "c": "Venetian", "tm": "35 min", "s": "dinner", "h": "🦐", "sv": 2, "wk": 23, "ing": [{"i": "1 lb Raw Argentinian Red Shrimp, thawed and peeled", "st": "TJ"}, {"i": "2 large red onions, halved and sliced thin", "st": "Either"}, {"i": "1/3 cup white wine vinegar", "st": "Either"}, {"i": "1/4 cup golden raisins", "st": "Either"}, {"i": "3 tbsp Southern Grove pine nuts", "st": "Aldi"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "3/4 cup instant polenta", "st": "Either"}, {"i": "1/3 cup Priano grated parmesan", "st": "Aldi"}, {"i": "2 tbsp butter", "st": "Either"}, {"i": "2 tbsp all-purpose flour", "st": "Pantry"}, {"i": "1 tsp sugar", "st": "Pantry"}, {"i": "handful flat-leaf parsley, chopped", "st": "Either"}]}, {"id": "w23r3", "t": "Honduran Tapado: Garifuna Coconut Chicken and Shrimp Stew", "c": "Honduran", "tm": "65 min", "s": "batch", "h": "🥥", "sv": 6, "wk": 23, "ing": [{"i": "2.5 lb Kirkwood boneless skinless chicken thighs", "st": "Aldi"}, {"i": "1 lb Raw Argentinian Red Shrimp, peeled", "st": "TJ"}, {"i": "2 cans full-fat coconut milk", "st": "Either"}, {"i": "2 green plantains, peeled and cut into thick coins", "st": "Either"}, {"i": "1 lb baby potatoes, halved", "st": "Either"}, {"i": "1 bag Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "1 yellow onion, diced", "st": "Either"}, {"i": "6 cloves garlic, minced", "st": "Either"}, {"i": "1 tbsp ground cumin", "st": "Pantry"}, {"i": "4 cups chicken broth", "st": "Either"}, {"i": "1 large bunch cilantro, chopped", "st": "Either"}, {"i": "2 limes", "st": "Either"}]}, {"id": "w24r0", "t": "Balinese Sate Lilit Chicken with Sambal Matah", "c": "Balinese", "tm": "35 min", "s": "dinner", "h": "🔥", "sv": 2, "wk": 24, "ing": [{"i": "1.5 lb Never Any! ground chicken", "st": "Aldi"}, {"i": "3/4 cup unsweetened shredded coconut", "st": "Either"}, {"i": "3 tbsp lemongrass paste", "st": "Either"}, {"i": "6 shallots, sliced paper thin", "st": "Either"}, {"i": "3 red Fresno chilies, sliced thin", "st": "Either"}, {"i": "5 cloves garlic, minced", "st": "Either"}, {"i": "1 tsp ground turmeric", "st": "Pantry"}, {"i": "3 tbsp coconut oil", "st": "Either"}, {"i": "1/4 cup coconut milk", "st": "Either"}, {"i": "3 limes", "st": "Either"}, {"i": "1 bag Frozen Jasmine Rice", "st": "TJ"}, {"i": "1 tsp Chili Lime Seasoning", "st": "TJ"}]}, {"id": "w24r1", "t": "Austrian Pork Schnitzel with Warm Vinegar Potato Salad", "c": "Austrian", "tm": "40 min", "s": "dinner", "h": "🍋", "sv": 2, "wk": 24, "ing": [{"i": "4 thin-cut boneless pork loin chops", "st": "Aldi"}, {"i": "1 lb baby yellow potatoes", "st": "Either"}, {"i": "1 cup plain breadcrumbs", "st": "Either"}, {"i": "1/2 cup all-purpose flour", "st": "Pantry"}, {"i": "2 large eggs, beaten", "st": "Either"}, {"i": "4 tbsp butter", "st": "Either"}, {"i": "3 tbsp Burman's Dijon mustard", "st": "Aldi"}, {"i": "3 tbsp white wine vinegar", "st": "Either"}, {"i": "1/2 small red onion, shaved paper thin", "st": "Either"}, {"i": "1/2 cup chicken broth", "st": "Either"}, {"i": "1 lemon, cut into wedges", "st": "Either"}, {"i": "handful chives, snipped", "st": "Either"}]}, {"id": "w24r2", "t": "Tunisian Ojja with Merguez and Eggs", "c": "Tunisian", "tm": "35 min", "s": "dinner", "h": "🌶️", "sv": 2, "wk": 24, "ing": [{"i": "12 oz merguez sausage, cut into thick coins", "st": "Either"}, {"i": "3 tbsp Harissa", "st": "TJ"}, {"i": "1 can diced tomatoes", "st": "Either"}, {"i": "1 bag Fire Roasted Peppers & Onions", "st": "TJ"}, {"i": "5 cloves garlic, sliced", "st": "Either"}, {"i": "1 tsp caraway seeds, crushed", "st": "Pantry"}, {"i": "1 tsp ground coriander", "st": "Pantry"}, {"i": "2 tbsp tomato paste", "st": "Either"}, {"i": "4 large eggs", "st": "Either"}, {"i": "handful flat-leaf parsley, chopped", "st": "Either"}, {"i": "1 lemon", "st": "Either"}, {"i": "1 crusty baguette", "st": "Either"}]}, {"id": "w24r3", "t": "Bahamian Brown Stew Chicken with Thyme and Hot Pepper", "c": "Bahamian", "tm": "75 min", "s": "batch", "h": "🍗", "sv": 6, "wk": 24, "ing": [{"i": "3.5 lb Kirkwood bone-in chicken thighs and drumsticks", "st": "Aldi"}, {"i": "3 tbsp dark brown sugar", "st": "Pantry"}, {"i": "1 large yellow onion, sliced", "st": "Either"}, {"i": "1 green bell pepper, sliced", "st": "Either"}, {"i": "3 stalks celery, sliced", "st": "Either"}, {"i": "3 tbsp tomato paste", "st": "Either"}, {"i": "1 tbsp dried thyme", "st": "Either"}, {"i": "1 tsp ground allspice", "st": "Pantry"}, {"i": "2 bay leaves", "st": "Pantry"}, {"i": "2 tbsp Burman's hot sauce", "st": "Aldi"}, {"i": "1 lb baby potatoes, halved", "st": "Either"}, {"i": "3 Earthly Grains rice pouches", "st": "Aldi"}]}]</script>
 <script>
 document.body.className='js';
 var NW=24;
@@ -16938,6 +17065,399 @@ function beep(f,dur,times){
 function vibrate(p){try{if(navigator.vibrate)navigator.vibrate(p);}catch(e){}}
 if('serviceWorker' in navigator){window.addEventListener('load',function(){
   navigator.serviceWorker.register('sw.js').catch(function(){});});}
+
+
+(function(){
+  var dataEl = document.getElementById('rdata');
+  if(!dataEl) return;
+  var LIST; try{ LIST = JSON.parse(dataEl.textContent); }catch(e){ return; }
+  var RD = {}; for(var i=0;i<LIST.length;i++) RD[LIST[i].id] = LIST[i];
+
+  var DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
+  var DAYFULL = {mon:'Monday',tue:'Tuesday',wed:'Wednesday',thu:'Thursday',fri:'Friday',sat:'Saturday',sun:'Sunday'};
+  var DORD = {mon:0,tue:1,wed:2,thu:3,fri:4,sat:5,sun:6};
+  var STORE_LABEL = {TJ:"Trader Joe's",Aldi:"Aldi",Either:"Either store",Pantry:"Pantry"};
+  var STORE_ORDER = ['TJ','Aldi','Either','Pantry'];
+  var STORE_CLS = {TJ:'tj',Aldi:'aldi',Either:'either',Pantry:'pantry'};
+  var LS_KEY = 'kitchenPlan.v1';
+
+  var body = document.body;
+  var planner = document.getElementById('planner');
+  var plBody = document.getElementById('plBody');
+  var plBar  = document.getElementById('plBar');
+  var plSteps= document.getElementById('plSteps');
+  var toastEl= document.getElementById('plToast');
+
+  // ---- planner state ----
+  var step = 1;
+  var sel = {};            // id -> assigned day ('' = unassigned)
+  var flt = {slot:'all', cuisine:'all', time:0, q:''};
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function mins(tm){ var m=/(\d+)/.exec(tm||''); return m?parseInt(m[1],10):999; }
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show');
+    setTimeout(function(){ toastEl.classList.remove('show'); },1800); }
+
+  function selIds(){ return Object.keys(sel); }
+  function selCount(){ var d=0,b=0; selIds().forEach(function(id){
+    if(RD[id].s==='batch') b++; else d++; }); return {d:d,b:b}; }
+
+  // ---------------- open / close ----------------
+  function openPlanner(preset){
+    sel = {};
+    if(preset){ preset.forEach(function(p){ sel[p.id]=p.day||''; }); }
+    step = preset && preset.length ? 2 : 1;
+    body.classList.add('pl-open'); planner.setAttribute('aria-hidden','false');
+    render();
+  }
+  function closePlanner(){ body.classList.remove('pl-open'); planner.setAttribute('aria-hidden','true'); }
+
+  // ---------------- render dispatch ----------------
+  function render(){
+    Array.prototype.forEach.call(plSteps.children,function(el){
+      var s=parseInt(el.getAttribute('data-step'),10);
+      el.className='pl-step'+(s===step?' on':'')+(s<step?' done':'');
+    });
+    if(step===1) renderPick();
+    else if(step===2) renderAssign();
+    else renderShare();
+    plBody.scrollTop=0;
+  }
+
+  // ---------------- step 1: pick ----------------
+  function renderPick(){
+    var cuisines={}; LIST.forEach(function(r){ cuisines[r.c]=1; });
+    var cOpts='<option value="all">All cuisines</option>'+
+      Object.keys(cuisines).sort().map(function(c){
+        return '<option value="'+esc(c)+'"'+(flt.cuisine===c?' selected':'')+'>'+esc(c)+'</option>';
+      }).join('');
+    var timeChips=[[0,'Any time'],[20,'≤20 min'],[30,'≤30 min'],[45,'≤45 min']].map(function(t){
+      return '<div class="pl-chip'+(flt.time===t[0]?' on':'')+'" data-time="'+t[0]+'">'+t[1]+'</div>';
+    }).join('');
+    var slotChips=[['all','All'],['dinner','Dinners'],['batch','Batch cooks']].map(function(s){
+      return '<div class="pl-chip'+(flt.slot===s[0]?' on':'')+'" data-slot="'+s[0]+'">'+s[1]+'</div>';
+    }).join('');
+
+    var rows=LIST.filter(function(r){
+      if(flt.slot!=='all' && r.s!==flt.slot) return false;
+      if(flt.cuisine!=='all' && r.c!==flt.cuisine) return false;
+      if(flt.time && mins(r.tm)>flt.time) return false;
+      if(flt.q){ var q=flt.q.toLowerCase();
+        if((r.t+' '+r.c).toLowerCase().indexOf(q)<0) return false; }
+      return true;
+    }).map(function(r){
+      var on = sel.hasOwnProperty(r.id);
+      var slot = r.s==='batch'?'Batch cook':'Dinner';
+      return '<div class="pl-rc'+(on?' sel':'')+'" data-id="'+r.id+'">'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pl-rc-main">'+
+          '<div class="pl-rc-slot'+(r.s==='batch'?' batch':'')+'">'+slot+' · '+esc(r.c)+'</div>'+
+          '<div class="pl-rc-name">'+esc(r.t)+'</div>'+
+          '<div class="pl-rc-meta">'+esc(r.tm)+' · '+r.sv+' servings</div>'+
+        '</div>'+
+        '<div class="pl-rc-tick">✓</div></div>';
+    }).join('') || '<div class="pl-empty">No recipes match those filters.</div>';
+
+    plBody.innerHTML =
+      '<div class="pl-hint">Pick this week’s meals — the plan works best with 3 dinners + 1 big batch cook, but choose however you like.</div>'+
+      '<div class="pl-filters">'+
+        '<input class="pl-search" id="plSearch" type="search" placeholder="Search recipes or cuisine…" value="'+esc(flt.q)+'">'+
+        '<div class="pl-chiprow">'+slotChips+'</div>'+
+        '<div class="pl-chiprow">'+timeChips+'</div>'+
+        '<select class="pl-cui" id="plCui">'+cOpts+'</select>'+
+      '</div>'+ rows;
+
+    var c=selCount();
+    plBar.innerHTML='<div class="pl-count"><b>'+c.d+'</b> dinner'+(c.d===1?'':'s')+
+      ' · <b>'+c.b+'</b> batch selected</div>'+
+      '<button class="pl-go" id="plNext"'+(c.d+c.b?'':' disabled')+'>Assign days ›</button>';
+
+    // wire
+    document.getElementById('plSearch').addEventListener('input',function(e){ flt.q=e.target.value; renderPick(); });
+    document.getElementById('plCui').addEventListener('change',function(e){ flt.cuisine=e.target.value; renderPick(); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('[data-slot]'),function(el){
+      el.addEventListener('click',function(){ flt.slot=el.getAttribute('data-slot'); renderPick(); }); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('[data-time]'),function(el){
+      el.addEventListener('click',function(){ flt.time=parseInt(el.getAttribute('data-time'),10); renderPick(); }); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('.pl-rc'),function(el){
+      el.addEventListener('click',function(){
+        var id=el.getAttribute('data-id');
+        if(sel.hasOwnProperty(id)) delete sel[id]; else sel[id]='';
+        renderPick();
+      }); });
+    var nx=document.getElementById('plNext');
+    if(nx) nx.addEventListener('click',function(){ if(selCount().d+selCount().b){ step=2; render(); } });
+  }
+
+  // ---------------- step 2: assign days ----------------
+  function defaultDays(){
+    // spread dinners across the week, batch on Sunday, only where unset
+    var order=['mon','tue','thu','wed','fri','sat'];
+    var di=0;
+    selIds().forEach(function(id){
+      if(sel[id]) return;
+      if(RD[id].s==='batch') sel[id]='sun';
+      else { sel[id]=order[di % order.length]; di++; }
+    });
+  }
+  function renderAssign(){
+    defaultDays();
+    var ids=selIds().sort(function(a,b){
+      var da=DORD[sel[a]]==null?9:DORD[sel[a]], db=DORD[sel[b]]==null?9:DORD[sel[b]];
+      return da-db;
+    });
+    var rows=ids.map(function(id){
+      var r=RD[id];
+      var opts=DAYS.map(function(d){
+        return '<option value="'+d[0]+'"'+(sel[id]===d[0]?' selected':'')+'>'+d[1]+'</option>';
+      }).join('');
+      return '<div class="pl-assign">'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pl-assign-main">'+
+          '<div class="pl-assign-name">'+esc(r.t)+'</div>'+
+          '<div class="pl-assign-meta">'+(r.s==='batch'?'Batch cook · ':'Dinner · ')+esc(r.tm)+'</div>'+
+        '</div>'+
+        '<select class="pl-day" data-id="'+id+'">'+opts+'</select></div>';
+    }).join('');
+    plBody.innerHTML='<div class="pl-hint">Which night is each meal? Batch cooks are great for Sunday so you eat off them all week.</div>'+rows;
+    plBar.innerHTML='<button class="pl-go ghost" id="plBack">‹ Back</button>'+
+      '<div class="pl-count"></div>'+
+      '<button class="pl-go" id="plNext">Send to Laurel ›</button>';
+    Array.prototype.forEach.call(plBody.querySelectorAll('.pl-day'),function(s){
+      s.addEventListener('change',function(){ sel[s.getAttribute('data-id')]=s.value; }); });
+    document.getElementById('plBack').addEventListener('click',function(){ step=1; render(); });
+    document.getElementById('plNext').addEventListener('click',function(){ step=3; render(); });
+  }
+
+  // ---------------- encode / decode ----------------
+  function encodePlan(){
+    return selIds().filter(function(id){ return sel[id]; })
+      .map(function(id){ return id+'.'+sel[id]; }).join(',');
+  }
+  function planURL(){
+    return location.origin+location.pathname+'#plan='+encodePlan();
+  }
+  function planText(){
+    var ids=selIds().filter(function(id){ return sel[id]; }).sort(function(a,b){ return DORD[sel[a]]-DORD[sel[b]]; });
+    var lines=["This week’s dinners 🍳"];
+    ids.forEach(function(id){
+      var r=RD[id];
+      lines.push(DAYFULL[sel[id]].slice(0,3)+' — '+r.t+' ('+(r.s==='batch'?'batch, ':'')+r.tm+')');
+    });
+    lines.push('Open: '+planURL());
+    return lines.join('\n');
+  }
+
+  // ---------------- step 3: share ----------------
+  function renderShare(){
+    var txt=planText();
+    plBody.innerHTML='<div class="pl-hint">Send this to Laurel. She can open the link, react 👍/👎 to each meal, and send it back — all with no app to install.</div>'+
+      '<textarea class="pl-share-txt" id="plText" readonly>'+esc(txt)+'</textarea>'+
+      '<div class="pl-share-btns">'+
+        '<button class="pl-primary" id="plShare">📤 Share with Laurel</button>'+
+        '<button class="pl-secondary" id="plCopyLink">🔗 Copy link</button>'+
+        '<button class="pl-secondary" id="plCopyText">📋 Copy message</button>'+
+        '<button class="pl-secondary" id="plUse">✅ Use this as my week</button>'+
+      '</div>';
+    plBar.innerHTML='<button class="pl-go ghost" id="plBack">‹ Back</button>'+
+      '<div class="pl-count"></div>';
+    document.getElementById('plBack').addEventListener('click',function(){ step=2; render(); });
+    document.getElementById('plShare').addEventListener('click',function(){
+      if(navigator.share){ navigator.share({title:"This week’s dinners",text:txt}).catch(function(){}); }
+      else { copy(txt); toast('Message copied — paste it to Laurel'); }
+    });
+    document.getElementById('plCopyLink').addEventListener('click',function(){ copy(planURL()); toast('Link copied'); });
+    document.getElementById('plCopyText').addEventListener('click',function(){ copy(txt); toast('Message copied'); });
+    document.getElementById('plUse').addEventListener('click',function(){
+      applyPlan(decodePlan(encodePlan()), null, true); closePlanner();
+    });
+  }
+  function copy(s){
+    try{ if(navigator.clipboard){ navigator.clipboard.writeText(s); return; } }catch(e){}
+    var t=document.getElementById('plText'); if(t){ t.focus(); t.select();
+      try{ document.execCommand('copy'); }catch(e){} }
+  }
+
+  // ---------------- decode a plan/votes hash ----------------
+  function parseHash(){
+    var h=location.hash.replace(/^#/,''); if(!h) return {};
+    var out={}; h.split('&').forEach(function(kv){
+      var i=kv.indexOf('='); if(i<0) return;
+      out[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1));
+    });
+    return out;
+  }
+  function decodePlan(str){
+    if(!str) return [];
+    return str.split(',').map(function(tok){
+      var p=tok.split('.'); return {id:p[0],day:p[1]||''};
+    }).filter(function(e){ return RD[e.id]; });
+  }
+  function decodeVotes(str){
+    var v={}; if(!str) return v;
+    str.split(',').forEach(function(tok){ var p=tok.split('.');
+      if(RD[p[0]]) v[p[0]] = p[1]==='u'?'up':(p[1]==='d'?'down':''); });
+    return v;
+  }
+
+  // ---------------- active plan panel ----------------
+  var curPlan=[];      // [{id,day}]
+  var curVotes={};     // id -> 'up'|'down'
+  var myVotes={};      // Laurel's in-progress reactions
+
+  function ensurePanel(){
+    var p=document.getElementById('planPanel');
+    if(!p){
+      p=document.createElement('section'); p.id='planPanel';
+      var main=document.querySelector('main');
+      main.insertBefore(p, main.firstChild);
+    }
+    return p;
+  }
+  function applyPlan(plan, votes, save){
+    curPlan=plan.slice(); curVotes=votes||{}; myVotes={};
+    if(save){ try{ localStorage.setItem(LS_KEY, encodeList(plan)); }catch(e){} }
+    renderPanel(); body.classList.add('pl-active'); window.scrollTo(0,0);
+  }
+  function encodeList(plan){
+    return plan.filter(function(e){return e.day;}).map(function(e){return e.id+'.'+e.day;}).join(',');
+  }
+  function renderPanel(){
+    var p=ensurePanel();
+    var ordered=curPlan.slice().sort(function(a,b){ return DORD[a.day]-DORD[b.day]; });
+    var hasVotes=Object.keys(curVotes).length>0;
+    var cards=ordered.map(function(e){
+      var r=RD[e.id]; if(!r) return '';
+      var badge = curVotes[e.id]==='up'?'👍':(curVotes[e.id]==='down'?'👎':'');
+      return '<div class="pp-card'+(r.s==='batch'?' batch':'')+'" data-id="'+e.id+'">'+
+        (badge?'<div class="pp-badge">'+badge+'</div>':'')+
+        '<div class="pp-day"><b>'+(DAYFULL[e.day]||'').slice(0,3)+'</b><span>'+(r.s==='batch'?'batch':'dinner')+'</span></div>'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pp-main"><div class="pp-name">'+esc(r.t)+'</div>'+
+          '<div class="pp-meta">'+esc(r.c)+' · '+esc(r.tm)+'</div>'+
+          (hasVotes ? '' :
+            '<div class="pp-vote js-only" data-id="'+e.id+'">'+
+              '<div class="pp-vb up" data-v="up">👍</div>'+
+              '<div class="pp-vb down" data-v="down">👎</div>'+
+            '</div>')+
+        '</div></div>';
+    }).join('');
+    var sub = hasVotes ? 'Laurel’s reactions are in — tap a meal to open it.'
+                       : 'Tap a meal to cook it, or react and send your picks back.';
+    p.innerHTML=
+      '<div class="pp-banner">'+
+        '<div class="pp-b-txt">🗓️ This week’s plan<small>'+sub+'</small></div>'+
+        '<button class="pp-b-btn" id="ppEdit">Edit</button>'+
+        '<button class="pp-b-btn" id="ppExit">All weeks</button>'+
+      '</div>'+ cards +
+      '<label class="plan-btn pp-combined js-only" id="ppShop">🛒 Combined shopping list</label>'+
+      (hasVotes ? '' :
+        '<button class="plan-btn js-only" id="ppSend" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💬 Send my picks back</button>');
+
+    // open recipe on card tap (but not when tapping a vote button)
+    Array.prototype.forEach.call(p.querySelectorAll('.pp-card'),function(c){
+      c.addEventListener('click',function(ev){
+        if(ev.target.closest('.pp-vote')) return;
+        var r=document.getElementById('v'+c.getAttribute('data-id'));
+        if(r){ r.checked=true; }
+      });
+    });
+    Array.prototype.forEach.call(p.querySelectorAll('.pp-vb'),function(b){
+      b.addEventListener('click',function(ev){
+        ev.stopPropagation();
+        var wrap=b.parentNode, id=wrap.getAttribute('data-id'), v=b.getAttribute('data-v');
+        myVotes[id] = (myVotes[id]===v)?'':v;
+        Array.prototype.forEach.call(wrap.querySelectorAll('.pp-vb'),function(x){
+          x.classList.toggle('on', x.getAttribute('data-v')===myVotes[id]); });
+      });
+    });
+    document.getElementById('ppEdit').addEventListener('click',function(){ openPlanner(curPlan); });
+    document.getElementById('ppExit').addEventListener('click',function(){
+      body.classList.remove('pl-active');
+      try{ localStorage.removeItem(LS_KEY); }catch(e){}
+      if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+    });
+    document.getElementById('ppShop').addEventListener('click',function(){ openCombined(); });
+    var sendBtn=document.getElementById('ppSend');
+    if(sendBtn) sendBtn.addEventListener('click',function(){ sendVotes(); });
+  }
+  function sendVotes(){
+    var vt=Object.keys(myVotes).filter(function(id){return myVotes[id];})
+      .map(function(id){ return id+'.'+(myVotes[id]==='up'?'u':'d'); }).join(',');
+    if(!vt){ toast('Tap 👍 or 👎 on a few meals first'); return; }
+    var url=location.origin+location.pathname+'#plan='+encodeList(curPlan)+'&votes='+vt;
+    var txt='My picks for this week 👍\n'+url;
+    if(navigator.share){ navigator.share({title:'My picks',text:txt}).catch(function(){}); }
+    else { copyStr(url); toast('Link copied — send it to Dave'); }
+  }
+  function copyStr(s){ try{ if(navigator.clipboard) navigator.clipboard.writeText(s); }catch(e){} }
+
+  // ---------------- combined shopping list ----------------
+  function normItem(s){ return s.toLowerCase().replace(/\s+/g,' ').trim(); }
+  function openCombined(){
+    var sheet=document.getElementById('planShop');
+    if(!sheet){
+      sheet=document.createElement('div'); sheet.className='sheet'; sheet.id='planShop';
+      document.body.appendChild(sheet);
+    }
+    // gather ingredients across planned recipes, dedupe by normalised item within a store
+    var buckets={}; STORE_ORDER.forEach(function(s){ buckets[s]=[]; });
+    var seen={};
+    curPlan.forEach(function(e){
+      var r=RD[e.id]; if(!r) return;
+      r.ing.forEach(function(g){
+        var store=buckets[g.st]?g.st:'Either';
+        var key=store+'|'+normItem(g.i);
+        if(seen[key]){ seen[key].for.push(r.t); if(seen[key].items.indexOf(g.i)<0) seen[key].items.push(g.i); }
+        else { seen[key]={store:store,items:[g.i],for:[r.t]}; buckets[store].push(seen[key]); }
+      });
+    });
+    var n=0, body='';
+    STORE_ORDER.forEach(function(store){
+      var items=buckets[store]; if(!items.length) return;
+      body+='<div class="sec-label">'+esc(STORE_LABEL[store])+' · '+items.length+' items</div>';
+      items.forEach(function(it){
+        var cid='pls_'+(n++);
+        var line = it.items.length>1 ? it.items.join(' + ') : it.items[0];
+        body+='<input type="checkbox" class="chk" id="'+cid+'">'+
+          '<div class="ing-row"><label class="ing" for="'+cid+'"><span class="box">✓</span>'+
+          '<span class="ing-txt">'+esc(line)+'<br><span class="ing-src">for '+esc(it.for.join(', '))+'</span></span>'+
+          '<span class="pill '+STORE_CLS[store]+'">'+esc(STORE_LABEL[store])+'</span></label></div>';
+      });
+    });
+    sheet.innerHTML=
+      '<div class="sheet-head"><button class="back" id="plShopBack" type="button">‹ Back</button>'+
+      '<div class="sheet-title">🛒 This week’s combined list</div></div>'+
+      '<div class="sheet-body"><div class="note">Everything for your planned meals, duplicates merged and split by store. Tap to check off as you shop.</div>'+
+      body+'</div>';
+    document.getElementById('plShopBack').addEventListener('click',function(){ sheet.classList.remove('pl-show'); });
+    sheet.classList.add('pl-show');
+  }
+
+  // ---------------- wire the entry buttons ----------------
+  document.getElementById('plClose').addEventListener('click',closePlanner);
+  Array.prototype.forEach.call(document.querySelectorAll('.plan-btn.open-planner'),function(b){
+    b.addEventListener('click',function(){ openPlanner(null); });
+  });
+  // leaving plan view when a week tab is chosen
+  Array.prototype.forEach.call(document.querySelectorAll('.wkradio'),function(r){
+    r.addEventListener('change',function(){ body.classList.remove('pl-active'); });
+  });
+
+  // ---------------- boot: hash > localStorage ----------------
+  (function boot(){
+    var h=parseHash();
+    if(h.plan){
+      var plan=decodePlan(h.plan);
+      if(plan.length){ applyPlan(plan, decodeVotes(h.votes), true); return; }
+    }
+    try{
+      var saved=localStorage.getItem(LS_KEY);
+      if(saved){ var p=decodePlan(saved); if(p.length){ applyPlan(p, null, false); } }
+    }catch(e){}
+  })();
+})();
 </script>
 </body>
 </html>
