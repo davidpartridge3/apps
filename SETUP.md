@@ -14,38 +14,25 @@ GitHub Pages is free forever, needs no credit card, and is the least fiddly opti
 
 ## Part 1 — Put the files online (once)
 
-Do this on a laptop if you have one handy; it's much easier than on a phone. Phone works too.
+The code already lives at **github.com/davidpartridge3/apps**, and it's set up to publish itself automatically. You only need to turn Pages on once.
 
-**1. Make a free GitHub account**
-Go to **github.com** → *Sign up*. Any username is fine — it becomes part of your web address, so pick something you don't mind seeing (e.g. `davepartridge`).
-
-**2. Create a repository**
-Once signed in, tap the **+** in the top right → **New repository**.
-
-- Repository name: `apps`
-- Set it to **Public** (Pages needs this on the free plan)
-- Leave everything else alone → **Create repository**
-
-**3. Upload the folder contents**
-On the new empty repo page, tap **uploading an existing file**.
-
-Unzip `daves-apps.zip` first, then drag in **everything inside the `dist` folder** — that means `index.html`, the `workout` folder and the `kitchen` folder. Keep the folder structure; don't drag the `dist` folder itself, drag what's inside it.
-
-Scroll down → **Commit changes**.
-
-**4. Turn on Pages**
+**1. Turn on Pages (one time)**
 Go to the repo's **Settings** tab → **Pages** in the left sidebar.
 
-- Under *Source*, choose **Deploy from a branch**
-- Branch: **main**, folder: **/ (root)** → **Save**
+- Under *Source*, choose **GitHub Actions** (not "Deploy from a branch").
 
-Wait 1–2 minutes, then refresh that page. It'll show your address:
+**2. Let it publish**
+Go to the **Actions** tab. You'll see a run called *"Deploy site to GitHub Pages."* If it's already finished, you're done. If it errored because Pages wasn't on yet, click it → **Re-run all jobs** (or click **Run workflow** on that workflow). It takes about a minute.
+
+Your permanent address is:
 
 ```
-https://YOUR-USERNAME.github.io/apps/
+https://davidpartridge3.github.io/apps/
 ```
 
 That's your permanent link. Bookmark it.
+
+**Updating later:** there's nothing to re-upload ever again. Any change that gets pushed to the repo re-publishes the site automatically within a minute.
 
 ---
 
