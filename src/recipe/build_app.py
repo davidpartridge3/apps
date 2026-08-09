@@ -345,6 +345,7 @@ def card(r):
     cls = " batch" if r["slot"] == "batch" else ""
     serv = f'{r["servings"]} servings'
     return f'''<label class="card" for="v{r["_id"]}">
+  <span class="fav js-only" data-fav="{r["_id"]}" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
     <div class="hero">{r["hero"]}</div>
     <div class="card-main">
@@ -355,6 +356,7 @@ def card(r):
   </div>
   <div class="blurb">{esc(r["blurb"])}</div>
   <span class="cta">▶ Open recipe</span>
+  <span class="cooked-badge js-only" data-cooked="{r["_id"]}"></span>
 </label>'''
 
 panels = []
@@ -401,7 +403,9 @@ for r in R:
     <div class="r-hero"><div class="hero">{r["hero"]}</div>
       <div><div class="r-name">{esc(r["title"])}</div>
       <div class="r-meta">{slot} · {esc(r["cuisine"])} · {esc(r["time"])} · {r["servings"]} servings</div></div>
+      <span class="fav fav-lg js-only" data-fav="{rid}" role="button" aria-label="Favourite">♡</span>
     </div>
+    <div class="scaler js-only" data-scale="{rid}" data-base="{r["servings"]}"></div>
     <p class="r-blurb">{esc(r["blurb"])}</p>
     <div class="sec-label">Ingredients — tap to check off</div>
     {ings}
@@ -457,7 +461,7 @@ for r in R:
         back = (f'<label class="nav-btn nav-back" for="s{rid}_{si-1}">‹ Back</label>' if si > 0
                 else f'<label class="nav-btn nav-back" for="v{rid}">‹ Recipe</label>')
         nxt = (f'<label class="nav-btn nav-next" for="s{rid}_{si+1}">Next ›</label>' if si < n - 1
-               else f'<label class="nav-btn nav-done" for="v{rid}">✓ Finished</label>')
+               else f'<label class="nav-btn nav-done" for="v{rid}" data-finish="{rid}">✓ Finished</label>')
         panes.append(f'''<div class="step" id="cs{rid}_{si}">
   <div class="prog"><i style="width:{pct}%"></i></div>
   <div class="step-n">Step {si+1} of {n}</div>
@@ -630,47 +634,101 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-sec]'),function(el
   });
 });
 
+/* ---------- multiple simultaneous timers ---------- */
 var CIRC=2*Math.PI*54, ringFg=document.getElementById('ringFg');
 ringFg.style.strokeDasharray=CIRC;
-var tTotal=0,tEnd=0,tRemain=0,tPaused=false,tick=null,warned=false,finished=false,tLabel='Timer';
 var tmr=document.getElementById('tmr'),tmrTime=document.getElementById('tmrTime'),
     tmrEx=document.getElementById('tmrEx'),tmrState=document.getElementById('tmrState'),
-    pauseBtn=document.getElementById('pauseBtn');
+    pauseBtn=document.getElementById('pauseBtn'),
+    dock=document.getElementById('timerDock');
+var timers=[], tzid=0, tick=null, focusId=null;
+
+function byId(id){ for(var i=0;i<timers.length;i++) if(timers[i].id===id) return timers[i]; return null; }
+function escT(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function fmtT(t){ var r=t.remain,a=r<0?-r:r,m=Math.floor(a/60),s=a%60; return (r<0?'+':'')+m+':'+(s<10?'0':'')+s; }
+function tmsg(m){ var e=document.getElementById('plToast'); if(!e)return;
+  e.textContent=m; e.classList.add('show'); setTimeout(function(){e.classList.remove('show');},1500); }
 
 function startTimer(sec,label){
   ensureAudio();
-  tTotal=sec;tRemain=sec;tEnd=Date.now()+sec*1000;
-  tPaused=false;warned=false;finished=false;tLabel=label||'Timer';
-  tmrEx.textContent=tLabel;tmrState.textContent='Cooking';pauseBtn.textContent='Pause';
-  tmr.classList.add('show');renderTimer();
-  clearInterval(tick);tick=setInterval(renderTimer,250);
-  vibrate([40]);
+  // if this exact label is already running, focus it instead of duplicating
+  for(var i=0;i<timers.length;i++){ if(timers[i].label===(label||'Timer')&&!timers[i].finished){ focusTimer(timers[i].id); return; } }
+  var t={id:++tzid,label:label||'Timer',total:sec,end:Date.now()+sec*1000,remain:sec,paused:false,warned:false,finished:false};
+  timers.push(t);
+  if(!tick) tick=setInterval(tickAll,250);
+  renderDock(); vibrate([40]); tmsg('⏱ '+t.label);
 }
-function renderTimer(){
-  if(!tPaused) tRemain=Math.round((tEnd-Date.now())/1000);
-  var r=tRemain,a=r>=0?r:-r,m=Math.floor(a/60),s=a%60;
-  tmrTime.textContent=(r<0?'+':'')+m+':'+(s<10?'0':'')+s;
-  tmrTime.className='tmr-time'+(r<=10&&r>0?' warn':'')+(r<=0?' overtime':'');
-  ringFg.style.strokeDashoffset=CIRC*(1-Math.max(0,Math.min(1,r/tTotal)));
-  if(r<=10&&r>0&&!warned){warned=true;beep(880,.12,2);vibrate([80,60,80]);}
-  if(r<=0&&!finished){
-    finished=true;tmrState.textContent="Time's up!";
-    beep(1046,.18,3);vibrate([250,120,250,120,400]);
-    document.title="🔔 Time's up!";setTimeout(function(){document.title=DOCTITLE;},5000);
+function tickAll(){
+  var now=Date.now();
+  for(var i=0;i<timers.length;i++){
+    var t=timers[i];
+    if(!t.paused && !t.finished) t.remain=Math.round((t.end-now)/1000);
+    if(t.remain<=10&&t.remain>0&&!t.warned&&!t.paused){ t.warned=true; beep(880,.12,2); vibrate([80,60,80]); }
+    if(t.remain<=0&&!t.finished){ t.finished=true; beep(1046,.18,3); vibrate([250,120,250,120,400]);
+      document.title="🔔 "+t.label+" — time's up!"; setTimeout(function(){document.title=DOCTITLE;},5000); }
+    var row=dock.querySelector('.td-row[data-id="'+t.id+'"]');
+    if(row){ row.querySelector('.td-time').textContent=fmtT(t);
+      row.className='td-row'+(t.finished?' done':'')+(t.remain<=10&&t.remain>0?' warn':'')+(t.paused?' paused':''); }
+    if(focusId===t.id) updateFocus(t);
   }
+  if(!timers.length){ clearInterval(tick); tick=null; }
 }
-function adjustTimer(d){
-  if(tPaused){tRemain+=d;}else{tEnd+=d*1000;}
-  if(finished&&(tEnd-Date.now())>0){finished=false;warned=false;tmrState.textContent='Cooking';}
-  tTotal=Math.max(tTotal,Math.round((tEnd-Date.now())/1000));renderTimer();
+function renderDock(){
+  if(!timers.length){ dock.classList.remove('show'); dock.innerHTML='';
+    document.documentElement.style.setProperty('--dock-h','0px'); return; }
+  dock.innerHTML='<div class="td-inner">'+timers.map(function(t){
+    return '<div class="td-row'+(t.finished?' done':'')+(t.paused?' paused':'')+'" data-id="'+t.id+'">'+
+      '<span class="td-time">'+fmtT(t)+'</span>'+
+      '<span class="td-label">'+escT(t.label)+'</span>'+
+      '<button class="td-btn" data-act="pause" data-id="'+t.id+'">'+(t.paused?'▶':'⏸')+'</button>'+
+      '<button class="td-btn" data-act="add" data-id="'+t.id+'">+1m</button>'+
+      '<button class="td-btn" data-act="close" data-id="'+t.id+'">✕</button>'+
+      '</div>';
+  }).join('')+'</div>';
+  dock.classList.add('show');
+  document.documentElement.style.setProperty('--dock-h', dock.offsetHeight+'px');
 }
-function togglePause(){
-  if(tPaused){tEnd=Date.now()+tRemain*1000;tPaused=false;pauseBtn.textContent='Pause';
-    tmrState.textContent=finished?"Time's up!":'Cooking';}
-  else{tRemain=Math.round((tEnd-Date.now())/1000);tPaused=true;pauseBtn.textContent='Resume';
-    tmrState.textContent='Paused';}
+dock.addEventListener('click',function(e){
+  var btn=e.target.closest('.td-btn'), row=e.target.closest('.td-row');
+  if(btn){ e.stopPropagation(); var t=byId(parseInt(btn.getAttribute('data-id'),10)); if(!t)return;
+    var act=btn.getAttribute('data-act');
+    if(act==='pause') togglePauseT(t);
+    else if(act==='add') addT(t,60);
+    else if(act==='close'){ closeT(t); return; }
+    renderDock(); if(focusId===t.id) updateFocus(t); return;
+  }
+  if(row){ focusTimer(parseInt(row.getAttribute('data-id'),10)); }
+});
+function togglePauseT(t){
+  if(t.paused){ t.end=Date.now()+t.remain*1000; t.paused=false; }
+  else { t.remain=Math.round((t.end-Date.now())/1000); t.paused=true; }
 }
-function stopTimer(){clearInterval(tick);tick=null;tmr.classList.remove('show');}
+function addT(t,d){
+  if(t.paused){ t.remain+=d; } else { t.end+=d*1000; t.remain=Math.round((t.end-Date.now())/1000); }
+  if(t.finished && t.remain>0){ t.finished=false; t.warned=false; }
+  t.total=Math.max(t.total,t.remain);
+}
+function closeT(t){
+  timers=timers.filter(function(x){return x.id!==t.id;});
+  if(focusId===t.id) minimizeFocus();
+  renderDock();
+}
+function focusTimer(id){ focusId=id; var t=byId(id); if(!t)return; tmr.classList.add('show'); updateFocus(t); }
+function minimizeFocus(){ tmr.classList.remove('show'); focusId=null; }
+function updateFocus(t){
+  var r=t.remain;
+  tmrTime.textContent=fmtT(t);
+  tmrTime.className='tmr-time'+(r<=10&&r>0?' warn':'')+(r<=0?' overtime':'');
+  tmrEx.textContent=t.label;
+  tmrState.textContent=t.finished?"Time's up!":(t.paused?'Paused':'Cooking');
+  pauseBtn.textContent=t.paused?'Resume':'Pause';
+  ringFg.style.strokeDashoffset=CIRC*(1-Math.max(0,Math.min(1,r/t.total)));
+}
+/* overlay controls act on the focused timer */
+function adjustTimer(d){ var t=byId(focusId); if(t){ addT(t,d); updateFocus(t); renderDock(); } }
+function togglePause(){ var t=byId(focusId); if(t){ togglePauseT(t); updateFocus(t); renderDock(); } }
+function stopTimer(){ var t=byId(focusId); if(t) closeT(t); else minimizeFocus(); }
+tmr.addEventListener('click',function(e){ if(e.target===tmr) minimizeFocus(); });
 var actx=null;
 function ensureAudio(){try{
   if(!actx&&(window.AudioContext||window.webkitAudioContext))
@@ -885,6 +943,84 @@ PLANNER_CSS = """
   .shop-start .go{background:var(--accent);color:#1a1005;}
   .shop-start .skip{background:var(--card2);color:var(--txt);border:1px solid var(--line);flex:0 0 auto;}
   body.shop-pantry-on .shop-body{padding-bottom:calc(90px + var(--safe-b));}
+
+  /* ---------- A3 multiple simultaneous timers (dock) ---------- */
+  .timer-dock{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;
+    background:rgba(18,16,14,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);padding:8px 12px calc(8px + var(--safe-b));}
+  .timer-dock.show{display:block;}
+  .td-inner{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:6px;}
+  .td-row{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:8px 10px;cursor:pointer;}
+  .td-row.warn{border-color:var(--accent);}
+  .td-row.done{border-color:var(--green);background:rgba(111,207,143,.12);}
+  .td-row.paused{opacity:.7;}
+  .td-time{font-weight:800;font-variant-numeric:tabular-nums;font-size:18px;min-width:54px;color:var(--accent);}
+  .td-row.done .td-time{color:var(--green);}
+  .td-label{flex:1;min-width:0;font-size:13px;font-weight:700;color:var(--txt);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .td-btn{border:1px solid var(--line);background:var(--card2);color:var(--txt);border-radius:9px;
+    padding:8px 10px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;flex:0 0 auto;line-height:1;}
+  .td-btn:active{transform:scale(.95);}
+  /* reserve space so the dock never covers content or the cook-mode nav */
+  body{padding-bottom:calc(24px + var(--safe-b) + var(--dock-h,0px));}
+  .step{padding-bottom:calc(20px + var(--safe-b) + var(--dock-h,0px));}
+  .sheet-body{padding-bottom:calc(40px + var(--safe-b) + var(--dock-h,0px));}
+  .tmr-min{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
+    border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:12px;
+    padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;user-select:none;}
+
+  /* ---------- A3 engagement: favourites, tonight, history, scaler ---------- */
+  .fav{position:absolute;top:12px;right:14px;font-size:22px;line-height:1;color:var(--dimmer);
+    cursor:pointer;user-select:none;z-index:3;}
+  .fav.on{color:#ff6b6b;}
+  .r-hero{position:relative;}
+  .fav-lg{position:absolute;top:0;right:0;font-size:26px;}
+  .cooked-badge{display:none;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.4px;
+    color:var(--green);background:rgba(111,207,143,.12);border:1px solid rgba(111,207,143,.4);
+    border-radius:20px;padding:3px 10px;width:fit-content;}
+  .scaler{display:flex;align-items:center;gap:6px;margin:12px 0 2px;flex-wrap:wrap;}
+  .scaler-lbl{font-size:11px;letter-spacing:1.1px;text-transform:uppercase;color:var(--dimmer);font-weight:800;margin-right:2px;}
+  .scaler button{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:10px;
+    padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .scaler button.on{background:var(--accent);color:#1a1005;border-color:var(--accent);}
+  .tonight{background:linear-gradient(135deg,var(--accent-soft),var(--card));border:1px solid var(--accent);
+    border-radius:18px;padding:15px;margin:4px 0 16px;}
+  .tonight-tag{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);font-weight:800;}
+  .tonight-row{display:flex;gap:13px;align-items:center;margin:8px 0 12px;}
+  .tonight-row .hero{width:54px;height:54px;font-size:32px;flex:0 0 auto;border-radius:14px;
+    background:var(--card2);display:flex;align-items:center;justify-content:center;}
+  .tonight-main{min-width:0;}
+  .tonight-name{font-weight:800;font-size:18px;line-height:1.2;}
+  .tonight-meta{color:var(--dim);font-size:13px;font-weight:700;margin-top:2px;}
+  .tonight-btns{display:flex;gap:9px;}
+  .tn-cook{flex:1;border:none;background:var(--accent);color:#1a1005;font-weight:800;font-size:14.5px;
+    border-radius:12px;padding:13px;cursor:pointer;font-family:inherit;}
+  .tn-open{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--txt);font-weight:800;
+    font-size:14px;border-radius:12px;padding:13px 18px;cursor:pointer;font-family:inherit;}
+  .shelf{margin:20px 0 6px;}
+  .shelf-title{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--dimmer);font-weight:800;margin-bottom:9px;}
+  .shelf-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+  .shelf-row::-webkit-scrollbar{display:none;}
+  .chip-card{flex:0 0 auto;width:132px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:12px;cursor:pointer;user-select:none;}
+  .chip-card .hero{width:40px;height:40px;font-size:24px;margin-bottom:8px;}
+  .chip-name{font-weight:800;font-size:13px;line-height:1.25;height:2.5em;overflow:hidden;}
+  .chip-meta{color:var(--dimmer);font-size:11.5px;font-weight:700;margin-top:4px;}
+  body.pl-active #tonightMount,body.pl-active #cookAgainMount{display:none;}
+  .rate-veil{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:85;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .rate-sheet{position:fixed;left:16px;right:16px;bottom:-45%;z-index:86;background:var(--card);border:1px solid var(--line);
+    border-radius:20px;padding:22px 20px calc(22px + var(--safe-b));max-width:420px;margin:0 auto;
+    transition:bottom .28s ease,opacity .2s;text-align:center;opacity:0;}
+  body.rate-on .rate-veil{opacity:1;pointer-events:auto;}
+  body.rate-on .rate-sheet{bottom:calc(16px + var(--safe-b));opacity:1;}
+  .rate-title{font-size:19px;font-weight:800;}
+  .rate-sub{color:var(--dim);font-size:14px;margin:4px 0 16px;}
+  .rate-stars{display:flex;justify-content:center;gap:10px;font-size:38px;color:var(--dimmer);}
+  .rate-stars span{cursor:pointer;transition:transform .1s;}
+  .rate-stars span.on{color:var(--accent);}
+  .rate-stars span:active{transform:scale(1.2);}
+  .rate-skip{margin-top:16px;background:none;border:none;color:var(--dim);font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
 """
 
 # The planner overlay + active-plan mount points. Static shell; JS fills the body.
@@ -912,6 +1048,15 @@ PLANNER_HTML = """
   <div class="shop-start" id="shopStart"></div>
 </div>
 <div class="pl-toast" id="plToast"></div>
+<div class="rate-veil" id="rateVeil"></div>
+<div class="rate-sheet" id="rateSheet">
+  <div class="rate-title">How was it?</div>
+  <div class="rate-sub" id="rateSub"></div>
+  <div class="rate-stars" id="rateStars">
+    <span data-s="1">★</span><span data-s="2">★</span><span data-s="3">★</span><span data-s="4">★</span><span data-s="5">★</span>
+  </div>
+  <button class="rate-skip" id="rateSkip">Skip</button>
+</div>
 """
 
 PLANNER_JS = r"""
@@ -1482,6 +1627,163 @@ PLANNER_JS = r"""
 })();
 """
 
+# ============================================================ A3 · engagement layer
+# Favourites, "Tonight" card, cooked history + post-cook rating, "Cook again"
+# shelf, and a servings scaler. All JS-only, hooked to server-rendered markup.
+ENGAGE_JS = r"""
+(function(){
+  var el=document.getElementById('rdata'); if(!el) return;
+  var LIST; try{ LIST=JSON.parse(el.textContent); }catch(e){ return; }
+  var RD={}; LIST.forEach(function(r){ RD[r.id]=r; });
+  var body=document.body;
+  var FAV='kitchenFav.v1', HIST='kitchenHist.v1';
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function load(k,def){ try{ return JSON.parse(localStorage.getItem(k))||def; }catch(e){ return def; } }
+  function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  var favs=load(FAV,{}), hist=load(HIST,[]);
+  function isFav(id){ return !!favs[id]; }
+  function lastCook(id){ var last=0; hist.forEach(function(h){ if(h.id===id&&h.at>last) last=h.at; }); return last; }
+  function cookedMap(){ var m={}; hist.forEach(function(h){ if(!m[h.id]||h.at>=m[h.id].at) m[h.id]=h; }); return m; }
+
+  // ---------- favourites ----------
+  function paintFavs(){
+    var list=document.querySelectorAll('.fav[data-fav]');
+    Array.prototype.forEach.call(list,function(f){
+      var on=isFav(f.getAttribute('data-fav'));
+      f.textContent=on?'♥':'♡'; f.classList.toggle('on',on);
+    });
+  }
+  document.addEventListener('click',function(e){
+    var f=e.target.closest('.fav[data-fav]');
+    if(!f) return;
+    e.preventDefault(); e.stopPropagation();
+    var id=f.getAttribute('data-fav');
+    if(favs[id]) delete favs[id]; else favs[id]=Date.now();
+    save(FAV,favs); paintFavs(); renderShelves();
+  }, true);
+
+  // ---------- cooked badges ----------
+  function paintCooked(){
+    var c=cookedMap();
+    Array.prototype.forEach.call(document.querySelectorAll('.cooked-badge[data-cooked]'),function(b){
+      var h=c[b.getAttribute('data-cooked')];
+      if(h){ b.textContent='✓ Cooked'+(h.rating?' · '+Array(h.rating+1).join('★'):''); b.style.display='block'; }
+      else { b.textContent=''; b.style.display='none'; }
+    });
+  }
+
+  // ---------- finish -> record + rate ----------
+  document.addEventListener('click',function(e){
+    var fin=e.target.closest('[data-finish]');
+    if(!fin) return;
+    var id=fin.getAttribute('data-finish');
+    hist.push({id:id,at:Date.now(),rating:0}); save(HIST,hist);
+    paintCooked(); renderTonight(); renderShelves();
+    openRate(id);
+  });
+  var rateStars=document.getElementById('rateStars'), rateSub=document.getElementById('rateSub'), rateId=null;
+  function openRate(id){
+    rateId=id; var r=RD[id]; if(rateSub) rateSub.textContent=r?r.t:'';
+    Array.prototype.forEach.call(rateStars.querySelectorAll('span'),function(s){ s.classList.remove('on'); });
+    body.classList.add('rate-on');
+  }
+  function closeRate(){ body.classList.remove('rate-on'); rateId=null; }
+  Array.prototype.forEach.call(rateStars.querySelectorAll('span'),function(s){
+    s.addEventListener('click',function(){
+      var v=parseInt(s.getAttribute('data-s'),10);
+      for(var i=hist.length-1;i>=0;i--){ if(hist[i].id===rateId){ hist[i].rating=v; break; } }
+      save(HIST,hist); paintCooked(); renderShelves();
+      Array.prototype.forEach.call(rateStars.querySelectorAll('span'),function(x){
+        x.classList.toggle('on', parseInt(x.getAttribute('data-s'),10)<=v); });
+      setTimeout(closeRate,340);
+    });
+  });
+  document.getElementById('rateSkip').addEventListener('click',closeRate);
+  document.getElementById('rateVeil').addEventListener('click',closeRate);
+
+  // ---------- Tonight card ----------
+  var curWeek=(function(){ var c=document.querySelector('.wkradio:checked'); return c?parseInt(c.id.slice(2),10)+1:1; })();
+  var WEEKMS=7*24*3600*1000;
+  function openCook(id){ var r0=document.getElementById('s'+id+'_0'); if(r0){ r0.checked=true; window.scrollTo(0,0); } }
+  function openRecipe(id){ var v=document.getElementById('v'+id); if(v){ v.checked=true; window.scrollTo(0,0); } }
+  function renderTonight(){
+    var mount=document.getElementById('tonightMount'); if(!mount) return;
+    var dinners=LIST.filter(function(r){ return r.wk===curWeek && r.s!=='batch'; });
+    var next=null;
+    for(var i=0;i<dinners.length;i++){ var lc=lastCook(dinners[i].id); if(!lc || (Date.now()-lc)>WEEKMS){ next=dinners[i]; break; } }
+    if(!next){ mount.innerHTML=''; return; }
+    mount.innerHTML='<div class="tonight">'+
+      '<div class="tonight-tag">🍽️ Tonight’s pick</div>'+
+      '<div class="tonight-row"><div class="hero">'+next.h+'</div>'+
+        '<div class="tonight-main"><div class="tonight-name">'+esc(next.t)+'</div>'+
+        '<div class="tonight-meta">'+esc(next.c)+' · '+esc(next.tm)+'</div></div></div>'+
+      '<div class="tonight-btns"><button class="tn-cook" data-cook="'+next.id+'">👨‍🍳 Cook now</button>'+
+      '<button class="tn-open" data-open="'+next.id+'">View</button></div></div>';
+  }
+
+  // ---------- shelves: favourites + cook again ----------
+  function shelf(title, ids){
+    if(!ids.length) return '';
+    return '<div class="shelf"><div class="shelf-title">'+title+'</div><div class="shelf-row">'+
+      ids.map(function(id){ var r=RD[id]; if(!r) return '';
+        return '<div class="chip-card" data-open="'+id+'"><div class="hero">'+r.h+'</div>'+
+          '<div class="chip-name">'+esc(r.t)+'</div><div class="chip-meta">'+esc(r.tm)+'</div></div>';
+      }).join('')+'</div></div>';
+  }
+  function renderShelves(){
+    paintCooked(); paintFavs();
+    var mount=document.getElementById('cookAgainMount'); if(!mount) return;
+    var favIds=Object.keys(favs).filter(function(id){return RD[id];})
+      .sort(function(a,b){ return favs[b]-favs[a]; });
+    var seen={}, again=[];
+    for(var i=hist.length-1;i>=0;i--){ var id=hist[i].id; if(!seen[id]&&RD[id]){ seen[id]=1; again.push(id); } }
+    mount.innerHTML=shelf('❤️ Your favourites', favIds)+shelf('🔁 Cook again', again.slice(0,12));
+  }
+
+  document.addEventListener('click',function(e){
+    var c=e.target.closest('[data-cook]'); if(c){ openCook(c.getAttribute('data-cook')); return; }
+    var o=e.target.closest('[data-open]'); if(o){ openRecipe(o.getAttribute('data-open')); return; }
+  });
+
+  // ---------- servings scaler ----------
+  var UNI={'¼':0.25,'½':0.5,'¾':0.75,'⅓':1/3,'⅔':2/3,'⅛':0.125,'⅜':0.375,'⅝':0.625,'⅞':0.875};
+  function parseFrac(s){ s=s.trim();
+    if(UNI[s]!=null) return UNI[s];
+    if(/^\d+\s*\/\s*\d+$/.test(s)){ var p=s.split('/'); return parseFloat(p[0])/parseFloat(p[1]); }
+    var n=parseFloat(s); return isNaN(n)?null:n; }
+  function fmtNum(n){ var r=Math.round(n*100)/100; return String(r); }
+  function scaleQty(text, mult){
+    if(mult===1) return text;
+    return text.replace(/^(\s*)(\d+\s*\/\s*\d+|\d+(?:\.\d+)?|[¼½¾⅓⅔⅛⅜⅝⅞])/, function(m,ws,num){
+      var val=parseFrac(num); if(val==null) return m;
+      return ws+fmtNum(val*mult);
+    });
+  }
+  function initScalers(){
+    Array.prototype.forEach.call(document.querySelectorAll('.scaler[data-scale]'),function(sc){
+      var id=sc.getAttribute('data-scale'), base=parseInt(sc.getAttribute('data-base'),10)||2;
+      var opts=[base, base*2, base*3];
+      sc.innerHTML='<span class="scaler-lbl">Servings</span>'+opts.map(function(n,i){
+        return '<button data-mult="'+(i+1)+'"'+(i===0?' class="on"':'')+'>'+n+'</button>';
+      }).join('');
+      Array.prototype.forEach.call(sc.querySelectorAll('button'),function(b){
+        b.addEventListener('click',function(){
+          var mult=parseInt(b.getAttribute('data-mult'),10);
+          Array.prototype.forEach.call(sc.querySelectorAll('button'),function(x){ x.classList.toggle('on',x===b); });
+          var sheet=document.getElementById('sv'+id); if(!sheet) return;
+          Array.prototype.forEach.call(sheet.querySelectorAll('.ing .ing-txt'),function(t){
+            if(!t.getAttribute('data-orig')) t.setAttribute('data-orig', t.textContent);
+            t.textContent=scaleQty(t.getAttribute('data-orig'), mult);
+          });
+        });
+      });
+    });
+  }
+
+  paintFavs(); paintCooked(); renderTonight(); renderShelves(); initScalers();
+})();
+"""
+
 DOC = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1513,7 +1815,9 @@ DOC = f"""<!DOCTYPE html>
 
 <main>
   <div class="nojs">ℹ️ Everything works here — recipes, step-by-step cook mode and the cooking timers. Scripts are off in this view, so timers won't beep; open the file in a browser if you want sound.</div>
+  <div id="tonightMount" class="js-only"></div>
 {panels_html}
+  <div id="cookAgainMount" class="js-only"></div>
 </main>
 
 <div class="view-wrap">
@@ -1531,6 +1835,7 @@ DOC = f"""<!DOCTYPE html>
 {guides_html}
 
 <div class="tmr" id="tmr">
+  <button class="tmr-min js-only" onclick="minimizeFocus()">Minimize ▾</button>
   <div class="tmr-ex" id="tmrEx">Timer</div>
   <div class="ring-wrap">
     <svg viewBox="0 0 120 120">
@@ -1552,10 +1857,12 @@ DOC = f"""<!DOCTYPE html>
     <button class="btn-done" onclick="stopTimer()">Done</button>
   </div>
 </div>
+<div class="timer-dock js-only" id="timerDock"></div>
 {PLANNER_HTML}
 {PLAN_DATA_SCRIPT}
 <script>{JS}
-{PLANNER_JS}</script>
+{PLANNER_JS}
+{ENGAGE_JS}</script>
 </body>
 </html>
 """
