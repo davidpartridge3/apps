@@ -366,6 +366,7 @@ for i, w in enumerate(WEEKS):
       f'<div class="wk-head"><h2 class="wk-title">Month {i//4+1} · Week {i%4+1}</h2>'
       f'<p class="wk-sub">{esc(cuisines)}</p></div>'
       + "\n".join(card(r) for r in rs)
+      + '<div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div>'
       + f'<label class="list-btn" for="vlist{w}">🛒 Shopping list for this week</label>'
       + '<a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a>'
       + '</section>')
@@ -690,6 +691,546 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){
   navigator.serviceWorker.register('sw.js').catch(function(){});});}
 """.replace("NWEEKS", str(len(WEEKS))).replace("NMONTHS", str(NMONTH)).replace("DOCTITLE", "'Weekly Kitchen'")
 
+# ============================================================ A1 · Plan the week with Laurel
+# JS-only enhancement. With JS off, none of this shows and the app renders the
+# normal date-derived week (the "fall back to the normal fixed week" requirement).
+# Everything the planner needs about the 96 recipes travels in a JSON data island.
+_plan_data = [
+    {"id": r["_id"], "t": r["title"], "c": r["cuisine"], "tm": r["time"],
+     "s": r["slot"], "h": r["hero"], "sv": r["servings"], "wk": r["week"],
+     "ing": [{"i": g["item"], "st": g["store"]} for g in r["ingredients"]]}
+    for r in R
+]
+# Guard against a stray "</script>" inside any string closing the data island early.
+PLAN_DATA_SCRIPT = ('<script id="rdata" type="application/json">'
+                    + json.dumps(_plan_data, ensure_ascii=False).replace("</", "<\\/")
+                    + '</script>')
+
+PLANNER_CSS = """
+  /* ---------- A1 planner ---------- */
+  .no-js .js-only{display:none !important;}
+  .plan-btn{display:block;text-align:center;border:1px solid var(--accent);color:var(--accent);
+    background:var(--accent-soft);border-radius:14px;padding:14px;font-weight:800;font-size:14px;
+    margin:14px 0 6px;cursor:pointer;user-select:none;}
+  .plan-btn:active{transform:scale(.995);}
+
+  .pl-overlay{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;
+    flex-direction:column;overflow:hidden;}
+  body.pl-open .pl-overlay{display:flex;}
+  .pl-head{position:sticky;top:0;z-index:2;background:rgba(18,16,14,.96);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+    padding:14px 16px;display:flex;align-items:center;gap:12px;}
+  .pl-head .pl-title{font-weight:800;font-size:16px;flex:1;min-width:0;}
+  .pl-x{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:11px;
+    padding:8px 13px;font-weight:800;font-size:13px;cursor:pointer;flex:0 0 auto;}
+  .pl-steps{display:flex;gap:6px;padding:12px 16px 0;}
+  .pl-step{flex:1;text-align:center;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+    font-weight:800;color:var(--dimmer);padding-bottom:9px;border-bottom:2px solid var(--line);}
+  .pl-step.on{color:var(--accent);border-bottom-color:var(--accent);}
+  .pl-step.done{color:var(--green);border-bottom-color:var(--green);}
+  .pl-body{flex:1;overflow-y:auto;padding:14px 16px calc(120px + var(--safe-b));
+    max-width:680px;margin:0 auto;width:100%;}
+  .pl-bar{position:fixed;left:0;right:0;bottom:0;z-index:3;background:rgba(18,16,14,.97);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + var(--safe-b));}
+  .pl-bar-inner{max-width:680px;margin:0 auto;display:flex;gap:10px;align-items:center;}
+  .pl-count{flex:1;font-size:13px;font-weight:700;color:var(--dim);min-width:0;}
+  .pl-count b{color:var(--txt);}
+  .pl-go{border:none;border-radius:12px;padding:13px 20px;font-weight:800;font-size:14.5px;
+    background:var(--accent);color:#1a1005;cursor:pointer;font-family:inherit;flex:0 0 auto;}
+  .pl-go:disabled{opacity:.4;}
+  .pl-go.ghost{background:var(--card2);color:var(--txt);border:1px solid var(--line);}
+
+  .pl-filters{display:flex;flex-direction:column;gap:9px;margin-bottom:6px;}
+  .pl-search{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+    border-radius:12px;padding:11px 13px;font-size:14.5px;font-family:inherit;}
+  .pl-chiprow{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+  .pl-chiprow::-webkit-scrollbar{display:none;}
+  .pl-chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--dim);
+    border-radius:20px;padding:7px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
+    user-select:none;white-space:nowrap;}
+  .pl-chip.on{background:var(--accent);color:#1a1005;border-color:var(--accent);}
+  .pl-cui{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+    border-radius:12px;padding:11px 13px;font-size:14px;font-family:inherit;-webkit-appearance:none;}
+
+  .pl-rc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:11px 13px;margin:9px 0;cursor:pointer;user-select:none;position:relative;}
+  .pl-rc.sel{border-color:var(--accent);background:var(--accent-soft);}
+  .pl-rc .hero{width:46px;height:46px;font-size:26px;border-radius:12px;}
+  .pl-rc-main{flex:1;min-width:0;}
+  .pl-rc-slot{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;font-weight:800;color:var(--accent);}
+  .pl-rc-slot.batch{color:var(--green);}
+  .pl-rc-name{font-weight:800;font-size:15px;line-height:1.2;margin:1px 0;}
+  .pl-rc-meta{color:var(--dimmer);font-size:12px;font-weight:700;}
+  .pl-rc-tick{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;font-size:14px;}
+  .pl-rc.sel .pl-rc-tick{background:var(--accent);border-color:var(--accent);color:#1a1005;}
+  .pl-empty{color:var(--dim);text-align:center;padding:40px 20px;font-size:14px;}
+
+  .pl-assign{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:11px 13px;margin:9px 0;}
+  .pl-assign .hero{width:44px;height:44px;font-size:24px;border-radius:12px;}
+  .pl-assign-main{flex:1;min-width:0;}
+  .pl-assign-name{font-weight:800;font-size:14.5px;line-height:1.2;}
+  .pl-assign-meta{color:var(--dimmer);font-size:11.5px;font-weight:700;}
+  .pl-day{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:10px;
+    padding:9px 8px;font-size:13.5px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;}
+  .pl-share-txt{width:100%;min-height:150px;background:var(--card);border:1px solid var(--line);
+    color:var(--txt);border-radius:12px;padding:13px;font-size:14px;font-family:inherit;line-height:1.5;
+    resize:vertical;margin:6px 0;}
+  .pl-share-btns{display:flex;flex-direction:column;gap:9px;margin-top:6px;}
+  .pl-share-btns button{border:none;border-radius:12px;padding:14px;font-weight:800;font-size:15px;
+    cursor:pointer;font-family:inherit;}
+  .pl-primary{background:var(--accent);color:#1a1005;}
+  .pl-secondary{background:var(--card2);color:var(--txt);border:1px solid var(--line) !important;}
+  .pl-toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--green);
+    color:#0d2716;font-weight:800;font-size:13.5px;padding:11px 18px;border-radius:22px;z-index:90;
+    opacity:0;pointer-events:none;transition:opacity .2s;}
+  .pl-toast.show{opacity:1;}
+  .pl-hint{color:var(--dim);font-size:13px;margin:2px 0 14px;}
+
+  /* ---------- active plan panel (rendered in main) ---------- */
+  body.pl-active .wkpanel{display:none !important;}
+  #planPanel{display:none;}
+  body.pl-active #planPanel{display:block;}
+  .pp-banner{background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;
+    padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .pp-banner .pp-b-txt{flex:1;min-width:140px;font-size:13px;color:var(--txt);font-weight:700;}
+  .pp-banner .pp-b-txt small{display:block;color:var(--dim);font-weight:600;font-size:11.5px;margin-top:1px;}
+  .pp-b-btn{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:10px;
+    padding:8px 12px;font-weight:800;font-size:12.5px;cursor:pointer;flex:0 0 auto;}
+  .pp-card{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:13px;margin:11px 0;cursor:pointer;user-select:none;position:relative;}
+  .pp-day{flex:0 0 auto;width:52px;text-align:center;}
+  .pp-day b{display:block;font-size:15px;font-weight:800;color:var(--accent);}
+  .pp-day span{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--dimmer);font-weight:800;}
+  .pp-card.batch .pp-day b{color:var(--green);}
+  .pp-card .hero{width:48px;height:48px;font-size:26px;border-radius:12px;}
+  .pp-main{flex:1;min-width:0;}
+  .pp-name{font-weight:800;font-size:15.5px;line-height:1.2;}
+  .pp-meta{color:var(--dimmer);font-size:12px;font-weight:700;margin-top:2px;}
+  .pp-vote{display:flex;gap:7px;margin-top:8px;}
+  .pp-vb{border:1px solid var(--line);background:var(--card2);border-radius:20px;padding:5px 12px;
+    font-size:14px;cursor:pointer;user-select:none;line-height:1;}
+  .pp-vb.up.on{background:rgba(111,207,143,.2);border-color:var(--green);}
+  .pp-vb.down.on{background:rgba(228,87,46,.2);border-color:var(--tj);}
+  .pp-badge{position:absolute;top:10px;right:12px;font-size:18px;}
+  .sheet.pl-show{display:flex;}
+  .pp-combined{margin:18px 0 6px;}
+"""
+
+# The planner overlay + active-plan mount points. Static shell; JS fills the body.
+PLANNER_HTML = """
+<div class="pl-overlay" id="planner" aria-hidden="true">
+  <div class="pl-head">
+    <div class="pl-title" id="plTitle">🗓️ Plan this week</div>
+    <button class="pl-x" id="plClose" type="button">Close ✕</button>
+  </div>
+  <div class="pl-steps" id="plSteps">
+    <div class="pl-step on" data-step="1">1 · Pick meals</div>
+    <div class="pl-step" data-step="2">2 · Assign days</div>
+    <div class="pl-step" data-step="3">3 · Send</div>
+  </div>
+  <div class="pl-body" id="plBody"></div>
+  <div class="pl-bar"><div class="pl-bar-inner" id="plBar"></div></div>
+</div>
+<div class="pl-toast" id="plToast"></div>
+"""
+
+PLANNER_JS = r"""
+(function(){
+  var dataEl = document.getElementById('rdata');
+  if(!dataEl) return;
+  var LIST; try{ LIST = JSON.parse(dataEl.textContent); }catch(e){ return; }
+  var RD = {}; for(var i=0;i<LIST.length;i++) RD[LIST[i].id] = LIST[i];
+
+  var DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
+  var DAYFULL = {mon:'Monday',tue:'Tuesday',wed:'Wednesday',thu:'Thursday',fri:'Friday',sat:'Saturday',sun:'Sunday'};
+  var DORD = {mon:0,tue:1,wed:2,thu:3,fri:4,sat:5,sun:6};
+  var STORE_LABEL = {TJ:"Trader Joe's",Aldi:"Aldi",Either:"Either store",Pantry:"Pantry"};
+  var STORE_ORDER = ['TJ','Aldi','Either','Pantry'];
+  var STORE_CLS = {TJ:'tj',Aldi:'aldi',Either:'either',Pantry:'pantry'};
+  var LS_KEY = 'kitchenPlan.v1';
+
+  var body = document.body;
+  var planner = document.getElementById('planner');
+  var plBody = document.getElementById('plBody');
+  var plBar  = document.getElementById('plBar');
+  var plSteps= document.getElementById('plSteps');
+  var toastEl= document.getElementById('plToast');
+
+  // ---- planner state ----
+  var step = 1;
+  var sel = {};            // id -> assigned day ('' = unassigned)
+  var flt = {slot:'all', cuisine:'all', time:0, q:''};
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function mins(tm){ var m=/(\d+)/.exec(tm||''); return m?parseInt(m[1],10):999; }
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show');
+    setTimeout(function(){ toastEl.classList.remove('show'); },1800); }
+
+  function selIds(){ return Object.keys(sel); }
+  function selCount(){ var d=0,b=0; selIds().forEach(function(id){
+    if(RD[id].s==='batch') b++; else d++; }); return {d:d,b:b}; }
+
+  // ---------------- open / close ----------------
+  function openPlanner(preset){
+    sel = {};
+    if(preset){ preset.forEach(function(p){ sel[p.id]=p.day||''; }); }
+    step = preset && preset.length ? 2 : 1;
+    body.classList.add('pl-open'); planner.setAttribute('aria-hidden','false');
+    render();
+  }
+  function closePlanner(){ body.classList.remove('pl-open'); planner.setAttribute('aria-hidden','true'); }
+
+  // ---------------- render dispatch ----------------
+  function render(){
+    Array.prototype.forEach.call(plSteps.children,function(el){
+      var s=parseInt(el.getAttribute('data-step'),10);
+      el.className='pl-step'+(s===step?' on':'')+(s<step?' done':'');
+    });
+    if(step===1) renderPick();
+    else if(step===2) renderAssign();
+    else renderShare();
+    plBody.scrollTop=0;
+  }
+
+  // ---------------- step 1: pick ----------------
+  function renderPick(){
+    var cuisines={}; LIST.forEach(function(r){ cuisines[r.c]=1; });
+    var cOpts='<option value="all">All cuisines</option>'+
+      Object.keys(cuisines).sort().map(function(c){
+        return '<option value="'+esc(c)+'"'+(flt.cuisine===c?' selected':'')+'>'+esc(c)+'</option>';
+      }).join('');
+    var timeChips=[[0,'Any time'],[20,'≤20 min'],[30,'≤30 min'],[45,'≤45 min']].map(function(t){
+      return '<div class="pl-chip'+(flt.time===t[0]?' on':'')+'" data-time="'+t[0]+'">'+t[1]+'</div>';
+    }).join('');
+    var slotChips=[['all','All'],['dinner','Dinners'],['batch','Batch cooks']].map(function(s){
+      return '<div class="pl-chip'+(flt.slot===s[0]?' on':'')+'" data-slot="'+s[0]+'">'+s[1]+'</div>';
+    }).join('');
+
+    var rows=LIST.filter(function(r){
+      if(flt.slot!=='all' && r.s!==flt.slot) return false;
+      if(flt.cuisine!=='all' && r.c!==flt.cuisine) return false;
+      if(flt.time && mins(r.tm)>flt.time) return false;
+      if(flt.q){ var q=flt.q.toLowerCase();
+        if((r.t+' '+r.c).toLowerCase().indexOf(q)<0) return false; }
+      return true;
+    }).map(function(r){
+      var on = sel.hasOwnProperty(r.id);
+      var slot = r.s==='batch'?'Batch cook':'Dinner';
+      return '<div class="pl-rc'+(on?' sel':'')+'" data-id="'+r.id+'">'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pl-rc-main">'+
+          '<div class="pl-rc-slot'+(r.s==='batch'?' batch':'')+'">'+slot+' · '+esc(r.c)+'</div>'+
+          '<div class="pl-rc-name">'+esc(r.t)+'</div>'+
+          '<div class="pl-rc-meta">'+esc(r.tm)+' · '+r.sv+' servings</div>'+
+        '</div>'+
+        '<div class="pl-rc-tick">✓</div></div>';
+    }).join('') || '<div class="pl-empty">No recipes match those filters.</div>';
+
+    plBody.innerHTML =
+      '<div class="pl-hint">Pick this week’s meals — the plan works best with 3 dinners + 1 big batch cook, but choose however you like.</div>'+
+      '<div class="pl-filters">'+
+        '<input class="pl-search" id="plSearch" type="search" placeholder="Search recipes or cuisine…" value="'+esc(flt.q)+'">'+
+        '<div class="pl-chiprow">'+slotChips+'</div>'+
+        '<div class="pl-chiprow">'+timeChips+'</div>'+
+        '<select class="pl-cui" id="plCui">'+cOpts+'</select>'+
+      '</div>'+ rows;
+
+    var c=selCount();
+    plBar.innerHTML='<div class="pl-count"><b>'+c.d+'</b> dinner'+(c.d===1?'':'s')+
+      ' · <b>'+c.b+'</b> batch selected</div>'+
+      '<button class="pl-go" id="plNext"'+(c.d+c.b?'':' disabled')+'>Assign days ›</button>';
+
+    // wire
+    document.getElementById('plSearch').addEventListener('input',function(e){ flt.q=e.target.value; renderPick(); });
+    document.getElementById('plCui').addEventListener('change',function(e){ flt.cuisine=e.target.value; renderPick(); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('[data-slot]'),function(el){
+      el.addEventListener('click',function(){ flt.slot=el.getAttribute('data-slot'); renderPick(); }); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('[data-time]'),function(el){
+      el.addEventListener('click',function(){ flt.time=parseInt(el.getAttribute('data-time'),10); renderPick(); }); });
+    Array.prototype.forEach.call(plBody.querySelectorAll('.pl-rc'),function(el){
+      el.addEventListener('click',function(){
+        var id=el.getAttribute('data-id');
+        if(sel.hasOwnProperty(id)) delete sel[id]; else sel[id]='';
+        renderPick();
+      }); });
+    var nx=document.getElementById('plNext');
+    if(nx) nx.addEventListener('click',function(){ if(selCount().d+selCount().b){ step=2; render(); } });
+  }
+
+  // ---------------- step 2: assign days ----------------
+  function defaultDays(){
+    // spread dinners across the week, batch on Sunday, only where unset
+    var order=['mon','tue','thu','wed','fri','sat'];
+    var di=0;
+    selIds().forEach(function(id){
+      if(sel[id]) return;
+      if(RD[id].s==='batch') sel[id]='sun';
+      else { sel[id]=order[di % order.length]; di++; }
+    });
+  }
+  function renderAssign(){
+    defaultDays();
+    var ids=selIds().sort(function(a,b){
+      var da=DORD[sel[a]]==null?9:DORD[sel[a]], db=DORD[sel[b]]==null?9:DORD[sel[b]];
+      return da-db;
+    });
+    var rows=ids.map(function(id){
+      var r=RD[id];
+      var opts=DAYS.map(function(d){
+        return '<option value="'+d[0]+'"'+(sel[id]===d[0]?' selected':'')+'>'+d[1]+'</option>';
+      }).join('');
+      return '<div class="pl-assign">'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pl-assign-main">'+
+          '<div class="pl-assign-name">'+esc(r.t)+'</div>'+
+          '<div class="pl-assign-meta">'+(r.s==='batch'?'Batch cook · ':'Dinner · ')+esc(r.tm)+'</div>'+
+        '</div>'+
+        '<select class="pl-day" data-id="'+id+'">'+opts+'</select></div>';
+    }).join('');
+    plBody.innerHTML='<div class="pl-hint">Which night is each meal? Batch cooks are great for Sunday so you eat off them all week.</div>'+rows;
+    plBar.innerHTML='<button class="pl-go ghost" id="plBack">‹ Back</button>'+
+      '<div class="pl-count"></div>'+
+      '<button class="pl-go" id="plNext">Send to Laurel ›</button>';
+    Array.prototype.forEach.call(plBody.querySelectorAll('.pl-day'),function(s){
+      s.addEventListener('change',function(){ sel[s.getAttribute('data-id')]=s.value; }); });
+    document.getElementById('plBack').addEventListener('click',function(){ step=1; render(); });
+    document.getElementById('plNext').addEventListener('click',function(){ step=3; render(); });
+  }
+
+  // ---------------- encode / decode ----------------
+  function encodePlan(){
+    return selIds().filter(function(id){ return sel[id]; })
+      .map(function(id){ return id+'.'+sel[id]; }).join(',');
+  }
+  function planURL(){
+    return location.origin+location.pathname+'#plan='+encodePlan();
+  }
+  function planText(){
+    var ids=selIds().filter(function(id){ return sel[id]; }).sort(function(a,b){ return DORD[sel[a]]-DORD[sel[b]]; });
+    var lines=["This week’s dinners 🍳"];
+    ids.forEach(function(id){
+      var r=RD[id];
+      lines.push(DAYFULL[sel[id]].slice(0,3)+' — '+r.t+' ('+(r.s==='batch'?'batch, ':'')+r.tm+')');
+    });
+    lines.push('Open: '+planURL());
+    return lines.join('\n');
+  }
+
+  // ---------------- step 3: share ----------------
+  function renderShare(){
+    var txt=planText();
+    plBody.innerHTML='<div class="pl-hint">Send this to Laurel. She can open the link, react 👍/👎 to each meal, and send it back — all with no app to install.</div>'+
+      '<textarea class="pl-share-txt" id="plText" readonly>'+esc(txt)+'</textarea>'+
+      '<div class="pl-share-btns">'+
+        '<button class="pl-primary" id="plShare">📤 Share with Laurel</button>'+
+        '<button class="pl-secondary" id="plCopyLink">🔗 Copy link</button>'+
+        '<button class="pl-secondary" id="plCopyText">📋 Copy message</button>'+
+        '<button class="pl-secondary" id="plUse">✅ Use this as my week</button>'+
+      '</div>';
+    plBar.innerHTML='<button class="pl-go ghost" id="plBack">‹ Back</button>'+
+      '<div class="pl-count"></div>';
+    document.getElementById('plBack').addEventListener('click',function(){ step=2; render(); });
+    document.getElementById('plShare').addEventListener('click',function(){
+      if(navigator.share){ navigator.share({title:"This week’s dinners",text:txt}).catch(function(){}); }
+      else { copy(txt); toast('Message copied — paste it to Laurel'); }
+    });
+    document.getElementById('plCopyLink').addEventListener('click',function(){ copy(planURL()); toast('Link copied'); });
+    document.getElementById('plCopyText').addEventListener('click',function(){ copy(txt); toast('Message copied'); });
+    document.getElementById('plUse').addEventListener('click',function(){
+      applyPlan(decodePlan(encodePlan()), null, true); closePlanner();
+    });
+  }
+  function copy(s){
+    try{ if(navigator.clipboard){ navigator.clipboard.writeText(s); return; } }catch(e){}
+    var t=document.getElementById('plText'); if(t){ t.focus(); t.select();
+      try{ document.execCommand('copy'); }catch(e){} }
+  }
+
+  // ---------------- decode a plan/votes hash ----------------
+  function parseHash(){
+    var h=location.hash.replace(/^#/,''); if(!h) return {};
+    var out={}; h.split('&').forEach(function(kv){
+      var i=kv.indexOf('='); if(i<0) return;
+      out[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1));
+    });
+    return out;
+  }
+  function decodePlan(str){
+    if(!str) return [];
+    return str.split(',').map(function(tok){
+      var p=tok.split('.'); return {id:p[0],day:p[1]||''};
+    }).filter(function(e){ return RD[e.id]; });
+  }
+  function decodeVotes(str){
+    var v={}; if(!str) return v;
+    str.split(',').forEach(function(tok){ var p=tok.split('.');
+      if(RD[p[0]]) v[p[0]] = p[1]==='u'?'up':(p[1]==='d'?'down':''); });
+    return v;
+  }
+
+  // ---------------- active plan panel ----------------
+  var curPlan=[];      // [{id,day}]
+  var curVotes={};     // id -> 'up'|'down'
+  var myVotes={};      // Laurel's in-progress reactions
+
+  function ensurePanel(){
+    var p=document.getElementById('planPanel');
+    if(!p){
+      p=document.createElement('section'); p.id='planPanel';
+      var main=document.querySelector('main');
+      main.insertBefore(p, main.firstChild);
+    }
+    return p;
+  }
+  function applyPlan(plan, votes, save){
+    curPlan=plan.slice(); curVotes=votes||{}; myVotes={};
+    if(save){ try{ localStorage.setItem(LS_KEY, encodeList(plan)); }catch(e){} }
+    renderPanel(); body.classList.add('pl-active'); window.scrollTo(0,0);
+  }
+  function encodeList(plan){
+    return plan.filter(function(e){return e.day;}).map(function(e){return e.id+'.'+e.day;}).join(',');
+  }
+  function renderPanel(){
+    var p=ensurePanel();
+    var ordered=curPlan.slice().sort(function(a,b){ return DORD[a.day]-DORD[b.day]; });
+    var hasVotes=Object.keys(curVotes).length>0;
+    var cards=ordered.map(function(e){
+      var r=RD[e.id]; if(!r) return '';
+      var badge = curVotes[e.id]==='up'?'👍':(curVotes[e.id]==='down'?'👎':'');
+      return '<div class="pp-card'+(r.s==='batch'?' batch':'')+'" data-id="'+e.id+'">'+
+        (badge?'<div class="pp-badge">'+badge+'</div>':'')+
+        '<div class="pp-day"><b>'+(DAYFULL[e.day]||'').slice(0,3)+'</b><span>'+(r.s==='batch'?'batch':'dinner')+'</span></div>'+
+        '<div class="hero">'+r.h+'</div>'+
+        '<div class="pp-main"><div class="pp-name">'+esc(r.t)+'</div>'+
+          '<div class="pp-meta">'+esc(r.c)+' · '+esc(r.tm)+'</div>'+
+          (hasVotes ? '' :
+            '<div class="pp-vote js-only" data-id="'+e.id+'">'+
+              '<div class="pp-vb up" data-v="up">👍</div>'+
+              '<div class="pp-vb down" data-v="down">👎</div>'+
+            '</div>')+
+        '</div></div>';
+    }).join('');
+    var sub = hasVotes ? 'Laurel’s reactions are in — tap a meal to open it.'
+                       : 'Tap a meal to cook it, or react and send your picks back.';
+    p.innerHTML=
+      '<div class="pp-banner">'+
+        '<div class="pp-b-txt">🗓️ This week’s plan<small>'+sub+'</small></div>'+
+        '<button class="pp-b-btn" id="ppEdit">Edit</button>'+
+        '<button class="pp-b-btn" id="ppExit">All weeks</button>'+
+      '</div>'+ cards +
+      '<label class="plan-btn pp-combined js-only" id="ppShop">🛒 Combined shopping list</label>'+
+      (hasVotes ? '' :
+        '<button class="plan-btn js-only" id="ppSend" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💬 Send my picks back</button>');
+
+    // open recipe on card tap (but not when tapping a vote button)
+    Array.prototype.forEach.call(p.querySelectorAll('.pp-card'),function(c){
+      c.addEventListener('click',function(ev){
+        if(ev.target.closest('.pp-vote')) return;
+        var r=document.getElementById('v'+c.getAttribute('data-id'));
+        if(r){ r.checked=true; }
+      });
+    });
+    Array.prototype.forEach.call(p.querySelectorAll('.pp-vb'),function(b){
+      b.addEventListener('click',function(ev){
+        ev.stopPropagation();
+        var wrap=b.parentNode, id=wrap.getAttribute('data-id'), v=b.getAttribute('data-v');
+        myVotes[id] = (myVotes[id]===v)?'':v;
+        Array.prototype.forEach.call(wrap.querySelectorAll('.pp-vb'),function(x){
+          x.classList.toggle('on', x.getAttribute('data-v')===myVotes[id]); });
+      });
+    });
+    document.getElementById('ppEdit').addEventListener('click',function(){ openPlanner(curPlan); });
+    document.getElementById('ppExit').addEventListener('click',function(){
+      body.classList.remove('pl-active');
+      try{ localStorage.removeItem(LS_KEY); }catch(e){}
+      if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+    });
+    document.getElementById('ppShop').addEventListener('click',function(){ openCombined(); });
+    var sendBtn=document.getElementById('ppSend');
+    if(sendBtn) sendBtn.addEventListener('click',function(){ sendVotes(); });
+  }
+  function sendVotes(){
+    var vt=Object.keys(myVotes).filter(function(id){return myVotes[id];})
+      .map(function(id){ return id+'.'+(myVotes[id]==='up'?'u':'d'); }).join(',');
+    if(!vt){ toast('Tap 👍 or 👎 on a few meals first'); return; }
+    var url=location.origin+location.pathname+'#plan='+encodeList(curPlan)+'&votes='+vt;
+    var txt='My picks for this week 👍\n'+url;
+    if(navigator.share){ navigator.share({title:'My picks',text:txt}).catch(function(){}); }
+    else { copyStr(url); toast('Link copied — send it to Dave'); }
+  }
+  function copyStr(s){ try{ if(navigator.clipboard) navigator.clipboard.writeText(s); }catch(e){} }
+
+  // ---------------- combined shopping list ----------------
+  function normItem(s){ return s.toLowerCase().replace(/\s+/g,' ').trim(); }
+  function openCombined(){
+    var sheet=document.getElementById('planShop');
+    if(!sheet){
+      sheet=document.createElement('div'); sheet.className='sheet'; sheet.id='planShop';
+      document.body.appendChild(sheet);
+    }
+    // gather ingredients across planned recipes, dedupe by normalised item within a store
+    var buckets={}; STORE_ORDER.forEach(function(s){ buckets[s]=[]; });
+    var seen={};
+    curPlan.forEach(function(e){
+      var r=RD[e.id]; if(!r) return;
+      r.ing.forEach(function(g){
+        var store=buckets[g.st]?g.st:'Either';
+        var key=store+'|'+normItem(g.i);
+        if(seen[key]){ seen[key].for.push(r.t); if(seen[key].items.indexOf(g.i)<0) seen[key].items.push(g.i); }
+        else { seen[key]={store:store,items:[g.i],for:[r.t]}; buckets[store].push(seen[key]); }
+      });
+    });
+    var n=0, body='';
+    STORE_ORDER.forEach(function(store){
+      var items=buckets[store]; if(!items.length) return;
+      body+='<div class="sec-label">'+esc(STORE_LABEL[store])+' · '+items.length+' items</div>';
+      items.forEach(function(it){
+        var cid='pls_'+(n++);
+        var line = it.items.length>1 ? it.items.join(' + ') : it.items[0];
+        body+='<input type="checkbox" class="chk" id="'+cid+'">'+
+          '<div class="ing-row"><label class="ing" for="'+cid+'"><span class="box">✓</span>'+
+          '<span class="ing-txt">'+esc(line)+'<br><span class="ing-src">for '+esc(it.for.join(', '))+'</span></span>'+
+          '<span class="pill '+STORE_CLS[store]+'">'+esc(STORE_LABEL[store])+'</span></label></div>';
+      });
+    });
+    sheet.innerHTML=
+      '<div class="sheet-head"><button class="back" id="plShopBack" type="button">‹ Back</button>'+
+      '<div class="sheet-title">🛒 This week’s combined list</div></div>'+
+      '<div class="sheet-body"><div class="note">Everything for your planned meals, duplicates merged and split by store. Tap to check off as you shop.</div>'+
+      body+'</div>';
+    document.getElementById('plShopBack').addEventListener('click',function(){ sheet.classList.remove('pl-show'); });
+    sheet.classList.add('pl-show');
+  }
+
+  // ---------------- wire the entry buttons ----------------
+  document.getElementById('plClose').addEventListener('click',closePlanner);
+  Array.prototype.forEach.call(document.querySelectorAll('.plan-btn.open-planner'),function(b){
+    b.addEventListener('click',function(){ openPlanner(null); });
+  });
+  // leaving plan view when a week tab is chosen
+  Array.prototype.forEach.call(document.querySelectorAll('.wkradio'),function(r){
+    r.addEventListener('change',function(){ body.classList.remove('pl-active'); });
+  });
+
+  // ---------------- boot: hash > localStorage ----------------
+  (function boot(){
+    var h=parseHash();
+    if(h.plan){
+      var plan=decodePlan(h.plan);
+      if(plan.length){ applyPlan(plan, decodeVotes(h.votes), true); return; }
+    }
+    try{
+      var saved=localStorage.getItem(LS_KEY);
+      if(saved){ var p=decodePlan(saved); if(p.length){ applyPlan(p, null, false); } }
+    }catch(e){}
+  })();
+})();
+"""
+
 DOC = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -703,7 +1244,7 @@ DOC = f"""<!DOCTYPE html>
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
 <title>Weekly Kitchen</title>
-<style>{CSS}</style>
+<style>{CSS}{PLANNER_CSS}</style>
 </head>
 <body class="no-js">
 
@@ -760,12 +1301,32 @@ DOC = f"""<!DOCTYPE html>
     <button class="btn-done" onclick="stopTimer()">Done</button>
   </div>
 </div>
-
-<script>{JS}</script>
+{PLANNER_HTML}
+{PLAN_DATA_SCRIPT}
+<script>{JS}
+{PLANNER_JS}</script>
 </body>
 </html>
 """
 
 os.makedirs(os.path.dirname(_OUT), exist_ok=True)
 open(_OUT, "w", encoding="utf-8", newline="\n").write(DOC)
-print("recipes:", len(R), "| timer durations:", DURS, "| bytes:", len(DOC))
+
+# Auto-versioned service worker: the cache name is derived from a hash of the
+# page, so installed apps always pick up new content (no manual CACHE bump —
+# see DEVELOPMENT.md). Cache-first with a network fallback.
+import hashlib
+_ver = hashlib.sha1(DOC.encode("utf-8")).hexdigest()[:10]
+SW = ("const CACHE='kitchen-%s';\n"
+      "const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];\n"
+      "self.addEventListener('install',e=>{self.skipWaiting();"
+      "e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).catch(()=>{}));});\n"
+      "self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all("
+      "ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});\n"
+      "self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;"
+      "e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{"
+      "const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{});"
+      "return res;}).catch(()=>caches.match('./index.html'))));});\n") % _ver
+open(os.path.join(os.path.dirname(_OUT), "sw.js"), "w", encoding="utf-8", newline="\n").write(SW)
+
+print("recipes:", len(R), "| timer durations:", DURS, "| bytes:", len(DOC), "| cache: kitchen-" + _ver)

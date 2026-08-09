@@ -735,4 +735,21 @@ function addPlaylist(){{
 
 os.makedirs(os.path.dirname(_OUT), exist_ok=True)
 open(_OUT, "w", encoding="utf-8", newline="\n").write(DOC)
-print("written", len(DOC), "bytes")
+
+# Auto-versioned service worker (cache name = hash of the page) so installed
+# apps always pick up new content without a manual CACHE bump. See DEVELOPMENT.md.
+import hashlib
+_ver = hashlib.sha1(DOC.encode("utf-8")).hexdigest()[:10]
+SW = ("const CACHE='workout-%s';\n"
+      "const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];\n"
+      "self.addEventListener('install',e=>{self.skipWaiting();"
+      "e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).catch(()=>{}));});\n"
+      "self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all("
+      "ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});\n"
+      "self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;"
+      "e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{"
+      "const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{});"
+      "return res;}).catch(()=>caches.match('./index.html'))));});\n") % _ver
+open(os.path.join(os.path.dirname(_OUT), "sw.js"), "w", encoding="utf-8", newline="\n").write(SW)
+
+print("written", len(DOC), "bytes | cache: workout-" + _ver)
