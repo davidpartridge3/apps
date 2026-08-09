@@ -1,5 +1,13 @@
 # Backlog — what to build next
 
+> **STATUS (2026-08-09): all items below are built, verified and committed.**
+> A1 planner, A2 shopping mode, A3 (multi-timers, Tonight card, favourites,
+> history+rating, servings scaler), C betting tool (`dist/betting`), and B
+> (set logging, progression prompts, body log, verified Spotify playlists).
+> Verified JS-off/on via `test/verify.mjs`; betting math via `test/betting.mjs`.
+> Not built (lower-priority A3 extras, noted for later): cook timeline,
+> prep-ahead flags, and live Odds-API fetch (the data-source seam exists).
+
 Three projects. Read `DEVELOPMENT.md` first; the no-JavaScript rule applies to everything in the kitchen and workout apps.
 
 Priority order: **A1 → A2 → A3 → C → B**.

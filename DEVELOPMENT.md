@@ -74,9 +74,13 @@ Simpler and smaller. The plan lives in a `PLAN` list at the top of `build_workou
 
 ## Deployment
 
-`dist/` is the site root, deployed to GitHub Pages. Each app folder carries `index.html`, `manifest.webmanifest`, `sw.js` and three PNG icons. The service worker is cache-first with a network fallback.
+`dist/` is the site root, deployed to GitHub Pages. It now holds **three** apps — `kitchen/`, `workout/` and `betting/` — each with `index.html`, `manifest.webmanifest`, `sw.js` and three PNG icons, plus a root `index.html` launcher.
 
-**Bump `CACHE` in `sw.js` on every content change** (`kitchen-v1` → `kitchen-v2`). Without it, installed apps keep serving the old cached copy and Dave will think the update failed.
+**Service workers are now auto-versioned.** The build scripts write `sw.js` with a cache name derived from a hash of the page (`kitchen-<hash>`), so installed apps always pick up new content with no manual bump. (The betting app is hand-authored and uses a network-first page strategy, so it updates when online too.)
+
+The **betting app (`dist/betting/`) is not generated** — it's a hand-authored single file. Edit `dist/betting/index.html` directly. The no-JavaScript rule does not apply to it (it's inherently interactive); its math is covered by `test/betting.mjs`.
+
+**Build & verify (Windows):** `python build.py` regenerates kitchen + workout. Python lives at `C:\Users\david\AppData\Local\Programs\Python\Python312\python.exe`. Serve with `python -m http.server 8123 --directory dist`, then run `node test/verify.mjs` (JS-off/on for both generated apps) and `node test/betting.mjs`.
 
 Dave is on iPhone. Only Safari can install to the Home Screen; Chrome and Edge cannot. Keep `apple-mobile-web-app-capable`, `apple-mobile-web-app-title` and the `apple-touch-icon` link in the head of both apps.
 
