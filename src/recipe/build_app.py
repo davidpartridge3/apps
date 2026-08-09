@@ -436,6 +436,7 @@ for w in WEEKS:
   </div>
   <div class="sheet-body">
     <div class="note">Everything for this week's three dinners and the big batch cook, split by store. Tap items to check them off as you shop.</div>
+    <div class="shop-open js-only" data-week="{w}">🛒 In-store shopping mode</div>
     {"".join(body)}
   </div>
 </div>''')
@@ -695,10 +696,14 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){
 # JS-only enhancement. With JS off, none of this shows and the app renders the
 # normal date-derived week (the "fall back to the normal fixed week" requirement).
 # Everything the planner needs about the 96 recipes travels in a JSON data island.
+def _aisle(item):
+    k = gkey(item)
+    return GUIDES[k].get("aisle", "") if (k and k in GUIDES) else ""
+
 _plan_data = [
     {"id": r["_id"], "t": r["title"], "c": r["cuisine"], "tm": r["time"],
      "s": r["slot"], "h": r["hero"], "sv": r["servings"], "wk": r["week"],
-     "ing": [{"i": g["item"], "st": g["store"]} for g in r["ingredients"]]}
+     "ing": [{"i": g["item"], "st": g["store"], "al": _aisle(g["item"])} for g in r["ingredients"]]}
     for r in R
 ]
 # Guard against a stray "</script>" inside any string closing the data island early.
@@ -808,6 +813,7 @@ PLANNER_CSS = """
   .pp-card .hero{width:48px;height:48px;font-size:26px;border-radius:12px;}
   .pp-main{flex:1;min-width:0;}
   .pp-name{font-weight:800;font-size:15.5px;line-height:1.2;}
+  .pp-card.voted .pp-name{padding-right:26px;}
   .pp-meta{color:var(--dimmer);font-size:12px;font-weight:700;margin-top:2px;}
   .pp-vote{display:flex;gap:7px;margin-top:8px;}
   .pp-vb{border:1px solid var(--line);background:var(--card2);border-radius:20px;padding:5px 12px;
@@ -817,6 +823,68 @@ PLANNER_CSS = """
   .pp-badge{position:absolute;top:10px;right:12px;font-size:18px;}
   .sheet.pl-show{display:flex;}
   .pp-combined{margin:18px 0 6px;}
+
+  /* ---------- A2 in-store shopping mode ---------- */
+  .shop-open{display:block;text-align:center;background:var(--accent);color:#1a1005;font-weight:800;
+    font-size:15px;border-radius:14px;padding:15px;margin:6px 0 14px;cursor:pointer;user-select:none;}
+  .shop{position:fixed;inset:0;z-index:75;background:var(--bg);display:none;flex-direction:column;}
+  body.shop-open-on .shop{display:flex;}
+  .shop-head{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;
+    position:sticky;top:0;background:rgba(18,16,14,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);z-index:2;}
+  .shop-title{font-weight:800;font-size:15.5px;flex:1;min-width:0;}
+  .shop-x{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:11px;
+    padding:9px 14px;font-weight:800;font-size:13px;cursor:pointer;flex:0 0 auto;}
+  .shop-controls{padding:12px 16px 6px;border-bottom:1px solid var(--line);position:sticky;top:57px;
+    background:rgba(18,16,14,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);z-index:1;}
+  .shop-seg{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;}
+  .shop-seg button{flex:1;border:none;background:transparent;color:var(--dim);border-radius:9px;
+    padding:9px 4px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .shop-seg button.on{background:var(--accent);color:#1a1005;}
+  .shop-prog{margin:11px 0 3px;display:flex;align-items:center;gap:10px;}
+  .shop-prog-bar{flex:1;height:7px;background:var(--line);border-radius:4px;overflow:hidden;}
+  .shop-prog-bar i{display:block;height:100%;width:0;background:var(--green);transition:width .25s;}
+  .shop-prog-txt{font-size:12.5px;font-weight:800;color:var(--dim);flex:0 0 auto;}
+  .shop-prog-txt b{color:var(--txt);}
+  .shop-toggles{display:flex;gap:8px;margin:9px 0 4px;}
+  .shop-tg{flex:1;border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:10px;
+    padding:9px 6px;font-size:12px;font-weight:800;cursor:pointer;text-align:center;user-select:none;}
+  .shop-tg.on{color:#1a1005;background:var(--accent);border-color:var(--accent);}
+  .shop-tg.awake.on{background:var(--green);border-color:var(--green);color:#0d2716;}
+  .shop-body{flex:1;overflow-y:auto;padding:12px 16px calc(30px + var(--safe-b));max-width:680px;margin:0 auto;width:100%;}
+  body.hide-got .shop-item.got{display:none;}
+  .shop-aisle{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--dimmer);
+    font-weight:800;margin:20px 0 7px;display:flex;align-items:center;gap:8px;}
+  .shop-aisle .a-count{color:var(--dimmer);font-weight:700;letter-spacing:.3px;text-transform:none;}
+  .shop-aisle.done{color:var(--green);}
+  .shop-aisle.done .a-count{color:var(--green);}
+  .shop-item{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:12px 14px;margin:8px 0;min-height:56px;cursor:pointer;user-select:none;}
+  .shop-item.got{border-color:var(--green);background:rgba(111,207,143,.08);}
+  .shop-box{width:28px;height:28px;border-radius:8px;border:2px solid var(--line);flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;color:transparent;font-size:16px;font-weight:900;}
+  .shop-item.got .shop-box{background:var(--green);border-color:var(--green);color:#12100e;}
+  .shop-it-main{flex:1;min-width:0;}
+  .shop-it-name{font-weight:700;font-size:15.5px;line-height:1.25;}
+  .shop-item.got .shop-it-name{text-decoration:line-through;color:var(--dim);}
+  .shop-it-for{color:var(--dimmer);font-size:11.5px;font-weight:700;margin-top:2px;}
+  .shop-it-pill{font-size:10px;font-weight:800;border-radius:20px;padding:3px 9px;flex:0 0 auto;}
+  .shop-it-pill.tj{background:rgba(228,87,46,.16);color:#f38a68;}
+  .shop-it-pill.aldi{background:rgba(74,144,217,.16);color:#8bbaea;}
+  .shop-it-pill.either{background:#2a2522;color:var(--dim);}
+  .shop-it-pill.pantry{background:#2a2522;color:var(--dimmer);}
+  .shop-done-msg{text-align:center;color:var(--green);font-weight:800;font-size:15px;padding:26px 12px 6px;}
+  .shop-pantry-note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:12px;padding:12px 14px;margin:12px 0;font-size:13.5px;color:var(--dim);}
+  .shop-pantry-note b{color:var(--txt);}
+  .shop-start{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + var(--safe-b));
+    background:rgba(18,16,14,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);z-index:3;}
+  .shop-start-inner{max-width:680px;margin:0 auto;display:flex;gap:10px;}
+  .shop-start button{flex:1;border:none;border-radius:12px;padding:15px;font-weight:800;font-size:15px;
+    cursor:pointer;font-family:inherit;}
+  .shop-start .go{background:var(--accent);color:#1a1005;}
+  .shop-start .skip{background:var(--card2);color:var(--txt);border:1px solid var(--line);flex:0 0 auto;}
+  body.shop-pantry-on .shop-body{padding-bottom:calc(90px + var(--safe-b));}
 """
 
 # The planner overlay + active-plan mount points. Static shell; JS fills the body.
@@ -833,6 +901,15 @@ PLANNER_HTML = """
   </div>
   <div class="pl-body" id="plBody"></div>
   <div class="pl-bar"><div class="pl-bar-inner" id="plBar"></div></div>
+</div>
+<div class="shop" id="shop" aria-hidden="true">
+  <div class="shop-head">
+    <div class="shop-title" id="shopTitle">🛒 Shopping</div>
+    <button class="shop-x" id="shopClose" type="button">Done ✕</button>
+  </div>
+  <div class="shop-controls" id="shopControls"></div>
+  <div class="shop-body" id="shopBody"></div>
+  <div class="shop-start" id="shopStart"></div>
 </div>
 <div class="pl-toast" id="plToast"></div>
 """
@@ -1101,7 +1178,7 @@ PLANNER_JS = r"""
     var cards=ordered.map(function(e){
       var r=RD[e.id]; if(!r) return '';
       var badge = curVotes[e.id]==='up'?'👍':(curVotes[e.id]==='down'?'👎':'');
-      return '<div class="pp-card'+(r.s==='batch'?' batch':'')+'" data-id="'+e.id+'">'+
+      return '<div class="pp-card'+(r.s==='batch'?' batch':'')+(badge?' voted':'')+'" data-id="'+e.id+'">'+
         (badge?'<div class="pp-badge">'+badge+'</div>':'')+
         '<div class="pp-day"><b>'+(DAYFULL[e.day]||'').slice(0,3)+'</b><span>'+(r.s==='batch'?'batch':'dinner')+'</span></div>'+
         '<div class="hero">'+r.h+'</div>'+
@@ -1149,7 +1226,9 @@ PLANNER_JS = r"""
       try{ localStorage.removeItem(LS_KEY); }catch(e){}
       if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
     });
-    document.getElementById('ppShop').addEventListener('click',function(){ openCombined(); });
+    document.getElementById('ppShop').addEventListener('click',function(){
+      openShopping(curPlan.map(function(e){return e.id;}), 'This week’s meals', 'plan');
+    });
     var sendBtn=document.getElementById('ppSend');
     if(sendBtn) sendBtn.addEventListener('click',function(){ sendVotes(); });
   }
@@ -1164,52 +1243,224 @@ PLANNER_JS = r"""
   }
   function copyStr(s){ try{ if(navigator.clipboard) navigator.clipboard.writeText(s); }catch(e){} }
 
-  // ---------------- combined shopping list ----------------
+  // ================= A2 · in-store shopping mode =================
   function normItem(s){ return s.toLowerCase().replace(/\s+/g,' ').trim(); }
-  function openCombined(){
-    var sheet=document.getElementById('planShop');
-    if(!sheet){
-      sheet=document.createElement('div'); sheet.className='sheet'; sheet.id='planShop';
-      document.body.appendChild(sheet);
-    }
-    // gather ingredients across planned recipes, dedupe by normalised item within a store
-    var buckets={}; STORE_ORDER.forEach(function(s){ buckets[s]=[]; });
-    var seen={};
-    curPlan.forEach(function(e){
-      var r=RD[e.id]; if(!r) return;
+
+  // Dedupe ingredients across a set of recipe ids into one line per item/store.
+  function gatherItems(ids){
+    var seen={}, list=[];
+    ids.forEach(function(id){
+      var r=RD[id]; if(!r) return;
       r.ing.forEach(function(g){
-        var store=buckets[g.st]?g.st:'Either';
+        var store=STORE_LABEL[g.st]?g.st:'Either';
         var key=store+'|'+normItem(g.i);
-        if(seen[key]){ seen[key].for.push(r.t); if(seen[key].items.indexOf(g.i)<0) seen[key].items.push(g.i); }
-        else { seen[key]={store:store,items:[g.i],for:[r.t]}; buckets[store].push(seen[key]); }
+        if(seen[key]){
+          if(seen[key].items.indexOf(g.i)<0) seen[key].items.push(g.i);
+          if(seen[key].for.indexOf(r.t)<0) seen[key].for.push(r.t);
+          if(!seen[key].aisle && g.al) seen[key].aisle=g.al;
+        } else {
+          seen[key]={id:key, store:store, items:[g.i], for:[r.t], aisle:g.al||''};
+          list.push(seen[key]);
+        }
       });
     });
-    var n=0, body='';
-    STORE_ORDER.forEach(function(store){
-      var items=buckets[store]; if(!items.length) return;
-      body+='<div class="sec-label">'+esc(STORE_LABEL[store])+' · '+items.length+' items</div>';
-      items.forEach(function(it){
-        var cid='pls_'+(n++);
-        var line = it.items.length>1 ? it.items.join(' + ') : it.items[0];
-        body+='<input type="checkbox" class="chk" id="'+cid+'">'+
-          '<div class="ing-row"><label class="ing" for="'+cid+'"><span class="box">✓</span>'+
-          '<span class="ing-txt">'+esc(line)+'<br><span class="ing-src">for '+esc(it.for.join(', '))+'</span></span>'+
-          '<span class="pill '+STORE_CLS[store]+'">'+esc(STORE_LABEL[store])+'</span></label></div>';
-      });
-    });
-    sheet.innerHTML=
-      '<div class="sheet-head"><button class="back" id="plShopBack" type="button">‹ Back</button>'+
-      '<div class="sheet-title">🛒 This week’s combined list</div></div>'+
-      '<div class="sheet-body"><div class="note">Everything for your planned meals, duplicates merged and split by store. Tap to check off as you shop.</div>'+
-      body+'</div>';
-    document.getElementById('plShopBack').addEventListener('click',function(){ sheet.classList.remove('pl-show'); });
-    sheet.classList.add('pl-show');
+    return list;
   }
+
+  var shopEl   = document.getElementById('shop');
+  var shopTitle= document.getElementById('shopTitle');
+  var shopCtl  = document.getElementById('shopControls');
+  var shopBody = document.getElementById('shopBody');
+  var shopStart= document.getElementById('shopStart');
+  var shopState=null;   // {items, storeFilter, hideGot, key, phase}
+  var shopWake=null;
+
+  function shopLoad(key){
+    try{ return JSON.parse(localStorage.getItem('shop.'+key)) || {}; }catch(e){ return {}; }
+  }
+  function shopSave(){
+    if(!shopState) return;
+    var s={got:{},have:{}};
+    shopState.items.forEach(function(it){ if(it.got) s.got[it.id]=1; if(it.have) s.have[it.id]=1; });
+    try{ localStorage.setItem('shop.'+shopState.key, JSON.stringify(s)); }catch(e){}
+  }
+
+  function openShopping(ids, title, key){
+    var items=gatherItems(ids);
+    var saved=shopLoad(key);
+    items.forEach(function(it){ it.got=!!(saved.got&&saved.got[it.id]); it.have=!!(saved.have&&saved.have[it.id]); });
+    var anyHave = items.some(function(it){ return it.have; });
+    shopState={items:items, storeFilter:'all', hideGot:false, key:key, title:title};
+    shopTitle.textContent='🛒 '+title;
+    body.classList.add('shop-open-on');
+    shopEl.setAttribute('aria-hidden','false');
+    // Go straight to the list if a pantry pass already happened; else offer it.
+    if(anyHave) renderShopList(); else renderPantry();
+  }
+  function closeShopping(){
+    body.classList.remove('shop-open-on','hide-got','shop-pantry-on');
+    shopEl.setAttribute('aria-hidden','true');
+    releaseWake();
+  }
+
+  // ---- pantry pass ----
+  function renderPantry(){
+    body.classList.add('shop-pantry-on');
+    shopCtl.innerHTML='';
+    var stores={};
+    shopState.items.forEach(function(it){ (stores[it.store]=stores[it.store]||[]).push(it); });
+    var html='<div class="shop-pantry-note">Quick pantry check — tick anything you <b>already have</b> so it drops off the list before you shop.</div>';
+    STORE_ORDER.forEach(function(store){
+      var its=stores[store]; if(!its) return;
+      html+='<div class="shop-aisle">'+esc(STORE_LABEL[store])+'</div>';
+      its.forEach(function(it){ html+=shopRow(it,true); });
+    });
+    shopBody.innerHTML=html;
+    shopStart.innerHTML='<div class="shop-start-inner">'+
+      '<button class="skip" id="shopSkip">Skip</button>'+
+      '<button class="go" id="shopGo">Start shopping ›</button></div>';
+    wireRows(true);
+    document.getElementById('shopSkip').addEventListener('click',function(){ shopState.items.forEach(function(it){it.have=false;}); startList(); });
+    document.getElementById('shopGo').addEventListener('click',startList);
+  }
+  function startList(){ shopSave(); body.classList.remove('shop-pantry-on'); shopStart.innerHTML=''; renderShopList(); }
+
+  // ---- main list ----
+  function activeItems(){
+    return shopState.items.filter(function(it){
+      if(it.have) return false;
+      if(shopState.storeFilter==='TJ') return it.store==='TJ'||it.store==='Either';
+      if(shopState.storeFilter==='Aldi') return it.store==='Aldi'||it.store==='Either';
+      return true;
+    });
+  }
+  function renderControls(){
+    var seg=[['all','Everything'],['TJ',"Trader Joe’s"],['Aldi','Aldi']].map(function(s){
+      return '<button data-store="'+s[0]+'"'+(shopState.storeFilter===s[0]?' class="on"':'')+'>'+s[1]+'</button>';
+    }).join('');
+    shopCtl.innerHTML=
+      '<div class="shop-seg">'+seg+'</div>'+
+      '<div class="shop-prog"><div class="shop-prog-bar"><i id="shopBar"></i></div>'+
+        '<div class="shop-prog-txt" id="shopProg"></div></div>'+
+      '<div class="shop-toggles">'+
+        '<div class="shop-tg'+(shopState.hideGot?' on':'')+'" id="shopHide">Hide checked</div>'+
+        '<div class="shop-tg awake" id="shopAwake">☀︎ Keep screen on</div>'+
+      '</div>';
+    shopCtl.querySelectorAll('[data-store]').forEach(function(b){
+      b.addEventListener('click',function(){ shopState.storeFilter=b.getAttribute('data-store'); renderShopList(); });
+    });
+    document.getElementById('shopHide').addEventListener('click',function(){
+      shopState.hideGot=!shopState.hideGot; body.classList.toggle('hide-got',shopState.hideGot);
+      this.classList.toggle('on',shopState.hideGot);
+    });
+    document.getElementById('shopAwake').addEventListener('click',toggleWakeShop);
+    if(shopWake) document.getElementById('shopAwake').classList.add('on');
+  }
+  function renderShopList(){
+    renderControls();
+    body.classList.toggle('hide-got', shopState.hideGot);
+    var its=activeItems();
+    // group by store, then aisle
+    var html='';
+    STORE_ORDER.forEach(function(store){
+      var storeItems=its.filter(function(it){ return it.store===store; });
+      if(!storeItems.length) return;
+      // aisle buckets
+      var aisles={}, order=[];
+      storeItems.forEach(function(it){
+        var a=it.aisle||'Other'; if(!aisles[a]){ aisles[a]=[]; order.push(a); }
+        aisles[a].push(it);
+      });
+      order.sort(function(a,b){ if(a==='Other') return 1; if(b==='Other') return -1; return a.localeCompare(b); });
+      html+='<div class="shop-aisle" style="color:var(--txt)">'+esc(STORE_LABEL[store])+'</div>';
+      order.forEach(function(a){
+        var bucket=aisles[a];
+        var done=bucket.every(function(it){ return it.got; });
+        html+='<div class="shop-aisle'+(done?' done':'')+'" data-aisle="'+esc(store+'|'+a)+'">'+
+          esc(a)+' <span class="a-count">'+bucket.filter(function(it){return it.got;}).length+'/'+bucket.length+'</span></div>';
+        bucket.forEach(function(it){ html+=shopRow(it,false); });
+      });
+    });
+    if(!its.length) html='<div class="shop-done-msg">Nothing here for this store filter.</div>';
+    shopBody.innerHTML=html;
+    wireRows(false);
+    updateProgress();
+  }
+  function shopRow(it, pantry){
+    var line = it.items.length>1 ? it.items.join(' + ') : it.items[0];
+    var checked = pantry ? it.have : it.got;
+    return '<div class="shop-item'+(checked?' got':'')+'" data-id="'+esc(it.id)+'">'+
+      '<div class="shop-box">✓</div>'+
+      '<div class="shop-it-main"><div class="shop-it-name">'+esc(line)+'</div>'+
+        '<div class="shop-it-for">for '+esc(it.for.join(', '))+'</div></div>'+
+      '<div class="shop-it-pill '+STORE_CLS[it.store]+'">'+esc(STORE_LABEL[it.store])+'</div></div>';
+  }
+  function wireRows(pantry){
+    shopBody.querySelectorAll('.shop-item').forEach(function(row){
+      row.addEventListener('click',function(){
+        var id=row.getAttribute('data-id');
+        var it=null; for(var i=0;i<shopState.items.length;i++){ if(shopState.items[i].id===id){ it=shopState.items[i]; break; } }
+        if(!it) return;
+        if(pantry){ it.have=!it.have; row.classList.toggle('got',it.have); }
+        else {
+          it.got=!it.got; row.classList.toggle('got',it.got);
+          shopSave(); updateProgress(); updateAisle(row);
+          if(shopState.hideGot && it.got) row.style.display='none';
+        }
+      });
+    });
+  }
+  function updateAisle(row){
+    // find the aisle header preceding this row and refresh its done state/count
+    var hdr=row.previousElementSibling;
+    while(hdr && !hdr.classList.contains('shop-aisle')) hdr=hdr.previousElementSibling;
+    if(!hdr) return;
+    var sib=hdr.nextElementSibling, tot=0, got=0;
+    while(sib && sib.classList.contains('shop-item')){ tot++; if(sib.classList.contains('got')) got++; sib=sib.nextElementSibling; }
+    var cnt=hdr.querySelector('.a-count'); if(cnt) cnt.textContent=got+'/'+tot;
+    hdr.classList.toggle('done', tot>0 && got===tot);
+  }
+  function updateProgress(){
+    var its=activeItems(), tot=its.length, got=its.filter(function(it){return it.got;}).length;
+    var bar=document.getElementById('shopBar'), txt=document.getElementById('shopProg');
+    if(bar) bar.style.width=(tot?Math.round(got/tot*100):0)+'%';
+    if(txt) txt.innerHTML='<b>'+got+'</b> of '+tot+' items';
+  }
+
+  // ---- wake lock ----
+  function toggleWakeShop(){
+    var btn=document.getElementById('shopAwake');
+    if(shopWake){ releaseWake(); btn.classList.remove('on'); btn.textContent='☀︎ Keep screen on'; return; }
+    if(!navigator.wakeLock){ btn.textContent='☀︎ Not supported'; return; }
+    navigator.wakeLock.request('screen').then(function(s){
+      shopWake=s; btn.classList.add('on'); btn.textContent='☀︎ Screen staying on';
+      s.addEventListener('release',function(){ shopWake=null; });
+    }).catch(function(){ btn.textContent='☀︎ Not supported'; });
+  }
+  function releaseWake(){ if(shopWake){ try{ shopWake.release(); }catch(e){} shopWake=null; } }
+  // Re-acquire wake lock if the page was backgrounded and returns (iOS drops it).
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible' && body.classList.contains('shop-open-on')
+       && !shopWake && navigator.wakeLock){
+      var btn=document.getElementById('shopAwake');
+      if(btn && btn.classList.contains('on')){ navigator.wakeLock.request('screen')
+        .then(function(s){ shopWake=s; s.addEventListener('release',function(){shopWake=null;}); }).catch(function(){}); }
+    }
+  });
 
   // ---------------- wire the entry buttons ----------------
   document.getElementById('plClose').addEventListener('click',closePlanner);
+  document.getElementById('shopClose').addEventListener('click',closeShopping);
   Array.prototype.forEach.call(document.querySelectorAll('.plan-btn.open-planner'),function(b){
     b.addEventListener('click',function(){ openPlanner(null); });
+  });
+  // per-week "In-store shopping mode" buttons
+  Array.prototype.forEach.call(document.querySelectorAll('.shop-open[data-week]'),function(b){
+    b.addEventListener('click',function(){
+      var w=parseInt(b.getAttribute('data-week'),10);
+      var ids=LIST.filter(function(r){ return r.wk===w; }).map(function(r){ return r.id; });
+      openShopping(ids, 'Week '+(((w-1)%4)+1)+' shopping', 'wk'+w);
+    });
   });
   // leaving plan view when a week tab is chosen
   Array.prototype.forEach.call(document.querySelectorAll('.wkradio'),function(r){
