@@ -14,17 +14,15 @@ GitHub Pages is free forever, needs no credit card, and is the least fiddly opti
 
 ## Part 1 — Put the files online (once)
 
-The code already lives at **github.com/davidpartridge3/apps**, and it's set up to publish itself automatically. You only need to turn Pages on once.
+The code lives at **github.com/davidpartridge3/apps**, and the ready-to-serve site sits on a branch called **gh-pages**. You just point GitHub Pages at it once.
 
 **1. Turn on Pages (one time)**
 Go to the repo's **Settings** tab → **Pages** in the left sidebar.
 
-- Under *Source*, choose **GitHub Actions** (not "Deploy from a branch").
+- Under *Source*, choose **Deploy from a branch**
+- Branch: **gh-pages**, folder: **/ (root)** → **Save**
 
-**2. Let it publish**
-Go to the **Actions** tab. You'll see a run called *"Deploy site to GitHub Pages."* If it's already finished, you're done. If it errored because Pages wasn't on yet, click it → **Re-run all jobs** (or click **Run workflow** on that workflow). It takes about a minute.
-
-Your permanent address is:
+Wait about a minute, then refresh. Your permanent address:
 
 ```
 https://davidpartridge3.github.io/apps/
@@ -32,7 +30,7 @@ https://davidpartridge3.github.io/apps/
 
 That's your permanent link. Bookmark it.
 
-**Updating later:** there's nothing to re-upload ever again. Any change that gets pushed to the repo re-publishes the site automatically within a minute.
+**Updating later:** running `python deploy.py` rebuilds the apps and republishes the site to `gh-pages` automatically — no re-uploading.
 
 ---
 
