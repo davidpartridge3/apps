@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f1318">
+<meta name="apple-mobile-web-app-title" content="Edge">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>Edge — betting analysis</title>
+<style>
+  :root{
+    --bg:#0f1318; --card:#171d25; --card2:#1e2631; --line:#28313d;
+    --txt:#e8edf3; --dim:#93a0b1; --dimmer:#616d7d;
+    --accent:#6c8cff; --accent-soft:#6c8cff1f;
+    --pos:#4fb783; --neg:#e0736b; --warnbg:#2a2015; --warnline:#6b5426; --warntx:#e6c88a;
+    --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.5;}
+  body{padding-bottom:calc(80px + var(--safe-b));}
+  h1,h2,h3{margin:0;}
+  a{color:var(--accent);}
+  input,select,button{font-family:inherit;}
+
+  header{position:sticky;top:0;z-index:10;background:rgba(15,19,24,.94);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+    padding:calc(12px + var(--safe-t)) 16px 12px;}
+  .h-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;}
+  .brand .dot{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--accent),#9db4ff);
+    display:flex;align-items:center;justify-content:center;font-size:13px;}
+  .tag{font-size:10.5px;font-weight:800;letter-spacing:.4px;color:var(--dimmer);
+    border:1px solid var(--line);border-radius:20px;padding:4px 9px;}
+
+  main{max-width:640px;margin:0 auto;padding:16px;}
+  .view{display:none;}
+  .view.on{display:block;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0;}
+  .card h2{font-size:16px;font-weight:800;margin-bottom:3px;}
+  .card .sub{color:var(--dim);font-size:13px;margin-bottom:12px;}
+  .sec-label{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:var(--dimmer);
+    font-weight:800;margin:22px 2px 2px;}
+
+  label.f{display:block;margin:11px 0;}
+  label.f > span{display:block;font-size:12.5px;font-weight:700;color:var(--dim);margin-bottom:5px;}
+  input[type=text],input[type=number],input[type=date],select,textarea{
+    width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:11px;
+    padding:12px 13px;font-size:15px;-webkit-appearance:none;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);}
+  .row2{display:flex;gap:10px;}
+  .row2 > *{flex:1;min-width:0;}
+  .hint{color:var(--dimmer);font-size:11.5px;margin-top:5px;}
+
+  button.btn{border:none;border-radius:12px;padding:13px 16px;font-size:14.5px;font-weight:800;
+    cursor:pointer;background:var(--accent);color:#0b1020;width:100%;}
+  button.btn.ghost{background:var(--card2);color:var(--txt);border:1px solid var(--line);}
+  button.btn.sm{width:auto;padding:9px 14px;font-size:13px;}
+  button.btn:active{transform:scale(.99);}
+  button.btn:disabled{opacity:.45;}
+
+  .out{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px;}
+  .out.empty{color:var(--dimmer);text-align:center;font-size:13.5px;}
+  .metric{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-top:1px solid var(--line);}
+  .metric:first-child{border-top:none;}
+  .metric .k{color:var(--dim);font-size:13px;font-weight:600;}
+  .metric .v{font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;}
+  .v.pos{color:var(--pos);} .v.neg{color:var(--neg);} .v.accent{color:var(--accent);}
+  .pill{display:inline-block;font-size:11px;font-weight:800;border-radius:20px;padding:4px 10px;}
+  .pill.pos{background:rgba(79,183,131,.16);color:var(--pos);}
+  .pill.neg{background:rgba(224,115,107,.16);color:var(--neg);}
+  .pill.flat{background:var(--card2);color:var(--dim);border:1px solid var(--line);}
+
+  .callout{background:var(--warnbg);border:1px solid var(--warnline);color:var(--warntx);
+    border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.5;margin:12px 0;}
+  .callout b{color:#f2dca8;}
+
+  /* tab bar */
+  .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(15,19,24,.97);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    display:flex;padding:8px 6px calc(8px + var(--safe-b));}
+  .tabbar button{flex:1;background:none;border:none;color:var(--dimmer);font-size:11px;font-weight:800;
+    cursor:pointer;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .tabbar button .ic{font-size:19px;line-height:1;}
+  .tabbar button.on{color:var(--accent);}
+
+  /* ledger table */
+  .ledger{width:100%;border-collapse:collapse;font-size:12.5px;}
+  .ledger th{text-align:left;color:var(--dimmer);font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;
+    font-weight:800;padding:8px 6px;border-bottom:1px solid var(--line);}
+  .ledger td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .ledger tr:last-child td{border-bottom:none;}
+  .ledger .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .bet-sel{font-weight:700;}
+  .bet-meta{color:var(--dimmer);font-size:11px;}
+  .settle{display:flex;gap:5px;margin-top:6px;}
+  .settle button{border:1px solid var(--line);background:var(--card2);color:var(--dim);border-radius:8px;
+    padding:5px 9px;font-size:11px;font-weight:800;cursor:pointer;}
+  .settle button.won.on{background:rgba(79,183,131,.2);border-color:var(--pos);color:var(--pos);}
+  .settle button.lost.on{background:rgba(224,115,107,.2);border-color:var(--neg);color:var(--neg);}
+  .settle button.push.on{background:var(--card2);border-color:var(--dim);color:var(--txt);}
+
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .stat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;}
+  .stat .s-k{color:var(--dimmer);font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;font-weight:800;}
+  .stat .s-v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:3px;}
+  .s-v.pos{color:var(--pos);} .s-v.neg{color:var(--neg);}
+
+  .empty-state{text-align:center;color:var(--dimmer);padding:40px 20px;font-size:14px;}
+
+  /* modal gate */
+  .veil{position:fixed;inset:0;background:rgba(5,8,11,.8);z-index:50;display:none;}
+  .veil.on{display:block;}
+  .modal{position:fixed;inset:0;z-index:51;display:none;flex-direction:column;overflow-y:auto;
+    padding:calc(24px + var(--safe-t)) 18px calc(24px + var(--safe-b));}
+  .modal.on{display:flex;}
+  .modal-inner{max-width:460px;margin:auto;width:100%;background:var(--card);border:1px solid var(--line);
+    border-radius:20px;padding:22px;}
+  .modal h2{font-size:20px;margin-bottom:6px;}
+  .check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;font-size:13px;color:var(--dim);cursor:pointer;}
+  .check input{width:20px;height:20px;flex:0 0 auto;margin-top:1px;accent-color:var(--accent);}
+  .foot-note{color:var(--dimmer);font-size:11px;text-align:center;margin:18px 0 0;line-height:1.6;}
+  .toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--card2);
+    border:1px solid var(--line);color:var(--txt);font-weight:700;font-size:13px;padding:11px 18px;
+    border-radius:22px;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .toast.on{opacity:1;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-row">
+    <div class="brand"><span class="dot">📈</span> Edge</div>
+    <span class="tag">ANALYSIS · NOT ADVICE</span>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== TOOLS ===================== -->
+  <section class="view on" id="v-tools">
+    <div class="card">
+      <h2>No-vig fair odds</h2>
+      <div class="sub">Strip the book's margin to see the true implied probability. This is the foundation everything else sits on.</div>
+      <div class="row2">
+        <label class="f"><span>Side A odds (American)</span><input type="number" id="nvA" inputmode="numbers" placeholder="-110"></label>
+        <label class="f"><span>Side B odds (American)</span><input type="number" id="nvB" inputmode="numbers" placeholder="-110"></label>
+      </div>
+      <div class="out empty" id="nvOut">Enter both prices to see the fair line.</div>
+    </div>
+
+    <div class="card">
+      <h2>+EV &amp; stake finder</h2>
+      <div class="sub">Compare the price you can get against the market's fair probability. A real edge shows up here as a positive number — and it's usually small.</div>
+      <label class="f"><span>Your available odds (American)</span><input type="number" id="evOdds" inputmode="numbers" placeholder="+145"></label>
+      <div class="sec-label" style="margin-top:6px">Market's fair probability</div>
+      <div class="hint" style="margin:4px 2px 2px">Enter it directly, or devig the consensus closing/other-book line above and paste the fair % it gives you.</div>
+      <div class="row2" style="margin-top:8px">
+        <label class="f"><span>Fair win probability (%)</span><input type="number" id="evProb" inputmode="decimal" placeholder="42.5" step="0.1"></label>
+        <label class="f"><span>Bankroll ($)</span><input type="number" id="evBank" inputmode="decimal" placeholder="—"></label>
+      </div>
+      <div class="out empty" id="evOut">Enter your odds and the fair probability.</div>
+      <div class="callout" style="margin-top:12px">Staking uses <b>quarter Kelly</b> and is capped by your max-stake setting. Full Kelly is far too volatile for a real bankroll. A model that isn't genuinely better than the market will still show "+EV" here — that's why the closing-line log below is the real test, not this calculator.</div>
+    </div>
+  </section>
+
+  <!-- ===================== LOG ===================== -->
+  <section class="view" id="v-log">
+    <div class="card">
+      <h2 id="logTitle">Log a bet</h2>
+      <div class="sub">Record the price you actually took. When it settles, add the closing line — that's what makes this honest.</div>
+      <div class="row2">
+        <label class="f"><span>Date</span><input type="date" id="lgDate"></label>
+        <label class="f"><span>Sport / league</span><input type="text" id="lgSport" placeholder="NFL"></label>
+      </div>
+      <label class="f"><span>Selection</span><input type="text" id="lgSel" placeholder="e.g. Eagles -3.5"></label>
+      <div class="row2">
+        <label class="f"><span>Book</span><input type="text" id="lgBook" placeholder="e.g. DK"></label>
+        <label class="f"><span>Market</span><input type="text" id="lgMkt" placeholder="spread / ml / total"></label>
+      </div>
+      <div class="row2">
+        <label class="f"><span>Odds taken (American)</span><input type="number" id="lgOdds" inputmode="numbers" placeholder="-110"></label>
+        <label class="f"><span>Stake ($)</span><input type="number" id="lgStake" inputmode="decimal" placeholder="0"></label>
+      </div>
+      <div class="out empty" id="lgKelly">Enter odds + a fair probability in the +EV tool to see a suggested stake.</div>
+      <div style="margin-top:12px" class="row2">
+        <button class="btn ghost" id="lgCancel" style="display:none">Cancel edit</button>
+        <button class="btn" id="lgSave">Save bet</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEDGER ===================== -->
+  <section class="view" id="v-ledger">
+    <div id="ledgerSummary"></div>
+    <div class="card">
+      <div class="h-row" style="margin-bottom:8px">
+        <h2>Bet log</h2>
+        <button class="btn ghost sm" id="exportCsv">Export CSV</button>
+      </div>
+      <div id="ledgerBody"></div>
+    </div>
+  </section>
+
+  <!-- ===================== SETTINGS ===================== -->
+  <section class="view" id="v-settings">
+    <div class="card">
+      <h2>Bankroll &amp; limits</h2>
+      <div class="sub">Set these honestly. They exist to protect you from yourself.</div>
+      <label class="f"><span>Bankroll — an amount you are fully prepared to lose ($)</span><input type="number" id="setBank" inputmode="decimal"></label>
+      <label class="f"><span>Max stake per bet (% of bankroll)</span><input type="number" id="setMax" inputmode="decimal" placeholder="2"></label>
+      <label class="f"><span>Session loss limit ($) — stop when you hit it</span><input type="number" id="setLoss" inputmode="decimal"></label>
+      <button class="btn" id="setSave" style="margin-top:6px">Save settings</button>
+    </div>
+    <div class="card">
+      <h2>Live odds (optional)</h2>
+      <div class="sub">Manual entry works forever and free. If you want, paste a free-tier key from the-odds-api.com to pull consensus lines for one sport later — the app is built so the source can be swapped without touching anything else.</div>
+      <label class="f"><span>The Odds API key (optional)</span><input type="text" id="setApi" placeholder="paste key — stays on this device"></label>
+      <button class="btn ghost" id="setApiSave">Save key</button>
+      <div class="hint">Free tier is ~500 requests/month. Don't pay for a feed until a few hundred logged bets show positive CLV.</div>
+    </div>
+    <div class="card">
+      <h2>The honest part</h2>
+      <div class="callout">
+        <b>Read this and don't forget it.</b><br>
+        • Sportsbook lines are set and corrected by sharp money. The closing line beats nearly all private models. <br>
+        • At standard −110 pricing you need ~<b>52.4%</b> just to break even.<br>
+        • Books <b>limit or ban</b> people who win consistently.<br>
+        • <b>Most bettors lose</b> money over time. A few dozen bets tells you nothing.<br>
+        • This tool does analysis. It is <b>not financial advice</b> and it does not predict winners — nothing can do that reliably.
+      </div>
+      <button class="btn ghost" id="resetAll" style="margin-top:4px;color:var(--neg)">Reset everything</button>
+    </div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <button data-tab="tools" class="on"><span class="ic">🧮</span>Tools</button>
+  <button data-tab="log"><span class="ic">➕</span>Log</button>
+  <button data-tab="ledger"><span class="ic">📒</span>Ledger</button>
+  <button data-tab="settings"><span class="ic">⚙️</span>Settings</button>
+</nav>
+
+<!-- first-run gate -->
+<div class="veil" id="gateVeil"></div>
+<div class="modal" id="gate">
+  <div class="modal-inner">
+    <h2>Before you start</h2>
+    <div class="sub" style="color:var(--dim);font-size:13.5px;margin-bottom:6px">This is a tool for analysing bets honestly — including telling you when you're losing. Please take a second with the reality first.</div>
+    <div class="callout">
+      Most people who bet lose money. Winning consistently is rare, and books limit those who do. At −110 you need ~52.4% just to break even, and the closing line beats almost all private models. This app <b>never predicts winners</b> and is <b>not financial advice</b>.
+    </div>
+    <label class="check"><input type="checkbox" id="g1"><span>I understand this is an analysis tool, not a way to reliably beat the books, and not financial advice.</span></label>
+    <label class="f"><span>Bankroll — an amount you are <b>fully prepared to lose</b> ($)</span><input type="number" id="gBank" inputmode="decimal" placeholder="e.g. 500"></label>
+    <div class="row2">
+      <label class="f"><span>Max stake / bet (%)</span><input type="number" id="gMax" inputmode="decimal" placeholder="2"></label>
+      <label class="f"><span>Session loss limit ($)</span><input type="number" id="gLoss" inputmode="decimal" placeholder="e.g. 100"></label>
+    </div>
+    <button class="btn" id="gStart" disabled>Start</button>
+    <div class="foot-note">Everything stays on this device. No account, no cloud, no tracking.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ============ storage ============ */
+var SKEY='edge.settings.v1', BKEY='edge.bets.v1';
+function load(k,def){ try{ return JSON.parse(localStorage.getItem(k)) || def; }catch(e){ return def; } }
+function store(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+var settings=load(SKEY,null);
+var bets=load(BKEY,[]);
+
+/* ============ odds math ============ */
+function amToDec(a){ a=parseFloat(a); if(isNaN(a)||a===0) return null;
+  return a>0 ? 1+a/100 : 1+100/(-a); }
+function decToAm(d){ if(!d||d<=1) return null;
+  return d>=2 ? '+'+Math.round((d-1)*100) : String(Math.round(-100/(d-1))); }
+function impFromAm(a){ var d=amToDec(a); return d?1/d:null; }
+function fmtPct(x,dp){ if(x==null||isNaN(x)) return '—'; return (x*100).toFixed(dp==null?1:dp)+'%'; }
+function fmtMoney(x){ if(x==null||isNaN(x)) return '—'; var s=x<0?'-':''; return s+'$'+Math.abs(x).toFixed(2); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+// devig a two-way market -> {a:fairProbA, b:fairProbB, vig}
+function devig(amA, amB){
+  var pa=impFromAm(amA), pb=impFromAm(amB);
+  if(pa==null||pb==null) return null;
+  var over=pa+pb;
+  return { a:pa/over, b:pb/over, vig:over-1, over:over };
+}
+// quarter-Kelly fraction of bankroll given decimal odds and true prob
+function kellyFraction(dec, p){
+  var b=dec-1, q=1-p;
+  var f=(b*p - q)/b;
+  return f; // full kelly (may be negative)
+}
+
+/* ============ tabs ============ */
+var views={tools:'v-tools',log:'v-log',ledger:'v-ledger',settings:'v-settings'};
+function showTab(t){
+  Object.keys(views).forEach(function(k){ document.getElementById(views[k]).classList.toggle('on',k===t); });
+  Array.prototype.forEach.call(document.querySelectorAll('.tabbar button'),function(b){
+    b.classList.toggle('on', b.getAttribute('data-tab')===t); });
+  if(t==='ledger') renderLedger();
+  if(t==='settings') fillSettings();
+  window.scrollTo(0,0);
+}
+Array.prototype.forEach.call(document.querySelectorAll('.tabbar button'),function(b){
+  b.addEventListener('click',function(){ showTab(b.getAttribute('data-tab')); });
+});
+
+/* ============ no-vig calc ============ */
+function renderNoVig(){
+  var a=document.getElementById('nvA').value, b=document.getElementById('nvB').value;
+  var out=document.getElementById('nvOut');
+  var dv=devig(a,b);
+  if(!dv){ out.className='out empty'; out.textContent='Enter both prices to see the fair line.'; return; }
+  out.className='out';
+  out.innerHTML=
+    metric('Side A — fair probability', fmtPct(dv.a), 'accent')+
+    metric('Side A — fair odds', decToAm(1/dv.a))+
+    metric('Side B — fair probability', fmtPct(dv.b), 'accent')+
+    metric('Side B — fair odds', decToAm(1/dv.b))+
+    metric('Book margin (vig)', fmtPct(dv.vig,2), dv.vig>0.05?'neg':'');
+}
+function metric(k,v,cls){ return '<div class="metric"><span class="k">'+esc(k)+'</span><span class="v '+(cls||'')+'">'+esc(v)+'</span></div>'; }
+['nvA','nvB'].forEach(function(id){ document.getElementById(id).addEventListener('input',renderNoVig); });
+
+/* ============ +EV / kelly ============ */
+function currentBankroll(){ return settings && settings.bankroll ? settings.bankroll : 0; }
+function renderEV(){
+  var odds=document.getElementById('evOdds').value;
+  var prob=parseFloat(document.getElementById('evProb').value);
+  var bankInput=document.getElementById('evBank');
+  if(!bankInput.value && currentBankroll()) bankInput.placeholder=fmtMoney(currentBankroll());
+  var bank=parseFloat(bankInput.value)|| currentBankroll();
+  var out=document.getElementById('evOut');
+  var dec=amToDec(odds);
+  if(!dec || isNaN(prob) || prob<=0 || prob>=100){ out.className='out empty'; out.textContent='Enter your odds and the fair probability.'; lastEV=null; updateKellyHint(); return; }
+  var p=prob/100;
+  var ev = p*dec - 1;                 // per $1 staked
+  var kf = kellyFraction(dec,p);
+  var quarter = kf/4;
+  var maxPct = (settings && settings.maxStakePct? settings.maxStakePct:2)/100;
+  var frac = Math.max(0, Math.min(quarter, maxPct));
+  var stake = bank>0 ? bank*frac : null;
+  lastEV={ev:ev, dec:dec, p:p, quarter:quarter, stake:stake, capped:quarter>maxPct};
+  out.className='out';
+  out.innerHTML=
+    metric('Expected value', (ev>=0?'+':'')+ (ev*100).toFixed(2)+'% of stake', ev>0?'pos':'neg')+
+    metric('Fair odds at this probability', decToAm(1/p))+
+    metric('Full Kelly', (kf*100).toFixed(1)+'%', kf<=0?'neg':'')+
+    metric('Quarter Kelly (used)', (Math.max(0,quarter)*100).toFixed(2)+'%', 'accent')+
+    (bank>0? metric('Suggested stake'+(lastEV.capped?' (capped)':''), fmtMoney(stake||0), 'accent'):'')+
+    (ev<=0? '<div class="hint" style="margin-top:8px;color:var(--neg)">No edge at this price — skip it.</div>':'');
+  updateKellyHint();
+}
+var lastEV=null;
+['evOdds','evProb','evBank'].forEach(function(id){ document.getElementById(id).addEventListener('input',renderEV); });
+
+/* ============ log a bet ============ */
+var editId=null;
+function todayStr(){ var d=new Date(); return d.toISOString().slice(0,10); }
+function updateKellyHint(){
+  var el=document.getElementById('lgKelly');
+  if(lastEV && lastEV.stake!=null){
+    el.className='out';
+    el.innerHTML=metric('Suggested stake (¼ Kelly)', fmtMoney(lastEV.stake), 'accent')+
+      metric('Edge (EV)', (lastEV.ev>=0?'+':'')+(lastEV.ev*100).toFixed(2)+'%', lastEV.ev>0?'pos':'neg');
+  } else { el.className='out empty'; el.textContent='Enter odds + a fair probability in the +EV tool to see a suggested stake.'; }
+}
+function resetLogForm(){
+  editId=null;
+  document.getElementById('logTitle').textContent='Log a bet';
+  document.getElementById('lgSave').textContent='Save bet';
+  document.getElementById('lgCancel').style.display='none';
+  ['lgSport','lgSel','lgBook','lgMkt','lgOdds','lgStake'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('lgDate').value=todayStr();
+}
+document.getElementById('lgCancel').addEventListener('click',function(){ resetLogForm(); showTab('ledger'); });
+document.getElementById('lgSave').addEventListener('click',function(){
+  var sel=document.getElementById('lgSel').value.trim();
+  var odds=document.getElementById('lgOdds').value;
+  var stake=parseFloat(document.getElementById('lgStake').value);
+  if(!sel){ toast('Add a selection'); return; }
+  if(amToDec(odds)==null){ toast('Enter valid American odds'); return; }
+  if(isNaN(stake)||stake<0){ toast('Enter a stake'); return; }
+  if(settings && settings.bankroll){
+    var cap=settings.bankroll*(settings.maxStakePct||2)/100;
+    if(stake>cap && !confirm('That stake is above your max of '+fmtMoney(cap)+'. Save anyway?')) return;
+  }
+  var b={
+    id: editId || ('b'+Date.now()),
+    date: document.getElementById('lgDate').value||todayStr(),
+    sport: document.getElementById('lgSport').value.trim(),
+    sel: sel,
+    book: document.getElementById('lgBook').value.trim(),
+    market: document.getElementById('lgMkt').value.trim(),
+    odds: parseFloat(odds),
+    stake: stake,
+    close: (editId? (findBet(editId).close): null),
+    closeOpp: (editId? (findBet(editId).closeOpp): null),
+    result: (editId? (findBet(editId).result): 'pending')
+  };
+  if(editId){ bets=bets.map(function(x){ return x.id===editId?b:x; }); }
+  else { bets.unshift(b); }
+  store(BKEY,bets); resetLogForm(); toast('Saved'); showTab('ledger');
+});
+function findBet(id){ for(var i=0;i<bets.length;i++) if(bets[i].id===id) return bets[i]; return null; }
+
+/* ============ ledger ============ */
+// CLV: compare the price you took to the (no-vig if possible) closing price.
+// Positive = you beat the close (got a longer price than the market's fair line).
+function betCLV(b){
+  if(b.close==null) return null;
+  var pTaken=impFromAm(b.odds);
+  var pClose;
+  if(b.closeOpp!=null){ var dv=devig(b.close,b.closeOpp); pClose = dv? dv.a : impFromAm(b.close); }
+  else pClose=impFromAm(b.close);
+  if(pTaken==null||pClose==null) return null;
+  return (pClose - pTaken)/pTaken; // fractional; +ve = beat the close
+}
+function betProfit(b){
+  if(b.result==='won'){ return b.stake*(amToDec(b.odds)-1); }
+  if(b.result==='lost'){ return -b.stake; }
+  return 0; // push or pending
+}
+function renderLedger(){
+  var sum=document.getElementById('ledgerSummary');
+  var body=document.getElementById('ledgerBody');
+  if(!bets.length){
+    sum.innerHTML='';
+    body.innerHTML='<div class="empty-state">No bets yet.<br>Log the price you take on a bet, then add the closing line when it settles.</div>';
+    return;
+  }
+  var settled=bets.filter(function(b){ return b.result==='won'||b.result==='lost'; });
+  var staked=settled.reduce(function(s,b){ return s+b.stake; },0);
+  var profit=bets.reduce(function(s,b){ return s+betProfit(b); },0);
+  var roi= staked>0 ? profit/staked : 0;
+  var clvs=bets.map(betCLV).filter(function(x){ return x!=null; });
+  var avgCLV= clvs.length ? clvs.reduce(function(a,b){return a+b;},0)/clvs.length : null;
+  var beat= clvs.filter(function(x){ return x>0; }).length;
+
+  var sampleNote;
+  if(clvs.length<30) sampleNote='Far too few results to mean anything yet. Watch your CLV, not your profit — you need a few hundred bets before P&L is a real signal.';
+  else if(clvs.length<200) sampleNote='Still a small sample. CLV is the early signal: if it’s consistently positive, the profit tends to follow.';
+  else sampleNote= (avgCLV>0? 'Healthy sample with positive average CLV — that’s the real evidence of an edge.' : 'Healthy sample but CLV is not positive. Without beating the close, profit so far is likely variance, not skill.');
+
+  sum.innerHTML=
+    '<div class="card"><h2>Where you stand</h2>'+
+    '<div class="stat-grid" style="margin-top:10px">'+
+      stat('Profit / loss', fmtMoney(profit), profit>0?'pos':(profit<0?'neg':''))+
+      stat('ROI', staked>0?(roi*100).toFixed(1)+'%':'—', roi>0?'pos':(roi<0?'neg':''))+
+      stat('Avg CLV', avgCLV==null?'—':(avgCLV>=0?'+':'')+(avgCLV*100).toFixed(2)+'%', avgCLV==null?'':(avgCLV>0?'pos':'neg'))+
+      stat('Beat the close', clvs.length?beat+' / '+clvs.length:'—','')+
+    '</div>'+
+    '<div class="callout" style="margin-top:12px">'+esc(sampleNote)+'</div>'+
+    '<div class="hint">CLV (closing-line value) is the honest scoreboard. Profit over a small number of bets is mostly luck; beating the closing line repeatedly is the only real evidence you have an edge.</div>'+
+    '</div>';
+
+  var rows=bets.map(function(b){
+    var clv=betCLV(b);
+    var prof=betProfit(b);
+    var clvPill = clv==null? '<span class="pill flat">no close</span>'
+      : '<span class="pill '+(clv>0?'pos':'neg')+'">'+(clv>0?'+':'')+(clv*100).toFixed(1)+'%</span>';
+    return '<tr>'+
+      '<td><div class="bet-sel">'+esc(b.sel)+'</div>'+
+        '<div class="bet-meta">'+esc(b.date)+(b.sport?' · '+esc(b.sport):'')+(b.book?' · '+esc(b.book):'')+'</div>'+
+        settleButtons(b)+'</td>'+
+      '<td class="num">'+(b.odds>0?'+':'')+b.odds+'<div class="bet-meta">'+fmtMoney(b.stake)+'</div></td>'+
+      '<td class="num">'+closeCell(b)+'</td>'+
+      '<td class="num">'+clvPill+'<div class="bet-meta '+(prof>0?'':(prof<0?'':''))+'" style="margin-top:6px;color:'+(prof>0?'var(--pos)':(prof<0?'var(--neg)':'var(--dimmer)'))+'">'+(b.result==='pending'?'pending':fmtMoney(prof))+'</div></td>'+
+      '</tr>';
+  }).join('');
+  body.innerHTML='<div style="overflow-x:auto"><table class="ledger"><thead><tr>'+
+    '<th>Bet</th><th class="num">Taken</th><th class="num">Close</th><th class="num">CLV / P&amp;L</th></tr></thead><tbody>'+
+    rows+'</tbody></table></div>'+
+    '<div class="hint" style="margin-top:10px">Tap a bet’s result buttons to settle it. Tap the close cell to enter the closing line.</div>';
+  wireLedger();
+}
+function stat(k,v,cls){ return '<div class="stat"><div class="s-k">'+esc(k)+'</div><div class="s-v '+(cls||'')+'">'+esc(v)+'</div></div>'; }
+function settleButtons(b){
+  return '<div class="settle" data-id="'+b.id+'">'+
+    '<button class="won'+(b.result==='won'?' on':'')+'" data-r="won">Won</button>'+
+    '<button class="lost'+(b.result==='lost'?' on':'')+'" data-r="lost">Lost</button>'+
+    '<button class="push'+(b.result==='push'?' on':'')+'" data-r="push">Push</button>'+
+    '<button class="edit" data-r="edit">Edit</button>'+
+    '<button class="del" data-r="del">✕</button>'+
+    '</div>';
+}
+function closeCell(b){
+  if(b.close==null) return '<button class="settle" style="border:1px solid var(--line);background:var(--card2);color:var(--accent);border-radius:8px;padding:5px 9px;font-size:11px;font-weight:800" data-close="'+b.id+'">+ add</button>';
+  return '<span data-close="'+b.id+'" style="cursor:pointer">'+(b.close>0?'+':'')+b.close+(b.closeOpp!=null?'<div class="bet-meta">opp '+(b.closeOpp>0?'+':'')+b.closeOpp+'</div>':'')+'</span>';
+}
+function wireLedger(){
+  Array.prototype.forEach.call(document.querySelectorAll('.settle [data-r]'),function(btn){
+    btn.addEventListener('click',function(){
+      var id=btn.parentNode.getAttribute('data-id'), r=btn.getAttribute('data-r'), b=findBet(id);
+      if(!b) return;
+      if(r==='del'){ if(confirm('Delete this bet?')){ bets=bets.filter(function(x){return x.id!==id;}); store(BKEY,bets); renderLedger(); } return; }
+      if(r==='edit'){ loadForEdit(b); return; }
+      b.result = (b.result===r? 'pending' : r);
+      store(BKEY,bets); renderLedger();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'),function(el){
+    el.addEventListener('click',function(){
+      var b=findBet(el.getAttribute('data-close')); if(!b) return;
+      var c=prompt('Closing odds for YOUR side (American):', b.close!=null?b.close:'');
+      if(c===null) return;
+      if(c===''){ b.close=null; b.closeOpp=null; store(BKEY,bets); renderLedger(); return; }
+      if(amToDec(c)==null){ toast('Invalid odds'); return; }
+      b.close=parseFloat(c);
+      var o=prompt('Optional: closing odds for the OTHER side (for a truer, vig-free CLV). Leave blank to skip:', b.closeOpp!=null?b.closeOpp:'');
+      b.closeOpp = (o && amToDec(o)!=null)? parseFloat(o): null;
+      store(BKEY,bets); renderLedger();
+    });
+  });
+}
+function loadForEdit(b){
+  editId=b.id;
+  document.getElementById('logTitle').textContent='Edit bet';
+  document.getElementById('lgSave').textContent='Update bet';
+  document.getElementById('lgCancel').style.display='block';
+  document.getElementById('lgDate').value=b.date;
+  document.getElementById('lgSport').value=b.sport||'';
+  document.getElementById('lgSel').value=b.sel||'';
+  document.getElementById('lgBook').value=b.book||'';
+  document.getElementById('lgMkt').value=b.market||'';
+  document.getElementById('lgOdds').value=b.odds;
+  document.getElementById('lgStake').value=b.stake;
+  showTab('log');
+}
+
+/* ============ CSV export ============ */
+document.getElementById('exportCsv').addEventListener('click',function(){
+  if(!bets.length){ toast('No bets to export'); return; }
+  var head=['date','sport','selection','book','market','odds_taken','stake','closing_odds','closing_opp','result','clv_pct','profit'];
+  var lines=[head.join(',')];
+  bets.forEach(function(b){
+    var clv=betCLV(b); var prof=betProfit(b);
+    var row=[b.date,b.sport,b.sel,b.book,b.market,b.odds,b.stake,(b.close==null?'':b.close),(b.closeOpp==null?'':b.closeOpp),b.result,
+      (clv==null?'':(clv*100).toFixed(2)),(b.result==='pending'?'':prof.toFixed(2))];
+    lines.push(row.map(csvCell).join(','));
+  });
+  var blob=new Blob([lines.join('\n')],{type:'text/csv'});
+  var url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download='edge-bets-'+todayStr()+'.csv'; document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+});
+function csvCell(v){ v=String(v==null?'':v); return /[",\n]/.test(v)? '"'+v.replace(/"/g,'""')+'"' : v; }
+
+/* ============ settings ============ */
+function fillSettings(){
+  document.getElementById('setBank').value = settings&&settings.bankroll!=null?settings.bankroll:'';
+  document.getElementById('setMax').value  = settings&&settings.maxStakePct!=null?settings.maxStakePct:'';
+  document.getElementById('setLoss').value = settings&&settings.sessionLoss!=null?settings.sessionLoss:'';
+  document.getElementById('setApi').value  = settings&&settings.apiKey?settings.apiKey:'';
+}
+document.getElementById('setSave').addEventListener('click',function(){
+  settings=settings||{};
+  settings.bankroll=parseFloat(document.getElementById('setBank').value)||0;
+  settings.maxStakePct=parseFloat(document.getElementById('setMax').value)||2;
+  settings.sessionLoss=parseFloat(document.getElementById('setLoss').value)||0;
+  store(SKEY,settings); toast('Settings saved'); renderEV();
+});
+document.getElementById('setApiSave').addEventListener('click',function(){
+  settings=settings||{}; settings.apiKey=document.getElementById('setApi').value.trim();
+  store(SKEY,settings); toast(settings.apiKey?'Key saved on this device':'Key cleared');
+});
+document.getElementById('resetAll').addEventListener('click',function(){
+  if(!confirm('Delete all bets and settings on this device? This cannot be undone.')) return;
+  localStorage.removeItem(SKEY); localStorage.removeItem(BKEY);
+  settings=null; bets=[]; location.reload();
+});
+
+/* ============ first-run gate ============ */
+function checkGate(g1){
+  document.getElementById('gStart').disabled = !(document.getElementById('g1').checked && parseFloat(document.getElementById('gBank').value)>0);
+}
+document.getElementById('g1').addEventListener('change',checkGate);
+document.getElementById('gBank').addEventListener('input',checkGate);
+document.getElementById('gStart').addEventListener('click',function(){
+  settings={ bankroll:parseFloat(document.getElementById('gBank').value)||0,
+    maxStakePct:parseFloat(document.getElementById('gMax').value)||2,
+    sessionLoss:parseFloat(document.getElementById('gLoss').value)||0,
+    startedAt:Date.now() };
+  store(SKEY,settings);
+  document.getElementById('gate').classList.remove('on');
+  document.getElementById('gateVeil').classList.remove('on');
+  renderEV();
+});
+function maybeGate(){
+  if(!settings || settings.bankroll==null){
+    document.getElementById('gate').classList.add('on');
+    document.getElementById('gateVeil').classList.add('on');
+  }
+}
+
+/* ============ toast ============ */
+var toastT=null;
+function toast(m){ var e=document.getElementById('toast'); e.textContent=m; e.classList.add('on');
+  clearTimeout(toastT); toastT=setTimeout(function(){ e.classList.remove('on'); },1600); }
+
+/* ============ boot ============ */
+document.getElementById('lgDate').value=todayStr();
+renderNoVig(); renderEV(); maybeGate();
+if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+</script>
+</body>
+</html>
