@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0d0f14">
+<meta name="apple-mobile-web-app-title" content="Workout">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>Hypertrophy Hub</title>
+<style>
+  :root{
+    --bg:#0d0f14; --card:#161a22; --card2:#1d222d; --line:#262c3a;
+    --txt:#e7eaf0; --dim:#8b93a5; --dimmer:#5c6474;
+    --green:#4ade80; --yellow:#fbbf24; --red:#f87171; --spotify:#1DB954;
+    --accent:#a78bfa; --accent-soft:#a78bfa26; --accent-line:#a78bfa66;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.45;}
+  body{padding-bottom:calc(120px + var(--safe-b));}
+  .dayradio,.tmrradio,.sheetchk,.dchk{position:absolute; opacity:0; pointer-events:none; width:0; height:0;}
+
+  @keyframes ringrun{to{stroke-dashoffset:339.292;}}
+  @keyframes fadeout{to{opacity:0;}}
+  @keyframes fadein{from{opacity:0;}to{opacity:1;}}
+  @keyframes flashbg{50%{background:var(--accent-soft);}}
+  @keyframes pulse{0%,100%{transform:translateY(-50%) scale(1);}50%{transform:translateY(-50%) scale(1.07);}}
+  @keyframes roll60{to{transform:translateY(-60em);}}
+  @keyframes roll75{to{transform:translateY(-75em);}}
+  @keyframes roll90{to{transform:translateY(-90em);}}
+  @keyframes roll120{to{transform:translateY(-120em);}}
+  @keyframes roll180{to{transform:translateY(-180em);}}
+  @keyframes roll600{to{transform:translateY(-600em);}}
+  @keyframes roll1500{to{transform:translateY(-1500em);}}
+
+  header{position:sticky; top:0; z-index:30; background:rgba(13,15,20,.94);
+    -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line); padding:14px 16px 0;}
+  .h-row{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  h1{font-size:19px; margin:0; font-weight:800; letter-spacing:.2px;}
+  .wake-btn{border:1px solid var(--line); background:var(--card); color:var(--dim);
+    border-radius:20px; font-size:12px; padding:6px 12px; font-weight:700; cursor:pointer;}
+  .wake-btn.on{color:#0d0f14; background:var(--yellow); border-color:var(--yellow);}
+  .no-js .wake-btn{display:none;}
+
+  .tabs{display:flex; gap:6px; overflow-x:auto; padding:12px 0;
+    scrollbar-width:none; -ms-overflow-style:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto; border:1px solid var(--line); background:var(--card);
+    color:var(--dim); border-radius:14px; padding:8px 13px; font-size:13px;
+    font-weight:700; display:flex; flex-direction:column; align-items:center; gap:1px;
+    min-width:62px; cursor:pointer; user-select:none;}
+  .tab small{font-size:10px; font-weight:600; opacity:.75; white-space:nowrap;}
+  #d0:checked ~ header label[for="d0"],
+#d1:checked ~ header label[for="d1"],
+#d2:checked ~ header label[for="d2"],
+#d3:checked ~ header label[for="d3"],
+#d4:checked ~ header label[for="d4"],
+#d5:checked ~ header label[for="d5"],
+#d6:checked ~ header label[for="d6"]
+  {color:#fff; border-color:var(--tabc); background:var(--tabbg);}
+  .tab.is-today::after{content:""; width:5px; height:5px; border-radius:50%;
+    background:var(--tabc); margin-top:3px;}
+
+  main{padding:16px; max-width:640px; margin:0 auto;}
+  .panel{display:none;}
+  #d0:checked ~ main #p0,
+#d1:checked ~ main #p1,
+#d2:checked ~ main #p2,
+#d3:checked ~ main #p3,
+#d4:checked ~ main #p4,
+#d5:checked ~ main #p5,
+#d6:checked ~ main #p6
+  {display:block;}
+
+  .day-head{margin:2px 0 6px;}
+  .day-title{font-size:24px; font-weight:800; margin:0;}
+  .day-sub{color:var(--dim); font-size:14px; margin:2px 0 0; font-weight:600;}
+  .target-box{margin:12px 0 4px; background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:10px 14px; font-size:13px; color:var(--dim);}
+  .target-box b{color:var(--txt);}
+
+  .ex-card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:14px 14px 12px; margin:12px 0;}
+  .ex-top{display:flex; align-items:flex-start; gap:10px;}
+  .ex-main{flex:1; min-width:0;}
+  .ex-num{color:var(--accent); font-weight:800; font-size:13px; flex:0 0 auto;
+    background:var(--accent-soft); border-radius:8px; padding:2px 8px; margin-top:2px;}
+  .ex-name{font-weight:800; font-size:16.5px;}
+  .ex-scheme{color:var(--accent); font-weight:800; font-size:14px; margin:5px 0 2px;}
+  .ex-cue{color:var(--dim); font-size:13px;}
+  .ex-alt{color:var(--dimmer); font-size:12px; margin-top:4px; font-style:italic;}
+  .ex-foot{display:flex; align-items:center; justify-content:space-between;
+    margin-top:10px; gap:10px;}
+  .rest-label{font-size:12px; color:var(--dimmer); font-weight:700;}
+  .rest-btn{border:none; border-radius:12px; font-weight:800; font-size:14px;
+    padding:10px 16px; color:#0d0f14; background:var(--accent); cursor:pointer;
+    display:inline-flex; align-items:center; gap:7px; font-family:inherit; user-select:none;}
+  .rest-btn:active{transform:scale(.97);}
+  .rest-btn svg{width:14px; height:14px;}
+  .btn-wrap{margin-top:15px;}
+  .done-toggle{width:26px; height:26px; border-radius:50%; border:2px solid var(--line);
+    background:transparent; flex:0 0 auto; cursor:pointer; font-size:14px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; color:transparent; margin-top:2px;}
+  .dchk:checked ~ .ex-body{opacity:.42;}
+  .dchk:checked ~ .ex-body .done-toggle{background:var(--green); border-color:var(--green); color:#0d0f14;}
+
+  .rest-day{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:18px; margin-top:14px;}
+  .rest-day.finisher{border-color:var(--accent-line);}
+  .rest-day h3{margin:0 0 8px; font-size:17px;}
+  .rest-day ul{margin:8px 0 0; padding-left:20px; color:var(--dim); font-size:14px;}
+  .rest-day li{margin:4px 0;}
+  .rest-note{color:var(--dim); font-size:13.5px; margin:10px 0 0;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+  .pill{background:var(--card2); border:1px solid var(--line); color:var(--dim);
+    font-size:12.5px; font-weight:700; border-radius:20px; padding:6px 12px;}
+
+  .section-label{font-size:12px; letter-spacing:1.4px; text-transform:uppercase;
+    color:var(--dimmer); font-weight:800; margin:28px 0 6px;}
+  details.guide{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    margin:10px 0; overflow:hidden;}
+  details.guide summary{padding:13px 16px; font-weight:800; font-size:15px;
+    cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  details.guide summary::-webkit-details-marker{display:none;}
+  details.guide summary::after{content:"+"; color:var(--dimmer); font-size:18px; font-weight:600;}
+  details.guide[open] summary::after{content:"–";}
+  .guide-body{padding:0 16px 14px; color:var(--dim); font-size:14px;}
+  .guide-body b{color:var(--txt);}
+  .guide-body table{width:100%; border-collapse:collapse; margin:8px 0; font-size:13px;}
+  .guide-body td{padding:6px 8px; border-top:1px solid var(--line); vertical-align:top;}
+  .guide-body td:last-child{text-align:right; color:var(--txt); font-weight:700; white-space:nowrap;}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;
+    background:var(--card2); border-radius:8px; padding:10px 12px; display:block;
+    margin:10px 0 0; color:var(--txt); white-space:pre-wrap; line-height:1.6;}
+
+  .dock{position:fixed; left:0; right:0; bottom:0; z-index:40;
+    background:rgba(18,21,28,.97); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+    border-top:1px solid var(--line); padding:10px 14px calc(10px + var(--safe-b));}
+  .dock-inner{max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:8px;}
+  .dock-row{display:flex; gap:8px; align-items:center;}
+  .preset{flex:1; border:1px solid var(--line); background:var(--card); color:var(--txt);
+    border-radius:12px; padding:11px 0; font-size:14px; font-weight:800; cursor:pointer;
+    font-family:inherit; text-align:center; display:block; user-select:none;}
+  .preset:active{transform:scale(.97);}
+  .spotify-toggle{flex:0 0 auto; width:46px; height:46px; border-radius:12px; border:1px solid var(--line);
+    background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .spotify-toggle svg{width:24px; height:24px; fill:var(--spotify);}
+  .minibar{display:none; align-items:center; gap:10px; background:var(--card2);
+    border:1px solid var(--accent); border-radius:12px; padding:8px 12px; cursor:pointer;}
+  .minibar.show{display:flex;}
+  .mb-time{font-weight:800; font-variant-numeric:tabular-nums; font-size:18px; color:var(--accent);}
+  .mb-ex{flex:1; font-size:13px; color:var(--dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .mb-hint{color:var(--dim); font-size:11px; font-weight:800; letter-spacing:.5px;}
+
+  .sheet-veil{position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:50;
+    opacity:0; pointer-events:none; transition:opacity .22s ease;}
+  .sheet{position:fixed; left:0; right:0; bottom:0; z-index:51; background:var(--card);
+    border-radius:20px 20px 0 0; border:1px solid var(--line); border-bottom:none;
+    padding:18px 18px calc(24px + var(--safe-b)); transform:translateY(105%);
+    transition:transform .25s ease; max-height:80vh; overflow-y:auto;}
+  #musicOpen:checked ~ .sheet-veil{opacity:1; pointer-events:auto;}
+  #musicOpen:checked ~ .sheet{transform:translateY(0);}
+  .sheet h3{margin:0 0 2px; display:flex; align-items:center; gap:8px; font-size:18px;}
+  .sheet h3 svg{width:22px; height:22px; fill:var(--spotify);}
+  .sheet p.hint{color:var(--dim); font-size:13px; margin:6px 0 14px;}
+  .music-link{display:flex; align-items:center; gap:12px; background:var(--card2);
+    border:1px solid var(--line); border-radius:14px; padding:13px 14px; margin:8px 0;
+    color:var(--txt); text-decoration:none; font-weight:700; font-size:15px;}
+  .music-link:active{background:var(--line);}
+  .ml-ico{width:36px; height:36px; border-radius:10px; display:flex;
+    align-items:center; justify-content:center; font-size:18px; flex:0 0 auto;
+    background:rgba(29,185,84,.18);}
+  .music-link small{display:block; color:var(--dim); font-weight:500; font-size:12px;}
+  .add-row{display:flex; gap:8px; margin-top:14px;}
+  .no-js .add-row, .no-js .add-note{display:none;}
+  .add-row input{flex:1; background:var(--bg); border:1px solid var(--line); color:var(--txt);
+    border-radius:12px; padding:11px 12px; font-size:14px; min-width:0; font-family:inherit;}
+  .add-row button{border:none; background:var(--spotify); color:#04220f; font-weight:800;
+    border-radius:12px; padding:0 18px; font-size:14px; cursor:pointer; font-family:inherit;}
+  .add-note{color:var(--dimmer); font-size:11.5px; margin-top:8px;}
+  .sheet-close{display:block; text-align:center; margin-top:14px; color:var(--dim);
+    font-weight:800; font-size:14px; padding:10px; cursor:pointer;}
+
+  /* ---------- timer overlays (shared look) ---------- */
+  .tmr, .tmr-css{position:fixed; inset:0; z-index:60; background:rgba(13,15,20,.98);
+    display:none; flex-direction:column; align-items:center; justify-content:center;
+    padding:24px; text-align:center;}
+  .tmr.show{display:flex;}
+  #t60a:checked ~ .tmr-wrap #tc60a,
+#t60b:checked ~ .tmr-wrap #tc60b,
+#t75a:checked ~ .tmr-wrap #tc75a,
+#t75b:checked ~ .tmr-wrap #tc75b,
+#t90a:checked ~ .tmr-wrap #tc90a,
+#t90b:checked ~ .tmr-wrap #tc90b,
+#t120a:checked ~ .tmr-wrap #tc120a,
+#t120b:checked ~ .tmr-wrap #tc120b,
+#t180a:checked ~ .tmr-wrap #tc180a,
+#t180b:checked ~ .tmr-wrap #tc180b,
+#t600a:checked ~ .tmr-wrap #tc600a,
+#t600b:checked ~ .tmr-wrap #tc600b,
+#t1500a:checked ~ .tmr-wrap #tc1500a
+  {display:flex;}
+  .js .tmr-css{display:none !important;}
+  .tmr.flash{animation:flashbg .5s ease 4;}
+  .tmr-ex{color:var(--dim); font-size:15px; font-weight:700; max-width:90%;}
+  .ring-wrap{position:relative; width:min(72vw,300px); height:min(72vw,300px); margin:22px 0;}
+  .ring-wrap svg{width:100%; height:100%; transform:rotate(-90deg);}
+  .ring-bg{fill:none; stroke:var(--line); stroke-width:7;}
+  .ring-fg{fill:none; stroke:var(--accent); stroke-width:7; stroke-linecap:round;}
+  .tmr .ring-fg{transition:stroke-dashoffset .95s linear;}
+  .tmr-digits{position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;}
+  .tmr-time{font-size:62px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .tmr-time.warn{color:var(--yellow);}
+  .tmr-time.overtime{color:var(--green);}
+  .tmr-state{font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--dimmer); font-weight:800; margin-top:2px;}
+  .tmr-adjust{display:flex; gap:10px; margin-bottom:18px;}
+  .adj{border:1px solid var(--line); background:var(--card); color:var(--txt);
+    border-radius:12px; padding:10px 18px; font-size:15px; font-weight:800;
+    cursor:pointer; font-family:inherit;}
+  .tmr-actions{display:flex; gap:10px; width:100%; max-width:340px;}
+  .tmr-actions button, .tmr-actions label{flex:1; border:none; border-radius:14px; padding:15px 0;
+    font-size:16px; font-weight:800; cursor:pointer; font-family:inherit; text-align:center;
+    user-select:none;}
+  .btn-pause{background:var(--card2); color:var(--txt); border:1px solid var(--line) !important;}
+  .btn-done{background:var(--accent); color:#0d0f14;}
+  .tmr-min{position:absolute; top:calc(14px + env(safe-area-inset-top,0px)); right:16px;
+    border:1px solid var(--line); background:var(--card); color:var(--dim); border-radius:12px;
+    padding:8px 14px; font-weight:700; font-size:13px; cursor:pointer; font-family:inherit;
+    user-select:none;}
+
+  /* ---------- CSS-only countdown ---------- */
+  .cd{height:1em; overflow:hidden; font-size:62px; font-weight:800; line-height:1;
+    font-variant-numeric:tabular-nums;}
+  .cd-roll i{display:block; height:1em; font-style:normal;}
+  .tmr-go{position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); opacity:0;
+    font-size:30px; font-weight:800; color:var(--green); pointer-events:none; letter-spacing:.3px;}
+
+  .nojs{display:none; background:#1e2a3a; border:1px solid #39506e; color:#a9c6e8;
+    border-radius:12px; padding:11px 14px; font-size:12.5px; margin:0 0 14px;}
+  .no-js .nojs{display:block; border-color:#39506e;}
+</style>
+</head>
+<body class="no-js">
+
+<input type="radio" name="day" id="d0" class="dayradio" checked>
+<input type="radio" name="day" id="d1" class="dayradio">
+<input type="radio" name="day" id="d2" class="dayradio">
+<input type="radio" name="day" id="d3" class="dayradio">
+<input type="radio" name="day" id="d4" class="dayradio">
+<input type="radio" name="day" id="d5" class="dayradio">
+<input type="radio" name="day" id="d6" class="dayradio">
+<input type="radio" name="tmr" id="t-none" class="tmrradio" checked>
+<input type="radio" name="tmr" id="t60a" class="tmrradio">
+<input type="radio" name="tmr" id="t60b" class="tmrradio">
+<input type="radio" name="tmr" id="t75a" class="tmrradio">
+<input type="radio" name="tmr" id="t75b" class="tmrradio">
+<input type="radio" name="tmr" id="t90a" class="tmrradio">
+<input type="radio" name="tmr" id="t90b" class="tmrradio">
+<input type="radio" name="tmr" id="t120a" class="tmrradio">
+<input type="radio" name="tmr" id="t120b" class="tmrradio">
+<input type="radio" name="tmr" id="t180a" class="tmrradio">
+<input type="radio" name="tmr" id="t180b" class="tmrradio">
+<input type="radio" name="tmr" id="t600a" class="tmrradio">
+<input type="radio" name="tmr" id="t600b" class="tmrradio">
+<input type="radio" name="tmr" id="t1500a" class="tmrradio">
+<input type="checkbox" class="sheetchk" id="musicOpen">
+
+<header>
+  <div class="h-row">
+    <h1>💪 Hypertrophy Hub</h1>
+    <button class="wake-btn" id="wakeBtn" onclick="toggleWake()">☀︎ Keep screen on</button>
+  </div>
+  <div class="tabs" id="tabs">
+      <label class="tab" for="d0" style="--tabc:#a78bfa;--tabbg:#a78bfa2e"><span>🟣 SUN</span><small>Upper Pull</small></label>
+      <label class="tab" for="d1" style="--tabc:#9ca3af;--tabbg:#9ca3af2e"><span>⚪ MON</span><small>Rest / Cardio</small></label>
+      <label class="tab" for="d2" style="--tabc:#4ade80;--tabbg:#4ade802e"><span>🟢 TUE</span><small>Lower Body</small></label>
+      <label class="tab" for="d3" style="--tabc:#9ca3af;--tabbg:#9ca3af2e"><span>⚪ WED</span><small>Rest / Cardio</small></label>
+      <label class="tab" for="d4" style="--tabc:#f87171;--tabbg:#f871712e"><span>🔴 THU</span><small>Upper Push</small></label>
+      <label class="tab" for="d5" style="--tabc:#fbbf24;--tabbg:#fbbf242e"><span>🟡 FRI</span><small>Rest</small></label>
+      <label class="tab" for="d6" style="--tabc:#fb923c;--tabbg:#fb923c2e"><span>🟠 SAT</span><small>Full Body</small></label>
+  </div>
+</header>
+
+<main>
+  <div class="nojs">ℹ️ Timers work right here — tap any <b>Start rest</b> button. Scripts are off in this view, so there's no beep or buzz at zero; open the file in a browser if you want the sound.</div>
+<section class="panel" id="p0" style="--accent:#a78bfa;--accent-soft:#a78bfa26;--accent-line:#a78bfa66;">
+<div class="day-head"><h2 class="day-title">🟣 SUN — Upper Pull</h2><p class="day-sub">Back thickness / width / biceps</p></div>
+<div class="target-box">🎯 <b>Target:</b> most sets 1–3 RIR · final isolation set 0–1 RIR OK</div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Lat Pulldown</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Controlled eccentric, full stretch</div></div><label class="done-toggle" for="c0_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Lat Pulldown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Chest-Supported DB Row</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Drive elbows back; minimize momentum</div></div><label class="done-toggle" for="c0_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Chest-Supported DB Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Single-Arm Cable Row</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → controlled contraction</div></div><label class="done-toggle" for="c0_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Single-Arm Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Rear Delt Fly</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Controlled reps, avoid swinging</div></div><label class="done-toggle" for="c0_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rear Delt Fly"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">EZ-Bar or DB Curl</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Full ROM; controlled eccentric</div></div><label class="done-toggle" for="c0_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="EZ-Bar or DB Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c0_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Incline DB Curl or Preacher Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Deep stretch at bottom</div></div><label class="done-toggle" for="c0_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Incline DB Curl or Preacher Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+</section>
+<section class="panel" id="p1" style="--accent:#9ca3af;--accent-soft:#9ca3af26;--accent-line:#9ca3af66;">
+<div class="day-head"><h2 class="day-title">⚪ MON — Rest / Cardio</h2><p class="day-sub">Optional Zone 2 — 20–30 min</p></div>
+<div class="rest-day"><h3>Optional Zone 2 Cardio · 20–30 min</h3><ul><li>Incline treadmill walk</li><li>Stationary bike</li><li>Elliptical</li></ul><p class="rest-note">Conversational pace / moderate effort. No lifting required.</p><div class="pill-row"><span class="pill">💧 Hydrate</span><span class="pill">🥩 Protein</span><span class="pill">😴 Sleep 7–9h</span></div>
+<div class="btn-wrap"><label class="rest-btn" for="t1500a" data-sec="1500" data-name="Zone 2 cardio">▶ 25-min cardio timer</label></div>
+</div>
+</section>
+<section class="panel" id="p2" style="--accent:#4ade80;--accent-soft:#4ade8026;--accent-line:#4ade8066;">
+<div class="day-head"><h2 class="day-title">🟢 TUE — Lower Body</h2><p class="day-sub">Mass-focused / hypertrophy</p></div>
+<div class="target-box">🎯 <b>Target:</b> compounds 1–3 RIR · isolation 0–2 RIR</div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Hack Squat</div><div class="ex-scheme">4 × 8–12</div><div class="ex-cue">Deep, controlled ROM · quads &gt; spinal loading</div><div class="ex-alt">Alt: Goblet Squat if hack squat unavailable</div></div><label class="done-toggle" for="c2_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Hack Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Romanian Deadlift</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Moderate weight · 3-sec eccentric · deep hamstring stretch</div></div><label class="done-toggle" for="c2_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Romanian Deadlift"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Walking Lunges</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Long controlled stride</div></div><label class="done-toggle" for="c2_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Walking Lunges"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated Leg Curl</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full stretch → hard contraction</div></div><label class="done-toggle" for="c2_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 75–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Leg Extension</div><div class="ex-scheme">3 × 12–20</div><div class="ex-cue">Controlled eccentric · pause/squeeze at top</div></div><label class="done-toggle" for="c2_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Leg Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c2_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Standing Calf Raises</div><div class="ex-scheme">4 × 10–20</div><div class="ex-cue">Deep stretch at bottom · full contraction at top</div></div><label class="done-toggle" for="c2_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Standing Calf Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+</section>
+<section class="panel" id="p3" style="--accent:#9ca3af;--accent-soft:#9ca3af26;--accent-line:#9ca3af66;">
+<div class="day-head"><h2 class="day-title">⚪ WED — Rest / Cardio</h2><p class="day-sub">Optional cardio — 20–30 min</p></div>
+<div class="rest-day"><h3>Optional Cardio · 20–30 min</h3><ul><li>Incline walk</li><li>Bike</li><li>Elliptical</li></ul><p class="rest-note">Keep intensity moderate. Focus on recovery, hydration, nutrition and sleep.</p><div class="pill-row"><span class="pill">💧 Hydrate</span><span class="pill">🥗 Nutrition</span><span class="pill">😴 Recovery</span></div>
+<div class="btn-wrap"><label class="rest-btn" for="t1500a" data-sec="1500" data-name="Zone 2 cardio">▶ 25-min cardio timer</label></div>
+</div>
+</section>
+<section class="panel" id="p4" style="--accent:#f87171;--accent-soft:#f8717126;--accent-line:#f8717166;">
+<div class="day-head"><h2 class="day-title">🔴 THU — Upper Push</h2><p class="day-sub">Chest / delts / triceps</p></div>
+<div class="target-box">🎯 <b>Target:</b> pressing 1–3 RIR · isolation 0–2 RIR. Optional: controlled partials on the last set of laterals or triceps.</div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Incline DB Press</div><div class="ex-scheme">3 × 6–10</div><div class="ex-cue">Controlled eccentric (~2–3 s) · deep stretch</div></div><label class="done-toggle" for="c4_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 120–180 s</span><label class="rest-btn" for="t180a" data-sec="180" data-name="Incline DB Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Machine or Cable Chest Press</div><div class="ex-scheme">3 × 8–12</div><div class="ex-cue">Constant tension · controlled ROM</div></div><label class="done-toggle" for="c4_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Machine or Cable Chest Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Seated DB Shoulder Press</div><div class="ex-scheme">2–3 × 8–12</div><div class="ex-cue">Controlled reps · avoid excessive arching</div></div><label class="done-toggle" for="c4_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Seated DB Shoulder Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Cable Lateral Raises</div><div class="ex-scheme">4 × 12–20</div><div class="ex-cue">Controlled reps · keep tension on lateral delt</div></div><label class="done-toggle" for="c4_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Lateral Raises"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable Fly (low → high)</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Deep stretch · controlled contraction</div></div><label class="done-toggle" for="c4_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Cable Fly (low → high)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Rope Triceps Pushdowns</div><div class="ex-scheme">3 × 10–15</div><div class="ex-cue">Full extension · controlled eccentric</div></div><label class="done-toggle" for="c4_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Rope Triceps Pushdowns"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c4_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Overhead Triceps Extension</div><div class="ex-scheme">2 × 10–15</div><div class="ex-cue">Deep stretch behind head</div></div><label class="done-toggle" for="c4_6" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–75 s</span><label class="rest-btn" for="t75a" data-sec="75" data-name="Overhead Triceps Extension"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+</section>
+<section class="panel" id="p5" style="--accent:#fbbf24;--accent-soft:#fbbf2426;--accent-line:#fbbf2466;">
+<div class="day-head"><h2 class="day-title">🟡 FRI — Rest</h2><p class="day-sub">Complete rest or light walking</p></div>
+<div class="rest-day"><h3>Complete rest OR light walking</h3><ul><li>Sleep</li><li>Protein</li><li>Hydration</li><li>Recovery</li></ul><p class="rest-note">Recover enough to grow — tomorrow is Full Body day.</p><div class="pill-row"><span class="pill">😴 7–9 h sleep</span><span class="pill">🥩 0.7–1.0 g/lb protein</span><span class="pill">💧 Hydration</span></div>
+</div>
+</section>
+<section class="panel" id="p6" style="--accent:#fb923c;--accent-soft:#fb923c26;--accent-line:#fb923c66;">
+<div class="day-head"><h2 class="day-title">🟠 SAT — Full Body</h2><p class="day-sub">Hypertrophy + lower-fatigue volume</p></div>
+<div class="target-box">🎯 <b>Target:</b> quality hard sets, 1–3 RIR. Finish with the 10–15 min cardio below.</div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_0"><div class="ex-body"><div class="ex-top"><span class="ex-num">1</span><div class="ex-main"><div class="ex-name">Dumbbell Bench Press</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Controlled eccentric</div></div><label class="done-toggle" for="c6_0" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Dumbbell Bench Press"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_1"><div class="ex-body"><div class="ex-top"><span class="ex-num">2</span><div class="ex-main"><div class="ex-name">Cable Row</div><div class="ex-scheme">3 × 10–12</div><div class="ex-cue">Full stretch → contraction</div></div><label class="done-toggle" for="c6_1" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Cable Row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_2"><div class="ex-body"><div class="ex-top"><span class="ex-num">3</span><div class="ex-main"><div class="ex-name">Bulgarian Split Squat</div><div class="ex-scheme">3 × 10–12 / leg</div><div class="ex-cue">Controlled descent · deep ROM</div></div><label class="done-toggle" for="c6_2" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 90–120 s</span><label class="rest-btn" for="t120a" data-sec="120" data-name="Bulgarian Split Squat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_3"><div class="ex-body"><div class="ex-top"><span class="ex-num">4</span><div class="ex-main"><div class="ex-name">Seated or Lying Leg Curl</div><div class="ex-scheme">3 × 12–15</div><div class="ex-cue">Full stretch</div></div><label class="done-toggle" for="c6_3" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 60–90 s</span><label class="rest-btn" for="t90a" data-sec="90" data-name="Seated or Lying Leg Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_4"><div class="ex-body"><div class="ex-top"><span class="ex-num">5</span><div class="ex-main"><div class="ex-name">Cable/DB Lateral Raise</div><div class="ex-scheme">3 × 15–20</div><div class="ex-cue">Strict form</div></div><label class="done-toggle" for="c6_4" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Cable/DB Lateral Raise"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_5"><div class="ex-body"><div class="ex-top"><span class="ex-num">6</span><div class="ex-main"><div class="ex-name">Optional Arms — Cable Curl</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_5" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Cable Curl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="ex-card"><input type="checkbox" class="dchk" id="c6_6"><div class="ex-body"><div class="ex-top"><span class="ex-num">7</span><div class="ex-main"><div class="ex-name">Optional Arms — Rope Pushdown</div><div class="ex-scheme">2 × 12–15</div><div class="ex-cue">Optional finisher volume</div></div><label class="done-toggle" for="c6_6" aria-label="Mark done">✓</label></div><div class="ex-foot"><span class="rest-label">Rest 45–60 s</span><label class="rest-btn" for="t60a" data-sec="60" data-name="Optional Arms — Rope Pushdown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg> Start rest</label></div></div></div>
+<div class="rest-day finisher"><h3>🔥 Finisher · 10–15 min</h3><p class="rest-note">Choose ONE: incline treadmill walk, stationary bike, or sled. Example: 40 s moderate → 20 s push, repeat for 10–12 min. Don&#x27;t turn this into an all-out HIIT session every week — the goal is extra cardiovascular work without compromising recovery.</p><div class="btn-wrap"><label class="rest-btn" for="t600a" data-sec="600" data-name="Cardio finisher">▶ Start 10-min finisher</label></div></div>
+</section>
+
+  <div class="section-label">Reference</div>
+  <details class="guide"><summary>⏱️ Rest period rules</summary><div class="guide-body">
+    <table>
+      <tr><td><b>Heavy compound</b><br>Hack squat · RDL · DB press · rows · shoulder press</td><td>2–3 min</td></tr>
+      <tr><td><b>Moderate compound</b><br>Lunges · pulldowns · chest press · DB bench</td><td>90–120 s</td></tr>
+      <tr><td><b>Isolation</b><br>Laterals · curls · triceps · leg extensions · leg curls · calves</td><td>45–90 s</td></tr>
+    </table>
+    <b>Rule:</b> if you're still significantly out of breath or your muscles haven't recovered enough to perform the next set properly, take additional rest. Don't sacrifice performance just to hit an arbitrary rest timer.
+  </div></details>
+
+  <details class="guide"><summary>📈 Double progression</summary><div class="guide-body">
+    For a rep range like <b>3 × 6–10</b>: start with a weight you can perform for roughly 10 / 9 / 8. Over subsequent workouts, increase total reps → 10 / 10 / 9 → 10 / 10 / 10. Once you hit the top of the rep range on <b>every set</b> with good form, increase the weight and repeat the process.
+    <span class="mono">70-lb DB Incline Press
+Week 1 → 10 / 9 / 8
+Week 2 → 10 / 10 / 9
+Week 3 → 10 / 10 / 10   ⬆ increase to 75 lb
+Week 4 → 8 / 7 / 6 … continue progressing</span>
+  </div></details>
+
+  <details class="guide"><summary>🎯 RIR — reps in reserve</summary><div class="guide-body">
+    <b>Compound movements:</b> generally 1–3 RIR<br>
+    <b>Isolation movements:</b> generally 0–2 RIR<br>
+    <b>Final isolation set:</b> occasionally 0–1 RIR<br><br>
+    You do NOT need to take every set to failure. The goal is high-quality hard sets while maintaining enough recovery to progress week after week.
+  </div></details>
+
+  <details class="guide"><summary>🧠 Training principles</summary><div class="guide-body">
+    <b>1. Progressive overload</b> — gradually increase weight OR reps OR quality of execution over time.<br><br>
+    <b>2. Mechanical tension &gt; chasing the pump</b> — the pump is enjoyable, but prioritise load + ROM + proximity to failure + progressive overload.<br><br>
+    <b>3. Controlled eccentrics</b> — roughly 2–3 s down. Don't obsess over counting seconds; the goal is controlled → stable → full ROM rather than dropping the weight.<br><br>
+    <b>4. Full ROM</b> — meaningful stretch and complete contraction. Especially incline curls, RDLs, leg curls, leg extensions, calf raises, cable flyes and lateral raises.<br><br>
+    <b>5. Partial reps</b> — an optional intensity technique, not something that needs to happen every workout. Best used occasionally at the end of isolation work when already near failure.
+  </div></details>
+
+  <details class="guide"><summary>🥩 Recovery targets</summary><div class="guide-body">
+    <b>Protein:</b> ~0.7–1.0 g per lb bodyweight per day, spread across several meals.<br>
+    <b>Sleep:</b> 7–9 hours per night.<br>
+    <b>Hydration:</b> consistent throughout the day.<br>
+    <b>Calories:</b> small surplus for muscle gain · around maintenance + high protein for recomposition. Avoid aggressive bulking if minimising fat gain is important.<br><br>
+    <b>Cardio:</b> 2–3 sessions per week, mostly 20–30 min moderate intensity. Saturday's post-workout finisher counts as one.
+  </div></details>
+
+  <details class="guide"><summary>📊 Progress tracking</summary><div class="guide-body">
+    Record after every workout: <b>exercise → weight → reps → RIR</b>.
+    <span class="mono">Incline DB Press
+70s — 10 / 9 / 8    ~2 RIR
+next time → 70s — 10 / 10 / 9</span>
+    Track weekly: body weight, key lifts, reps/weights, waist measurement, progress photos, general energy and recovery.<br><br>
+    Evaluate after 6–8 weeks. If strength/reps are progressing and measurements are moving in the desired direction — <b>keep the program</b>. Don't change exercises simply because you're getting bored.
+  </div></details>
+
+  <details class="guide"><summary>⭐ Primary goal</summary><div class="guide-body">
+    Train hard enough to stimulate growth. Recover enough to grow. Progress consistently.<br><br>
+    The program does not need to destroy you. <b>Consistency + progressive overload over months = results.</b>
+  </div></details>
+
+</main>
+
+<div class="dock">
+  <div class="dock-inner">
+    <div class="minibar" id="minibar" onclick="showTimer()">
+      <span class="mb-time" id="mbTime">0:00</span>
+      <span class="mb-ex" id="mbEx">Rest</span>
+      <span class="mb-hint">TAP TO OPEN</span>
+    </div>
+    <div class="dock-row">
+      <label class="preset" for="t60a" data-sec="60" data-name="Quick rest">1:00</label>
+      <label class="preset" for="t90a" data-sec="90" data-name="Quick rest">1:30</label>
+      <label class="preset" for="t120a" data-sec="120" data-name="Quick rest">2:00</label>
+      <label class="preset" for="t180a" data-sec="180" data-name="Quick rest">3:00</label>
+      <label class="spotify-toggle" for="musicOpen" aria-label="Music"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.5 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.34.35.21.46.67.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.55-1.79c4.37-1.33 9.8-.68 13.5 1.6.44.27.58.85.31 1.28zm.13-3.4C15.24 8.33 8.87 8.12 5.17 9.24a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.31-1.04 15.77 1.6a1.12 1.12 0 0 1-1.19 1.94z"/></svg></label>
+    </div>
+  </div>
+</div>
+
+<label class="sheet-veil" for="musicOpen"></label>
+<div class="sheet">
+  <h3><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.5 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.34.35.21.46.67.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.55-1.79c4.37-1.33 9.8-.68 13.5 1.6.44.27.58.85.31 1.28zm.13-3.4C15.24 8.33 8.87 8.12 5.17 9.24a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.31-1.04 15.77 1.6a1.12 1.12 0 0 1-1.19 1.94z"/></svg> Workout music</h3>
+  <p class="hint">These open in your Spotify app — music keeps playing in the background while the timer runs.</p>
+  <div id="musicLinks">
+    <a class="music-link" href="https://open.spotify.com" target="_blank" rel="noopener">
+      <span class="ml-ico">🎧</span><span>Open Spotify<small>Resume whatever you were playing</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP" target="_blank" rel="noopener">
+      <span class="ml-ico">🔥</span><span>Beast Mode<small>Spotify's flagship workout playlist</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/playlist/37i9dQZF1DXdxcBWuJkbcy" target="_blank" rel="noopener">
+      <span class="ml-ico">⚡</span><span>Motivation Mix<small>High-energy lifting hits</small></span></a>
+    <a class="music-link" href="https://open.spotify.com/search/gym%20workout%20playlist" target="_blank" rel="noopener">
+      <span class="ml-ico">🔍</span><span>Browse workout playlists<small>Search "gym workout" in Spotify</small></span></a>
+  </div>
+  <div class="add-row">
+    <input type="url" id="plUrl" placeholder="Paste a Spotify playlist link…" inputmode="url">
+    <button onclick="addPlaylist()">Add</button>
+  </div>
+  <div class="add-note">Added links last for this visit. To keep one permanently, ask Claude to bake it into the app.</div>
+  <label class="sheet-close" for="musicOpen">Close</label>
+</div>
+
+<div class="tmr-wrap">
+<div class="tmr-css" id="tc60a" style="animation:flashbg .5s 60s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 60s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 60s forwards;"><div class="cd-roll" style="animation:roll60 60s steps(60) forwards;"><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 60s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 60s forwards, pulse 1s 60s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t60b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc60b" style="animation:flashbg .5s 60s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 60s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 60s forwards;"><div class="cd-roll" style="animation:roll60 60s steps(60) forwards;"><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 60s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 60s forwards, pulse 1s 60s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t60a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc75a" style="animation:flashbg .5s 75s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:15 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 75s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 75s forwards;"><div class="cd-roll" style="animation:roll75 75s steps(75) forwards;"><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 75s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 75s forwards, pulse 1s 75s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t75b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc75b" style="animation:flashbg .5s 75s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:15 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 75s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 75s forwards;"><div class="cd-roll" style="animation:roll75 75s steps(75) forwards;"><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 75s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 75s forwards, pulse 1s 75s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t75a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc90a" style="animation:flashbg .5s 90s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:30 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 90s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 90s forwards;"><div class="cd-roll" style="animation:roll90 90s steps(90) forwards;"><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 90s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 90s forwards, pulse 1s 90s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t90b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc90b" style="animation:flashbg .5s 90s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">1:30 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 90s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 90s forwards;"><div class="cd-roll" style="animation:roll90 90s steps(90) forwards;"><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 90s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 90s forwards, pulse 1s 90s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t90a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc120a" style="animation:flashbg .5s 120s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">2:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 120s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 120s forwards;"><div class="cd-roll" style="animation:roll120 120s steps(120) forwards;"><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 120s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 120s forwards, pulse 1s 120s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t120b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc120b" style="animation:flashbg .5s 120s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">2:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 120s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 120s forwards;"><div class="cd-roll" style="animation:roll120 120s steps(120) forwards;"><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 120s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 120s forwards, pulse 1s 120s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t120a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc180a" style="animation:flashbg .5s 180s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">3:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 180s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 180s forwards;"><div class="cd-roll" style="animation:roll180 180s steps(180) forwards;"><i>3:00</i><i>2:59</i><i>2:58</i><i>2:57</i><i>2:56</i><i>2:55</i><i>2:54</i><i>2:53</i><i>2:52</i><i>2:51</i><i>2:50</i><i>2:49</i><i>2:48</i><i>2:47</i><i>2:46</i><i>2:45</i><i>2:44</i><i>2:43</i><i>2:42</i><i>2:41</i><i>2:40</i><i>2:39</i><i>2:38</i><i>2:37</i><i>2:36</i><i>2:35</i><i>2:34</i><i>2:33</i><i>2:32</i><i>2:31</i><i>2:30</i><i>2:29</i><i>2:28</i><i>2:27</i><i>2:26</i><i>2:25</i><i>2:24</i><i>2:23</i><i>2:22</i><i>2:21</i><i>2:20</i><i>2:19</i><i>2:18</i><i>2:17</i><i>2:16</i><i>2:15</i><i>2:14</i><i>2:13</i><i>2:12</i><i>2:11</i><i>2:10</i><i>2:09</i><i>2:08</i><i>2:07</i><i>2:06</i><i>2:05</i><i>2:04</i><i>2:03</i><i>2:02</i><i>2:01</i><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 180s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 180s forwards, pulse 1s 180s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t180b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc180b" style="animation:flashbg .5s 180s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">3:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 180s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 180s forwards;"><div class="cd-roll" style="animation:roll180 180s steps(180) forwards;"><i>3:00</i><i>2:59</i><i>2:58</i><i>2:57</i><i>2:56</i><i>2:55</i><i>2:54</i><i>2:53</i><i>2:52</i><i>2:51</i><i>2:50</i><i>2:49</i><i>2:48</i><i>2:47</i><i>2:46</i><i>2:45</i><i>2:44</i><i>2:43</i><i>2:42</i><i>2:41</i><i>2:40</i><i>2:39</i><i>2:38</i><i>2:37</i><i>2:36</i><i>2:35</i><i>2:34</i><i>2:33</i><i>2:32</i><i>2:31</i><i>2:30</i><i>2:29</i><i>2:28</i><i>2:27</i><i>2:26</i><i>2:25</i><i>2:24</i><i>2:23</i><i>2:22</i><i>2:21</i><i>2:20</i><i>2:19</i><i>2:18</i><i>2:17</i><i>2:16</i><i>2:15</i><i>2:14</i><i>2:13</i><i>2:12</i><i>2:11</i><i>2:10</i><i>2:09</i><i>2:08</i><i>2:07</i><i>2:06</i><i>2:05</i><i>2:04</i><i>2:03</i><i>2:02</i><i>2:01</i><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 180s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 180s forwards, pulse 1s 180s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t180a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc600a" style="animation:flashbg .5s 600s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">10:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 600s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 600s forwards;"><div class="cd-roll" style="animation:roll600 600s steps(600) forwards;"><i>10:00</i><i>9:59</i><i>9:58</i><i>9:57</i><i>9:56</i><i>9:55</i><i>9:54</i><i>9:53</i><i>9:52</i><i>9:51</i><i>9:50</i><i>9:49</i><i>9:48</i><i>9:47</i><i>9:46</i><i>9:45</i><i>9:44</i><i>9:43</i><i>9:42</i><i>9:41</i><i>9:40</i><i>9:39</i><i>9:38</i><i>9:37</i><i>9:36</i><i>9:35</i><i>9:34</i><i>9:33</i><i>9:32</i><i>9:31</i><i>9:30</i><i>9:29</i><i>9:28</i><i>9:27</i><i>9:26</i><i>9:25</i><i>9:24</i><i>9:23</i><i>9:22</i><i>9:21</i><i>9:20</i><i>9:19</i><i>9:18</i><i>9:17</i><i>9:16</i><i>9:15</i><i>9:14</i><i>9:13</i><i>9:12</i><i>9:11</i><i>9:10</i><i>9:09</i><i>9:08</i><i>9:07</i><i>9:06</i><i>9:05</i><i>9:04</i><i>9:03</i><i>9:02</i><i>9:01</i><i>9:00</i><i>8:59</i><i>8:58</i><i>8:57</i><i>8:56</i><i>8:55</i><i>8:54</i><i>8:53</i><i>8:52</i><i>8:51</i><i>8:50</i><i>8:49</i><i>8:48</i><i>8:47</i><i>8:46</i><i>8:45</i><i>8:44</i><i>8:43</i><i>8:42</i><i>8:41</i><i>8:40</i><i>8:39</i><i>8:38</i><i>8:37</i><i>8:36</i><i>8:35</i><i>8:34</i><i>8:33</i><i>8:32</i><i>8:31</i><i>8:30</i><i>8:29</i><i>8:28</i><i>8:27</i><i>8:26</i><i>8:25</i><i>8:24</i><i>8:23</i><i>8:22</i><i>8:21</i><i>8:20</i><i>8:19</i><i>8:18</i><i>8:17</i><i>8:16</i><i>8:15</i><i>8:14</i><i>8:13</i><i>8:12</i><i>8:11</i><i>8:10</i><i>8:09</i><i>8:08</i><i>8:07</i><i>8:06</i><i>8:05</i><i>8:04</i><i>8:03</i><i>8:02</i><i>8:01</i><i>8:00</i><i>7:59</i><i>7:58</i><i>7:57</i><i>7:56</i><i>7:55</i><i>7:54</i><i>7:53</i><i>7:52</i><i>7:51</i><i>7:50</i><i>7:49</i><i>7:48</i><i>7:47</i><i>7:46</i><i>7:45</i><i>7:44</i><i>7:43</i><i>7:42</i><i>7:41</i><i>7:40</i><i>7:39</i><i>7:38</i><i>7:37</i><i>7:36</i><i>7:35</i><i>7:34</i><i>7:33</i><i>7:32</i><i>7:31</i><i>7:30</i><i>7:29</i><i>7:28</i><i>7:27</i><i>7:26</i><i>7:25</i><i>7:24</i><i>7:23</i><i>7:22</i><i>7:21</i><i>7:20</i><i>7:19</i><i>7:18</i><i>7:17</i><i>7:16</i><i>7:15</i><i>7:14</i><i>7:13</i><i>7:12</i><i>7:11</i><i>7:10</i><i>7:09</i><i>7:08</i><i>7:07</i><i>7:06</i><i>7:05</i><i>7:04</i><i>7:03</i><i>7:02</i><i>7:01</i><i>7:00</i><i>6:59</i><i>6:58</i><i>6:57</i><i>6:56</i><i>6:55</i><i>6:54</i><i>6:53</i><i>6:52</i><i>6:51</i><i>6:50</i><i>6:49</i><i>6:48</i><i>6:47</i><i>6:46</i><i>6:45</i><i>6:44</i><i>6:43</i><i>6:42</i><i>6:41</i><i>6:40</i><i>6:39</i><i>6:38</i><i>6:37</i><i>6:36</i><i>6:35</i><i>6:34</i><i>6:33</i><i>6:32</i><i>6:31</i><i>6:30</i><i>6:29</i><i>6:28</i><i>6:27</i><i>6:26</i><i>6:25</i><i>6:24</i><i>6:23</i><i>6:22</i><i>6:21</i><i>6:20</i><i>6:19</i><i>6:18</i><i>6:17</i><i>6:16</i><i>6:15</i><i>6:14</i><i>6:13</i><i>6:12</i><i>6:11</i><i>6:10</i><i>6:09</i><i>6:08</i><i>6:07</i><i>6:06</i><i>6:05</i><i>6:04</i><i>6:03</i><i>6:02</i><i>6:01</i><i>6:00</i><i>5:59</i><i>5:58</i><i>5:57</i><i>5:56</i><i>5:55</i><i>5:54</i><i>5:53</i><i>5:52</i><i>5:51</i><i>5:50</i><i>5:49</i><i>5:48</i><i>5:47</i><i>5:46</i><i>5:45</i><i>5:44</i><i>5:43</i><i>5:42</i><i>5:41</i><i>5:40</i><i>5:39</i><i>5:38</i><i>5:37</i><i>5:36</i><i>5:35</i><i>5:34</i><i>5:33</i><i>5:32</i><i>5:31</i><i>5:30</i><i>5:29</i><i>5:28</i><i>5:27</i><i>5:26</i><i>5:25</i><i>5:24</i><i>5:23</i><i>5:22</i><i>5:21</i><i>5:20</i><i>5:19</i><i>5:18</i><i>5:17</i><i>5:16</i><i>5:15</i><i>5:14</i><i>5:13</i><i>5:12</i><i>5:11</i><i>5:10</i><i>5:09</i><i>5:08</i><i>5:07</i><i>5:06</i><i>5:05</i><i>5:04</i><i>5:03</i><i>5:02</i><i>5:01</i><i>5:00</i><i>4:59</i><i>4:58</i><i>4:57</i><i>4:56</i><i>4:55</i><i>4:54</i><i>4:53</i><i>4:52</i><i>4:51</i><i>4:50</i><i>4:49</i><i>4:48</i><i>4:47</i><i>4:46</i><i>4:45</i><i>4:44</i><i>4:43</i><i>4:42</i><i>4:41</i><i>4:40</i><i>4:39</i><i>4:38</i><i>4:37</i><i>4:36</i><i>4:35</i><i>4:34</i><i>4:33</i><i>4:32</i><i>4:31</i><i>4:30</i><i>4:29</i><i>4:28</i><i>4:27</i><i>4:26</i><i>4:25</i><i>4:24</i><i>4:23</i><i>4:22</i><i>4:21</i><i>4:20</i><i>4:19</i><i>4:18</i><i>4:17</i><i>4:16</i><i>4:15</i><i>4:14</i><i>4:13</i><i>4:12</i><i>4:11</i><i>4:10</i><i>4:09</i><i>4:08</i><i>4:07</i><i>4:06</i><i>4:05</i><i>4:04</i><i>4:03</i><i>4:02</i><i>4:01</i><i>4:00</i><i>3:59</i><i>3:58</i><i>3:57</i><i>3:56</i><i>3:55</i><i>3:54</i><i>3:53</i><i>3:52</i><i>3:51</i><i>3:50</i><i>3:49</i><i>3:48</i><i>3:47</i><i>3:46</i><i>3:45</i><i>3:44</i><i>3:43</i><i>3:42</i><i>3:41</i><i>3:40</i><i>3:39</i><i>3:38</i><i>3:37</i><i>3:36</i><i>3:35</i><i>3:34</i><i>3:33</i><i>3:32</i><i>3:31</i><i>3:30</i><i>3:29</i><i>3:28</i><i>3:27</i><i>3:26</i><i>3:25</i><i>3:24</i><i>3:23</i><i>3:22</i><i>3:21</i><i>3:20</i><i>3:19</i><i>3:18</i><i>3:17</i><i>3:16</i><i>3:15</i><i>3:14</i><i>3:13</i><i>3:12</i><i>3:11</i><i>3:10</i><i>3:09</i><i>3:08</i><i>3:07</i><i>3:06</i><i>3:05</i><i>3:04</i><i>3:03</i><i>3:02</i><i>3:01</i><i>3:00</i><i>2:59</i><i>2:58</i><i>2:57</i><i>2:56</i><i>2:55</i><i>2:54</i><i>2:53</i><i>2:52</i><i>2:51</i><i>2:50</i><i>2:49</i><i>2:48</i><i>2:47</i><i>2:46</i><i>2:45</i><i>2:44</i><i>2:43</i><i>2:42</i><i>2:41</i><i>2:40</i><i>2:39</i><i>2:38</i><i>2:37</i><i>2:36</i><i>2:35</i><i>2:34</i><i>2:33</i><i>2:32</i><i>2:31</i><i>2:30</i><i>2:29</i><i>2:28</i><i>2:27</i><i>2:26</i><i>2:25</i><i>2:24</i><i>2:23</i><i>2:22</i><i>2:21</i><i>2:20</i><i>2:19</i><i>2:18</i><i>2:17</i><i>2:16</i><i>2:15</i><i>2:14</i><i>2:13</i><i>2:12</i><i>2:11</i><i>2:10</i><i>2:09</i><i>2:08</i><i>2:07</i><i>2:06</i><i>2:05</i><i>2:04</i><i>2:03</i><i>2:02</i><i>2:01</i><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 600s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 600s forwards, pulse 1s 600s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t600b">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc600b" style="animation:flashbg .5s 600s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">10:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 600s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 600s forwards;"><div class="cd-roll" style="animation:roll600 600s steps(600) forwards;"><i>10:00</i><i>9:59</i><i>9:58</i><i>9:57</i><i>9:56</i><i>9:55</i><i>9:54</i><i>9:53</i><i>9:52</i><i>9:51</i><i>9:50</i><i>9:49</i><i>9:48</i><i>9:47</i><i>9:46</i><i>9:45</i><i>9:44</i><i>9:43</i><i>9:42</i><i>9:41</i><i>9:40</i><i>9:39</i><i>9:38</i><i>9:37</i><i>9:36</i><i>9:35</i><i>9:34</i><i>9:33</i><i>9:32</i><i>9:31</i><i>9:30</i><i>9:29</i><i>9:28</i><i>9:27</i><i>9:26</i><i>9:25</i><i>9:24</i><i>9:23</i><i>9:22</i><i>9:21</i><i>9:20</i><i>9:19</i><i>9:18</i><i>9:17</i><i>9:16</i><i>9:15</i><i>9:14</i><i>9:13</i><i>9:12</i><i>9:11</i><i>9:10</i><i>9:09</i><i>9:08</i><i>9:07</i><i>9:06</i><i>9:05</i><i>9:04</i><i>9:03</i><i>9:02</i><i>9:01</i><i>9:00</i><i>8:59</i><i>8:58</i><i>8:57</i><i>8:56</i><i>8:55</i><i>8:54</i><i>8:53</i><i>8:52</i><i>8:51</i><i>8:50</i><i>8:49</i><i>8:48</i><i>8:47</i><i>8:46</i><i>8:45</i><i>8:44</i><i>8:43</i><i>8:42</i><i>8:41</i><i>8:40</i><i>8:39</i><i>8:38</i><i>8:37</i><i>8:36</i><i>8:35</i><i>8:34</i><i>8:33</i><i>8:32</i><i>8:31</i><i>8:30</i><i>8:29</i><i>8:28</i><i>8:27</i><i>8:26</i><i>8:25</i><i>8:24</i><i>8:23</i><i>8:22</i><i>8:21</i><i>8:20</i><i>8:19</i><i>8:18</i><i>8:17</i><i>8:16</i><i>8:15</i><i>8:14</i><i>8:13</i><i>8:12</i><i>8:11</i><i>8:10</i><i>8:09</i><i>8:08</i><i>8:07</i><i>8:06</i><i>8:05</i><i>8:04</i><i>8:03</i><i>8:02</i><i>8:01</i><i>8:00</i><i>7:59</i><i>7:58</i><i>7:57</i><i>7:56</i><i>7:55</i><i>7:54</i><i>7:53</i><i>7:52</i><i>7:51</i><i>7:50</i><i>7:49</i><i>7:48</i><i>7:47</i><i>7:46</i><i>7:45</i><i>7:44</i><i>7:43</i><i>7:42</i><i>7:41</i><i>7:40</i><i>7:39</i><i>7:38</i><i>7:37</i><i>7:36</i><i>7:35</i><i>7:34</i><i>7:33</i><i>7:32</i><i>7:31</i><i>7:30</i><i>7:29</i><i>7:28</i><i>7:27</i><i>7:26</i><i>7:25</i><i>7:24</i><i>7:23</i><i>7:22</i><i>7:21</i><i>7:20</i><i>7:19</i><i>7:18</i><i>7:17</i><i>7:16</i><i>7:15</i><i>7:14</i><i>7:13</i><i>7:12</i><i>7:11</i><i>7:10</i><i>7:09</i><i>7:08</i><i>7:07</i><i>7:06</i><i>7:05</i><i>7:04</i><i>7:03</i><i>7:02</i><i>7:01</i><i>7:00</i><i>6:59</i><i>6:58</i><i>6:57</i><i>6:56</i><i>6:55</i><i>6:54</i><i>6:53</i><i>6:52</i><i>6:51</i><i>6:50</i><i>6:49</i><i>6:48</i><i>6:47</i><i>6:46</i><i>6:45</i><i>6:44</i><i>6:43</i><i>6:42</i><i>6:41</i><i>6:40</i><i>6:39</i><i>6:38</i><i>6:37</i><i>6:36</i><i>6:35</i><i>6:34</i><i>6:33</i><i>6:32</i><i>6:31</i><i>6:30</i><i>6:29</i><i>6:28</i><i>6:27</i><i>6:26</i><i>6:25</i><i>6:24</i><i>6:23</i><i>6:22</i><i>6:21</i><i>6:20</i><i>6:19</i><i>6:18</i><i>6:17</i><i>6:16</i><i>6:15</i><i>6:14</i><i>6:13</i><i>6:12</i><i>6:11</i><i>6:10</i><i>6:09</i><i>6:08</i><i>6:07</i><i>6:06</i><i>6:05</i><i>6:04</i><i>6:03</i><i>6:02</i><i>6:01</i><i>6:00</i><i>5:59</i><i>5:58</i><i>5:57</i><i>5:56</i><i>5:55</i><i>5:54</i><i>5:53</i><i>5:52</i><i>5:51</i><i>5:50</i><i>5:49</i><i>5:48</i><i>5:47</i><i>5:46</i><i>5:45</i><i>5:44</i><i>5:43</i><i>5:42</i><i>5:41</i><i>5:40</i><i>5:39</i><i>5:38</i><i>5:37</i><i>5:36</i><i>5:35</i><i>5:34</i><i>5:33</i><i>5:32</i><i>5:31</i><i>5:30</i><i>5:29</i><i>5:28</i><i>5:27</i><i>5:26</i><i>5:25</i><i>5:24</i><i>5:23</i><i>5:22</i><i>5:21</i><i>5:20</i><i>5:19</i><i>5:18</i><i>5:17</i><i>5:16</i><i>5:15</i><i>5:14</i><i>5:13</i><i>5:12</i><i>5:11</i><i>5:10</i><i>5:09</i><i>5:08</i><i>5:07</i><i>5:06</i><i>5:05</i><i>5:04</i><i>5:03</i><i>5:02</i><i>5:01</i><i>5:00</i><i>4:59</i><i>4:58</i><i>4:57</i><i>4:56</i><i>4:55</i><i>4:54</i><i>4:53</i><i>4:52</i><i>4:51</i><i>4:50</i><i>4:49</i><i>4:48</i><i>4:47</i><i>4:46</i><i>4:45</i><i>4:44</i><i>4:43</i><i>4:42</i><i>4:41</i><i>4:40</i><i>4:39</i><i>4:38</i><i>4:37</i><i>4:36</i><i>4:35</i><i>4:34</i><i>4:33</i><i>4:32</i><i>4:31</i><i>4:30</i><i>4:29</i><i>4:28</i><i>4:27</i><i>4:26</i><i>4:25</i><i>4:24</i><i>4:23</i><i>4:22</i><i>4:21</i><i>4:20</i><i>4:19</i><i>4:18</i><i>4:17</i><i>4:16</i><i>4:15</i><i>4:14</i><i>4:13</i><i>4:12</i><i>4:11</i><i>4:10</i><i>4:09</i><i>4:08</i><i>4:07</i><i>4:06</i><i>4:05</i><i>4:04</i><i>4:03</i><i>4:02</i><i>4:01</i><i>4:00</i><i>3:59</i><i>3:58</i><i>3:57</i><i>3:56</i><i>3:55</i><i>3:54</i><i>3:53</i><i>3:52</i><i>3:51</i><i>3:50</i><i>3:49</i><i>3:48</i><i>3:47</i><i>3:46</i><i>3:45</i><i>3:44</i><i>3:43</i><i>3:42</i><i>3:41</i><i>3:40</i><i>3:39</i><i>3:38</i><i>3:37</i><i>3:36</i><i>3:35</i><i>3:34</i><i>3:33</i><i>3:32</i><i>3:31</i><i>3:30</i><i>3:29</i><i>3:28</i><i>3:27</i><i>3:26</i><i>3:25</i><i>3:24</i><i>3:23</i><i>3:22</i><i>3:21</i><i>3:20</i><i>3:19</i><i>3:18</i><i>3:17</i><i>3:16</i><i>3:15</i><i>3:14</i><i>3:13</i><i>3:12</i><i>3:11</i><i>3:10</i><i>3:09</i><i>3:08</i><i>3:07</i><i>3:06</i><i>3:05</i><i>3:04</i><i>3:03</i><i>3:02</i><i>3:01</i><i>3:00</i><i>2:59</i><i>2:58</i><i>2:57</i><i>2:56</i><i>2:55</i><i>2:54</i><i>2:53</i><i>2:52</i><i>2:51</i><i>2:50</i><i>2:49</i><i>2:48</i><i>2:47</i><i>2:46</i><i>2:45</i><i>2:44</i><i>2:43</i><i>2:42</i><i>2:41</i><i>2:40</i><i>2:39</i><i>2:38</i><i>2:37</i><i>2:36</i><i>2:35</i><i>2:34</i><i>2:33</i><i>2:32</i><i>2:31</i><i>2:30</i><i>2:29</i><i>2:28</i><i>2:27</i><i>2:26</i><i>2:25</i><i>2:24</i><i>2:23</i><i>2:22</i><i>2:21</i><i>2:20</i><i>2:19</i><i>2:18</i><i>2:17</i><i>2:16</i><i>2:15</i><i>2:14</i><i>2:13</i><i>2:12</i><i>2:11</i><i>2:10</i><i>2:09</i><i>2:08</i><i>2:07</i><i>2:06</i><i>2:05</i><i>2:04</i><i>2:03</i><i>2:02</i><i>2:01</i><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 600s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 600s forwards, pulse 1s 600s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t600a">↻ Restart</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+<div class="tmr-css" id="tc1500a" style="animation:flashbg .5s 1500s 4;">
+  <label class="tmr-min" for="t-none">Close ✕</label>
+  <div class="tmr-ex">25:00 rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" cx="60" cy="60" r="54"
+        style="stroke-dasharray:339.292; animation:ringrun 1500s linear forwards;"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="cd" style="animation:fadeout .2s 1500s forwards;"><div class="cd-roll" style="animation:roll1500 1500s steps(1500) forwards;"><i>25:00</i><i>24:59</i><i>24:58</i><i>24:57</i><i>24:56</i><i>24:55</i><i>24:54</i><i>24:53</i><i>24:52</i><i>24:51</i><i>24:50</i><i>24:49</i><i>24:48</i><i>24:47</i><i>24:46</i><i>24:45</i><i>24:44</i><i>24:43</i><i>24:42</i><i>24:41</i><i>24:40</i><i>24:39</i><i>24:38</i><i>24:37</i><i>24:36</i><i>24:35</i><i>24:34</i><i>24:33</i><i>24:32</i><i>24:31</i><i>24:30</i><i>24:29</i><i>24:28</i><i>24:27</i><i>24:26</i><i>24:25</i><i>24:24</i><i>24:23</i><i>24:22</i><i>24:21</i><i>24:20</i><i>24:19</i><i>24:18</i><i>24:17</i><i>24:16</i><i>24:15</i><i>24:14</i><i>24:13</i><i>24:12</i><i>24:11</i><i>24:10</i><i>24:09</i><i>24:08</i><i>24:07</i><i>24:06</i><i>24:05</i><i>24:04</i><i>24:03</i><i>24:02</i><i>24:01</i><i>24:00</i><i>23:59</i><i>23:58</i><i>23:57</i><i>23:56</i><i>23:55</i><i>23:54</i><i>23:53</i><i>23:52</i><i>23:51</i><i>23:50</i><i>23:49</i><i>23:48</i><i>23:47</i><i>23:46</i><i>23:45</i><i>23:44</i><i>23:43</i><i>23:42</i><i>23:41</i><i>23:40</i><i>23:39</i><i>23:38</i><i>23:37</i><i>23:36</i><i>23:35</i><i>23:34</i><i>23:33</i><i>23:32</i><i>23:31</i><i>23:30</i><i>23:29</i><i>23:28</i><i>23:27</i><i>23:26</i><i>23:25</i><i>23:24</i><i>23:23</i><i>23:22</i><i>23:21</i><i>23:20</i><i>23:19</i><i>23:18</i><i>23:17</i><i>23:16</i><i>23:15</i><i>23:14</i><i>23:13</i><i>23:12</i><i>23:11</i><i>23:10</i><i>23:09</i><i>23:08</i><i>23:07</i><i>23:06</i><i>23:05</i><i>23:04</i><i>23:03</i><i>23:02</i><i>23:01</i><i>23:00</i><i>22:59</i><i>22:58</i><i>22:57</i><i>22:56</i><i>22:55</i><i>22:54</i><i>22:53</i><i>22:52</i><i>22:51</i><i>22:50</i><i>22:49</i><i>22:48</i><i>22:47</i><i>22:46</i><i>22:45</i><i>22:44</i><i>22:43</i><i>22:42</i><i>22:41</i><i>22:40</i><i>22:39</i><i>22:38</i><i>22:37</i><i>22:36</i><i>22:35</i><i>22:34</i><i>22:33</i><i>22:32</i><i>22:31</i><i>22:30</i><i>22:29</i><i>22:28</i><i>22:27</i><i>22:26</i><i>22:25</i><i>22:24</i><i>22:23</i><i>22:22</i><i>22:21</i><i>22:20</i><i>22:19</i><i>22:18</i><i>22:17</i><i>22:16</i><i>22:15</i><i>22:14</i><i>22:13</i><i>22:12</i><i>22:11</i><i>22:10</i><i>22:09</i><i>22:08</i><i>22:07</i><i>22:06</i><i>22:05</i><i>22:04</i><i>22:03</i><i>22:02</i><i>22:01</i><i>22:00</i><i>21:59</i><i>21:58</i><i>21:57</i><i>21:56</i><i>21:55</i><i>21:54</i><i>21:53</i><i>21:52</i><i>21:51</i><i>21:50</i><i>21:49</i><i>21:48</i><i>21:47</i><i>21:46</i><i>21:45</i><i>21:44</i><i>21:43</i><i>21:42</i><i>21:41</i><i>21:40</i><i>21:39</i><i>21:38</i><i>21:37</i><i>21:36</i><i>21:35</i><i>21:34</i><i>21:33</i><i>21:32</i><i>21:31</i><i>21:30</i><i>21:29</i><i>21:28</i><i>21:27</i><i>21:26</i><i>21:25</i><i>21:24</i><i>21:23</i><i>21:22</i><i>21:21</i><i>21:20</i><i>21:19</i><i>21:18</i><i>21:17</i><i>21:16</i><i>21:15</i><i>21:14</i><i>21:13</i><i>21:12</i><i>21:11</i><i>21:10</i><i>21:09</i><i>21:08</i><i>21:07</i><i>21:06</i><i>21:05</i><i>21:04</i><i>21:03</i><i>21:02</i><i>21:01</i><i>21:00</i><i>20:59</i><i>20:58</i><i>20:57</i><i>20:56</i><i>20:55</i><i>20:54</i><i>20:53</i><i>20:52</i><i>20:51</i><i>20:50</i><i>20:49</i><i>20:48</i><i>20:47</i><i>20:46</i><i>20:45</i><i>20:44</i><i>20:43</i><i>20:42</i><i>20:41</i><i>20:40</i><i>20:39</i><i>20:38</i><i>20:37</i><i>20:36</i><i>20:35</i><i>20:34</i><i>20:33</i><i>20:32</i><i>20:31</i><i>20:30</i><i>20:29</i><i>20:28</i><i>20:27</i><i>20:26</i><i>20:25</i><i>20:24</i><i>20:23</i><i>20:22</i><i>20:21</i><i>20:20</i><i>20:19</i><i>20:18</i><i>20:17</i><i>20:16</i><i>20:15</i><i>20:14</i><i>20:13</i><i>20:12</i><i>20:11</i><i>20:10</i><i>20:09</i><i>20:08</i><i>20:07</i><i>20:06</i><i>20:05</i><i>20:04</i><i>20:03</i><i>20:02</i><i>20:01</i><i>20:00</i><i>19:59</i><i>19:58</i><i>19:57</i><i>19:56</i><i>19:55</i><i>19:54</i><i>19:53</i><i>19:52</i><i>19:51</i><i>19:50</i><i>19:49</i><i>19:48</i><i>19:47</i><i>19:46</i><i>19:45</i><i>19:44</i><i>19:43</i><i>19:42</i><i>19:41</i><i>19:40</i><i>19:39</i><i>19:38</i><i>19:37</i><i>19:36</i><i>19:35</i><i>19:34</i><i>19:33</i><i>19:32</i><i>19:31</i><i>19:30</i><i>19:29</i><i>19:28</i><i>19:27</i><i>19:26</i><i>19:25</i><i>19:24</i><i>19:23</i><i>19:22</i><i>19:21</i><i>19:20</i><i>19:19</i><i>19:18</i><i>19:17</i><i>19:16</i><i>19:15</i><i>19:14</i><i>19:13</i><i>19:12</i><i>19:11</i><i>19:10</i><i>19:09</i><i>19:08</i><i>19:07</i><i>19:06</i><i>19:05</i><i>19:04</i><i>19:03</i><i>19:02</i><i>19:01</i><i>19:00</i><i>18:59</i><i>18:58</i><i>18:57</i><i>18:56</i><i>18:55</i><i>18:54</i><i>18:53</i><i>18:52</i><i>18:51</i><i>18:50</i><i>18:49</i><i>18:48</i><i>18:47</i><i>18:46</i><i>18:45</i><i>18:44</i><i>18:43</i><i>18:42</i><i>18:41</i><i>18:40</i><i>18:39</i><i>18:38</i><i>18:37</i><i>18:36</i><i>18:35</i><i>18:34</i><i>18:33</i><i>18:32</i><i>18:31</i><i>18:30</i><i>18:29</i><i>18:28</i><i>18:27</i><i>18:26</i><i>18:25</i><i>18:24</i><i>18:23</i><i>18:22</i><i>18:21</i><i>18:20</i><i>18:19</i><i>18:18</i><i>18:17</i><i>18:16</i><i>18:15</i><i>18:14</i><i>18:13</i><i>18:12</i><i>18:11</i><i>18:10</i><i>18:09</i><i>18:08</i><i>18:07</i><i>18:06</i><i>18:05</i><i>18:04</i><i>18:03</i><i>18:02</i><i>18:01</i><i>18:00</i><i>17:59</i><i>17:58</i><i>17:57</i><i>17:56</i><i>17:55</i><i>17:54</i><i>17:53</i><i>17:52</i><i>17:51</i><i>17:50</i><i>17:49</i><i>17:48</i><i>17:47</i><i>17:46</i><i>17:45</i><i>17:44</i><i>17:43</i><i>17:42</i><i>17:41</i><i>17:40</i><i>17:39</i><i>17:38</i><i>17:37</i><i>17:36</i><i>17:35</i><i>17:34</i><i>17:33</i><i>17:32</i><i>17:31</i><i>17:30</i><i>17:29</i><i>17:28</i><i>17:27</i><i>17:26</i><i>17:25</i><i>17:24</i><i>17:23</i><i>17:22</i><i>17:21</i><i>17:20</i><i>17:19</i><i>17:18</i><i>17:17</i><i>17:16</i><i>17:15</i><i>17:14</i><i>17:13</i><i>17:12</i><i>17:11</i><i>17:10</i><i>17:09</i><i>17:08</i><i>17:07</i><i>17:06</i><i>17:05</i><i>17:04</i><i>17:03</i><i>17:02</i><i>17:01</i><i>17:00</i><i>16:59</i><i>16:58</i><i>16:57</i><i>16:56</i><i>16:55</i><i>16:54</i><i>16:53</i><i>16:52</i><i>16:51</i><i>16:50</i><i>16:49</i><i>16:48</i><i>16:47</i><i>16:46</i><i>16:45</i><i>16:44</i><i>16:43</i><i>16:42</i><i>16:41</i><i>16:40</i><i>16:39</i><i>16:38</i><i>16:37</i><i>16:36</i><i>16:35</i><i>16:34</i><i>16:33</i><i>16:32</i><i>16:31</i><i>16:30</i><i>16:29</i><i>16:28</i><i>16:27</i><i>16:26</i><i>16:25</i><i>16:24</i><i>16:23</i><i>16:22</i><i>16:21</i><i>16:20</i><i>16:19</i><i>16:18</i><i>16:17</i><i>16:16</i><i>16:15</i><i>16:14</i><i>16:13</i><i>16:12</i><i>16:11</i><i>16:10</i><i>16:09</i><i>16:08</i><i>16:07</i><i>16:06</i><i>16:05</i><i>16:04</i><i>16:03</i><i>16:02</i><i>16:01</i><i>16:00</i><i>15:59</i><i>15:58</i><i>15:57</i><i>15:56</i><i>15:55</i><i>15:54</i><i>15:53</i><i>15:52</i><i>15:51</i><i>15:50</i><i>15:49</i><i>15:48</i><i>15:47</i><i>15:46</i><i>15:45</i><i>15:44</i><i>15:43</i><i>15:42</i><i>15:41</i><i>15:40</i><i>15:39</i><i>15:38</i><i>15:37</i><i>15:36</i><i>15:35</i><i>15:34</i><i>15:33</i><i>15:32</i><i>15:31</i><i>15:30</i><i>15:29</i><i>15:28</i><i>15:27</i><i>15:26</i><i>15:25</i><i>15:24</i><i>15:23</i><i>15:22</i><i>15:21</i><i>15:20</i><i>15:19</i><i>15:18</i><i>15:17</i><i>15:16</i><i>15:15</i><i>15:14</i><i>15:13</i><i>15:12</i><i>15:11</i><i>15:10</i><i>15:09</i><i>15:08</i><i>15:07</i><i>15:06</i><i>15:05</i><i>15:04</i><i>15:03</i><i>15:02</i><i>15:01</i><i>15:00</i><i>14:59</i><i>14:58</i><i>14:57</i><i>14:56</i><i>14:55</i><i>14:54</i><i>14:53</i><i>14:52</i><i>14:51</i><i>14:50</i><i>14:49</i><i>14:48</i><i>14:47</i><i>14:46</i><i>14:45</i><i>14:44</i><i>14:43</i><i>14:42</i><i>14:41</i><i>14:40</i><i>14:39</i><i>14:38</i><i>14:37</i><i>14:36</i><i>14:35</i><i>14:34</i><i>14:33</i><i>14:32</i><i>14:31</i><i>14:30</i><i>14:29</i><i>14:28</i><i>14:27</i><i>14:26</i><i>14:25</i><i>14:24</i><i>14:23</i><i>14:22</i><i>14:21</i><i>14:20</i><i>14:19</i><i>14:18</i><i>14:17</i><i>14:16</i><i>14:15</i><i>14:14</i><i>14:13</i><i>14:12</i><i>14:11</i><i>14:10</i><i>14:09</i><i>14:08</i><i>14:07</i><i>14:06</i><i>14:05</i><i>14:04</i><i>14:03</i><i>14:02</i><i>14:01</i><i>14:00</i><i>13:59</i><i>13:58</i><i>13:57</i><i>13:56</i><i>13:55</i><i>13:54</i><i>13:53</i><i>13:52</i><i>13:51</i><i>13:50</i><i>13:49</i><i>13:48</i><i>13:47</i><i>13:46</i><i>13:45</i><i>13:44</i><i>13:43</i><i>13:42</i><i>13:41</i><i>13:40</i><i>13:39</i><i>13:38</i><i>13:37</i><i>13:36</i><i>13:35</i><i>13:34</i><i>13:33</i><i>13:32</i><i>13:31</i><i>13:30</i><i>13:29</i><i>13:28</i><i>13:27</i><i>13:26</i><i>13:25</i><i>13:24</i><i>13:23</i><i>13:22</i><i>13:21</i><i>13:20</i><i>13:19</i><i>13:18</i><i>13:17</i><i>13:16</i><i>13:15</i><i>13:14</i><i>13:13</i><i>13:12</i><i>13:11</i><i>13:10</i><i>13:09</i><i>13:08</i><i>13:07</i><i>13:06</i><i>13:05</i><i>13:04</i><i>13:03</i><i>13:02</i><i>13:01</i><i>13:00</i><i>12:59</i><i>12:58</i><i>12:57</i><i>12:56</i><i>12:55</i><i>12:54</i><i>12:53</i><i>12:52</i><i>12:51</i><i>12:50</i><i>12:49</i><i>12:48</i><i>12:47</i><i>12:46</i><i>12:45</i><i>12:44</i><i>12:43</i><i>12:42</i><i>12:41</i><i>12:40</i><i>12:39</i><i>12:38</i><i>12:37</i><i>12:36</i><i>12:35</i><i>12:34</i><i>12:33</i><i>12:32</i><i>12:31</i><i>12:30</i><i>12:29</i><i>12:28</i><i>12:27</i><i>12:26</i><i>12:25</i><i>12:24</i><i>12:23</i><i>12:22</i><i>12:21</i><i>12:20</i><i>12:19</i><i>12:18</i><i>12:17</i><i>12:16</i><i>12:15</i><i>12:14</i><i>12:13</i><i>12:12</i><i>12:11</i><i>12:10</i><i>12:09</i><i>12:08</i><i>12:07</i><i>12:06</i><i>12:05</i><i>12:04</i><i>12:03</i><i>12:02</i><i>12:01</i><i>12:00</i><i>11:59</i><i>11:58</i><i>11:57</i><i>11:56</i><i>11:55</i><i>11:54</i><i>11:53</i><i>11:52</i><i>11:51</i><i>11:50</i><i>11:49</i><i>11:48</i><i>11:47</i><i>11:46</i><i>11:45</i><i>11:44</i><i>11:43</i><i>11:42</i><i>11:41</i><i>11:40</i><i>11:39</i><i>11:38</i><i>11:37</i><i>11:36</i><i>11:35</i><i>11:34</i><i>11:33</i><i>11:32</i><i>11:31</i><i>11:30</i><i>11:29</i><i>11:28</i><i>11:27</i><i>11:26</i><i>11:25</i><i>11:24</i><i>11:23</i><i>11:22</i><i>11:21</i><i>11:20</i><i>11:19</i><i>11:18</i><i>11:17</i><i>11:16</i><i>11:15</i><i>11:14</i><i>11:13</i><i>11:12</i><i>11:11</i><i>11:10</i><i>11:09</i><i>11:08</i><i>11:07</i><i>11:06</i><i>11:05</i><i>11:04</i><i>11:03</i><i>11:02</i><i>11:01</i><i>11:00</i><i>10:59</i><i>10:58</i><i>10:57</i><i>10:56</i><i>10:55</i><i>10:54</i><i>10:53</i><i>10:52</i><i>10:51</i><i>10:50</i><i>10:49</i><i>10:48</i><i>10:47</i><i>10:46</i><i>10:45</i><i>10:44</i><i>10:43</i><i>10:42</i><i>10:41</i><i>10:40</i><i>10:39</i><i>10:38</i><i>10:37</i><i>10:36</i><i>10:35</i><i>10:34</i><i>10:33</i><i>10:32</i><i>10:31</i><i>10:30</i><i>10:29</i><i>10:28</i><i>10:27</i><i>10:26</i><i>10:25</i><i>10:24</i><i>10:23</i><i>10:22</i><i>10:21</i><i>10:20</i><i>10:19</i><i>10:18</i><i>10:17</i><i>10:16</i><i>10:15</i><i>10:14</i><i>10:13</i><i>10:12</i><i>10:11</i><i>10:10</i><i>10:09</i><i>10:08</i><i>10:07</i><i>10:06</i><i>10:05</i><i>10:04</i><i>10:03</i><i>10:02</i><i>10:01</i><i>10:00</i><i>9:59</i><i>9:58</i><i>9:57</i><i>9:56</i><i>9:55</i><i>9:54</i><i>9:53</i><i>9:52</i><i>9:51</i><i>9:50</i><i>9:49</i><i>9:48</i><i>9:47</i><i>9:46</i><i>9:45</i><i>9:44</i><i>9:43</i><i>9:42</i><i>9:41</i><i>9:40</i><i>9:39</i><i>9:38</i><i>9:37</i><i>9:36</i><i>9:35</i><i>9:34</i><i>9:33</i><i>9:32</i><i>9:31</i><i>9:30</i><i>9:29</i><i>9:28</i><i>9:27</i><i>9:26</i><i>9:25</i><i>9:24</i><i>9:23</i><i>9:22</i><i>9:21</i><i>9:20</i><i>9:19</i><i>9:18</i><i>9:17</i><i>9:16</i><i>9:15</i><i>9:14</i><i>9:13</i><i>9:12</i><i>9:11</i><i>9:10</i><i>9:09</i><i>9:08</i><i>9:07</i><i>9:06</i><i>9:05</i><i>9:04</i><i>9:03</i><i>9:02</i><i>9:01</i><i>9:00</i><i>8:59</i><i>8:58</i><i>8:57</i><i>8:56</i><i>8:55</i><i>8:54</i><i>8:53</i><i>8:52</i><i>8:51</i><i>8:50</i><i>8:49</i><i>8:48</i><i>8:47</i><i>8:46</i><i>8:45</i><i>8:44</i><i>8:43</i><i>8:42</i><i>8:41</i><i>8:40</i><i>8:39</i><i>8:38</i><i>8:37</i><i>8:36</i><i>8:35</i><i>8:34</i><i>8:33</i><i>8:32</i><i>8:31</i><i>8:30</i><i>8:29</i><i>8:28</i><i>8:27</i><i>8:26</i><i>8:25</i><i>8:24</i><i>8:23</i><i>8:22</i><i>8:21</i><i>8:20</i><i>8:19</i><i>8:18</i><i>8:17</i><i>8:16</i><i>8:15</i><i>8:14</i><i>8:13</i><i>8:12</i><i>8:11</i><i>8:10</i><i>8:09</i><i>8:08</i><i>8:07</i><i>8:06</i><i>8:05</i><i>8:04</i><i>8:03</i><i>8:02</i><i>8:01</i><i>8:00</i><i>7:59</i><i>7:58</i><i>7:57</i><i>7:56</i><i>7:55</i><i>7:54</i><i>7:53</i><i>7:52</i><i>7:51</i><i>7:50</i><i>7:49</i><i>7:48</i><i>7:47</i><i>7:46</i><i>7:45</i><i>7:44</i><i>7:43</i><i>7:42</i><i>7:41</i><i>7:40</i><i>7:39</i><i>7:38</i><i>7:37</i><i>7:36</i><i>7:35</i><i>7:34</i><i>7:33</i><i>7:32</i><i>7:31</i><i>7:30</i><i>7:29</i><i>7:28</i><i>7:27</i><i>7:26</i><i>7:25</i><i>7:24</i><i>7:23</i><i>7:22</i><i>7:21</i><i>7:20</i><i>7:19</i><i>7:18</i><i>7:17</i><i>7:16</i><i>7:15</i><i>7:14</i><i>7:13</i><i>7:12</i><i>7:11</i><i>7:10</i><i>7:09</i><i>7:08</i><i>7:07</i><i>7:06</i><i>7:05</i><i>7:04</i><i>7:03</i><i>7:02</i><i>7:01</i><i>7:00</i><i>6:59</i><i>6:58</i><i>6:57</i><i>6:56</i><i>6:55</i><i>6:54</i><i>6:53</i><i>6:52</i><i>6:51</i><i>6:50</i><i>6:49</i><i>6:48</i><i>6:47</i><i>6:46</i><i>6:45</i><i>6:44</i><i>6:43</i><i>6:42</i><i>6:41</i><i>6:40</i><i>6:39</i><i>6:38</i><i>6:37</i><i>6:36</i><i>6:35</i><i>6:34</i><i>6:33</i><i>6:32</i><i>6:31</i><i>6:30</i><i>6:29</i><i>6:28</i><i>6:27</i><i>6:26</i><i>6:25</i><i>6:24</i><i>6:23</i><i>6:22</i><i>6:21</i><i>6:20</i><i>6:19</i><i>6:18</i><i>6:17</i><i>6:16</i><i>6:15</i><i>6:14</i><i>6:13</i><i>6:12</i><i>6:11</i><i>6:10</i><i>6:09</i><i>6:08</i><i>6:07</i><i>6:06</i><i>6:05</i><i>6:04</i><i>6:03</i><i>6:02</i><i>6:01</i><i>6:00</i><i>5:59</i><i>5:58</i><i>5:57</i><i>5:56</i><i>5:55</i><i>5:54</i><i>5:53</i><i>5:52</i><i>5:51</i><i>5:50</i><i>5:49</i><i>5:48</i><i>5:47</i><i>5:46</i><i>5:45</i><i>5:44</i><i>5:43</i><i>5:42</i><i>5:41</i><i>5:40</i><i>5:39</i><i>5:38</i><i>5:37</i><i>5:36</i><i>5:35</i><i>5:34</i><i>5:33</i><i>5:32</i><i>5:31</i><i>5:30</i><i>5:29</i><i>5:28</i><i>5:27</i><i>5:26</i><i>5:25</i><i>5:24</i><i>5:23</i><i>5:22</i><i>5:21</i><i>5:20</i><i>5:19</i><i>5:18</i><i>5:17</i><i>5:16</i><i>5:15</i><i>5:14</i><i>5:13</i><i>5:12</i><i>5:11</i><i>5:10</i><i>5:09</i><i>5:08</i><i>5:07</i><i>5:06</i><i>5:05</i><i>5:04</i><i>5:03</i><i>5:02</i><i>5:01</i><i>5:00</i><i>4:59</i><i>4:58</i><i>4:57</i><i>4:56</i><i>4:55</i><i>4:54</i><i>4:53</i><i>4:52</i><i>4:51</i><i>4:50</i><i>4:49</i><i>4:48</i><i>4:47</i><i>4:46</i><i>4:45</i><i>4:44</i><i>4:43</i><i>4:42</i><i>4:41</i><i>4:40</i><i>4:39</i><i>4:38</i><i>4:37</i><i>4:36</i><i>4:35</i><i>4:34</i><i>4:33</i><i>4:32</i><i>4:31</i><i>4:30</i><i>4:29</i><i>4:28</i><i>4:27</i><i>4:26</i><i>4:25</i><i>4:24</i><i>4:23</i><i>4:22</i><i>4:21</i><i>4:20</i><i>4:19</i><i>4:18</i><i>4:17</i><i>4:16</i><i>4:15</i><i>4:14</i><i>4:13</i><i>4:12</i><i>4:11</i><i>4:10</i><i>4:09</i><i>4:08</i><i>4:07</i><i>4:06</i><i>4:05</i><i>4:04</i><i>4:03</i><i>4:02</i><i>4:01</i><i>4:00</i><i>3:59</i><i>3:58</i><i>3:57</i><i>3:56</i><i>3:55</i><i>3:54</i><i>3:53</i><i>3:52</i><i>3:51</i><i>3:50</i><i>3:49</i><i>3:48</i><i>3:47</i><i>3:46</i><i>3:45</i><i>3:44</i><i>3:43</i><i>3:42</i><i>3:41</i><i>3:40</i><i>3:39</i><i>3:38</i><i>3:37</i><i>3:36</i><i>3:35</i><i>3:34</i><i>3:33</i><i>3:32</i><i>3:31</i><i>3:30</i><i>3:29</i><i>3:28</i><i>3:27</i><i>3:26</i><i>3:25</i><i>3:24</i><i>3:23</i><i>3:22</i><i>3:21</i><i>3:20</i><i>3:19</i><i>3:18</i><i>3:17</i><i>3:16</i><i>3:15</i><i>3:14</i><i>3:13</i><i>3:12</i><i>3:11</i><i>3:10</i><i>3:09</i><i>3:08</i><i>3:07</i><i>3:06</i><i>3:05</i><i>3:04</i><i>3:03</i><i>3:02</i><i>3:01</i><i>3:00</i><i>2:59</i><i>2:58</i><i>2:57</i><i>2:56</i><i>2:55</i><i>2:54</i><i>2:53</i><i>2:52</i><i>2:51</i><i>2:50</i><i>2:49</i><i>2:48</i><i>2:47</i><i>2:46</i><i>2:45</i><i>2:44</i><i>2:43</i><i>2:42</i><i>2:41</i><i>2:40</i><i>2:39</i><i>2:38</i><i>2:37</i><i>2:36</i><i>2:35</i><i>2:34</i><i>2:33</i><i>2:32</i><i>2:31</i><i>2:30</i><i>2:29</i><i>2:28</i><i>2:27</i><i>2:26</i><i>2:25</i><i>2:24</i><i>2:23</i><i>2:22</i><i>2:21</i><i>2:20</i><i>2:19</i><i>2:18</i><i>2:17</i><i>2:16</i><i>2:15</i><i>2:14</i><i>2:13</i><i>2:12</i><i>2:11</i><i>2:10</i><i>2:09</i><i>2:08</i><i>2:07</i><i>2:06</i><i>2:05</i><i>2:04</i><i>2:03</i><i>2:02</i><i>2:01</i><i>2:00</i><i>1:59</i><i>1:58</i><i>1:57</i><i>1:56</i><i>1:55</i><i>1:54</i><i>1:53</i><i>1:52</i><i>1:51</i><i>1:50</i><i>1:49</i><i>1:48</i><i>1:47</i><i>1:46</i><i>1:45</i><i>1:44</i><i>1:43</i><i>1:42</i><i>1:41</i><i>1:40</i><i>1:39</i><i>1:38</i><i>1:37</i><i>1:36</i><i>1:35</i><i>1:34</i><i>1:33</i><i>1:32</i><i>1:31</i><i>1:30</i><i>1:29</i><i>1:28</i><i>1:27</i><i>1:26</i><i>1:25</i><i>1:24</i><i>1:23</i><i>1:22</i><i>1:21</i><i>1:20</i><i>1:19</i><i>1:18</i><i>1:17</i><i>1:16</i><i>1:15</i><i>1:14</i><i>1:13</i><i>1:12</i><i>1:11</i><i>1:10</i><i>1:09</i><i>1:08</i><i>1:07</i><i>1:06</i><i>1:05</i><i>1:04</i><i>1:03</i><i>1:02</i><i>1:01</i><i>1:00</i><i>0:59</i><i>0:58</i><i>0:57</i><i>0:56</i><i>0:55</i><i>0:54</i><i>0:53</i><i>0:52</i><i>0:51</i><i>0:50</i><i>0:49</i><i>0:48</i><i>0:47</i><i>0:46</i><i>0:45</i><i>0:44</i><i>0:43</i><i>0:42</i><i>0:41</i><i>0:40</i><i>0:39</i><i>0:38</i><i>0:37</i><i>0:36</i><i>0:35</i><i>0:34</i><i>0:33</i><i>0:32</i><i>0:31</i><i>0:30</i><i>0:29</i><i>0:28</i><i>0:27</i><i>0:26</i><i>0:25</i><i>0:24</i><i>0:23</i><i>0:22</i><i>0:21</i><i>0:20</i><i>0:19</i><i>0:18</i><i>0:17</i><i>0:16</i><i>0:15</i><i>0:14</i><i>0:13</i><i>0:12</i><i>0:11</i><i>0:10</i><i>0:09</i><i>0:08</i><i>0:07</i><i>0:06</i><i>0:05</i><i>0:04</i><i>0:03</i><i>0:02</i><i>0:01</i><i>0:00</i></div></div>
+      <div class="tmr-state" style="animation:fadeout .01s 1500s forwards;">Resting</div>
+      <div class="tmr-go" style="animation:fadein .25s 1500s forwards, pulse 1s 1500s infinite;">GO — next set!</div>
+    </div>
+  </div>
+  <div class="tmr-actions">
+    <label class="btn-pause" for="t-none">✕ Close</label>
+    <label class="btn-done" for="t-none">Done — lift!</label>
+  </div>
+</div>
+</div>
+
+<div class="tmr" id="tmr">
+  <button class="tmr-min" onclick="hideTimer()">Minimize ▾</button>
+  <div class="tmr-ex" id="tmrEx">Rest</div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 120 120">
+      <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+      <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="54"></circle>
+    </svg>
+    <div class="tmr-digits">
+      <div class="tmr-time" id="tmrTime">0:00</div>
+      <div class="tmr-state" id="tmrState">Resting</div>
+    </div>
+  </div>
+  <div class="tmr-adjust">
+    <button class="adj" onclick="adjustTimer(-15)">−15s</button>
+    <button class="adj" onclick="adjustTimer(15)">+15s</button>
+    <button class="adj" onclick="adjustTimer(30)">+30s</button>
+  </div>
+  <div class="tmr-actions">
+    <button class="btn-pause" id="pauseBtn" onclick="togglePause()">Pause</button>
+    <button class="btn-done" onclick="stopTimer()">Done — lift!</button>
+  </div>
+</div>
+
+<script>
+document.body.className = 'js';
+
+/* today's tab */
+(function(){
+  try{
+    var n = new Date().getDay(), r = document.getElementById('d'+n);
+    if(r){
+      r.checked = true;
+      var lab = document.querySelector('label[for="d'+n+'"]');
+      if(lab){ lab.classList.add('is-today');
+        if(lab.scrollIntoView) lab.scrollIntoView({inline:'center', block:'nearest'}); }
+    }
+  }catch(e){}
+})();
+
+/* accent follows the day you're viewing */
+function syncAccent(){
+  var c = document.querySelector('.dayradio:checked'); if(!c) return;
+  var panel = document.getElementById('p'+c.id.slice(1)); if(!panel) return;
+  var cs = getComputedStyle(panel);
+  document.documentElement.style.setProperty('--accent', cs.getPropertyValue('--accent'));
+  document.documentElement.style.setProperty('--accent-soft', cs.getPropertyValue('--accent-soft'));
+}
+Array.prototype.forEach.call(document.querySelectorAll('.dayradio'), function(r){
+  r.addEventListener('change', syncAccent);
+});
+syncAccent();
+
+/* start buttons: with JS we use the richer timer instead of the CSS one */
+Array.prototype.forEach.call(document.querySelectorAll('[data-sec]'), function(el){
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    startTimer(parseInt(el.getAttribute('data-sec'),10), el.getAttribute('data-name'));
+  });
+});
+
+/* ---------- JS rest timer ---------- */
+var CIRC = 2*Math.PI*54;
+var ringFg = document.getElementById('ringFg');
+ringFg.style.strokeDasharray = CIRC;
+
+var tTotal=0, tEnd=0, tRemain=0, tPaused=false, tick=null, warned=false, finished=false, tLabel='Rest';
+var tmr=document.getElementById('tmr'), tmrTime=document.getElementById('tmrTime'),
+    tmrEx=document.getElementById('tmrEx'), tmrState=document.getElementById('tmrState'),
+    minibar=document.getElementById('minibar'), mbTime=document.getElementById('mbTime'),
+    mbEx=document.getElementById('mbEx'), pauseBtn=document.getElementById('pauseBtn');
+
+function startTimer(sec,label){
+  ensureAudio();
+  tTotal=sec; tRemain=sec; tEnd=Date.now()+sec*1000;
+  tPaused=false; warned=false; finished=false; tLabel=label||'Rest';
+  tmrEx.textContent=tLabel; tmrState.textContent='Resting';
+  pauseBtn.textContent='Pause';
+  showTimer(); renderTimer();
+  clearInterval(tick); tick=setInterval(renderTimer,250);
+  vibrate([40]);
+}
+function renderTimer(){
+  if(!tPaused) tRemain=Math.round((tEnd-Date.now())/1000);
+  var r=tRemain, disp=r>=0?r:-r;
+  var m=Math.floor(disp/60), s=disp%60;
+  var str=(r<0?'+':'')+m+':'+(s<10?'0':'')+s;
+  tmrTime.textContent=str; mbTime.textContent=str; mbEx.textContent=tLabel;
+  tmrTime.className='tmr-time'+(r<=10&&r>0?' warn':'')+(r<=0?' overtime':'');
+  var frac=Math.max(0,Math.min(1,r/tTotal));
+  ringFg.style.strokeDashoffset = CIRC*(1-frac);
+  if(r<=10 && r>0 && !warned){ warned=true; beep(880,.12,2); vibrate([80,60,80]); }
+  if(r<=0 && !finished){
+    finished=true;
+    tmrState.textContent='GO — next set!';
+    tmr.classList.add('flash'); setTimeout(function(){tmr.classList.remove('flash');},2200);
+    beep(1046,.18,3); vibrate([250,120,250,120,400]);
+    document.title='🔔 GO! — Hypertrophy Hub';
+    setTimeout(function(){document.title='Hypertrophy Hub';},5000);
+  }
+}
+function adjustTimer(d){
+  if(tPaused){ tRemain+=d; } else { tEnd+=d*1000; }
+  if(finished && (tEnd-Date.now())>0){ finished=false; warned=false; tmrState.textContent='Resting'; }
+  tTotal=Math.max(tTotal, Math.round((tEnd-Date.now())/1000));
+  renderTimer();
+}
+function togglePause(){
+  if(tPaused){ tEnd=Date.now()+tRemain*1000; tPaused=false; pauseBtn.textContent='Pause';
+    tmrState.textContent = finished ? 'GO — next set!' : 'Resting'; }
+  else { tRemain=Math.round((tEnd-Date.now())/1000); tPaused=true; pauseBtn.textContent='Resume';
+    tmrState.textContent='Paused'; }
+}
+function stopTimer(){ clearInterval(tick); tick=null; tmr.classList.remove('show'); minibar.classList.remove('show'); }
+function showTimer(){ tmr.classList.add('show'); minibar.classList.remove('show'); }
+function hideTimer(){ tmr.classList.remove('show'); if(tick) minibar.classList.add('show'); }
+
+var actx=null;
+function ensureAudio(){
+  try{
+    if(!actx && (window.AudioContext||window.webkitAudioContext))
+      actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx && actx.state==='suspended') actx.resume();
+  }catch(e){}
+}
+function beep(freq,dur,times){
+  if(!actx) return;
+  for(var i=0;i<times;i++){
+    var t=actx.currentTime + i*(dur+0.12);
+    var o=actx.createOscillator(), g=actx.createGain();
+    o.type='sine'; o.frequency.value=freq;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.5,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(actx.destination);
+    o.start(t); o.stop(t+dur+0.05);
+  }
+}
+function vibrate(p){ try{ if(navigator.vibrate) navigator.vibrate(p); }catch(e){} }
+
+/* wake lock */
+var wl=null;
+function toggleWake(){
+  var btn=document.getElementById('wakeBtn');
+  if(wl){ try{wl.release();}catch(e){} wl=null;
+    btn.classList.remove('on'); btn.textContent='☀︎ Keep screen on'; return; }
+  if(!navigator.wakeLock){ btn.textContent='☀︎ Not supported';
+    setTimeout(function(){btn.textContent='☀︎ Keep screen on';},2000); return; }
+  navigator.wakeLock.request('screen').then(function(s){
+    wl=s; btn.classList.add('on'); btn.textContent='☀︎ Screen staying on';
+    s.addEventListener('release',function(){ wl=null; btn.classList.remove('on');
+      btn.textContent='☀︎ Keep screen on'; });
+  }).catch(function(){ btn.textContent='☀︎ Not supported';
+    setTimeout(function(){btn.textContent='☀︎ Keep screen on';},2000); });
+}
+
+/* offline support */
+if('serviceWorker' in navigator){window.addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js').catch(function(){});});}
+
+/* add a playlist */
+function addPlaylist(){
+  var inp=document.getElementById('plUrl'), url=inp.value.trim();
+  if(!/^https:\/\/open\.spotify\.com\//.test(url)){
+    inp.style.borderColor='var(--red)';
+    setTimeout(function(){inp.style.borderColor='';},1200); return;
+  }
+  var a=document.createElement('a');
+  a.className='music-link'; a.href=url; a.target='_blank'; a.rel='noopener';
+  a.innerHTML='<span class="ml-ico">⭐</span><span>My playlist<small>'+
+    url.replace('https://open.spotify.com/','').slice(0,40)+'</small></span>';
+  document.getElementById('musicLinks').appendChild(a);
+  inp.value='';
+}
+</script>
+</body>
+</html>
