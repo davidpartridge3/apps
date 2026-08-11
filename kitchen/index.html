@@ -77,7 +77,8 @@
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;gap:12px;}
   .back{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:11px;
-    padding:8px 13px;font-weight:800;font-size:13px;cursor:pointer;user-select:none;flex:0 0 auto;}
+    padding:9px 15px;font-weight:800;font-size:14px;cursor:pointer;user-select:none;flex:0 0 auto;
+    min-height:44px;display:inline-flex;align-items:center;-webkit-tap-highlight-color:transparent;}
   .sheet-title{font-weight:800;font-size:15.5px;line-height:1.25;flex:1;min-width:0;}
   .sheet-body{padding:18px 16px calc(40px + var(--safe-b));max-width:680px;margin:0 auto;width:100%;}
 
@@ -1996,7 +1997,7 @@
 
   .pl-filters{display:flex;flex-direction:column;gap:9px;margin-bottom:6px;}
   .pl-search{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
-    border-radius:12px;padding:11px 13px;font-size:14.5px;font-family:inherit;}
+    border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;-webkit-appearance:none;}
   .pl-chiprow{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
   .pl-chiprow::-webkit-scrollbar{display:none;}
   .pl-chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--dim);
@@ -2004,7 +2005,7 @@
     user-select:none;white-space:nowrap;}
   .pl-chip.on{background:var(--accent);color:#1a1005;border-color:var(--accent);}
   .pl-cui{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
-    border-radius:12px;padding:11px 13px;font-size:14px;font-family:inherit;-webkit-appearance:none;}
+    border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;-webkit-appearance:none;}
 
   .pl-rc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
     border-radius:14px;padding:11px 13px;margin:9px 0;cursor:pointer;user-select:none;position:relative;}
@@ -2027,7 +2028,7 @@
   .pl-assign-name{font-weight:800;font-size:14.5px;line-height:1.2;}
   .pl-assign-meta{color:var(--dimmer);font-size:11.5px;font-weight:700;}
   .pl-day{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:10px;
-    padding:9px 8px;font-size:13.5px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;}
+    padding:10px 8px;font-size:16px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;min-height:44px;}
   .pl-share-txt{width:100%;min-height:150px;background:var(--card);border:1px solid var(--line);
     color:var(--txt);border-radius:12px;padding:13px;font-size:14px;font-family:inherit;line-height:1.5;
     resize:vertical;margin:6px 0;}
@@ -2161,11 +2162,13 @@
     padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;user-select:none;}
 
   /* ---------- A3 engagement: favourites, tonight, history, scaler ---------- */
-  .fav{position:absolute;top:12px;right:14px;font-size:22px;line-height:1;color:var(--dimmer);
-    cursor:pointer;user-select:none;z-index:3;}
+  .fav{position:absolute;top:4px;right:6px;font-size:22px;line-height:1;color:var(--dimmer);
+    cursor:pointer;user-select:none;z-index:3;padding:10px;min-width:44px;min-height:44px;
+    display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
   .fav.on{color:#ff6b6b;}
   .r-hero{position:relative;}
-  .fav-lg{position:absolute;top:0;right:0;font-size:26px;}
+  .fav-lg{position:absolute;top:-8px;right:-8px;font-size:26px;padding:10px;min-width:44px;min-height:44px;
+    display:flex;align-items:center;justify-content:center;}
   .cooked-badge{display:none;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.4px;
     color:var(--green);background:rgba(111,207,143,.12);border:1px solid rgba(111,207,143,.4);
     border-radius:20px;padding:3px 10px;width:fit-content;}
@@ -7717,7 +7720,7 @@
 <div class="cook-wrap">
 <div class="cook" id="ckw1r0">
   <div class="cook-head">
-    <label class="back" for="vw1r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍚 Gochujang Bulgogi Beef Bowls with Chili Onion Crunch</div>
   </div>
   <div class="step" id="csw1r0_0">
@@ -7726,7 +7729,7 @@
   <p class="step-txt">Heat a large skillet over medium-high until a flicked drop of water skitters and evaporates. Add the ground beef, press it into one flat slab, and leave it completely alone so it can brown.</p>
   <div class="step-tip"><span>💡</span><span>Do not stir yet</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Gochujang Bulgogi Beef Bowls with Chili Onion Crunch — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw1r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r0_1">Next ›</label></div>
 </div><div class="step" id="csw1r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -7768,12 +7771,12 @@
   <p class="step-txt">Build each bowl with rice, the glazed beef, a fried egg, and the pickled cucumber. Finish with the chili onion crunch, a drizzle of sesame oil, and the sliced scallion greens.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw1r0" data-finish="w1r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w1r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw1r1">
   <div class="cook-head">
-    <label class="back" for="vw1r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌮 Carne Asada Tacos with Charred Peppers and Chili Lime Crema</div>
   </div>
   <div class="step" id="csw1r1_0">
@@ -7782,7 +7785,7 @@
   <p class="step-txt">Pull the carne asada out of the fridge, blot it very dry with paper towels, and let it sit on the counter while you prep everything else.</p>
   <div class="step-tip"><span>💡</span><span>Dry, room-temp meat sears instead of steams</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Carne Asada Tacos with Charred Peppers and Chili Lime Crema — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw1r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r1_1">Next ›</label></div>
 </div><div class="step" id="csw1r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -7831,12 +7834,12 @@
   <p class="step-txt">Stack two tortillas per taco and load with steak, charred peppers, salsa verde, cheese, onion, and cilantro, then drizzle the chili lime crema over the top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw1r1" data-finish="w1r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w1r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw1r2">
   <div class="cook-head">
-    <label class="back" for="vw1r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Thai Red Curry Shrimp with Blistered Green Beans</div>
   </div>
   <div class="step" id="csw1r2_0">
@@ -7845,7 +7848,7 @@
   <p class="step-txt">Spread the thawed shrimp on paper towels and press them dry, then season lightly with salt. Wet shrimp will never take on color.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw1r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r2_1">Next ›</label></div>
 </div><div class="step" id="csw1r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -7887,12 +7890,12 @@
   <p class="step-txt">Spoon over the jasmine rice and shower with torn Thai basil, with the second lime half on the side.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw1r2" data-finish="w1r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w1r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw1r3">
   <div class="cook-head">
-    <label class="back" for="vw1r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍲 Harissa Chicken and Chickpea Tagine with Apricots</div>
   </div>
   <div class="step" id="csw1r3_0">
@@ -7901,7 +7904,7 @@
   <p class="step-txt">Pat the chicken thighs bone dry and season all over with salt and pepper. Heat a heavy Dutch oven over medium-high with a thin film of olive oil until it shimmers.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw1r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw1r3_1">Next ›</label></div>
 </div><div class="step" id="csw1r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -7957,12 +7960,12 @@
   <p class="step-txt">Serve in bowls with a big spoonful of Greek yogurt swirled in and a handful of chopped herbs over the top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw1r3" data-finish="w1r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw1r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w1r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw2r0">
   <div class="cook-head">
-    <label class="back" for="vw2r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐟 Miso Butter Salmon with Ginger Bok Choy and Edamame</div>
   </div>
   <div class="step" id="csw2r0_0">
@@ -7971,7 +7974,7 @@
   <p class="step-txt">Whisk the miso, Soyaki, and rice vinegar into a smooth glaze. Pat the salmon completely dry and season the flesh side lightly with salt.</p>
   <div class="step-tip"><span>💡</span><span>Miso burns fast, so it goes on late</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw2r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r0_1">Next ›</label></div>
 </div><div class="step" id="csw2r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8020,12 +8023,12 @@
   <p class="step-txt">Plate the salmon over rice with the bok choy and edamame alongside, and shower everything with Everything But The Bagel seasoning.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw2r0" data-finish="w2r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w2r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw2r1">
   <div class="cook-head">
-    <label class="back" for="vw2r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍋 Lemon Oregano Chicken Souvlaki with Whipped Feta</div>
   </div>
   <div class="step" id="csw2r1_0">
@@ -8034,7 +8037,7 @@
   <p class="step-txt">Toss the chicken cubes with the lemon zest, half the garlic, the oregano, olive oil, salt, and pepper. Let it sit on the counter while you make the whipped feta.</p>
   
   <label class="step-timer" for="t600" data-sec="600" data-name="Lemon Oregano Chicken Souvlaki with Whipped Feta — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw2r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r1_1">Next ›</label></div>
 </div><div class="step" id="csw2r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8083,12 +8086,12 @@
   <p class="step-txt">Finish with chopped dill, a crack of black pepper, and a drizzle of olive oil.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw2r1" data-finish="w2r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w2r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw2r2">
   <div class="cook-head">
-    <label class="back" for="vw2r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍜 Caramelized Lemongrass Pork Noodle Bowls</div>
   </div>
   <div class="step" id="csw2r2_0">
@@ -8097,7 +8100,7 @@
   <p class="step-txt">Bring a pot of water to a boil for the noodles. While it heats, toss the carrot with the juice of half a lime and a pinch of salt to quick-pickle.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw2r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r2_1">Next ›</label></div>
 </div><div class="step" id="csw2r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8146,12 +8149,12 @@
   <p class="step-txt">Pour the dressing over each bowl, scatter the crushed peanuts, and toss everything together at the table with the last lime half on the side.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw2r2" data-finish="w2r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w2r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw2r3">
   <div class="cook-head">
-    <label class="back" for="vw2r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥘 Andouille, Chicken and Shrimp Jambalaya</div>
   </div>
   <div class="step" id="csw2r3_0">
@@ -8160,7 +8163,7 @@
   <p class="step-txt">Heat a wide heavy pot or Dutch oven over medium with a little olive oil. Add the sausage coins in one layer and cook until the edges curl and brown and orange fat pools in the pot.</p>
   <div class="step-tip"><span>💡</span><span>That rendered fat is the flavor base</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Andouille, Chicken and Shrimp Jambalaya — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw2r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw2r3_1">Next ›</label></div>
 </div><div class="step" id="csw2r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -8216,12 +8219,12 @@
   <p class="step-txt">Fluff everything together with a fork, taste for salt, and finish with a thick layer of sliced scallions.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw2r3" data-finish="w2r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw2r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w2r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw3r0">
   <div class="cook-head">
-    <label class="back" for="vw3r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍛 Broiler-Charred Tikka Masala Thighs</div>
   </div>
   <div class="step" id="csw3r0_0">
@@ -8230,7 +8233,7 @@
   <p class="step-txt">Set an oven rack about 6 inches under the broiler and heat the broiler to high. Line a sheet pan with foil so the sugars in the yogurt don&#x27;t weld themselves to the metal.</p>
   <div class="step-tip"><span>💡</span><span>Foil now saves scrubbing later.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw3r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r0_1">Next ›</label></div>
 </div><div class="step" id="csw3r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8272,12 +8275,12 @@
   <p class="step-txt">Warm the naan in a dry skillet over medium-high for about a minute per side until it puffs and freckles. Finish the curry with a squeeze of lemon and a shower of cilantro.</p>
   <div class="step-tip"><span>💡</span><span>Acid at the end wakes everything up.</span></div>
   <label class="step-timer" for="t60" data-sec="60" data-name="Broiler-Charred Tikka Masala Thighs — step 7">⏱ Start 1:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw3r0" data-finish="w3r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w3r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw3r1">
   <div class="cook-head">
-    <label class="back" for="vw3r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥩 Lomo Saltado with Crispy Fries</div>
   </div>
   <div class="step" id="csw3r1_0">
@@ -8286,7 +8289,7 @@
   <p class="step-txt">Heat the oven to 425F, spread the fries in a single layer on a sheet pan, and bake until deep golden and rigid, about 20 minutes. They need to be genuinely crisp because they go into a wet pan at the end.</p>
   <div class="step-tip"><span>💡</span><span>Soggy fries ruin the dish.</span></div>
   <label class="step-timer" for="t1200" data-sec="1200" data-name="Lomo Saltado with Crispy Fries — step 1">⏱ Start 20:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw3r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r1_1">Next ›</label></div>
 </div><div class="step" id="csw3r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8335,12 +8338,12 @@
   <p class="step-txt">Microwave the rice pouch, then kill the heat and fold the hot fries into the skillet so they catch the sauce without going limp. Scatter cilantro and serve immediately over rice.</p>
   <div class="step-tip"><span>💡</span><span>Serve the second it&#x27;s tossed.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw3r1" data-finish="w3r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w3r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw3r2">
   <div class="cook-head">
-    <label class="back" for="vw3r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Chili Crunch Mapo Beef and Tofu</div>
   </div>
   <div class="step" id="csw3r2_0">
@@ -8349,7 +8352,7 @@
   <p class="step-txt">Cube the tofu and let it drain on a towel while you cook. In a small cup, stir the cornstarch into 1/2 cup cold water until no lumps remain and set it aside.</p>
   <div class="step-tip"><span>💡</span><span>Drier tofu holds together better.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw3r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r2_1">Next ›</label></div>
 </div><div class="step" id="csw3r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8391,12 +8394,12 @@
   <p class="step-txt">Microwave the jasmine rice according to the bag while the sauce thickens, then spoon the mapo over the rice and blanket it with scallions.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw3r2" data-finish="w3r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w3r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw3r3">
   <div class="cook-head">
-    <label class="back" for="vw3r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥘 Big-Batch Spanish Chorizo and Chicken Rice</div>
   </div>
   <div class="step" id="csw3r3_0">
@@ -8405,7 +8408,7 @@
   <p class="step-txt">Season the thighs generously with salt and pepper. Heat a film of olive oil in a wide Dutch oven or deep skillet over medium-high until it shimmers, then sear the chicken in batches, 5 minutes on the first side without moving it, until a mahogany crust forms.</p>
   <div class="step-tip"><span>💡</span><span>Batches, not a crowded pile.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Big-Batch Spanish Chorizo and Chicken Rice — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw3r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw3r3_1">Next ›</label></div>
 </div><div class="step" id="csw3r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8454,12 +8457,12 @@
   <p class="step-txt">Scatter the frozen peas over the top, replace the lid, pull the pot off the heat, and rest 10 minutes. Fluff with a fork, shred the chicken slightly into the rice, and serve with lemon wedges.</p>
   <div class="step-tip"><span>💡</span><span>The rest sets the grains.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Big-Batch Spanish Chorizo and Chicken Rice — step 8">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw3r3" data-finish="w3r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw3r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w3r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw4r0">
   <div class="cook-head">
-    <label class="back" for="vw4r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Sticky Filipino Chicken Adobo</div>
   </div>
   <div class="step" id="csw4r0_0">
@@ -8468,7 +8471,7 @@
   <p class="step-txt">Pat the thighs bone dry and season with pepper only, since the soy brings plenty of salt. Lay them skin down in a cold skillet, set it over medium-high, and let the fat render and the skin go deep golden and crackly, about 8 minutes.</p>
   <div class="step-tip"><span>💡</span><span>Starting cold renders more fat.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Sticky Filipino Chicken Adobo — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw4r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r0_1">Next ›</label></div>
 </div><div class="step" id="csw4r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8510,12 +8513,12 @@
   <p class="step-txt">Heat the jasmine rice while the sauce reduces, then spoon the glaze over the chicken and rice and finish with scallions.</p>
   <div class="step-tip"><span>💡</span><span>Sauce the rice generously.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw4r0" data-finish="w4r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w4r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw4r1">
   <div class="cook-head">
-    <label class="back" for="vw4r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧆 Turkish Kofte with Harissa Butter and Garlic Yogurt</div>
   </div>
   <div class="step" id="csw4r1_0">
@@ -8524,7 +8527,7 @@
   <p class="step-txt">Grate the onion, then squeeze it hard in a paper towel over the sink until it stops dripping. Wet onion will steam the kofte instead of letting them brown.</p>
   <div class="step-tip"><span>💡</span><span>Squeeze it drier than you think.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw4r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r1_1">Next ›</label></div>
 </div><div class="step" id="csw4r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8573,12 +8576,12 @@
   <p class="step-txt">Melt the butter with the harissa in a small pan over medium for 1 minute until it foams and stains red, then pile the kofte on the yogurt, pour the butter over, and serve with the salad and warm flatbread.</p>
   <div class="step-tip"><span>💡</span><span>Pour it while it&#x27;s still sizzling.</span></div>
   <label class="step-timer" for="t60" data-sec="60" data-name="Turkish Kofte with Harissa Butter and Garlic Yogurt — step 8">⏱ Start 1:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw4r1" data-finish="w4r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w4r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw4r2">
   <div class="cook-head">
-    <label class="back" for="vw4r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Jerk Shrimp with Coconut Rice and Beans</div>
   </div>
   <div class="step" id="csw4r2_0">
@@ -8587,7 +8590,7 @@
   <p class="step-txt">Rinse the rice until the water runs mostly clear, then combine it in a saucepan with the coconut milk, 1/2 cup water, one smashed garlic clove, and a good pinch of salt. Bring to a boil over high heat.</p>
   <div class="step-tip"><span>💡</span><span>Rinsing keeps the rice from going gluey.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw4r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r2_1">Next ›</label></div>
 </div><div class="step" id="csw4r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8636,12 +8639,12 @@
   <p class="step-txt">Add the remaining paste with a splash of water and toss 30 seconds to glaze. Serve over the coconut rice with scallion greens and wedges from the second lime.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw4r2" data-finish="w4r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w4r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw4r3">
   <div class="cook-head">
-    <label class="back" for="vw4r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍝 Big-Batch Vodka Sauce Baked Ziti with Sausage</div>
   </div>
   <div class="step" id="csw4r3_0">
@@ -8650,7 +8653,7 @@
   <p class="step-txt">Heat the oven to 400F and put a large pot of well-salted water on to boil. Salt it until it tastes like a mild broth.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw4r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw4r3_1">Next ›</label></div>
 </div><div class="step" id="csw4r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -8706,12 +8709,12 @@
   <p class="step-txt">Rest 10 minutes before cutting so the layers set instead of sliding, then tear basil over the top.</p>
   <div class="step-tip"><span>💡</span><span>Cutting too soon makes soup.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Big-Batch Vodka Sauce Baked Ziti with Sausage — step 9">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw4r3" data-finish="w4r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw4r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w4r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw5r0">
   <div class="cook-head">
-    <label class="back" for="vw5r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥙 Zhoug Chicken Shawarma Bowls</div>
   </div>
   <div class="step" id="csw5r0_0">
@@ -8720,7 +8723,7 @@
   <p class="step-txt">Set a cast iron or heavy stainless skillet over medium-high and let it preheat dry for a full 2 minutes, until a flicked drop of water skitters instead of sitting still. Pat the thighs dry with paper towels while it heats.</p>
   <div class="step-tip"><span>💡</span><span>A wet thigh steams; a dry one chars.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Zhoug Chicken Shawarma Bowls — step 1">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw5r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r0_1">Next ›</label></div>
 </div><div class="step" id="csw5r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8762,12 +8765,12 @@
   <p class="step-txt">Smear hummus across the bottom of two shallow bowls, then heap on the salad and the sliced chicken. Drizzle the zhoug yogurt over everything and dust with sumac.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw5r0" data-finish="w5r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w5r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw5r1">
   <div class="cook-head">
-    <label class="back" for="vw5r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Bahian Shrimp Moqueca</div>
   </div>
   <div class="step" id="csw5r1_0">
@@ -8776,7 +8779,7 @@
   <p class="step-txt">Toss the shrimp with the juice of one lime, a big pinch of salt, and black pepper. Let them sit while you build the base.</p>
   <div class="step-tip"><span>💡</span><span>A quick lime cure firms up the shrimp.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw5r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r1_1">Next ›</label></div>
 </div><div class="step" id="csw5r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8818,12 +8821,12 @@
   <p class="step-txt">Spoon the moqueca over hot jasmine rice in wide bowls and finish with the remaining cilantro and a lime wedge.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw5r1" data-finish="w5r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w5r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw5r2">
   <div class="cook-head">
-    <label class="back" for="vw5r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍜 Mamak-Style Mee Goreng with Shrimp and Egg</div>
   </div>
   <div class="step" id="csw5r2_0">
@@ -8832,7 +8835,7 @@
   <p class="step-txt">Boil the noodles one minute shy of the package time so they still have spring, then drain, rinse under cold water, and toss with a teaspoon of oil so they don&#x27;t fuse.</p>
   <div class="step-tip"><span>💡</span><span>Undercook them — they finish in the pan.</span></div>
   <label class="step-timer" for="t240" data-sec="240" data-name="Mamak-Style Mee Goreng with Shrimp and Egg — step 1">⏱ Start 4:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw5r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r2_1">Next ›</label></div>
 </div><div class="step" id="csw5r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -8874,12 +8877,12 @@
   <p class="step-txt">Fold the shrimp, egg, and scallions back in and turn off the heat. Squeeze the lime over the top and finish with spoonfuls of Crunchy Chili Onion.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw5r2" data-finish="w5r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w5r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw5r3">
   <div class="cook-head">
-    <label class="back" for="vw5r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥘 Persian Lemon-Turmeric Chicken and Chickpea Khoresh</div>
   </div>
   <div class="step" id="csw5r3_0">
@@ -8888,7 +8891,7 @@
   <p class="step-txt">Pat the thighs very dry and season them hard with salt and pepper on both sides. Heat 2 tablespoons olive oil in a Dutch oven over medium-high until it shimmers and thins out.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw5r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw5r3_1">Next ›</label></div>
 </div><div class="step" id="csw5r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -8937,12 +8940,12 @@
   <p class="step-txt">Heat the basmati and serve the khoresh ladled over it, showered with parsley and finished with a cold spoonful of yogurt.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw5r3" data-finish="w5r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw5r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w5r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw6r0">
   <div class="cook-head">
-    <label class="back" for="vw6r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥩 Skirt Steak with Hand-Chopped Chimichurri</div>
   </div>
   <div class="step" id="csw6r0_0">
@@ -8951,7 +8954,7 @@
   <p class="step-txt">Heat the oven to 450°F and salt the steak generously on both sides, then leave it on the counter to take the chill off while everything else comes together.</p>
   <div class="step-tip"><span>💡</span><span>Salt early so it has time to penetrate.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw6r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r0_1">Next ›</label></div>
 </div><div class="step" id="csw6r0_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -9007,12 +9010,12 @@
   <p class="step-txt">Dress the arugula with lemon, olive oil, and salt. Plate the steak, spoon chimichurri over it generously, and add the potatoes with the chimichurri hot sauce alongside.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r0_7">‹ Back</label><label class="nav-btn nav-done" for="vw6r0" data-finish="w6r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r0_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w6r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw6r1">
   <div class="cook-head">
-    <label class="back" for="vw6r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥡 Crispy General Tso&#x27;s Chicken and Broccoli</div>
   </div>
   <div class="step" id="csw6r1_0">
@@ -9021,7 +9024,7 @@
   <p class="step-txt">Toss the chicken cubes with the egg white and 1/2 teaspoon salt, then add the cornstarch and toss again until every piece looks chalky and dry with no wet patches left.</p>
   <div class="step-tip"><span>💡</span><span>The dry cornstarch shell is what shatters.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw6r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r1_1">Next ›</label></div>
 </div><div class="step" id="csw6r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9070,12 +9073,12 @@
   <p class="step-txt">Heat the jasmine rice and serve immediately, scattered with scallions and sesame seeds.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw6r1" data-finish="w6r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w6r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw6r2">
   <div class="cook-head">
-    <label class="back" for="vw6r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Doro Wat-Style Chicken with Jammy Eggs</div>
   </div>
   <div class="step" id="csw6r2_0">
@@ -9084,7 +9087,7 @@
   <p class="step-txt">Put the diced red onions in a wide skillet over medium heat with no fat at all and cook for 8 minutes, stirring often, until they release their water, collapse, and turn sticky.</p>
   <div class="step-tip"><span>💡</span><span>The dry start is what makes doro wat taste like doro wat.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Doro Wat-Style Chicken with Jammy Eggs — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw6r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r2_1">Next ›</label></div>
 </div><div class="step" id="csw6r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9133,12 +9136,12 @@
   <p class="step-txt">Serve straight from the skillet with torn naan as the scoop — this is a dish meant to be eaten with your hands.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw6r2" data-finish="w6r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w6r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw6r3">
   <div class="cook-head">
-    <label class="back" for="vw6r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Tex-Mex Beef and Black Bean Chili with Unexpected Cheddar</div>
   </div>
   <div class="step" id="csw6r3_0">
@@ -9147,7 +9150,7 @@
   <p class="step-txt">Heat a Dutch oven over medium-high for 2 minutes, then add half the beef and press it into a flat slab. Leave it completely undisturbed for 4 minutes so a genuine brown crust forms.</p>
   <div class="step-tip"><span>💡</span><span>Crowded beef steams gray and tastes like nothing.</span></div>
   <label class="step-timer" for="t240" data-sec="240" data-name="Tex-Mex Beef and Black Bean Chili with Unexpected Cheddar — step 1">⏱ Start 4:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw6r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw6r3_1">Next ›</label></div>
 </div><div class="step" id="csw6r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9196,12 +9199,12 @@
   <p class="step-txt">Pull it off the heat and let it rest 10 minutes to set up, then ladle into bowls and bury each one under a mound of grated Unexpected Cheddar.</p>
   <div class="step-tip"><span>💡</span><span>Grate the cheddar cold — it crumbles rather than smears.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Tex-Mex Beef and Black Bean Chili with Unexpected Cheddar — step 8">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw6r3" data-finish="w6r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw6r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w6r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw7r0">
   <div class="cook-head">
-    <label class="back" for="vw7r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🔥 Nashville Hot Honey Chicken Thighs</div>
   </div>
   <div class="step" id="csw7r0_0">
@@ -9210,7 +9213,7 @@
   <p class="step-txt">Halve the thighs into rough 3-inch pieces, season them hard with salt and pepper, then toss with the buttermilk in a bowl until every piece is coated. Let them sit while you set up the dredge.</p>
   <div class="step-tip"><span>💡</span><span>Even a short soak seasons the meat through.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Nashville Hot Honey Chicken Thighs — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw7r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r0_1">Next ›</label></div>
 </div><div class="step" id="csw7r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -9252,12 +9255,12 @@
   <p class="step-txt">Brush the paste generously over both sides of the chicken and let it soak in while you lay the bread on two plates. Pile the chicken on the bread, top with pickle chips, and drizzle any paste left in the bowl over the top.</p>
   <div class="step-tip"><span>💡</span><span>The bread is a sponge, not a side.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Nashville Hot Honey Chicken Thighs — step 7">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw7r0" data-finish="w7r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w7r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw7r1">
   <div class="cook-head">
-    <label class="back" for="vw7r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Sambal Balado Shrimp with Coconut Jasmine Rice</div>
   </div>
   <div class="step" id="csw7r1_0">
@@ -9266,7 +9269,7 @@
   <p class="step-txt">Stir the soy sauce and brown sugar together in a small bowl until the sugar dissolves into a syrupy kecap manis. Set it next to the stove along with the chili onion crunch.</p>
   <div class="step-tip"><span>💡</span><span>Have everything at arm&#x27;s reach; this cooks fast.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw7r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r1_1">Next ›</label></div>
 </div><div class="step" id="csw7r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -9308,12 +9311,12 @@
   <p class="step-txt">Squeeze half the lime over the pan, scoop the coconut rice into two bowls, and spoon the shrimp and all the pan sauce over the top. Finish with cilantro and the remaining lime in wedges.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw7r1" data-finish="w7r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w7r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw7r2">
   <div class="cook-head">
-    <label class="back" for="vw7r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Piri-Piri Chicken with Smoky Sausage and Peppers</div>
   </div>
   <div class="step" id="csw7r2_0">
@@ -9322,7 +9325,7 @@
   <p class="step-txt">Whisk the harissa, smoked paprika, pepper flakes, garlic, vinegar, 3 tbsp olive oil, and 1 tsp salt into a loose piri-piri sauce. Spoon half of it over the chicken cutlets and turn them until slick; reserve the rest for finishing.</p>
   <div class="step-tip"><span>💡</span><span>Thin cutlets take on marinade fast.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Piri-Piri Chicken with Smoky Sausage and Peppers — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw7r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r2_1">Next ›</label></div>
 </div><div class="step" id="csw7r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -9364,12 +9367,12 @@
   <p class="step-txt">Slice the chicken thick against the grain and pile it over the peppers right in the skillet. Spoon the reserved piri-piri over the top, scatter parsley, and serve with torn ciabatta for mopping and lemon wedges.</p>
   <div class="step-tip"><span>💡</span><span>The raw sauce at the end is the whole point.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw7r2" data-finish="w7r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w7r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw7r3">
   <div class="cook-head">
-    <label class="back" for="vw7r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥜 West African Chicken and Peanut Stew</div>
   </div>
   <div class="step" id="csw7r3_0">
@@ -9378,7 +9381,7 @@
   <p class="step-txt">Pat the thighs very dry and season all over with salt and pepper. Heat 1 tbsp oil in a large Dutch oven over medium-high until it just starts to smoke, then lay the thighs in skin side down in two batches.</p>
   <div class="step-tip"><span>💡</span><span>Dry skin is the difference between browning and steaming.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw7r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw7r3_1">Next ›</label></div>
 </div><div class="step" id="csw7r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9427,12 +9430,12 @@
   <p class="step-txt">Stir in the spinach in handfuls until it wilts into the gravy, then taste and adjust with salt. Heat the rice pouches and serve the stew ladled over rice in wide bowls.</p>
   <div class="step-tip"><span>💡</span><span>The stew tastes even better the next day.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="West African Chicken and Peanut Stew — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw7r3" data-finish="w7r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw7r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w7r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw8r0">
   <div class="cook-head">
-    <label class="back" for="vw8r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Sri Lankan Devilled Chicken</div>
   </div>
   <div class="step" id="csw8r0_0">
@@ -9441,7 +9444,7 @@
   <p class="step-txt">Toss the chicken strips with the curry powder, pepper flakes, 1 tsp salt, and 1 tbsp oil until every piece is rust colored. Let it sit on the counter while you cut the vegetables.</p>
   <div class="step-tip"><span>💡</span><span>Room-temperature chicken sears instead of steams.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Sri Lankan Devilled Chicken — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw8r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r0_1">Next ›</label></div>
 </div><div class="step" id="csw8r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -9483,12 +9486,12 @@
   <p class="step-txt">Pull out the cinnamon stick, taste for salt and heat, and serve over the hot jasmine rice while the sauce is still glossy.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw8r0" data-finish="w8r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w8r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw8r1">
   <div class="cook-head">
-    <label class="back" for="vw8r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐟 Shoyu Ahi Poke Bowls</div>
   </div>
   <div class="step" id="csw8r1_0">
@@ -9497,7 +9500,7 @@
   <p class="step-txt">Soak the shaved sweet onion in a bowl of ice water while you work so it loses its raw bite and turns crisp. Drain it well right before serving.</p>
   <div class="step-tip"><span>💡</span><span>Ice water tames sharp onion in minutes.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Shoyu Ahi Poke Bowls — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw8r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r1_1">Next ›</label></div>
 </div><div class="step" id="csw8r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -9539,12 +9542,12 @@
   <p class="step-txt">Zigzag the spicy mayo over the top, then finish with the remaining scallions, the Everything But The Bagel seasoning, and crumbled seaweed. Serve immediately while the fish is still cold.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw8r1" data-finish="w8r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w8r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw8r2">
   <div class="cook-head">
-    <label class="back" for="vw8r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥓 Kielbasa and Caraway Cabbage with Mustard Cream</div>
   </div>
   <div class="step" id="csw8r2_0">
@@ -9553,7 +9556,7 @@
   <p class="step-txt">Put the halved potatoes in a microwave-safe bowl with 2 tbsp water, cover, and microwave until a knife slides into one with only slight resistance. Drain them and leave them uncovered so the surfaces dry.</p>
   <div class="step-tip"><span>💡</span><span>Par-cooking here is what keeps this under 35 minutes.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Kielbasa and Caraway Cabbage with Mustard Cream — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw8r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r2_1">Next ›</label></div>
 </div><div class="step" id="csw8r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9602,12 +9605,12 @@
   <p class="step-txt">Divide between two plates, spoon the mustard cream over the top rather than stirring it in, and finish with a heavy scatter of dill.</p>
   <div class="step-tip"><span>💡</span><span>Sour cream added off heat stays smooth instead of splitting.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw8r2" data-finish="w8r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w8r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw8r3">
   <div class="cook-head">
-    <label class="back" for="vw8r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍜 Burmese Coconut Chicken Noodle Bowls</div>
   </div>
   <div class="step" id="csw8r3_0">
@@ -9616,7 +9619,7 @@
   <p class="step-txt">Blitz the onions, garlic, and ginger in a food processor with a splash of water until you have a coarse, wet paste. If you have no processor, grate the ginger and garlic and mince the onion very fine.</p>
   <div class="step-tip"><span>💡</span><span>This paste is the backbone of the broth.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw8r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw8r3_1">Next ›</label></div>
 </div><div class="step" id="csw8r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9665,12 +9668,12 @@
   <p class="step-txt">Taste the broth and adjust with fish sauce, salt, and a squeeze of lime until it is savory and bright. Nest noodles in each bowl, ladle the chicken and gravy over, and top with egg halves, crispy fried onions, and lime wedges.</p>
   <div class="step-tip"><span>💡</span><span>Add the crispy onions at the table so they stay crunchy.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw8r3" data-finish="w8r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw8r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w8r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw9r0">
   <div class="cook-head">
-    <label class="back" for="vw9r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧄 Shkmeruli: Georgian Skillet Chicken in Garlic Milk</div>
   </div>
   <div class="step" id="csw9r0_0">
@@ -9679,7 +9682,7 @@
   <p class="step-txt">Pat the thighs bone-dry with paper towels and season both sides hard with salt and pepper. Press each one flat with the heel of your hand so it will sit in full contact with the pan.</p>
   <div class="step-tip"><span>💡</span><span>Any surface moisture steams the skin instead of crisping it.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw9r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r0_1">Next ›</label></div>
 </div><div class="step" id="csw9r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9728,12 +9731,12 @@
   <p class="step-txt">Warm the naan directly over a burner or in a dry pan until blistered and pliable. Shower the chicken with cilantro and serve straight from the skillet with the bread for mopping.</p>
   <div class="step-tip"><span>💡</span><span>The sauce is the point; the bread is the delivery system.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Shkmeruli: Georgian Skillet Chicken in Garlic Milk — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw9r0" data-finish="w9r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w9r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw9r1">
   <div class="cook-head">
-    <label class="back" for="vw9r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍢 Nigerian Suya Steak with Yaji and Raw Onion</div>
   </div>
   <div class="step" id="csw9r1_0">
@@ -9742,7 +9745,7 @@
   <p class="step-txt">Put the steak on a plate in the freezer to firm up so it slices cleanly. While it chills, drop the peanuts into a food processor or a zip bag and pulse or crush them to a coarse, sandy powder.</p>
   <div class="step-tip"><span>💡</span><span>Stop before it turns to paste; the oil should stay locked in the crumbs.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Nigerian Suya Steak with Yaji and Raw Onion — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw9r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r1_1">Next ›</label></div>
 </div><div class="step" id="csw9r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9791,12 +9794,12 @@
   <p class="step-txt">Pile the steak on a platter with the cold onion and tomato slices scattered over the top. Serve with lime wedges and the last of the yaji in a dish for dredging bite by bite.</p>
   <div class="step-tip"><span>💡</span><span>Eat it with your hands, standing up, the way it is sold on the street.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw9r1" data-finish="w9r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w9r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw9r2">
   <div class="cook-head">
-    <label class="back" for="vw9r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐟 Basque Cod al Pil-Pil with Guindilla Chiles</div>
   </div>
   <div class="step" id="csw9r2_0">
@@ -9805,7 +9808,7 @@
   <p class="step-txt">Salt the cod generously on all sides and set it on a rack or plate to sit at room temperature. Pat it completely dry before cooking, wiping away any beads of moisture the salt has pulled out.</p>
   <div class="step-tip"><span>💡</span><span>Salting first firms the flesh and coaxes out the gelatin the sauce depends on.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Basque Cod al Pil-Pil with Guindilla Chiles — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw9r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r2_1">Next ›</label></div>
 </div><div class="step" id="csw9r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9854,12 +9857,12 @@
   <p class="step-txt">Tear the bread into thick slabs and griddle them in a spoonful of the garlicky oil until crisp at the edges. Plate the cod with the torn piquillos, scatter the reserved garlic chips, chiles, and parsley over the top, and serve the bread alongside.</p>
   <div class="step-tip"><span>💡</span><span>Nobody leaves pil-pil sauce in the pan.</span></div>
   <label class="step-timer" for="t180" data-sec="180" data-name="Basque Cod al Pil-Pil with Guindilla Chiles — step 8">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw9r2" data-finish="w9r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w9r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw9r3">
   <div class="cook-head">
-    <label class="back" for="vw9r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫑 Hungarian Beef Goulash with Caraway and Sweet Paprika</div>
   </div>
   <div class="step" id="csw9r3_0">
@@ -9868,7 +9871,7 @@
   <p class="step-txt">Pat the beef cubes very dry and season them all over with salt and pepper. Heat 1 tbsp oil in a large Dutch oven over medium-high until it just smokes, then brown the beef in two or three uncrowded batches until every piece has a dark crust on at least two sides.</p>
   <div class="step-tip"><span>💡</span><span>Crowded meat sweats grey instead of browning.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Hungarian Beef Goulash with Caraway and Sweet Paprika — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw9r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw9r3_1">Next ›</label></div>
 </div><div class="step" id="csw9r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9917,12 +9920,12 @@
   <p class="step-txt">Ladle into deep bowls and finish each with a spoonful of sour cream and a last pinch of sweet paprika. Stir the cream in at the table rather than into the pot.</p>
   <div class="step-tip"><span>💡</span><span>Sour cream added to the whole pot can split on reheating.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw9r3" data-finish="w9r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw9r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w9r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw10r0">
   <div class="cook-head">
-    <label class="back" for="vw10r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥣 Yucatecan Sopa de Lima with Crisp Tortilla Strips</div>
   </div>
   <div class="step" id="csw10r0_0">
@@ -9931,7 +9934,7 @@
   <p class="step-txt">Season the thighs on both sides with salt and pepper. Heat 1 tbsp oil in a saucepan over medium-high and sear the chicken until the undersides are golden brown, then flip once and pull the pan back to medium.</p>
   <div class="step-tip"><span>💡</span><span>The browned bits on the bottom give this clear broth its backbone.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Yucatecan Sopa de Lima with Crisp Tortilla Strips — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw10r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r0_1">Next ›</label></div>
 </div><div class="step" id="csw10r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -9980,12 +9983,12 @@
   <p class="step-txt">Pile a handful of tortilla strips in the bottom of each bowl and ladle the hot soup over them. Finish with cilantro, extra strips on top, and lime wedges for squeezing at the table.</p>
   <div class="step-tip"><span>💡</span><span>Serve immediately, while the strips still crunch.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw10r0" data-finish="w10r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w10r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw10r1">
   <div class="cook-head">
-    <label class="back" for="vw10r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍳 Okinawan Pork and Tofu Champuru</div>
   </div>
   <div class="step" id="csw10r1_0">
@@ -9994,7 +9997,7 @@
   <p class="step-txt">Wrap the tofu block in a clean towel, set a heavy pan on top, and let it press while you prep everything else. Tear it into rough bite-size chunks rather than cubing it so the craggy edges catch color.</p>
   <div class="step-tip"><span>💡</span><span>Torn tofu has more surface area and browns far better than neat cubes.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Okinawan Pork and Tofu Champuru — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw10r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r1_1">Next ›</label></div>
 </div><div class="step" id="csw10r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10043,12 +10046,12 @@
   <p class="step-txt">Heat the jasmine rice according to the package while the pan rests. Serve the champuru over the rice and blizzard the whole thing with bonito flakes, which will curl and wave in the rising steam.</p>
   <div class="step-tip"><span>💡</span><span>Add the bonito at the very last second so it moves at the table.</span></div>
   <label class="step-timer" for="t180" data-sec="180" data-name="Okinawan Pork and Tofu Champuru — step 8">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw10r1" data-finish="w10r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w10r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw10r2">
   <div class="cook-head">
-    <label class="back" for="vw10r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍷 Alsatian Coq au Riesling with Bacon and Mushrooms</div>
   </div>
   <div class="step" id="csw10r2_0">
@@ -10057,7 +10060,7 @@
   <p class="step-txt">Set a heavy skillet over medium heat and render the lardons, stirring now and then, until they are crisp and have given up a pool of fat. Lift them out with a slotted spoon and leave the fat in the pan.</p>
   <div class="step-tip"><span>💡</span><span>Start them in a cold pan so they render rather than seize.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Alsatian Coq au Riesling with Bacon and Mushrooms — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw10r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r2_1">Next ›</label></div>
 </div><div class="step" id="csw10r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10106,12 +10109,12 @@
   <p class="step-txt">Spoon the noodles into warm shallow bowls, lay the chicken over them, and pour the sauce and mushrooms across the top. Scatter the crisp lardons and parsley over everything just before it goes to the table.</p>
   <div class="step-tip"><span>💡</span><span>Adding the bacon at the end keeps it crunchy against the sauce.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw10r2" data-finish="w10r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w10r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw10r3">
   <div class="cook-head">
-    <label class="back" for="vw10r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌽 Colombian Chicken Sancocho with Aji Picante</div>
   </div>
   <div class="step" id="csw10r3_0">
@@ -10120,7 +10123,7 @@
   <p class="step-txt">Season the chicken hard with salt and pepper and pile it into a large stockpot with the onion, half the scallions, the garlic, one whole jalapeno, the cumin, the turmeric, and the cilantro stems. Cover with about 12 cups of cold water.</p>
   <div class="step-tip"><span>💡</span><span>Starting in cold water draws more flavor out of the bones.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw10r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw10r3_1">Next ›</label></div>
 </div><div class="step" id="csw10r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10169,12 +10172,12 @@
   <p class="step-txt">Let the pot rest off the heat so the flavors settle and the fat rises to skim if you like. Ladle into wide bowls with a piece of everything in each, and pass the aji and remaining lime wedges at the table.</p>
   <div class="step-tip"><span>💡</span><span>Every bowl should get chicken, plantain, corn, and potato.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Colombian Chicken Sancocho with Aji Picante — step 8">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw10r3" data-finish="w10r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw10r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w10r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw11r0">
   <div class="cook-head">
-    <label class="back" for="vw11r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥢 Cantonese Steamed Cod with Sizzling Ginger-Scallion Oil</div>
   </div>
   <div class="step" id="csw11r0_0">
@@ -10183,7 +10186,7 @@
   <p class="step-txt">Set a rack or a pair of chopsticks inside a wide lidded skillet or wok, add water to just below the rack, and bring it to a hard boil over high heat. Meanwhile pat the fish completely dry and salt it lightly on both sides.</p>
   <div class="step-tip"><span>💡</span><span>The plate must sit above the water, never in it</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw11r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r0_1">Next ›</label></div>
 </div><div class="step" id="csw11r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10232,12 +10235,12 @@
   <p class="step-txt">Pour the warm soy mixture around the base of the fillets rather than over the top, finish with the sesame oil and cilantro, and serve with the rice and bok choy.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw11r0" data-finish="w11r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w11r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw11r1">
   <div class="cook-head">
-    <label class="back" for="vw11r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫚 Dhaba-Style Chicken Karahi with Crushed Coriander</div>
   </div>
   <div class="step" id="csw11r1_0">
@@ -10246,7 +10249,7 @@
   <p class="step-txt">Melt the ghee in a wok or heavy skillet over high heat until it ripples and thins out. Add the chicken in a single uncrowded layer and leave it alone until the undersides are browned and the edges have caught color.</p>
   <div class="step-tip"><span>💡</span><span>Crowding steams the meat and you lose the fond</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Dhaba-Style Chicken Karahi with Crushed Coriander — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw11r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r1_1">Next ›</label></div>
 </div><div class="step" id="csw11r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -10288,12 +10291,12 @@
   <p class="step-txt">Kill the heat, shower on the garam masala, the julienned ginger, and most of the cilantro, and let it sit a minute before serving straight from the pan with the naan and the last of the cilantro.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw11r1" data-finish="w11r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w11r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw11r2">
   <div class="cook-head">
-    <label class="back" for="vw11r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧀 Sardinian Saffron Sausage Malloreddus with Pecorino</div>
   </div>
   <div class="step" id="csw11r2_0">
@@ -10302,7 +10305,7 @@
   <p class="step-txt">Crumble the saffron threads into a small bowl with a few tablespoons of very hot water and leave them to steep while you build the sauce. Put a large pot of heavily salted water on to boil.</p>
   <div class="step-tip"><span>💡</span><span>The soaking water should turn deep orange</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Sardinian Saffron Sausage Malloreddus with Pecorino — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw11r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r2_1">Next ›</label></div>
 </div><div class="step" id="csw11r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10351,12 +10354,12 @@
   <p class="step-txt">Take the pan off the heat, tear in the basil, and serve with the remaining pecorino piled on top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw11r2" data-finish="w11r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w11r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw11r3">
   <div class="cook-head">
-    <label class="back" for="vw11r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫓 Egyptian Chicken Fattah with Garlic-Vinegar Tomato Sauce</div>
   </div>
   <div class="step" id="csw11r3_0">
@@ -10365,7 +10368,7 @@
   <p class="step-txt">Pile the chicken into a large pot with the quartered onion, smashed garlic, cinnamon stick, cardamom, and bay leaves, cover with cold water by an inch, and bring to a boil over high heat. Skim off the gray foam that rises as it comes up.</p>
   <div class="step-tip"><span>💡</span><span>Skimming is the difference between cloudy and clean broth</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Egyptian Chicken Fattah with Garlic-Vinegar Tomato Sauce — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw11r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw11r3_1">Next ›</label></div>
 </div><div class="step" id="csw11r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10414,12 +10417,12 @@
   <p class="step-txt">Off the heat, stir the vinegar into the tomato sauce and taste; it should be aggressively tangy. Layer the crisp bread in a wide dish, moisten it with hot broth, pile on the rice and then the chicken, and pour the sauce over everything before showering with parsley.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw11r3" data-finish="w11r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw11r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w11r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw12r0">
   <div class="cook-head">
-    <label class="back" for="vw12r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍺 Bavarian Jagerschnitzel with Bacon-Mushroom Gravy</div>
   </div>
   <div class="step" id="csw12r0_0">
@@ -10428,7 +10431,7 @@
   <p class="step-txt">Lay each chop between two sheets of plastic wrap and pound it with a heavy pan from the center outward until it is thin and even all over. Season both sides with salt and pepper.</p>
   <div class="step-tip"><span>💡</span><span>Thin and even means it cooks through before the crust burns</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw12r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r0_1">Next ›</label></div>
 </div><div class="step" id="csw12r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10477,12 +10480,12 @@
   <p class="step-txt">Rest the cutlets on a rack for a minute so they stay crisp, stir the bacon back into the gravy, and serve the gravy in a puddle beside each schnitzel with lemon wedges for squeezing.</p>
   <div class="step-tip"><span>💡</span><span>Gravy on top turns the crust to mush</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw12r0" data-finish="w12r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w12r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw12r1">
   <div class="cook-head">
-    <label class="back" for="vw12r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐑 Uyghur Cumin Lamb with Blistered Onions</div>
   </div>
   <div class="step" id="csw12r1_0">
@@ -10491,7 +10494,7 @@
   <p class="step-txt">Toss the sliced lamb with the soy sauce, Shaoxing wine, and cornstarch until every piece is slick, then leave it to sit while you cut the vegetables.</p>
   <div class="step-tip"><span>💡</span><span>The cornstarch is what gives you that velvety restaurant texture</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Uyghur Cumin Lamb with Blistered Onions — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw12r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r1_1">Next ›</label></div>
 </div><div class="step" id="csw12r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10540,12 +10543,12 @@
   <p class="step-txt">Kill the heat, fold in the cilantro and the last of the spice mix, and serve straight from the pan with the warm naan for tearing and scooping.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw12r1" data-finish="w12r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w12r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw12r2">
   <div class="cook-head">
-    <label class="back" for="vw12r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧅 Cuban Bistec Encebollado with Black Beans and Rice</div>
   </div>
   <div class="step" id="csw12r2_0">
@@ -10554,7 +10557,7 @@
   <p class="step-txt">Mash the garlic with a big pinch of salt into a paste, then whisk it with the juice of two limes, the juice of the orange, the cumin, and the oregano. That sour-orange mix is your mojo.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw12r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r2_1">Next ›</label></div>
 </div><div class="step" id="csw12r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10603,12 +10606,12 @@
   <p class="step-txt">Pile the onions and pan juices over the rested steaks, squeeze the last lime over the top, and serve with the beans, rice, and a scatter of cilantro.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Cuban Bistec Encebollado with Black Beans and Rice — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw12r2" data-finish="w12r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w12r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw12r3">
   <div class="cook-head">
-    <label class="back" for="vw12r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥥 Kuku Paka: Swahili Coast Charred Chicken in Coconut Curry</div>
   </div>
   <div class="step" id="csw12r3_0">
@@ -10617,7 +10620,7 @@
   <p class="step-txt">Blitz the garlic, ginger, chiles, and cilantro stems with the juice of one lime and a splash of water into a rough paste. Rub half of it over the chicken along with half the turmeric and plenty of salt.</p>
   <div class="step-tip"><span>💡</span><span>Let it sit while the broiler heats and the onions cook</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Kuku Paka: Swahili Coast Charred Chicken in Coconut Curry — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw12r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw12r3_1">Next ›</label></div>
 </div><div class="step" id="csw12r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -10673,12 +10676,12 @@
   <p class="step-txt">Serve over the cooked basmati with the remaining cilantro and lime wedges on the side.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw12r3" data-finish="w12r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw12r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w12r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw13r0">
   <div class="cook-head">
-    <label class="back" for="vw13r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Three-Cup Chicken with Charred Ginger and Thai Basil</div>
   </div>
   <div class="step" id="csw13r0_0">
@@ -10687,7 +10690,7 @@
   <p class="step-txt">Pat the chicken chunks very dry and season them with black pepper only, since the soy sauce brings all the salt this dish needs. Stir the soy sauce, wine, and brown sugar together in a small bowl so the sauce is ready to hit a hot pan.</p>
   <div class="step-tip"><span>💡</span><span>Season with pepper now, salt at the very end if at all.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw13r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r0_1">Next ›</label></div>
 </div><div class="step" id="csw13r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -10729,12 +10732,12 @@
   <p class="step-txt">Spoon the chicken over bowls of hot jasmine rice, scraping every bit of glaze and the sweet garlic cloves out of the pan. Eat immediately while the basil is still fragrant.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw13r0" data-finish="w13r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w13r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw13r1">
   <div class="cook-head">
-    <label class="back" for="vw13r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫒 Poulet Provencal with Olives, Fennel and Orange</div>
   </div>
   <div class="step" id="csw13r1_0">
@@ -10743,7 +10746,7 @@
   <p class="step-txt">Heat the oven to 425F. Pat the thighs bone-dry, season both sides hard with salt and pepper, and set them skin side up on the counter while the oven comes up.</p>
   <div class="step-tip"><span>💡</span><span>Wet skin steams; dry skin shatters.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw13r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r1_1">Next ›</label></div>
 </div><div class="step" id="csw13r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10792,12 +10795,12 @@
   <p class="step-txt">Let the pan rest so the juices settle, then taste the sauce and adjust the salt, remembering the olives and anchovy already brought plenty. Serve straight from the skillet with bread for the sauce.</p>
   <div class="step-tip"><span>💡</span><span>The orange peel is for perfume, not eating.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Poulet Provencal with Olives, Fennel and Orange — step 8">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw13r1" data-finish="w13r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w13r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw13r2">
   <div class="cook-head">
-    <label class="back" for="vw13r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Chupe de Camarones, Chilean Shrimp and Bread Chowder</div>
   </div>
   <div class="step" id="csw13r2_0">
@@ -10806,7 +10809,7 @@
   <p class="step-txt">Tear the bread into rough pieces, drop them into a bowl with the milk, and press them under so they soak through. Meanwhile pat the shrimp dry and season them with salt and 1/2 tsp of the merken.</p>
   <div class="step-tip"><span>💡</span><span>The bread is the thickener; no flour anywhere in this.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw13r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r2_1">Next ›</label></div>
 </div><div class="step" id="csw13r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10855,12 +10858,12 @@
   <p class="step-txt">Let the chowder settle so it stops volcano-bubbling, then shower it with cilantro and serve it straight from the pan with spoons.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Chupe de Camarones, Chilean Shrimp and Bread Chowder — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw13r2" data-finish="w13r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w13r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw13r3">
   <div class="cook-head">
-    <label class="back" for="vw13r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🦐 Low-Country Shrimp and Sausage over Unexpected Cheddar Grits</div>
   </div>
   <div class="step" id="csw13r3_0">
@@ -10869,7 +10872,7 @@
   <p class="step-txt">Bring 5 cups of the broth plus 2 cups water and 1 1/2 tsp salt to a rolling boil in a heavy pot over high heat. Rain the grits in slowly with one hand while whisking constantly with the other.</p>
   <div class="step-tip"><span>💡</span><span>Whisking during the pour is the only way to avoid lumps.</span></div>
   <label class="step-timer" for="t60" data-sec="60" data-name="Low-Country Shrimp and Sausage over Unexpected Cheddar Grits — step 1">⏱ Start 1:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw13r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw13r3_1">Next ›</label></div>
 </div><div class="step" id="csw13r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -10925,12 +10928,12 @@
   <p class="step-txt">Ladle the grits into wide bowls, spoon the shrimp and sausage with all their gravy over the top, and finish with the remaining bacon and the scallion greens.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw13r3" data-finish="w13r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw13r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w13r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw14r0">
   <div class="cook-head">
-    <label class="back" for="vw14r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Nepali Chicken Chhoila with Mustard Oil and Timur</div>
   </div>
   <div class="step" id="csw14r0_0">
@@ -10939,7 +10942,7 @@
   <p class="step-txt">Toast the timur and fenugreek seeds in a dry skillet over medium, shaking constantly, until they smell nutty and the fenugreek darkens one shade. Crush them coarsely in a mortar or under a heavy pan and set aside.</p>
   <div class="step-tip"><span>💡</span><span>Fenugreek turns bitter the second it goes past golden brown.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Nepali Chicken Chhoila with Mustard Oil and Timur — step 1">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw14r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r0_1">Next ›</label></div>
 </div><div class="step" id="csw14r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -10988,12 +10991,12 @@
   <p class="step-txt">Warm the naan directly in the hot dry skillet over medium-high until puffed and spotted on both sides, then serve alongside the chicken.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Nepali Chicken Chhoila with Mustard Oil and Timur — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw14r0" data-finish="w14r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w14r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw14r1">
   <div class="cook-head">
-    <label class="back" for="vw14r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍝 Pasta con le Sarde, Sicilian Sardines with Fennel and Saffron</div>
   </div>
   <div class="step" id="csw14r1_0">
@@ -11002,7 +11005,7 @@
   <p class="step-txt">Bring a large pot of aggressively salted water to a boil over high heat. Crumble the saffron into 1/3 cup of very hot water in a mug and drop the raisins in to steep and plump.</p>
   <div class="step-tip"><span>💡</span><span>Blooming saffron in hot water pulls out far more color.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw14r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r1_1">Next ›</label></div>
 </div><div class="step" id="csw14r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11051,12 +11054,12 @@
   <p class="step-txt">Off the heat, squeeze in half the lemon, taste for salt, and pile it into bowls. Top with the reserved tin of sardines, the fennel fronds, and a heavy shower of breadcrumbs and pine nuts.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw14r1" data-finish="w14r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w14r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw14r2">
   <div class="cook-head">
-    <label class="back" for="vw14r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥘 Trinidadian Brown Stew Chicken with Burnt Sugar</div>
   </div>
   <div class="step" id="csw14r2_0">
@@ -11065,7 +11068,7 @@
   <p class="step-txt">Chop the cilantro, scallions, garlic, thyme, and half the scotch bonnet together into a rough wet paste with 2 tbsp water, or pulse it in a small food processor. Rub two-thirds of this green seasoning and 1 tsp salt all over the chicken and leave it to sit while you prep the rest.</p>
   <div class="step-tip"><span>💡</span><span>Green seasoning is the backbone of every Trini pot.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Trinidadian Brown Stew Chicken with Burnt Sugar — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw14r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r2_1">Next ›</label></div>
 </div><div class="step" id="csw14r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11114,12 +11117,12 @@
   <p class="step-txt">Taste for salt, remembering the soy sauce, and serve the chicken over jasmine rice with the gravy poured generously over everything.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw14r2" data-finish="w14r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w14r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw14r3">
   <div class="cook-head">
-    <label class="back" for="vw14r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍛 Kashmiri Rogan Josh with Fennel and Black Cardamom</div>
   </div>
   <div class="step" id="csw14r3_0">
@@ -11128,7 +11131,7 @@
   <p class="step-txt">Pat the lamb cubes very dry and season them with salt. Melt the ghee in a large Dutch oven over medium-high until it shimmers, then add the whole spices and bay leaves and fry until the cardamom pods puff and the kitchen smells like a spice shop.</p>
   <div class="step-tip"><span>💡</span><span>Whole spices go in first so the fat carries their perfume everywhere.</span></div>
   <label class="step-timer" for="t60" data-sec="60" data-name="Kashmiri Rogan Josh with Fennel and Black Cardamom — step 1">⏱ Start 1:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw14r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw14r3_1">Next ›</label></div>
 </div><div class="step" id="csw14r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -11184,12 +11187,12 @@
   <p class="step-txt">Fish out the cinnamon stick and the black cardamom pods, then ladle the lamb over basmati in wide bowls with naan on the side.</p>
   <div class="step-tip"><span>💡</span><span>Black cardamom pods are not for eating whole.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw14r3" data-finish="w14r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw14r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w14r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw15r0">
   <div class="cook-head">
-    <label class="back" for="vw15r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🦐 Singapore Chili Shrimp with Egg Ribbon Gravy</div>
   </div>
   <div class="step" id="csw15r0_0">
@@ -11198,7 +11201,7 @@
   <p class="step-txt">Pat the shrimp completely dry and season them lightly with salt, then spread them on a plate so they are not touching. Leave them out while you build the sauce so they lose their fridge chill.</p>
   <div class="step-tip"><span>💡</span><span>Dry shrimp sear instead of steam.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw15r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r0_1">Next ›</label></div>
 </div><div class="step" id="csw15r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11247,12 +11250,12 @@
   <p class="step-txt">Shower the shrimp with scallions and squeeze a lime wedge over the whole pan. Serve straight from the skillet with the charred naan alongside.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw15r0" data-finish="w15r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w15r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw15r1">
   <div class="cook-head">
-    <label class="back" for="vw15r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐟 Mustard-Dill Salmon with Smashed Dill Potatoes</div>
   </div>
   <div class="step" id="csw15r1_0">
@@ -11261,7 +11264,7 @@
   <p class="step-txt">Cover the potatoes with heavily salted cold water, bring to a boil, and cook until a paring knife slides into the biggest one with zero resistance. Start the sauce while they bubble away.</p>
   <div class="step-tip"><span>💡</span><span>Salt the water like the sea.</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Mustard-Dill Salmon with Smashed Dill Potatoes — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw15r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r1_1">Next ›</label></div>
 </div><div class="step" id="csw15r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11310,12 +11313,12 @@
   <p class="step-txt">Dollop the yogurt over the potatoes, spoon the mustard-dill sauce generously over the salmon, and serve with the cold cucumbers and a lemon wedge.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw15r1" data-finish="w15r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w15r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw15r2">
   <div class="cook-head">
-    <label class="back" for="vw15r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥪 Salvadoran Panes con Pollo</div>
   </div>
   <div class="step" id="csw15r2_0">
@@ -11324,7 +11327,7 @@
   <p class="step-txt">Toast the pepitas and sesame seeds in a dry skillet over medium, shaking often, until they pop and turn nut-brown and fragrant. Tip them onto a board and chop them fine, or crush them with the bottom of a mug.</p>
   <div class="step-tip"><span>💡</span><span>This crushed seed paste is the relajo.</span></div>
   <label class="step-timer" for="t180" data-sec="180" data-name="Salvadoran Panes con Pollo — step 1">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw15r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r2_1">Next ›</label></div>
 </div><div class="step" id="csw15r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11373,12 +11376,12 @@
   <p class="step-txt">Pile the chicken onto the bottom buns, spoon extra sauce over so it soaks in, and crown with a tangle of the cabbage and radish before closing the sandwiches.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw15r2" data-finish="w15r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w15r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw15r3">
   <div class="cook-head">
-    <label class="back" for="vw15r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐖 Goan Pork Vindaloo</div>
   </div>
   <div class="step" id="csw15r3_0">
@@ -11387,7 +11390,7 @@
   <p class="step-txt">Whisk the vinegar, garlic, ginger, paprika, cumin, garam masala, turmeric, cayenne, brown sugar and a heavy pinch of salt into a loose rust-red paste. Toss the pork through it until every cube is coated and leave it to marinate while you chop the onion.</p>
   <div class="step-tip"><span>💡</span><span>Vinegar first is what makes it vindaloo.</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Goan Pork Vindaloo — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw15r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw15r3_1">Next ›</label></div>
 </div><div class="step" id="csw15r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11436,12 +11439,12 @@
   <p class="step-txt">Pull the pot off the heat and let it settle, then taste and adjust with salt or another splash of vinegar for brightness before spooning it over the basmati.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Goan Pork Vindaloo — step 8">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw15r3" data-finish="w15r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw15r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w15r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw16r0">
   <div class="cook-head">
-    <label class="back" for="vw16r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧈 Chicken Kyiv Cutlets with Garlic-Dill Butter</div>
   </div>
   <div class="step" id="csw16r0_0">
@@ -11450,7 +11453,7 @@
   <p class="step-txt">Mash the softened butter with the garlic, a fistful of chopped dill, salt and pepper. Roll it into two tight logs in plastic wrap and freeze until hard to the touch.</p>
   <div class="step-tip"><span>💡</span><span>Rock-hard butter will not leak out while frying.</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Chicken Kyiv Cutlets with Garlic-Dill Butter — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw16r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r0_1">Next ›</label></div>
 </div><div class="step" id="csw16r0_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -11506,12 +11509,12 @@
   <p class="step-txt">Rest the cutlets briefly so the butter stops boiling inside, then cut into them at the table and let the garlic butter flood the plate.</p>
   <div class="step-tip"><span>💡</span><span>Cut at the table for the reveal.</span></div>
   <label class="step-timer" for="t180" data-sec="180" data-name="Chicken Kyiv Cutlets with Garlic-Dill Butter — step 9">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r0_7">‹ Back</label><label class="nav-btn nav-done" for="vw16r0" data-finish="w16r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r0_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w16r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw16r1">
   <div class="cook-head">
-    <label class="back" for="vw16r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫓 Hawaij Chicken with Sahawiq and Charred Naan</div>
   </div>
   <div class="step" id="csw16r1_0">
@@ -11520,7 +11523,7 @@
   <p class="step-txt">Whisk the cumin, coriander, turmeric, cardamom, a very generous grind of black pepper, salt, two grated garlic cloves and olive oil into a thick hawaij rub. Massage it into the thighs and leave them out while the pan heats.</p>
   <div class="step-tip"><span>💡</span><span>Black pepper is the backbone of hawaij.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Hawaij Chicken with Sahawiq and Charred Naan — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw16r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r1_1">Next ›</label></div>
 </div><div class="step" id="csw16r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -11562,12 +11565,12 @@
   <p class="step-txt">Slice the chicken thickly against the grain, pile it onto the charred naan, and spoon over the sahawiq and cold yogurt just before eating.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw16r1" data-finish="w16r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w16r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw16r2">
   <div class="cook-head">
-    <label class="back" for="vw16r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫘 Tuscan Rosemary Pork Chops with Cannellini and Kale</div>
   </div>
   <div class="step" id="csw16r2_0">
@@ -11576,7 +11579,7 @@
   <p class="step-txt">Salt the chops aggressively on both sides and let them sit on the counter while you strip the kale and smash the garlic, so they lose their chill and the salt sinks in.</p>
   <div class="step-tip"><span>💡</span><span>Room-temperature chops cook evenly.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Tuscan Rosemary Pork Chops with Cannellini and Kale — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw16r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r2_1">Next ›</label></div>
 </div><div class="step" id="csw16r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11625,12 +11628,12 @@
   <p class="step-txt">Finish the beans with lemon juice and the parmesan, then spoon them onto plates, set the chops on top, and zigzag the balsamic glaze over everything.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw16r2" data-finish="w16r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w16r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw16r3">
   <div class="cook-head">
-    <label class="back" for="vw16r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🫒 Puerto Rican Carne Guisada with Olives and Potatoes</div>
   </div>
   <div class="step" id="csw16r3_0">
@@ -11639,7 +11642,7 @@
   <p class="step-txt">Pat the beef dry and season it hard with salt, pepper and half the oregano. Heat olive oil in a Dutch oven over medium-high and brown the cubes in two uncrowded batches until they are crusted on at least two sides.</p>
   <div class="step-tip"><span>💡</span><span>Small cubes turn tender inside the short simmer.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Puerto Rican Carne Guisada with Olives and Potatoes — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw16r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw16r3_1">Next ›</label></div>
 </div><div class="step" id="csw16r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -11695,12 +11698,12 @@
   <p class="step-txt">Pull the pot off the heat, stir in a big handful of chopped cilantro leaves, and let it settle before ladling it over the rice.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Puerto Rican Carne Guisada with Olives and Potatoes — step 9">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw16r3" data-finish="w16r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw16r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w16r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw17r0">
   <div class="cook-head">
-    <label class="back" for="vw17r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥢 Shanghai Red-Braised Chicken with Star Anise and Scallions</div>
   </div>
   <div class="step" id="csw17r0_0">
@@ -11709,7 +11712,7 @@
   <p class="step-txt">Pat the chicken thoroughly dry. Heat 1 tbsp oil in a wide skillet over medium-high until it shimmers and thins out, then lay the thighs in a single layer and sear undisturbed until the undersides are deep golden and release from the pan without tugging.</p>
   <div class="step-tip"><span>💡</span><span>Crowding steams the meat instead of browning it.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Shanghai Red-Braised Chicken with Star Anise and Scallions — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw17r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r0_1">Next ›</label></div>
 </div><div class="step" id="csw17r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11758,12 +11761,12 @@
   <p class="step-txt">Kill the heat and swirl in the rice vinegar and sesame oil. Fish out the star anise, pile the chicken and bok choy over the rice, and shower with the raw scallion greens.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw17r0" data-finish="w17r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w17r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw17r1">
   <div class="cook-head">
-    <label class="back" for="vw17r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🐟 Bengali Shorshe Salmon in Mustard-Turmeric Sauce</div>
   </div>
   <div class="step" id="csw17r1_0">
@@ -11772,7 +11775,7 @@
   <p class="step-txt">Rub the salmon all over with the turmeric and a generous pinch of salt and set it aside while you build the sauce.</p>
   <div class="step-tip"><span>💡</span><span>The turmeric seasons the fish and stains it a deep marigold.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw17r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r1_1">Next ›</label></div>
 </div><div class="step" id="csw17r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -11814,12 +11817,12 @@
   <p class="step-txt">Take the pan off the heat, squeeze in half the lime, and let it stand uncovered so the sauce tightens around the fish. Serve over the rice with cilantro, the softened chiles, and the rest of the lime.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Bengali Shorshe Salmon in Mustard-Turmeric Sauce — step 7">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw17r1" data-finish="w17r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w17r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw17r2">
   <div class="cook-head">
-    <label class="back" for="vw17r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍤 Catalan Romesco Shrimp with Blistered Scallions</div>
   </div>
   <div class="step" id="csw17r2_0">
@@ -11828,7 +11831,7 @@
   <p class="step-txt">Warm 3 tbsp olive oil in a skillet over medium and fry one slice of bread, torn into rough pieces, together with the whole garlic cloves until both are golden brown and crisp at the edges.</p>
   <div class="step-tip"><span>💡</span><span>Fried bread is what gives romesco its body.</span></div>
   <label class="step-timer" for="t180" data-sec="180" data-name="Catalan Romesco Shrimp with Blistered Scallions — step 1">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw17r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r2_1">Next ›</label></div>
 </div><div class="step" id="csw17r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -11870,12 +11873,12 @@
   <p class="step-txt">Toast the remaining bread slice, squeeze lemon over the shrimp, and spoon a thick bed of romesco onto each plate. Drag the shrimp and scallions through it and finish with parsley.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw17r2" data-finish="w17r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w17r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw17r3">
   <div class="cook-head">
-    <label class="back" for="vw17r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍛 Venezuelan Pabellon Bowls with Sweet Plantains</div>
   </div>
   <div class="step" id="csw17r3_0">
@@ -11884,7 +11887,7 @@
   <p class="step-txt">Heat 2 tbsp olive oil in your largest pot over medium-high. Add the onion, bell pepper and a big pinch of salt and cook, stirring now and then, until the vegetables slump completely and the edges catch brown.</p>
   <div class="step-tip"><span>💡</span><span>This sofrito is the backbone of the dish, so let it go past merely soft.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Venezuelan Pabellon Bowls with Sweet Plantains — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw17r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw17r3_1">Next ›</label></div>
 </div><div class="step" id="csw17r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -11933,12 +11936,12 @@
   <p class="step-txt">Build each bowl in stripes: rice, then guiso, then brothy beans, then plantains, and crumble the queso fresco over the top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw17r3" data-finish="w17r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw17r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w17r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw18r0">
   <div class="cook-head">
-    <label class="back" for="vw18r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Isan Pork Larb with Toasted Rice Powder</div>
   </div>
   <div class="step" id="csw18r0_0">
@@ -11947,7 +11950,7 @@
   <p class="step-txt">Toast the raw rice in a dry skillet over medium, shaking the pan constantly, until every grain is the color of weak tea and the kitchen smells like popcorn.</p>
   <div class="step-tip"><span>💡</span><span>This powder is the soul of larb, so do not skip it.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Isan Pork Larb with Toasted Rice Powder — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw18r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r0_1">Next ›</label></div>
 </div><div class="step" id="csw18r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -11989,12 +11992,12 @@
   <p class="step-txt">Pile the larb into a bowl, dust with the reserved rice powder and remaining herbs, and serve with the drained cabbage leaves and hot jasmine rice.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw18r0" data-finish="w18r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w18r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw18r1">
   <div class="cook-head">
-    <label class="back" for="vw18r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥔 Danish Frikadeller with Dill Potatoes and Agurkesalat</div>
   </div>
   <div class="step" id="csw18r1_0">
@@ -12003,7 +12006,7 @@
   <p class="step-txt">Put the potatoes in a pot of cold salted water, bring to a boil over high heat, then cook at a steady simmer until a knife slides into the largest one with no resistance.</p>
   
   <label class="step-timer" for="t1200" data-sec="1200" data-name="Danish Frikadeller with Dill Potatoes and Agurkesalat — step 1">⏱ Start 20:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw18r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r1_1">Next ›</label></div>
 </div><div class="step" id="csw18r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12052,12 +12055,12 @@
   <p class="step-txt">Plate the frikadeller with the dill potatoes and a drained mound of the cucumber salad, then spoon the browned butter from the skillet over the top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw18r1" data-finish="w18r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w18r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw18r2">
   <div class="cook-head">
-    <label class="back" for="vw18r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥬 Guatemalan Pollo en Jocon</div>
   </div>
   <div class="step" id="csw18r2_0">
@@ -12066,7 +12069,7 @@
   <p class="step-txt">Toast the pepitas and sesame seeds together in a dry skillet over medium, shaking often, until the pepitas puff and pop and the sesame turns gold.</p>
   <div class="step-tip"><span>💡</span><span>Pull them the moment they smell nutty; they scorch in seconds.</span></div>
   <label class="step-timer" for="t240" data-sec="240" data-name="Guatemalan Pollo en Jocon — step 1">⏱ Start 4:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw18r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r2_1">Next ›</label></div>
 </div><div class="step" id="csw18r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12115,12 +12118,12 @@
   <p class="step-txt">Heat the rice pouch, then ladle the jocon over it with the warm tortillas alongside for scooping.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw18r2" data-finish="w18r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w18r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw18r3">
   <div class="cook-head">
-    <label class="back" for="vw18r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Big-Batch Andalusian Sherry-Garlic Chicken with Saffron Potatoes</div>
   </div>
   <div class="step" id="csw18r3_0">
@@ -12129,7 +12132,7 @@
   <p class="step-txt">Heat the oven to 400F. Pat the chicken bone-dry and salt it heavily on both sides, then let it sit uncovered while the oven comes up to temperature.</p>
   <div class="step-tip"><span>💡</span><span>Dry skin is the only route to crisp skin.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw18r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw18r3_1">Next ›</label></div>
 </div><div class="step" id="csw18r3_1">
   <div class="prog"><i style="width:22%"></i></div>
   <div class="step-n">Step 2 of 9</div>
@@ -12185,12 +12188,12 @@
   <p class="step-txt">Off the heat, stir the sherry vinegar and lemon juice into the pan sauce, taste for salt, and finish with the lemon zest and parsley.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r3_7">‹ Back</label><label class="nav-btn nav-done" for="vw18r3" data-finish="w18r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw18r3_7">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w18r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw19r0">
   <div class="cook-head">
-    <label class="back" for="vw19r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🔥 Hunan Farmhouse Pork with Blistered Green Chilies</div>
   </div>
   <div class="step" id="csw19r0_0">
@@ -12199,7 +12202,7 @@
   <p class="step-txt">Put the pork in the freezer for 10 minutes to firm up, then slice it against the grain as thin as you can manage. Toss the slices with 1 tbsp of the soy sauce and a heavy grind of black pepper.</p>
   <div class="step-tip"><span>💡</span><span>Half-frozen meat is the only way to get paper-thin slices with a home knife.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Hunan Farmhouse Pork with Blistered Green Chilies — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw19r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r0_1">Next ›</label></div>
 </div><div class="step" id="csw19r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12241,12 +12244,12 @@
   <p class="step-txt">Kill the heat and fold in the scallion batons and the Crunchy Chili Onion so the crunch survives. Pile it over the hot rice and spoon the pan drippings on top.</p>
   <div class="step-tip"><span>💡</span><span>Adding chili onion off-heat keeps the fried garlic bits crisp.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw19r0" data-finish="w19r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w19r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw19r1">
   <div class="cook-head">
-    <label class="back" for="vw19r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍛 Chettinad Pepper Chicken with Curry Leaves</div>
   </div>
   <div class="step" id="csw19r1_0">
@@ -12255,7 +12258,7 @@
   <p class="step-txt">Toss the chicken with the yogurt, turmeric, half the chili powder, and a big pinch of salt until every piece is slicked yellow. Leave it on the counter for 10 minutes while you prep everything else.</p>
   
   <label class="step-timer" for="t600" data-sec="600" data-name="Chettinad Pepper Chicken with Curry Leaves — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw19r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r1_1">Next ›</label></div>
 </div><div class="step" id="csw19r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12304,12 +12307,12 @@
   <p class="step-txt">Uncover, raise the heat, and cook 4 more minutes until the sauce is nearly dry and clinging to the meat. Off the heat, stir in the last of the pepper masala and warm the naan directly over the burner or in the hot pan.</p>
   <div class="step-tip"><span>💡</span><span>Finishing with raw-toasted pepper keeps the heat bright instead of muddy.</span></div>
   <label class="step-timer" for="t240" data-sec="240" data-name="Chettinad Pepper Chicken with Curry Leaves — step 8">⏱ Start 4:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw19r1" data-finish="w19r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w19r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw19r2">
   <div class="cook-head">
-    <label class="back" for="vw19r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍅 Neapolitan Chicken Pizzaiola with Olives and Torn Mozzarella</div>
   </div>
   <div class="step" id="csw19r2_0">
@@ -12318,7 +12321,7 @@
   <p class="step-txt">Pat the cutlets bone dry and season both sides hard with salt and pepper. Film a wide skillet with olive oil and heat over medium-high for 2 minutes, until the oil shimmers and thins out across the pan.</p>
   <div class="step-tip"><span>💡</span><span>Dry chicken browns; damp chicken steams.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Neapolitan Chicken Pizzaiola with Olives and Torn Mozzarella — step 1">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw19r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r2_1">Next ›</label></div>
 </div><div class="step" id="csw19r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12360,12 +12363,12 @@
   <p class="step-txt">Rest it off the heat for 3 minutes, then tear the basil over the top and drizzle with raw olive oil. Serve straight from the pan with torn ciabatta for the sauce.</p>
   
   <label class="step-timer" for="t180" data-sec="180" data-name="Neapolitan Chicken Pizzaiola with Olives and Torn Mozzarella — step 7">⏱ Start 3:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw19r2" data-finish="w19r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w19r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw19r3">
   <div class="cook-head">
-    <label class="back" for="vw19r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Dominican Pollo Guisado with Green Olives</div>
   </div>
   <div class="step" id="csw19r3_0">
@@ -12374,7 +12377,7 @@
   <p class="step-txt">Toss the chicken with the adobo seasoning, oregano, minced cilantro stems, the juice of one lime, salt, and pepper until every piece is coated. Let it sit for 15 minutes while you chop the garlic and potatoes.</p>
   <div class="step-tip"><span>💡</span><span>Getting seasoning under the skin pays off later.</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Dominican Pollo Guisado with Green Olives — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw19r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw19r3_1">Next ›</label></div>
 </div><div class="step" id="csw19r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12423,12 +12426,12 @@
   <p class="step-txt">Pull it off the heat, squeeze in the second lime, and shower with the cilantro leaves. Let it settle for 10 minutes so the sauce tightens, then spoon it over the rice.</p>
   
   <label class="step-timer" for="t600" data-sec="600" data-name="Dominican Pollo Guisado with Green Olives — step 8">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw19r3" data-finish="w19r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw19r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w19r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw20r0">
   <div class="cook-head">
-    <label class="back" for="vw20r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥬 Laotian Larb Gai with Toasted Rice Powder</div>
   </div>
   <div class="step" id="csw20r0_0">
@@ -12437,7 +12440,7 @@
   <p class="step-txt">Toast the raw rice in a dry skillet over medium heat for 8 minutes, shaking almost constantly, until every grain is the color of weak tea and the pan smells like popcorn. Tip it onto a plate to cool.</p>
   <div class="step-tip"><span>💡</span><span>This is the whole dish — don&#x27;t rush it pale.</span></div>
   <label class="step-timer" for="t480" data-sec="480" data-name="Laotian Larb Gai with Toasted Rice Powder — step 1">⏱ Start 8:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw20r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r0_1">Next ›</label></div>
 </div><div class="step" id="csw20r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12479,12 +12482,12 @@
   <p class="step-txt">Fold in the mint, cilantro, and most of the rice powder right before you serve, then taste and correct with the last lime or more fish sauce. Pile it onto a platter with the lettuce leaves and cucumber spears and dust with the remaining rice powder.</p>
   <div class="step-tip"><span>💡</span><span>Add the rice powder at the last second or it goes soggy.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw20r0" data-finish="w20r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w20r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw20r1">
   <div class="cook-head">
-    <label class="back" for="vw20r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🧆 Swedish Meatballs in Allspice Cream with Pickled Cucumber</div>
   </div>
   <div class="step" id="csw20r1_0">
@@ -12493,7 +12496,7 @@
   <p class="step-txt">Shave the cucumber into near-transparent coins and toss with the vinegar, sugar, a big pinch of salt, and the chopped dill stems. Leave it to pickle for 20 minutes, tossing once, until the slices go limp and translucent.</p>
   
   <label class="step-timer" for="t1200" data-sec="1200" data-name="Swedish Meatballs in Allspice Cream with Pickled Cucumber — step 1">⏱ Start 20:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw20r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r1_1">Next ›</label></div>
 </div><div class="step" id="csw20r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12542,12 +12545,12 @@
   <p class="step-txt">Return the meatballs and any juices, cover, and simmer 5 minutes until cooked through and glossy. Shower with torn dill and serve with the drained pickles and a spoonful of jam on each plate.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Swedish Meatballs in Allspice Cream with Pickled Cucumber — step 8">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw20r1" data-finish="w20r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w20r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw20r2">
   <div class="cook-head">
-    <label class="back" for="vw20r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍳 Bolivian Silpancho with Fried Eggs and Llajua</div>
   </div>
   <div class="step" id="csw20r2_0">
@@ -12556,7 +12559,7 @@
   <p class="step-txt">Make the llajua first: chop or briefly pulse the tomatoes, chiles, garlic, and half the cilantro into a loose, chunky salsa with the lime juice and plenty of salt. Let it sit and get juicy while you cook.</p>
   <div class="step-tip"><span>💡</span><span>Leave the chile seeds in — llajua is supposed to bite.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw20r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r2_1">Next ›</label></div>
 </div><div class="step" id="csw20r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12605,12 +12608,12 @@
   <p class="step-txt">Crown each plate with two fried eggs, scatter the raw onion and remaining cilantro, and spoon llajua over everything. Break the yolks at the table and eat immediately.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw20r2" data-finish="w20r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w20r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw20r3">
   <div class="cook-head">
-    <label class="back" for="vw20r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥣 Caldo Gallego with Chorizo, White Beans, and Greens</div>
   </div>
   <div class="step" id="csw20r3_0">
@@ -12619,7 +12622,7 @@
   <p class="step-txt">Render the diced bacon in a large Dutch oven over medium heat for 5 minutes, stirring occasionally, until the fat has pooled and the edges are browning. Lift it out with a slotted spoon and leave the fat behind.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Caldo Gallego with Chorizo, White Beans, and Greens — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw20r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw20r3_1">Next ›</label></div>
 </div><div class="step" id="csw20r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12668,12 +12671,12 @@
   <p class="step-txt">Stir in the beans and the greens a handful at a time, then simmer 10 minutes until the greens are fully tender and the broth is cloudy and rich. Mash a few potatoes against the side of the pot, fish out the bay leaves, and season with salt.</p>
   <div class="step-tip"><span>💡</span><span>Mashing a little potato thickens it without any flour.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Caldo Gallego with Chorizo, White Beans, and Greens — step 8">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw20r3" data-finish="w20r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw20r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w20r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw21r0">
   <div class="cook-head">
-    <label class="back" for="vw21r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍜 Beijing Zhajiangmian: Fried Bean Sauce Pork Noodles</div>
   </div>
   <div class="step" id="csw21r0_0">
@@ -12682,7 +12685,7 @@
   <p class="step-txt">Whisk the hoisin, miso, soy sauce, Shaoxing wine, sugar, and 1/3 cup water in a bowl until completely smooth, then park it next to the stove. Bring a large pot of salted water to a boil for the noodles.</p>
   <div class="step-tip"><span>💡</span><span>Pre-mixing keeps the paste from scorching when it hits the pan.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw21r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r0_1">Next ›</label></div>
 </div><div class="step" id="csw21r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12724,12 +12727,12 @@
   <p class="step-txt">Divide the noodles between two deep bowls, spoon a generous mound of sauce into the center of each, and pile the cucumber and scallion greens around the rim. Bring them to the table unmixed and toss hard right before eating.</p>
   <div class="step-tip"><span>💡</span><span>Mixing at the table is the tradition, not a shortcut.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw21r0" data-finish="w21r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w21r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw21r1">
   <div class="cook-head">
-    <label class="back" for="vw21r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥣 Gujarati Kadhi with Crisped Paneer</div>
   </div>
   <div class="step" id="csw21r1_0">
@@ -12738,7 +12741,7 @@
   <p class="step-txt">Whisk the yogurt, chickpea flour, turmeric, jaggery, 1 tsp salt, and 2 cups water in a bowl until it is absolutely lump-free and thin as heavy cream. Run your finger along the bottom of the bowl to check for hidden pockets of flour.</p>
   <div class="step-tip"><span>💡</span><span>Any lump of besan will taste raw and chalky later.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw21r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r1_1">Next ›</label></div>
 </div><div class="step" id="csw21r1_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12780,12 +12783,12 @@
   <p class="step-txt">Taste for the Gujarati balance, sweet arriving first and sour right behind it, adjusting with a pinch more jaggery or salt. Heat the rice pouch, ladle the kadhi over it, add the paneer, and shower with cilantro.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Gujarati Kadhi with Crisped Paneer — step 7">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r1_5">‹ Back</label><label class="nav-btn nav-done" for="vw21r1" data-finish="w21r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r1_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w21r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw21r2">
   <div class="cook-head">
-    <label class="back" for="vw21r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌿 Saltimbocca alla Romana with Skillet Artichokes</div>
   </div>
   <div class="step" id="csw21r2_0">
@@ -12794,7 +12797,7 @@
   <p class="step-txt">Pound the cutlets between two sheets of plastic to an even 1/4 inch and season them with black pepper only, since the prosciutto brings plenty of salt. Lay two sage leaves on each, drape a slice of prosciutto over the top, and press it down firmly with your palm.</p>
   <div class="step-tip"><span>💡</span><span>Even thickness means every cutlet finishes at the same moment.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw21r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r2_1">Next ›</label></div>
 </div><div class="step" id="csw21r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12836,12 +12839,12 @@
   <p class="step-txt">Pull the pan off the heat, swirl in the remaining butter and a squeeze of lemon until the sauce turns glossy, and spoon it over the cutlets. Toss the artichokes with the parsley, parmesan, and another squeeze of lemon and pile them alongside.</p>
   <div class="step-tip"><span>💡</span><span>Off-heat butter is what makes the sauce shine instead of break.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw21r2" data-finish="w21r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w21r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw21r3">
   <div class="cook-head">
-    <label class="back" for="vw21r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Seco de Pollo: Ecuadorian Beer-Braised Chicken</div>
   </div>
   <div class="step" id="csw21r3_0">
@@ -12850,7 +12853,7 @@
   <p class="step-txt">Blend the cilantro, garlic, beer, cumin, achiote, and 1 tsp salt until you have a smooth, violently green liquid. Pat the chicken bone dry and season it all over with salt and pepper.</p>
   <div class="step-tip"><span>💡</span><span>Use the cilantro stems, they carry most of the flavor.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw21r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw21r3_1">Next ›</label></div>
 </div><div class="step" id="csw21r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -12899,12 +12902,12 @@
   <p class="step-txt">Heat the rice pouches and serve the chicken over rice with plenty of sauce spooned across, topped with the pickled onions and the remaining lime cut into wedges.</p>
   <div class="step-tip"><span>💡</span><span>The acid on top is what keeps the rich sauce moving.</span></div>
   <label class="step-timer" for="t120" data-sec="120" data-name="Seco de Pollo: Ecuadorian Beer-Braised Chicken — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw21r3" data-finish="w21r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw21r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w21r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw22r0">
   <div class="cook-head">
-    <label class="back" for="vw22r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥩 Beef Lok Lak with Tuk Meric</div>
   </div>
   <div class="step" id="csw22r0_0">
@@ -12913,7 +12916,7 @@
   <p class="step-txt">Toss the beef with the oyster sauce, soy sauce, fish sauce, sugar, half the garlic, and 1 tbsp of the cracked pepper until every cube is slick. Let it sit at room temperature while you build the rest.</p>
   <div class="step-tip"><span>💡</span><span>Cracked, not ground, so you get gritty pops of pepper.</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Beef Lok Lak with Tuk Meric — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw22r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r0_1">Next ›</label></div>
 </div><div class="step" id="csw22r0_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -12955,12 +12958,12 @@
   <p class="step-txt">Pile the beef over the salad, slide an egg onto each plate, and serve with rice and the tuk meric alongside for dipping bite by bite.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r0_5">‹ Back</label><label class="nav-btn nav-done" for="vw22r0" data-finish="w22r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r0_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w22r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw22r1">
   <div class="cook-head">
-    <label class="back" for="vw22r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥘 Kure na Paprice: Czech Paprika Cream Chicken</div>
   </div>
   <div class="step" id="csw22r1_0">
@@ -12969,7 +12972,7 @@
   <p class="step-txt">Season the thighs hard with salt and pepper. Melt 2 tbsp of the butter in a Dutch oven over medium-high until it foams, then brown the chicken in a single layer on one side only until deeply golden, and move it to a plate.</p>
   <div class="step-tip"><span>💡</span><span>One good side of color is all you need before braising.</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Kure na Paprice: Czech Paprika Cream Chicken — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw22r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r1_1">Next ›</label></div>
 </div><div class="step" id="csw22r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13018,12 +13021,12 @@
   <p class="step-txt">Pile the buttered noodles into shallow bowls, lay the chicken on top, ladle the sauce generously over everything, and grind more black pepper across.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw22r1" data-finish="w22r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w22r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw22r2">
   <div class="cook-head">
-    <label class="back" for="vw22r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍛 Tico Casado: Pork Chops with Gallo Pinto</div>
   </div>
   <div class="step" id="csw22r2_0">
@@ -13032,7 +13035,7 @@
   <p class="step-txt">Whisk the Worcestershire, cumin, achiote, brown sugar, half the garlic, and 1/2 tsp black pepper into a thin brown Lizano-style sauce. Rub a third of it over the chops and leave them on the counter while you start the beans.</p>
   <div class="step-tip"><span>💡</span><span>Room-temperature chops sear far more evenly.</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Tico Casado: Pork Chops with Gallo Pinto — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw22r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r2_1">Next ›</label></div>
 </div><div class="step" id="csw22r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13081,12 +13084,12 @@
   <p class="step-txt">Rest the chops while you plate the gallo pinto, plantains, and a lime wedge on each plate. Slice the chops thick, lay them alongside, and scrape the pan glaze over the top with the rest of the cilantro.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Tico Casado: Pork Chops with Gallo Pinto — step 8">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw22r2" data-finish="w22r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w22r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw22r3">
   <div class="cook-head">
-    <label class="back" for="vw22r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥙 Me&#x27;orav Yerushalmi: Jerusalem Mixed Grill</div>
   </div>
   <div class="step" id="csw22r3_0">
@@ -13095,7 +13098,7 @@
   <p class="step-txt">Slice the thighs into 1/2-inch strips, cut the livers into bite-size pieces, and pat everything very dry. Toss it all with the cumin, turmeric, baharat, coriander, 2 tsp salt, and 1 tsp black pepper until uniformly gold.</p>
   <div class="step-tip"><span>💡</span><span>Dry meat plus a hot pan gives char instead of steam.</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw22r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw22r3_1">Next ›</label></div>
 </div><div class="step" id="csw22r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13144,12 +13147,12 @@
   <p class="step-txt">Warm the pitas directly over a burner or in a dry pan until they puff and blister, then stuff them with the grill, drizzle heavily with tahini and zhoug, and tuck pickles down the side.</p>
   
   <label class="step-timer" for="t120" data-sec="120" data-name="Me&#x27;orav Yerushalmi: Jerusalem Mixed Grill — step 8">⏱ Start 2:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw22r3" data-finish="w22r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw22r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w22r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw23r0">
   <div class="cook-head">
-    <label class="back" for="vw23r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍳 Macanese Minchi with Crispy Potatoes and Fried Eggs</div>
   </div>
   <div class="step" id="csw23r0_0">
@@ -13158,7 +13161,7 @@
   <p class="step-txt">Film a large nonstick skillet with olive oil and set it over medium-high until the surface shimmers and thins out. Scatter the frozen potatoes in a single loose layer and walk away so the undersides can blister and turn deep gold.</p>
   <div class="step-tip"><span>💡</span><span>Crowding steams them</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Macanese Minchi with Crispy Potatoes and Fried Eggs — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw23r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r0_1">Next ›</label></div>
 </div><div class="step" id="csw23r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13207,12 +13210,12 @@
   <p class="step-txt">Fish out the bay leaves, spoon the minchi over the rice, and slide an egg onto each plate. Finish with the sliced scallions and a last few drops of Worcestershire.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw23r0" data-finish="w23r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w23r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw23r1">
   <div class="cook-head">
-    <label class="back" for="vw23r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌿 Sindhi Seyal Murgh, Smothered in Garlic and Cilantro</div>
   </div>
   <div class="step" id="csw23r1_0">
@@ -13221,7 +13224,7 @@
   <p class="step-txt">Pat the chicken very dry, salt it well, and rub it with the turmeric and red chili powder until every piece is stained yellow. Let it sit while you chop the cilantro, garlic, and tomatoes.</p>
   <div class="step-tip"><span>💡</span><span>Dry chicken, better sear</span></div>
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw23r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r1_1">Next ›</label></div>
 </div><div class="step" id="csw23r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13270,12 +13273,12 @@
   <p class="step-txt">Let the pan rest off the heat so the masala tightens, then serve straight from the skillet with the hot naan for scooping.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw23r1" data-finish="w23r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w23r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw23r2">
   <div class="cook-head">
-    <label class="back" for="vw23r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🦐 Venetian Shrimp in Saor over Soft Parmesan Polenta</div>
   </div>
   <div class="step" id="csw23r2_0">
@@ -13284,7 +13287,7 @@
   <p class="step-txt">Warm a generous slick of olive oil in a wide skillet over medium-low, then add the sliced onions, bay leaves, and a big pinch of salt. Cook, stirring now and then, until the onions collapse into soft ribbons that are sweet and barely blond.</p>
   <div class="step-tip"><span>💡</span><span>Low and slow keeps them sweet, not brown</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Venetian Shrimp in Saor over Soft Parmesan Polenta — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw23r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r2_1">Next ›</label></div>
 </div><div class="step" id="csw23r2_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13333,12 +13336,12 @@
   <p class="step-txt">Spread the polenta across two warm shallow bowls, pile on the shrimp and onions with all their syrup, and scatter the parsley over the top.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r2_6">‹ Back</label><label class="nav-btn nav-done" for="vw23r2" data-finish="w23r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r2_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w23r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw23r3">
   <div class="cook-head">
-    <label class="back" for="vw23r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🥥 Honduran Tapado: Garifuna Coconut Chicken and Shrimp Stew</div>
   </div>
   <div class="step" id="csw23r3_0">
@@ -13347,7 +13350,7 @@
   <p class="step-txt">Season the chicken all over with salt and half the cumin. Heat olive oil in a large Dutch oven over medium-high and brown the thighs in two batches, undisturbed, until each side wears a deep golden crust.</p>
   <div class="step-tip"><span>💡</span><span>Two batches, or it steams</span></div>
   <label class="step-timer" for="t420" data-sec="420" data-name="Honduran Tapado: Garifuna Coconut Chicken and Shrimp Stew — step 1">⏱ Start 7:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw23r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw23r3_1">Next ›</label></div>
 </div><div class="step" id="csw23r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13396,12 +13399,12 @@
   <p class="step-txt">Ladle into deep bowls, making sure every serving gets chicken, shrimp, plantain, and potato. Finish with the remaining cilantro and a wedge of lime.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw23r3" data-finish="w23r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw23r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w23r3">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw24r0">
   <div class="cook-head">
-    <label class="back" for="vw24r0">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🔥 Balinese Sate Lilit Chicken with Sambal Matah</div>
   </div>
   <div class="step" id="csw24r0_0">
@@ -13410,7 +13413,7 @@
   <p class="step-txt">Mix the ground chicken with the shredded coconut, two tablespoons of the lemongrass paste, the garlic, turmeric, coconut milk, and a heavy pinch of salt. Work it with your hands until it turns tacky and holds its shape when you squeeze a lump, then chill it.</p>
   <div class="step-tip"><span>💡</span><span>Tacky mix means the patties won&#x27;t crumble</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Balinese Sate Lilit Chicken with Sambal Matah — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw24r0">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r0_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r0_1">Next ›</label></div>
 </div><div class="step" id="csw24r0_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13459,12 +13462,12 @@
   <p class="step-txt">Pile the rice into bowls, lean the charred patties against it, and heap the sambal matah over everything with its oil. Serve with the last lime cut into wedges.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r0_6">‹ Back</label><label class="nav-btn nav-done" for="vw24r0" data-finish="w24r0">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r0_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w24r0">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw24r1">
   <div class="cook-head">
-    <label class="back" for="vw24r1">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍋 Austrian Pork Schnitzel with Warm Vinegar Potato Salad</div>
   </div>
   <div class="step" id="csw24r1_0">
@@ -13473,7 +13476,7 @@
   <p class="step-txt">Start the potatoes first: cover them with heavily salted water, bring to a boil, and cook until a knife slides into the middle with no resistance.</p>
   <div class="step-tip"><span>💡</span><span>Salt the water like soup</span></div>
   <label class="step-timer" for="t900" data-sec="900" data-name="Austrian Pork Schnitzel with Warm Vinegar Potato Salad — step 1">⏱ Start 15:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw24r1">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r1_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r1_1">Next ›</label></div>
 </div><div class="step" id="csw24r1_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13522,12 +13525,12 @@
   <p class="step-txt">Fold the chives through the potato salad, taste it for vinegar and salt, and serve the schnitzel straight away with lemon wedges to squeeze over the crust.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r1_6">‹ Back</label><label class="nav-btn nav-done" for="vw24r1" data-finish="w24r1">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r1_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w24r1">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw24r2">
   <div class="cook-head">
-    <label class="back" for="vw24r2">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🌶️ Tunisian Ojja with Merguez and Eggs</div>
   </div>
   <div class="step" id="csw24r2_0">
@@ -13536,7 +13539,7 @@
   <p class="step-txt">Set a wide skillet over medium-high and brown the merguez coins in a bare film of olive oil until they are crusted on both cut sides and the fat runs out bright red.</p>
   <div class="step-tip"><span>💡</span><span>That red fat is the whole base</span></div>
   <label class="step-timer" for="t300" data-sec="300" data-name="Tunisian Ojja with Merguez and Eggs — step 1">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw24r2">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r2_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r2_1">Next ›</label></div>
 </div><div class="step" id="csw24r2_1">
   <div class="prog"><i style="width:29%"></i></div>
   <div class="step-n">Step 2 of 7</div>
@@ -13578,12 +13581,12 @@
   <p class="step-txt">Shower the whole skillet with parsley and squeeze lemon over the top. Bring it to the table in the pan with the bread for dragging through the sauce.</p>
   
   
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r2_5">‹ Back</label><label class="nav-btn nav-done" for="vw24r2" data-finish="w24r2">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r2_5">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w24r2">✓ Finished</label></div>
 </div>
 </div>
 <div class="cook" id="ckw24r3">
   <div class="cook-head">
-    <label class="back" for="vw24r3">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">🍗 Bahamian Brown Stew Chicken with Thyme and Hot Pepper</div>
   </div>
   <div class="step" id="csw24r3_0">
@@ -13592,7 +13595,7 @@
   <p class="step-txt">Season the chicken hard on all sides with salt, pepper, the thyme, and the allspice, then let it sit out while you slice the onion, pepper, and celery.</p>
   <div class="step-tip"><span>💡</span><span>Season early, season heavily</span></div>
   <label class="step-timer" for="t600" data-sec="600" data-name="Bahamian Brown Stew Chicken with Thyme and Hot Pepper — step 1">⏱ Start 10:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="vw24r3">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r3_1">Next ›</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="s-none">‹ Recipe</label><label class="nav-btn nav-next" for="sw24r3_1">Next ›</label></div>
 </div><div class="step" id="csw24r3_1">
   <div class="prog"><i style="width:25%"></i></div>
   <div class="step-n">Step 2 of 8</div>
@@ -13641,7 +13644,7 @@
   <p class="step-txt">Rest the pot off the heat, fish out the bay leaves, and skim any fat from the surface. Spoon the chicken and gravy over the hot rice.</p>
   
   <label class="step-timer" for="t300" data-sec="300" data-name="Bahamian Brown Stew Chicken with Thyme and Hot Pepper — step 8">⏱ Start 5:00 timer</label>
-  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r3_6">‹ Back</label><label class="nav-btn nav-done" for="vw24r3" data-finish="w24r3">✓ Finished</label></div>
+  <div class="step-nav"><label class="nav-btn nav-back" for="sw24r3_6">‹ Back</label><label class="nav-btn nav-done" for="s-none" data-finish="w24r3">✓ Finished</label></div>
 </div>
 </div>
 </div>
@@ -18409,6 +18412,44 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){
   }
 
   paintFavs(); paintCooked(); renderTonight(); renderShelves(); initScalers();
+
+  // ---------- mobile: make the device Back button close overlays ----------
+  // Opening a recipe/cook/planner/shop is a CSS state with no URL change, so the
+  // phone's back gesture would otherwise leave the app. We push a history entry
+  // when an overlay opens and close it on back. Ingredient guides use the URL
+  // hash already, so we detect hash-driven pops and leave those to the browser.
+  (function(){
+    function click(id){ var b=document.getElementById(id); if(b) b.click(); }
+    function setChecked(id){ var r=document.getElementById(id); if(r) r.checked=true; }
+    function top(){
+      if(body.classList.contains('shop-open-on')) return {t:'shop', close:function(){click('shopClose');}};
+      if(body.classList.contains('pl-open'))      return {t:'planner', close:function(){click('plClose');}};
+      if(location.hash.indexOf('#g')===0)         return {t:'guide', close:null};
+      var sc=document.querySelector('.stepradio:checked'); if(sc&&sc.id!=='s-none') return {t:'cook', close:function(){setChecked('s-none');}};
+      var vc=document.querySelector('.viewradio:checked'); if(vc&&vc.id!=='v-none') return {t:'sheet', close:function(){setChecked('v-none');}};
+      return null;
+    }
+    var trapped=false, selfPop=false, prevHash=location.hash;
+    function refresh(){
+      var o=top(), trappable = o && o.t!=='guide';
+      if(trappable && !trapped){ history.pushState({ov:1},''); trapped=true; }
+      else if(!trappable && trapped){ trapped=false; selfPop=true; history.back(); }
+    }
+    document.addEventListener('change',function(e){
+      var c=e.target.classList; if(c&&(c.contains('viewradio')||c.contains('stepradio'))) refresh();
+    });
+    try{ new MutationObserver(refresh).observe(body,{attributes:true,attributeFilter:['class']}); }catch(e){}
+    window.addEventListener('hashchange',function(){ prevHash=location.hash; });
+    window.addEventListener('popstate',function(){
+      var hashChanged = location.hash!==prevHash; prevHash=location.hash;
+      if(selfPop){ selfPop=false; return; }
+      if(hashChanged) return;              // a guide (hash) closed — leave to browser
+      var o=top();
+      if(o && o.close){ trapped=false; o.close();
+        var n=top(); if(n && n.close){ history.pushState({ov:1},''); trapped=true; } }
+      else { trapped=false; }
+    });
+  })();
 })();
 </script>
 </body>
