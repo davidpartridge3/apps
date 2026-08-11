@@ -143,7 +143,8 @@ CSS_STATIC = """
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;gap:12px;}
   .back{border:1px solid var(--line);background:var(--card);color:var(--dim);border-radius:11px;
-    padding:8px 13px;font-weight:800;font-size:13px;cursor:pointer;user-select:none;flex:0 0 auto;}
+    padding:9px 15px;font-weight:800;font-size:14px;cursor:pointer;user-select:none;flex:0 0 auto;
+    min-height:44px;display:inline-flex;align-items:center;-webkit-tap-highlight-color:transparent;}
   .sheet-title{font-weight:800;font-size:15.5px;line-height:1.25;flex:1;min-width:0;}
   .sheet-body{padding:18px 16px calc(40px + var(--safe-b));max-width:680px;margin:0 auto;width:100%;}
 
@@ -458,10 +459,13 @@ for r in R:
         timer = (f'<label class="step-timer" for="t{s["timer"]}" data-sec="{s["timer"]}" '
                  f'data-name="{esc(r["title"])} — step {si+1}">⏱ Start {mmss(s["timer"])} timer</label>'
                  if s.get("timer") else "")
+        # Exits reset the STEP radio to s-none — that's what actually hides the
+        # cook overlay (which is shown by the step radio); the recipe sheet
+        # (view radio v{rid}) stays checked underneath, so we land back on it.
         back = (f'<label class="nav-btn nav-back" for="s{rid}_{si-1}">‹ Back</label>' if si > 0
-                else f'<label class="nav-btn nav-back" for="v{rid}">‹ Recipe</label>')
+                else f'<label class="nav-btn nav-back" for="s-none">‹ Recipe</label>')
         nxt = (f'<label class="nav-btn nav-next" for="s{rid}_{si+1}">Next ›</label>' if si < n - 1
-               else f'<label class="nav-btn nav-done" for="v{rid}" data-finish="{rid}">✓ Finished</label>')
+               else f'<label class="nav-btn nav-done" for="s-none" data-finish="{rid}">✓ Finished</label>')
         panes.append(f'''<div class="step" id="cs{rid}_{si}">
   <div class="prog"><i style="width:{pct}%"></i></div>
   <div class="step-n">Step {si+1} of {n}</div>
@@ -472,7 +476,7 @@ for r in R:
 </div>''')
     cooks.append(f'''<div class="cook" id="ck{rid}">
   <div class="cook-head">
-    <label class="back" for="v{rid}">‹ Exit</label>
+    <label class="back" for="s-none">‹ Exit</label>
     <div class="sheet-title">{r["hero"]} {esc(r["title"])}</div>
   </div>
   {"".join(panes)}
@@ -806,7 +810,7 @@ PLANNER_CSS = """
 
   .pl-filters{display:flex;flex-direction:column;gap:9px;margin-bottom:6px;}
   .pl-search{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
-    border-radius:12px;padding:11px 13px;font-size:14.5px;font-family:inherit;}
+    border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;-webkit-appearance:none;}
   .pl-chiprow{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
   .pl-chiprow::-webkit-scrollbar{display:none;}
   .pl-chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--dim);
@@ -814,7 +818,7 @@ PLANNER_CSS = """
     user-select:none;white-space:nowrap;}
   .pl-chip.on{background:var(--accent);color:#1a1005;border-color:var(--accent);}
   .pl-cui{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
-    border-radius:12px;padding:11px 13px;font-size:14px;font-family:inherit;-webkit-appearance:none;}
+    border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;-webkit-appearance:none;}
 
   .pl-rc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
     border-radius:14px;padding:11px 13px;margin:9px 0;cursor:pointer;user-select:none;position:relative;}
@@ -837,7 +841,7 @@ PLANNER_CSS = """
   .pl-assign-name{font-weight:800;font-size:14.5px;line-height:1.2;}
   .pl-assign-meta{color:var(--dimmer);font-size:11.5px;font-weight:700;}
   .pl-day{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:10px;
-    padding:9px 8px;font-size:13.5px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;}
+    padding:10px 8px;font-size:16px;font-family:inherit;font-weight:700;flex:0 0 auto;-webkit-appearance:none;min-height:44px;}
   .pl-share-txt{width:100%;min-height:150px;background:var(--card);border:1px solid var(--line);
     color:var(--txt);border-radius:12px;padding:13px;font-size:14px;font-family:inherit;line-height:1.5;
     resize:vertical;margin:6px 0;}
@@ -971,11 +975,13 @@ PLANNER_CSS = """
     padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;user-select:none;}
 
   /* ---------- A3 engagement: favourites, tonight, history, scaler ---------- */
-  .fav{position:absolute;top:12px;right:14px;font-size:22px;line-height:1;color:var(--dimmer);
-    cursor:pointer;user-select:none;z-index:3;}
+  .fav{position:absolute;top:4px;right:6px;font-size:22px;line-height:1;color:var(--dimmer);
+    cursor:pointer;user-select:none;z-index:3;padding:10px;min-width:44px;min-height:44px;
+    display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
   .fav.on{color:#ff6b6b;}
   .r-hero{position:relative;}
-  .fav-lg{position:absolute;top:0;right:0;font-size:26px;}
+  .fav-lg{position:absolute;top:-8px;right:-8px;font-size:26px;padding:10px;min-width:44px;min-height:44px;
+    display:flex;align-items:center;justify-content:center;}
   .cooked-badge{display:none;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.4px;
     color:var(--green);background:rgba(111,207,143,.12);border:1px solid rgba(111,207,143,.4);
     border-radius:20px;padding:3px 10px;width:fit-content;}
@@ -1781,6 +1787,44 @@ ENGAGE_JS = r"""
   }
 
   paintFavs(); paintCooked(); renderTonight(); renderShelves(); initScalers();
+
+  // ---------- mobile: make the device Back button close overlays ----------
+  // Opening a recipe/cook/planner/shop is a CSS state with no URL change, so the
+  // phone's back gesture would otherwise leave the app. We push a history entry
+  // when an overlay opens and close it on back. Ingredient guides use the URL
+  // hash already, so we detect hash-driven pops and leave those to the browser.
+  (function(){
+    function click(id){ var b=document.getElementById(id); if(b) b.click(); }
+    function setChecked(id){ var r=document.getElementById(id); if(r) r.checked=true; }
+    function top(){
+      if(body.classList.contains('shop-open-on')) return {t:'shop', close:function(){click('shopClose');}};
+      if(body.classList.contains('pl-open'))      return {t:'planner', close:function(){click('plClose');}};
+      if(location.hash.indexOf('#g')===0)         return {t:'guide', close:null};
+      var sc=document.querySelector('.stepradio:checked'); if(sc&&sc.id!=='s-none') return {t:'cook', close:function(){setChecked('s-none');}};
+      var vc=document.querySelector('.viewradio:checked'); if(vc&&vc.id!=='v-none') return {t:'sheet', close:function(){setChecked('v-none');}};
+      return null;
+    }
+    var trapped=false, selfPop=false, prevHash=location.hash;
+    function refresh(){
+      var o=top(), trappable = o && o.t!=='guide';
+      if(trappable && !trapped){ history.pushState({ov:1},''); trapped=true; }
+      else if(!trappable && trapped){ trapped=false; selfPop=true; history.back(); }
+    }
+    document.addEventListener('change',function(e){
+      var c=e.target.classList; if(c&&(c.contains('viewradio')||c.contains('stepradio'))) refresh();
+    });
+    try{ new MutationObserver(refresh).observe(body,{attributes:true,attributeFilter:['class']}); }catch(e){}
+    window.addEventListener('hashchange',function(){ prevHash=location.hash; });
+    window.addEventListener('popstate',function(){
+      var hashChanged = location.hash!==prevHash; prevHash=location.hash;
+      if(selfPop){ selfPop=false; return; }
+      if(hashChanged) return;              // a guide (hash) closed — leave to browser
+      var o=top();
+      if(o && o.close){ trapped=false; o.close();
+        var n=top(); if(n && n.close){ history.pushState({ov:1},''); trapped=true; } }
+      else { trapped=false; }
+    });
+  })();
 })();
 """
 

@@ -304,7 +304,7 @@ WLOG_CSS = """
   .sl-set{display:flex;align-items:center;gap:8px;}
   .sl-n{flex:0 0 auto;width:20px;color:var(--dimmer);font-size:11px;font-weight:800;text-align:center;}
   .sl-in{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--txt);
-    border-radius:9px;padding:9px 10px;font-size:14px;font-family:inherit;-webkit-appearance:none;text-align:center;}
+    border-radius:9px;padding:10px;font-size:16px;font-family:inherit;-webkit-appearance:none;text-align:center;}
   .sl-in::placeholder{color:var(--dimmer);}
   .sl-x{flex:0 0 auto;color:var(--dimmer);font-weight:800;font-size:12px;}
   .sl-hit{border-color:var(--green) !important;}
@@ -323,7 +323,7 @@ WLOG_CSS = """
   .bc-row{display:flex;gap:8px;align-items:flex-end;}
   .bc-row label{flex:1;min-width:0;font-size:11px;color:var(--dim);font-weight:700;}
   .bc-row input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
-    border-radius:10px;padding:10px;font-size:14px;font-family:inherit;margin-top:5px;-webkit-appearance:none;}
+    border-radius:10px;padding:10px;font-size:16px;font-family:inherit;margin-top:5px;-webkit-appearance:none;}
   .bc-add{border:none;background:var(--accent);color:#0d0f14;font-weight:800;border-radius:10px;
     padding:11px 15px;font-size:13.5px;cursor:pointer;font-family:inherit;flex:0 0 auto;}
   .bc-spark{margin:14px 0 6px;}
@@ -614,7 +614,7 @@ DOC = f"""<!DOCTYPE html>
   .add-row{{display:flex; gap:8px; margin-top:14px;}}
   .no-js .add-row, .no-js .add-note{{display:none;}}
   .add-row input{{flex:1; background:var(--bg); border:1px solid var(--line); color:var(--txt);
-    border-radius:12px; padding:11px 12px; font-size:14px; min-width:0; font-family:inherit;}}
+    border-radius:12px; padding:11px 12px; font-size:16px; min-width:0; font-family:inherit;}}
   .add-row button{{border:none; background:var(--spotify); color:#04220f; font-weight:800;
     border-radius:12px; padding:0 18px; font-size:14px; cursor:pointer; font-family:inherit;}}
   .add-note{{color:var(--dimmer); font-size:11.5px; margin-top:8px;}}
