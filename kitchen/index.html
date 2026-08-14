@@ -28,7 +28,8 @@
 
   header{position:sticky;top:0;z-index:20;background:rgba(18,16,14,.95);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);padding:14px 16px 0;}
+    border-bottom:1px solid var(--line);
+    padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0;}
   h1{font-size:19px;margin:0;font-weight:800;letter-spacing:.2px;}
   .sub{color:var(--dimmer);font-size:12px;font-weight:600;margin-top:1px;}
   .tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0;
@@ -1970,7 +1971,10 @@
 
   .pl-overlay{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;
     flex-direction:column;overflow:hidden;}
-  body.pl-open .pl-overlay{display:flex;}
+  body.pl-open #planner{display:flex;}
+  body.idea-open #idea{display:flex;}
+  .idea-score{flex:0 0 auto;font-size:11px;font-weight:800;color:var(--accent);
+    background:var(--accent-soft);border-radius:20px;padding:4px 9px;align-self:center;}
   .pl-head{position:sticky;top:0;z-index:2;background:rgba(18,16,14,.96);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
     padding:14px 16px;display:flex;align-items:center;gap:12px;}
@@ -3209,7 +3213,7 @@
   <div class="blurb">Fall-apart chicken thighs braised with harissa, warm cinnamon, and sweet dried apricots until the whole pot tastes like a spice market.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w1r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist1">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist1">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp1"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 2</h2><p class="wk-sub">Japanese · Greek · Vietnamese · Cajun/Creole</p></div><label class="card" for="vw2r0">
   <span class="fav js-only" data-fav="w2r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3265,7 +3269,7 @@
   <div class="blurb">A smoky one-pot jambalaya where every grain of rice is stained red with sausage fat, trinity, and Creole spice.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w2r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist2">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist2">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp2"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 3</h2><p class="wk-sub">Indian · Peruvian · Sichuan/Chinese · Spanish</p></div><label class="card" for="vw3r0">
   <span class="fav js-only" data-fav="w3r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3321,7 +3325,7 @@
   <div class="blurb">One pot of smoky paprika rice stained orange by rendered chorizo, with tender thighs and chickpeas buried throughout.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w3r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist3">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist3">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp3"><div class="wk-head"><h2 class="wk-title">Month 1 · Week 4</h2><p class="wk-sub">Filipino · Turkish · Caribbean/Jamaican · Italian</p></div><label class="card" for="vw4r0">
   <span class="fav js-only" data-fav="w4r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3377,7 +3381,7 @@
   <div class="blurb">Crusty browned Italian sausage folded into creamy vodka sauce, layered with pesto-streaked ricotta and baked until the edges blister.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w4r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist4">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist4">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp4"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 1</h2><p class="wk-sub">Lebanese/Levantine · Brazilian · Malaysian · Persian</p></div><label class="card" for="vw5r0">
   <span class="fav js-only" data-fav="w5r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3433,7 +3437,7 @@
   <div class="blurb">A golden, sour-savory stew of fall-apart chicken, chickpeas, and jammy caramelized onion, flooded with lemon at the end.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w5r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist5">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist5">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp5"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 2</h2><p class="wk-sub">Argentinian · Chinese-American · Ethiopian-inspired · Tex-Mex</p></div><label class="card" for="vw6r0">
   <span class="fav js-only" data-fav="w6r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3489,7 +3493,7 @@
   <div class="blurb">A thick, cumin-heavy chili built on hard-browned grass-fed beef and fire-roasted salsa, buried under sharp crumbly cheddar.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w6r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist6">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist6">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp6"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 3</h2><p class="wk-sub">Southern/Nashville Hot · Indonesian · Portuguese · West African</p></div><label class="card" for="vw7r0">
   <span class="fav js-only" data-fav="w7r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3545,7 +3549,7 @@
   <div class="blurb">Bone-in thighs braised until falling apart in a burnished peanut-tomato gravy with sweet potato and a hum of habanero heat that builds with every spoonful.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w7r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist7">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist7">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp7"><div class="wk-head"><h2 class="wk-title">Month 2 · Week 4</h2><p class="wk-sub">Sri Lankan · Hawaiian · Polish · Burmese</p></div><label class="card" for="vw8r0">
   <span class="fav js-only" data-fav="w8r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3601,7 +3605,7 @@
   <div class="blurb">A golden turmeric-coconut chicken broth thickened to a velvet gravy, ladled over rice noodles and loaded with hard-boiled egg, crispy onions, and lime.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w8r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist8">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist8">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp8"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 1</h2><p class="wk-sub">Georgian · Nigerian · Basque · Hungarian</p></div><label class="card" for="vw9r0">
   <span class="fav js-only" data-fav="w9r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3657,7 +3661,7 @@
   <div class="blurb">A deep brick-red pot of beef gone spoon-tender in a paprika-saturated onion gravy, sharpened with caraway and finished with a cool swirl of sour cream.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w9r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist9">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist9">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp9"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 2</h2><p class="wk-sub">Yucatecan Mexican · Okinawan Japanese · Alsatian French · Colombian</p></div><label class="card" for="vw10r0">
   <span class="fav js-only" data-fav="w10r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3713,7 +3717,7 @@
   <div class="blurb">A golden, cumin-scented pot of fall-apart chicken, corn rounds, green plantain, and potatoes that thicken the broth themselves, served with a fierce green aji on the side.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w10r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist10">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist10">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp10"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 3</h2><p class="wk-sub">Cantonese · Punjabi · Sardinian · Egyptian</p></div><label class="card" for="vw11r0">
   <span class="fav js-only" data-fav="w11r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3769,7 +3773,7 @@
   <div class="blurb">Layers of shattered crisp bread, buttery broth-cooked rice, and burnished chicken, all doused in a sharp garlic-vinegar tomato sauce that cuts straight through the richness.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w11r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist11">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist11">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp11"><div class="wk-head"><h2 class="wk-title">Month 3 · Week 4</h2><p class="wk-sub">Bavarian German · Uyghur · Cuban · Swahili-coast East African</p></div><label class="card" for="vw12r0">
   <span class="fav js-only" data-fav="w12r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3825,7 +3829,7 @@
   <div class="blurb">Chicken blistered under the broiler and then simmered into a golden coconut sauce loaded with ginger, green chile, and lime until the whole pot tastes like the Mombasa waterfront.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w12r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist12">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist12">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp12"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 1</h2><p class="wk-sub">Taiwanese · Provençal French · Chilean · Low-Country Carolina</p></div><label class="card" for="vw13r0">
   <span class="fav js-only" data-fav="w13r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3881,7 +3885,7 @@
   <div class="blurb">A big Charleston-style skillet of shrimp, smoked sausage, and bacon in a peppery pan gravy, spooned over stone-ground grits made outrageous with Unexpected Cheddar.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w13r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist13">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist13">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp13"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 2</h2><p class="wk-sub">Nepali · Sicilian · Trinidadian · Kashmiri</p></div><label class="card" for="vw14r0">
   <span class="fav js-only" data-fav="w14r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3937,7 +3941,7 @@
   <div class="blurb">Lamb braised low in a yogurt gravy stained brilliant red with Kashmiri chile and scented with ground fennel, dry ginger, and smoky black cardamom, finished when a slick of spiced oil rises to the top.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w14r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist14">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist14">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp14"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 3</h2><p class="wk-sub">Singaporean · Norwegian Nordic · Salvadoran · Goan</p></div><label class="card" for="vw15r0">
   <span class="fav js-only" data-fav="w15r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -3993,7 +3997,7 @@
   <div class="blurb">Pork shoulder braised in a vinegar-and-chili paste until the sauce turns dark, glossy and fierce, with just enough sweetness to keep the heat honest.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w15r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist15">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist15">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp15"><div class="wk-head"><h2 class="wk-title">Month 4 · Week 4</h2><p class="wk-sub">Ukrainian · Yemeni · Tuscan · Puerto Rican</p></div><label class="card" for="vw16r0">
   <span class="fav js-only" data-fav="w16r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4049,7 +4053,7 @@
   <div class="blurb">Beef stewed down into a deep sofrito-and-tomato gravy studded with briny olives and potatoes that drink up every bit of it.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w16r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist16">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist16">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp16"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 1</h2><p class="wk-sub">Shanghainese · Bengali · Catalan · Venezuelan</p></div><label class="card" for="vw17r0">
   <span class="fav js-only" data-fav="w17r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4105,7 +4109,7 @@
   <div class="blurb">Cumin-scented beef guiso, brothy black beans and caramelized sweet plantains piled over rice with a snowfall of salty white cheese.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w17r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist17">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist17">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp17"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 2</h2><p class="wk-sub">Isan Thai · Danish · Guatemalan · Andalusian</p></div><label class="card" for="vw18r0">
   <span class="fav js-only" data-fav="w18r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4161,7 +4165,7 @@
   <div class="blurb">Two whole heads of garlic melt into a golden sherry and saffron braise with green olives, cumin and lemon — Seville tavern food, scaled up.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w18r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist18">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist18">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp18"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 3</h2><p class="wk-sub">Hunan · Tamil South Indian · Neapolitan · Dominican</p></div><label class="card" for="vw19r0">
   <span class="fav js-only" data-fav="w19r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4217,7 +4221,7 @@
   <div class="blurb">Chicken lacquered in burnt-sugar caramel and braised down with sofrito, oregano, and briny olives into a sauce you&#x27;ll want on everything.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w19r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist19">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist19">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp19"><div class="wk-head"><h2 class="wk-title">Month 5 · Week 4</h2><p class="wk-sub">Laotian · Swedish · Bolivian · Galician</p></div><label class="card" for="vw20r0">
   <span class="fav js-only" data-fav="w20r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4273,7 +4277,7 @@
   <div class="blurb">A smoky Galician pot of pork, chorizo, and white beans simmered until the broth turns orange with pimenton and the greens go silky.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w20r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist20">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist20">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp20"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 1</h2><p class="wk-sub">Northern Chinese / Beijing · Gujarati · Roman · Ecuadorian</p></div><label class="card" for="vw21r0">
   <span class="fav js-only" data-fav="w21r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4329,7 +4333,7 @@
   <div class="blurb">Chicken braised until it slides off the bone in a blended cilantro-and-beer sauce that cooks down from shocking green to deep olive, brightened with lime-pickled red onion.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w21r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist21">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist21">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp21"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 2</h2><p class="wk-sub">Cambodian · Czech · Costa Rican · Israeli</p></div><label class="card" for="vw22r0">
   <span class="fav js-only" data-fav="w22r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4385,7 +4389,7 @@
   <div class="blurb">Griddle-charred chicken and livers tumbled with frizzled onions and a fistful of cumin, turmeric, and baharat, stuffed into pita with runny tahini and a green streak of zhoug.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w22r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist22">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist22">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp22"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 3</h2><p class="wk-sub">Macanese · Pakistani Sindhi · Venetian · Honduran</p></div><label class="card" for="vw23r0">
   <span class="fav js-only" data-fav="w23r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4441,7 +4445,7 @@
   <div class="blurb">A Caribbean-coast pot from Honduras where coconut milk simmers gold with cumin and lime until chicken, plantain, and sweet red shrimp fall together.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w23r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist23">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist23">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
 <section class="wkpanel" id="wp23"><div class="wk-head"><h2 class="wk-title">Month 6 · Week 4</h2><p class="wk-sub">Balinese · Austrian · Tunisian · Bahamian</p></div><label class="card" for="vw24r0">
   <span class="fav js-only" data-fav="w24r0" role="button" aria-label="Favourite">♡</span>
   <div class="card-top">
@@ -4497,7 +4501,7 @@
   <div class="blurb">Nassau-style stew chicken, where sugar burnt almost to bitterness lacquers the meat mahogany before it simmers soft with thyme, allspice, and hot sauce.</div>
   <span class="cta">▶ Open recipe</span>
   <span class="cooked-badge js-only" data-cooked="w24r3"></span>
-</label><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist24">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
+</label><div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div><div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div><label class="list-btn" for="vlist24">🛒 Shopping list for this week</label><a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a></section>
   <div id="cookAgainMount" class="js-only"></div>
 </main>
 
@@ -17522,6 +17526,13 @@
   <div class="shop-body" id="shopBody"></div>
   <div class="shop-start" id="shopStart"></div>
 </div>
+<div class="pl-overlay" id="idea" aria-hidden="true">
+  <div class="pl-head">
+    <div class="pl-title">💡 Give me an idea</div>
+    <button class="pl-x" id="ideaClose" type="button">Close ✕</button>
+  </div>
+  <div class="pl-body" id="ideaBody"></div>
+</div>
 <div class="pl-toast" id="plToast"></div>
 <div class="rate-veil" id="rateVeil"></div>
 <div class="rate-sheet" id="rateSheet">
@@ -18411,6 +18422,67 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){
     });
   }
 
+  // ---------- "Give me an idea" recipe finder ----------
+  function mins(tm){ var m=/(\d+)/.exec(tm||''); return m?parseInt(m[1],10):999; }
+  var ideaEl=document.getElementById('idea'), ideaBody=document.getElementById('ideaBody');
+  var ideaState={q:'',chip:''};
+  function openIdea(){
+    ideaState={q:'',chip:''};
+    var chips=[['chicken','🍗 Chicken'],['beef','🥩 Beef'],['shrimp','🦐 Shrimp'],['pork','🥓 Pork'],['fish','🐟 Fish'],['quick','⚡ Under 30 min']];
+    var chipHtml=chips.map(function(c){ return '<div class="pl-chip" data-chip="'+c[0]+'">'+c[1]+'</div>'; }).join('');
+    ideaBody.innerHTML=
+      '<div class="pl-hint">Type a craving, a cuisine, or an ingredient you have — or tap a chip. I’ll match it against all 96 recipes.</div>'+
+      '<div class="pl-filters">'+
+        '<input class="pl-search" id="ideaSearch" type="search" autocomplete="off" placeholder="e.g. spicy chicken, Thai, or shrimp">'+
+        '<div class="pl-chiprow" id="ideaChips">'+chipHtml+'</div>'+
+        '<button class="pl-go" id="ideaRandom" style="width:100%">🎲 Surprise me</button>'+
+      '</div><div id="ideaResults"></div>';
+    body.classList.add('idea-open'); ideaEl.setAttribute('aria-hidden','false');
+    document.getElementById('ideaSearch').addEventListener('input',function(e){ ideaState.q=e.target.value; updateIdea(); });
+    Array.prototype.forEach.call(ideaBody.querySelectorAll('[data-chip]'),function(c){
+      c.addEventListener('click',function(){
+        var v=c.getAttribute('data-chip'); ideaState.chip = ideaState.chip===v?'':v;
+        Array.prototype.forEach.call(ideaBody.querySelectorAll('[data-chip]'),function(x){ x.classList.toggle('on', x.getAttribute('data-chip')===ideaState.chip); });
+        updateIdea();
+      });
+    });
+    document.getElementById('ideaRandom').addEventListener('click',function(){
+      var r=LIST[Math.floor(Math.random()*LIST.length)]; closeIdea(); openRecipe(r.id);
+    });
+    updateIdea();
+  }
+  function closeIdea(){ body.classList.remove('idea-open'); ideaEl.setAttribute('aria-hidden','true'); }
+  function scoreRecipe(r, tokens){
+    var score=0, hit={}, cu=r.c.toLowerCase(), ti=r.t.toLowerCase();
+    tokens.forEach(function(tok){
+      if(!tok) return;
+      if(cu.indexOf(tok)>=0) score+=3;
+      if(ti.indexOf(tok)>=0) score+=2;
+      for(var i=0;i<r.ing.length;i++){ if(r.ing[i].i.toLowerCase().indexOf(tok)>=0){ if(!hit[tok]){ score+=1; hit[tok]=1; } break; } }
+    });
+    return score;
+  }
+  function updateIdea(){
+    var out=document.getElementById('ideaResults'); if(!out) return;
+    var quick = ideaState.chip==='quick';
+    var terms = (ideaState.q+' '+(quick?'':ideaState.chip)).toLowerCase();
+    var tokens = terms.split(/[\s,]+/).filter(Boolean);
+    var hasQuery = tokens.length>0 || quick;
+    if(!hasQuery){ out.innerHTML=''; return; }
+    var scored=LIST.map(function(r){ var s=tokens.length?scoreRecipe(r,tokens):0; if(quick && mins(r.tm)<=30) s+=2; return {r:r,s:s}; })
+      .filter(function(x){ return x.s>0; }).sort(function(a,b){ return b.s-a.s; }).slice(0,14);
+    if(!scored.length){ out.innerHTML='<div class="pl-empty">No match — try a broader word (a protein or a cuisine).</div>'; return; }
+    out.innerHTML=scored.map(function(x){ var r=x.r, slot=r.s==='batch'?'Batch cook':'Dinner';
+      return '<div class="pl-rc" data-open="'+r.id+'"><div class="hero">'+r.h+'</div>'+
+        '<div class="pl-rc-main"><div class="pl-rc-slot'+(r.s==='batch'?' batch':'')+'">'+slot+' · '+esc(r.c)+'</div>'+
+        '<div class="pl-rc-name">'+esc(r.t)+'</div><div class="pl-rc-meta">'+esc(r.tm)+' · '+r.sv+' servings</div></div></div>';
+    }).join('');
+    Array.prototype.forEach.call(out.querySelectorAll('.pl-rc[data-open]'),function(el){
+      el.addEventListener('click',function(){ closeIdea(); openRecipe(el.getAttribute('data-open')); }); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.open-idea'),function(b){ b.addEventListener('click',openIdea); });
+  var ideaCloseBtn=document.getElementById('ideaClose'); if(ideaCloseBtn) ideaCloseBtn.addEventListener('click',closeIdea);
+
   paintFavs(); paintCooked(); renderTonight(); renderShelves(); initScalers();
 
   // ---------- mobile: make the device Back button close overlays ----------
@@ -18423,6 +18495,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){
     function setChecked(id){ var r=document.getElementById(id); if(r) r.checked=true; }
     function top(){
       if(body.classList.contains('shop-open-on')) return {t:'shop', close:function(){click('shopClose');}};
+      if(body.classList.contains('idea-open'))    return {t:'idea', close:function(){click('ideaClose');}};
       if(body.classList.contains('pl-open'))      return {t:'planner', close:function(){click('plClose');}};
       if(location.hash.indexOf('#g')===0)         return {t:'guide', close:null};
       var sc=document.querySelector('.stepradio:checked'); if(sc&&sc.id!=='s-none') return {t:'cook', close:function(){setChecked('s-none');}};
