@@ -94,7 +94,8 @@ CSS_STATIC = """
 
   header{position:sticky;top:0;z-index:20;background:rgba(18,16,14,.95);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);padding:14px 16px 0;}
+    border-bottom:1px solid var(--line);
+    padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0;}
   h1{font-size:19px;margin:0;font-weight:800;letter-spacing:.2px;}
   .sub{color:var(--dimmer);font-size:12px;font-weight:600;margin-top:1px;}
   .tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0;
@@ -369,6 +370,7 @@ for i, w in enumerate(WEEKS):
       f'<div class="wk-head"><h2 class="wk-title">Month {i//4+1} · Week {i%4+1}</h2>'
       f'<p class="wk-sub">{esc(cuisines)}</p></div>'
       + "\n".join(card(r) for r in rs)
+      + '<div class="plan-btn open-idea js-only" style="background:var(--card2);color:var(--txt);border-color:var(--line);">💡 Give me an idea</div>'
       + '<div class="plan-btn open-planner js-only">🗓️ Plan this week with Laurel</div>'
       + f'<label class="list-btn" for="vlist{w}">🛒 Shopping list for this week</label>'
       + '<a class="guide-btn" href="#g-index">📖 Ingredient buying guide</a>'
@@ -783,7 +785,10 @@ PLANNER_CSS = """
 
   .pl-overlay{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;
     flex-direction:column;overflow:hidden;}
-  body.pl-open .pl-overlay{display:flex;}
+  body.pl-open #planner{display:flex;}
+  body.idea-open #idea{display:flex;}
+  .idea-score{flex:0 0 auto;font-size:11px;font-weight:800;color:var(--accent);
+    background:var(--accent-soft);border-radius:20px;padding:4px 9px;align-self:center;}
   .pl-head{position:sticky;top:0;z-index:2;background:rgba(18,16,14,.96);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
     padding:14px 16px;display:flex;align-items:center;gap:12px;}
@@ -1052,6 +1057,13 @@ PLANNER_HTML = """
   <div class="shop-controls" id="shopControls"></div>
   <div class="shop-body" id="shopBody"></div>
   <div class="shop-start" id="shopStart"></div>
+</div>
+<div class="pl-overlay" id="idea" aria-hidden="true">
+  <div class="pl-head">
+    <div class="pl-title">💡 Give me an idea</div>
+    <button class="pl-x" id="ideaClose" type="button">Close ✕</button>
+  </div>
+  <div class="pl-body" id="ideaBody"></div>
 </div>
 <div class="pl-toast" id="plToast"></div>
 <div class="rate-veil" id="rateVeil"></div>
@@ -1786,6 +1798,67 @@ ENGAGE_JS = r"""
     });
   }
 
+  // ---------- "Give me an idea" recipe finder ----------
+  function mins(tm){ var m=/(\d+)/.exec(tm||''); return m?parseInt(m[1],10):999; }
+  var ideaEl=document.getElementById('idea'), ideaBody=document.getElementById('ideaBody');
+  var ideaState={q:'',chip:''};
+  function openIdea(){
+    ideaState={q:'',chip:''};
+    var chips=[['chicken','🍗 Chicken'],['beef','🥩 Beef'],['shrimp','🦐 Shrimp'],['pork','🥓 Pork'],['fish','🐟 Fish'],['quick','⚡ Under 30 min']];
+    var chipHtml=chips.map(function(c){ return '<div class="pl-chip" data-chip="'+c[0]+'">'+c[1]+'</div>'; }).join('');
+    ideaBody.innerHTML=
+      '<div class="pl-hint">Type a craving, a cuisine, or an ingredient you have — or tap a chip. I’ll match it against all 96 recipes.</div>'+
+      '<div class="pl-filters">'+
+        '<input class="pl-search" id="ideaSearch" type="search" autocomplete="off" placeholder="e.g. spicy chicken, Thai, or shrimp">'+
+        '<div class="pl-chiprow" id="ideaChips">'+chipHtml+'</div>'+
+        '<button class="pl-go" id="ideaRandom" style="width:100%">🎲 Surprise me</button>'+
+      '</div><div id="ideaResults"></div>';
+    body.classList.add('idea-open'); ideaEl.setAttribute('aria-hidden','false');
+    document.getElementById('ideaSearch').addEventListener('input',function(e){ ideaState.q=e.target.value; updateIdea(); });
+    Array.prototype.forEach.call(ideaBody.querySelectorAll('[data-chip]'),function(c){
+      c.addEventListener('click',function(){
+        var v=c.getAttribute('data-chip'); ideaState.chip = ideaState.chip===v?'':v;
+        Array.prototype.forEach.call(ideaBody.querySelectorAll('[data-chip]'),function(x){ x.classList.toggle('on', x.getAttribute('data-chip')===ideaState.chip); });
+        updateIdea();
+      });
+    });
+    document.getElementById('ideaRandom').addEventListener('click',function(){
+      var r=LIST[Math.floor(Math.random()*LIST.length)]; closeIdea(); openRecipe(r.id);
+    });
+    updateIdea();
+  }
+  function closeIdea(){ body.classList.remove('idea-open'); ideaEl.setAttribute('aria-hidden','true'); }
+  function scoreRecipe(r, tokens){
+    var score=0, hit={}, cu=r.c.toLowerCase(), ti=r.t.toLowerCase();
+    tokens.forEach(function(tok){
+      if(!tok) return;
+      if(cu.indexOf(tok)>=0) score+=3;
+      if(ti.indexOf(tok)>=0) score+=2;
+      for(var i=0;i<r.ing.length;i++){ if(r.ing[i].i.toLowerCase().indexOf(tok)>=0){ if(!hit[tok]){ score+=1; hit[tok]=1; } break; } }
+    });
+    return score;
+  }
+  function updateIdea(){
+    var out=document.getElementById('ideaResults'); if(!out) return;
+    var quick = ideaState.chip==='quick';
+    var terms = (ideaState.q+' '+(quick?'':ideaState.chip)).toLowerCase();
+    var tokens = terms.split(/[\s,]+/).filter(Boolean);
+    var hasQuery = tokens.length>0 || quick;
+    if(!hasQuery){ out.innerHTML=''; return; }
+    var scored=LIST.map(function(r){ var s=tokens.length?scoreRecipe(r,tokens):0; if(quick && mins(r.tm)<=30) s+=2; return {r:r,s:s}; })
+      .filter(function(x){ return x.s>0; }).sort(function(a,b){ return b.s-a.s; }).slice(0,14);
+    if(!scored.length){ out.innerHTML='<div class="pl-empty">No match — try a broader word (a protein or a cuisine).</div>'; return; }
+    out.innerHTML=scored.map(function(x){ var r=x.r, slot=r.s==='batch'?'Batch cook':'Dinner';
+      return '<div class="pl-rc" data-open="'+r.id+'"><div class="hero">'+r.h+'</div>'+
+        '<div class="pl-rc-main"><div class="pl-rc-slot'+(r.s==='batch'?' batch':'')+'">'+slot+' · '+esc(r.c)+'</div>'+
+        '<div class="pl-rc-name">'+esc(r.t)+'</div><div class="pl-rc-meta">'+esc(r.tm)+' · '+r.sv+' servings</div></div></div>';
+    }).join('');
+    Array.prototype.forEach.call(out.querySelectorAll('.pl-rc[data-open]'),function(el){
+      el.addEventListener('click',function(){ closeIdea(); openRecipe(el.getAttribute('data-open')); }); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.open-idea'),function(b){ b.addEventListener('click',openIdea); });
+  var ideaCloseBtn=document.getElementById('ideaClose'); if(ideaCloseBtn) ideaCloseBtn.addEventListener('click',closeIdea);
+
   paintFavs(); paintCooked(); renderTonight(); renderShelves(); initScalers();
 
   // ---------- mobile: make the device Back button close overlays ----------
@@ -1798,6 +1871,7 @@ ENGAGE_JS = r"""
     function setChecked(id){ var r=document.getElementById(id); if(r) r.checked=true; }
     function top(){
       if(body.classList.contains('shop-open-on')) return {t:'shop', close:function(){click('shopClose');}};
+      if(body.classList.contains('idea-open'))    return {t:'idea', close:function(){click('ideaClose');}};
       if(body.classList.contains('pl-open'))      return {t:'planner', close:function(){click('plClose');}};
       if(location.hash.indexOf('#g')===0)         return {t:'guide', close:null};
       var sc=document.querySelector('.stepradio:checked'); if(sc&&sc.id!=='s-none') return {t:'cook', close:function(){setChecked('s-none');}};

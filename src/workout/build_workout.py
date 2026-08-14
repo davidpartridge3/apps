@@ -334,6 +334,17 @@ WLOG_CSS = """
   .bc-empty{color:var(--dimmer);font-size:12.5px;text-align:center;padding:6px 0 2px;}
   .bc-list{margin-top:12px;font-size:12px;color:var(--dim);}
   .bc-list div{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line);}
+
+  .trend-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:2px;}
+  .trend-export{border:1px solid var(--line);background:var(--card2);color:var(--txt);border-radius:10px;
+    padding:8px 12px;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit;flex:0 0 auto;}
+  .trend-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);}
+  .trend-name{flex:1;min-width:0;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .trend-spark{flex:0 0 84px;height:34px;}
+  .trend-val{flex:0 0 auto;text-align:right;min-width:64px;}
+  .trend-val b{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;}
+  .trend-val span{display:block;font-size:11px;font-weight:800;}
+  .trend-up{color:var(--green);} .trend-down{color:var(--red);} .trend-flat{color:var(--dim);}
 """
 
 WLOG_JS = r"""
@@ -397,9 +408,65 @@ WLOG_JS = r"""
       if(!sets.length){ return; }
       (log[key]=log[key]||[]).push({date:today(), sets:sets});
       save(LS,log); render();
-      // highlight the just-saved rows briefly
+      if(document.getElementById('trendsMount')) renderTrends();
     }
   });
+
+  // ---------------- strength trends + CSV export ----------------
+  var EXNAME={};
+  Array.prototype.forEach.call(document.querySelectorAll('.ex-card[data-ex]'),function(c){
+    EXNAME[c.getAttribute('data-ex')]=c.getAttribute('data-name'); });
+  function est1RM(set){ if(set.w==null||set.r==null||set.r<1) return null; return set.w*(1+set.r/30); }
+  function sessionBest(sess){ var best=null; sess.sets.forEach(function(s){ var e=est1RM(s); if(e!=null&&(best==null||e>best)) best=e; }); return best; }
+  function miniSpark(vals){
+    if(vals.length<2) return '<svg class="trend-spark"></svg>';
+    var mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals), rng=(mx-mn)||1, W=84,H=34,p=4;
+    var up = vals[vals.length-1]>=vals[0];
+    var d=vals.map(function(v,i){ var x=p+i*(W-2*p)/(vals.length-1), y=p+(1-(v-mn)/rng)*(H-2*p); return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1); }).join(' ');
+    return '<svg class="trend-spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none"><path d="'+d+'" fill="none" stroke="'+(up?'var(--green)':'var(--red)')+'" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  var trendsMount=document.getElementById('trendsMount');
+  if(trendsMount) renderTrends();
+  function renderTrends(){
+    var keys=Object.keys(log).filter(function(k){ return EXNAME[k] && log[k].length; });
+    if(!keys.length){ trendsMount.innerHTML=''; return; }
+    // most recently logged first
+    keys.sort(function(a,b){ return (log[b][log[b].length-1].date>log[a][log[a].length-1].date)?1:-1; });
+    var rows=keys.map(function(k){
+      var series=log[k].map(sessionBest).filter(function(v){ return v!=null; });
+      if(!series.length) return '';
+      var latest=series[series.length-1], first=series[0];
+      var delta=series.length>1?latest-first:0;
+      var cls=delta>0.5?'trend-up':(delta<-0.5?'trend-down':'trend-flat');
+      var arrow=delta>0.5?'▲':(delta<-0.5?'▼':'–');
+      return '<div class="trend-row"><div class="trend-name">'+esc(EXNAME[k])+'</div>'+
+        miniSpark(series)+
+        '<div class="trend-val"><b>'+Math.round(latest)+'</b><span class="'+cls+'">'+arrow+' est 1RM</span></div></div>';
+    }).join('');
+    trendsMount.innerHTML='<div class="bodycard"><div class="trend-head"><h3>📈 Strength trends</h3>'+
+      '<button class="trend-export" type="button">⬇ Export CSV</button></div>'+
+      '<div class="bc-sub">Estimated one-rep max (weight × reps) per exercise over your logged sessions.</div>'+
+      rows+'</div>';
+    trendsMount.querySelector('.trend-export').addEventListener('click',exportCSV);
+  }
+  function exportCSV(){
+    var lines=['exercise,date,set,weight,reps,rir,est_1rm'];
+    Object.keys(log).forEach(function(k){
+      var name=EXNAME[k]||k;
+      log[k].forEach(function(sess){
+        sess.sets.forEach(function(s,i){
+          var e=est1RM(s);
+          lines.push([csv(name),sess.date,i+1,(s.w==null?'':s.w),(s.r==null?'':s.r),(s.rir==null?'':s.rir),(e==null?'':e.toFixed(1))].join(','));
+        });
+      });
+    });
+    bodylog.forEach(function(b){ lines.push([csv('[bodyweight]'),b.date,'',(b.w==null?'':b.w),'','',''].join(',')); });
+    var blob=new Blob([lines.join('\n')],{type:'text/csv'});
+    var url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download='workout-log-'+today()+'.csv'; document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+  function csv(v){ v=String(v==null?'':v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 
   // ---------------- bodyweight + measurement log ----------------
   var mount=document.getElementById('bodyMount');
@@ -486,7 +553,8 @@ DOC = f"""<!DOCTYPE html>
 
   header{{position:sticky; top:0; z-index:30; background:rgba(13,15,20,.94);
     -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line); padding:14px 16px 0;}}
+    border-bottom:1px solid var(--line);
+    padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0;}}
   .h-row{{display:flex; align-items:center; justify-content:space-between; gap:8px;}}
   h1{{font-size:19px; margin:0; font-weight:800; letter-spacing:.2px;}}
   .wake-btn{{border:1px solid var(--line); background:var(--card); color:var(--dim);
@@ -575,7 +643,8 @@ DOC = f"""<!DOCTYPE html>
 
   .dock{{position:fixed; left:0; right:0; bottom:0; z-index:40;
     background:rgba(18,21,28,.97); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
-    border-top:1px solid var(--line); padding:10px 14px calc(10px + var(--safe-b));}}
+    border-top:1px solid var(--line); padding:10px 14px calc(10px + var(--safe-b));
+    transform:translateZ(0); will-change:transform;}}
   .dock-inner{{max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:8px;}}
   .dock-row{{display:flex; gap:8px; align-items:center;}}
   .preset{{flex:1; border:1px solid var(--line); background:var(--card); color:var(--txt);
@@ -690,6 +759,7 @@ DOC = f"""<!DOCTYPE html>
 <main>
   <div class="nojs">ℹ️ Timers work right here — tap any <b>Start rest</b> button. Scripts are off in this view, so there's no beep or buzz at zero; open the file in a browser if you want the sound.</div>
 {panels_html}
+<div id="trendsMount" class="js-only"></div>
 <div id="bodyMount" class="js-only"></div>
 {GUIDE}
 </main>
